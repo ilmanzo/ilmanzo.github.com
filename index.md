@@ -5,7 +5,7 @@ tagline: Welcome to my blog =)
 ---
 {% include JB/setup %}
 
-my name is **Andrea Manzini** and I'm a system engineer.
+my name is **Andrea Manzini** and I'm an Unix System Administrator and a developer.
 
 You can email me at [ilmanzo@gmail.com](mailto:ilmanzo@gmail.com), or
 

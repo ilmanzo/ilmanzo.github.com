@@ -1,11 +1,11 @@
 ---
 layout: page
-title: "About"
+title: "About this blog"
 description: ""
 ---
 {% include JB/setup %}
 
-This site is entirely static, built with [Jekyll Bootstrap](http://jekyllbootstrap.com/)
+This site is entirely static HTML, built with [Jekyll Bootstrap](http://jekyllbootstrap.com/)
 
 I use either [Komodo Edit](http://www.activestate.com/komodo-edit) or [VIM](http://www.vim.org/) to write all content in [MarkDown](http://en.wikipedia.org/wiki/Markdown) formatting
 

@@ -1,9 +1,16 @@
 ---
 layout: page
-title: "About this blog"
+title: "About me and this blog"
 description: ""
 ---
 {% include JB/setup %}
+#About Me#
+
+As you can see, I enjoy minimalism and pragmatic solutions for a problem.
+
+If you are interested, you can find my resume following this link: [curriculum_vitae](curriculum.html)
+
+#About this site#
 
 This site is entirely static HTML, built with [Jekyll Bootstrap](http://jekyllbootstrap.com/)
 

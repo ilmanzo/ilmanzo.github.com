@@ -11,4 +11,12 @@ A volte negli script Ruby ho avuto bisogno di controllare l'esecuzione di un com
 
 <script src="https://gist.github.com/4017156.js"> </script>
 
+come si usa ? Molto semplice:
+
+    wg = BackgroundJob.new 'wget http://www.google.it'
+    sleep 10
+    wg.stop!
+
+
+
 

@@ -5,19 +5,27 @@ description: "curriculum vitae"
 ---
 {% include JB/setup %}
 
+##Fondamentali##
+- nato nel 1973 a Bovolone (VR)
+- ho studiato elettronica e telecomunicazioni
+- inizio a lavorare nel settore IT nel 1993
+- ho installato il primo server Linux nel 1996
+- 1999-2000: DBA Oracle e sysadmin VAX/VMS
+- 2000-2001: sysadmin, network administrator presso Internet Service Provider Netbusiness spa
+- 2001-2005: network & security administrator presso Quercia Software spa
+- 2005-2011: sviluppatore prodotti remote payments e remote banking, Unicredit
+- 2011-oggi: linux senior system engineer, Unicredit
 
-Born in 1973
-- study electronics and signals
-- start working as an IT employee since 1993
-- installed first linux server on 1996
+##Pubblicazioni##
+- 2004: [Linux&C][lc], serie di articoli su sottosistema PAM (Pluggable Authentication Modules)
+- 2005: [Linux&C][lc], serie di articoli su Unicode e sulle implementazioni in Linux
+- 2006: [Linux&C][lc], serie di articoli su SNMP, MRTG e monitoraggio di rete
+- 2008: [Linux&C][lc], articolo su gnome desklets
+- 2010: [Linux&C][lc], articolo sul wiki MoinMoin scritto in python
+- 2010: [Linux&C][lc], serie di articoli su imagemagick (fare grafica a linea di comando)
+[lc]: http://www.oltrelinux.com "Linux & C Edizioni Vinco"
 
-...work in progress...
-
-##Publications##
-...work in progress...
-
-
-##Training##
+##Formazione##
 - 2005: ES-331 Sun Enterprise Cluster Administration Veritas Volume
 - 2006: Microsoft MOC 2087 Implementing Windows 2000 clustering
 - 2006: Microsoft MOC 2153 Implementing a Microsoft Windows 2000 Network Infrastructure

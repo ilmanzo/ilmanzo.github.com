@@ -6,9 +6,9 @@ description: ""
 {% include JB/setup %}
 #About Me#
 
-As you can see, I enjoy minimalism and pragmatic solutions for a problem.
+As you can see, I enjoy minimalism and pragmatic solutions for a problem. I am curious and enjoy learning new things.
 
-If you are interested, you can find my resume following this link: [curriculum_vitae](curriculum.html)
+If you are interested, you can find my resume following this link: [curriculum_vitae](curriculum.html) or [contact](/index.html) me
 
 #About this site#
 

@@ -9,8 +9,8 @@ description: "curriculum vitae"
 - nato nel 1973 a Bovolone (VR)
 - ho studiato elettronica e telecomunicazioni
 - inizio a lavorare nel settore IT nel 1993
-- ho installato il primo server Linux nel 1996
-- 1999-2000: DBA Oracle e sysadmin VAX/VMS
+- ho installato il mio primo server Linux nel 1995
+- 1999-2000: programmatore, DBA Oracle e sysadmin VAX/VMS
 - 2000-2001: sysadmin, network administrator presso Internet Service Provider Netbusiness spa
 - 2001-2005: network & security administrator presso Quercia Software spa
 - 2005-2011: sviluppatore prodotti remote payments e remote banking, Unicredit

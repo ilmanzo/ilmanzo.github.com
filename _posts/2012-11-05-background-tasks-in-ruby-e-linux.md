@@ -17,6 +17,7 @@ come si usa ? Molto semplice:
     sleep 10
     wg.stop!
 
+ovviamente non bisogna abusarne ;-)
 
 
 

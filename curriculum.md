@@ -26,8 +26,8 @@ Born in 1973
 - 2009: Fondamenti di Java , the Java programming language presso Overnet Education
 - 2010: MIE3510 Programming in ANSI C++  presso Mondadori Informatica
 - 2010: MIE3520 Win32 System Programming presso Mondadori Informatica
-- settembre 2011: RH346 Red Hat Enterprise Clustering and Storage Management
-- novembre 2011: RH442 Red Hat Enterprise Performance Tuning - Ottimizzazione delle prestazioni e pianificazione della capacità di Red Hat Enterprise Linux
-- marzo 2012: Novell CLA certification with score 791/800
-- novembre 2012: RH423 Red Hat Enterprise Directory Services and Authentication - Gestione e distribuzione di servizi di directory per i sistemi Red Hat Enterprise Linux
+- 2011: RH346 Red Hat Enterprise Clustering and Storage Management
+- 2011: RH442 Red Hat Enterprise Performance Tuning - Ottimizzazione delle prestazioni e pianificazione della capacità di Red Hat Enterprise Linux
+- 2012: **Novell CLA certification** with score 791/800
+- 2012: RH423 Red Hat Enterprise Directory Services and Authentication - Gestione e distribuzione di servizi di directory per i sistemi Red Hat Enterprise Linux
 

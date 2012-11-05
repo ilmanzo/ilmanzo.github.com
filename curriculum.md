@@ -10,10 +10,11 @@ Born in 1973
 - study electronics and signals
 - start working as an IT employee since 1993
 - installed first linux server on 1996
--
+
+...work in progress...
 
 ##Publications##
-
+...work in progress...
 
 
 ##Training##

@@ -7,9 +7,9 @@ tags: [cisco ssh automation putty]
 ---
 {% include JB/setup %}
 
-A simple way to send a bunch of commands to any ssh device (in my case, Cisco appliances)...
+A quick and dirty way to send a bunch of commands to any ssh device (in my case, Cisco appliances)...
 
-* create a batch file with commands echoed inside:
+* create a plain old batch file with commands echoed inside:
 
 <pre>
     @echo off

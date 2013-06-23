@@ -18,7 +18,4 @@ I use either [Komodo Edit](http://www.activestate.com/komodo-edit) or [VIM](http
 
 After editing or creating, the entire site is versioned and published on [github](http://github.com)
 
-The dark theme is courtesy of [Michele Mattioni](http://michelemattioni.me/)
-
-{% include myaddons/analytics.html %}
 

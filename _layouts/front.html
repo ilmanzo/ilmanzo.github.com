@@ -4,17 +4,15 @@ layout: default
 {% include JB/setup %}
 
 
-{% include myaddons/analytics.html %}
 <div class="row-fluid">
   <div class="span2"><img src="img/foto_lavoro_bn.png"/> </div>
 
-  <div class="span6">
+  <div class="span5">
   {{content}}
   </div>
 
-  <div class="span4">
-        <h2>Blog</h2>
-
+  <div class="span5">
+        <h2>from the blog:</h2>
         <ul class="posts">
           {% for post in site.posts %}
             <li><span>{{ post.date | date_to_string }}</span> &raquo;
@@ -23,4 +21,3 @@ layout: default
         </ul>  </div>
 
 </div>
-

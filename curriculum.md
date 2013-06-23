@@ -41,5 +41,4 @@ description: "curriculum vitae"
 - 2012: RH423 Red Hat Enterprise Directory Services and Authentication - Gestione e distribuzione di servizi di directory per i sistemi Red Hat Enterprise Linux
 
 
-{% include myaddons/analytics.html %}
 

@@ -3,7 +3,7 @@ layout: post
 title: "Automate Cisco ssh connections with plink in Windows"
 description: ""
 category:
-tags: [cisco ssh automation putty]
+tags: [cisco, ssh ,automation,  putty]
 ---
 {% include JB/setup %}
 

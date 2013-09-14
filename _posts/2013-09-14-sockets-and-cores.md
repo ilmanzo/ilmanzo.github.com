@@ -2,8 +2,8 @@
 layout: post
 title: "number of physical sockets and cpu cores"
 description: "how to find out how much your next licence will cost..."
-category: 
-tags: [linux, hardware, cpu ]
+category: sysadmin
+tags: [linux, hardware, cpu, scripting, system information]
 ---
 {% include JB/setup %}
 

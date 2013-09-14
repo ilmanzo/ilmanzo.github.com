@@ -2,7 +2,7 @@
 layout: post
 title: "gestire i led delle schede PC Engines ALIX in Ruby"
 description: ""
-category:
+category: hacking
 tags: [linux, embedded, debian, ruby]
 ---
 {% include JB/setup %}

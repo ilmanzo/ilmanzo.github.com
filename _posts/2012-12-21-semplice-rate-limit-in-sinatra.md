@@ -2,7 +2,7 @@
 layout: post
 title: "semplice rate limit in Sinatra"
 description: ""
-category: 
+category: programming
 tags: [sinatra, ruby, ratelimit]
 ---
 {% include JB/setup %}

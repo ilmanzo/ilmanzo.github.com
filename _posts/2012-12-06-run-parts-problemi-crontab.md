@@ -2,7 +2,7 @@
 layout: post
 title: "run-parts e problemi di crontab"
 description: ""
-category:
+category: sysadmin
 tags: [linux, tips, problemi, cron]
 ---
 {% include JB/setup %}

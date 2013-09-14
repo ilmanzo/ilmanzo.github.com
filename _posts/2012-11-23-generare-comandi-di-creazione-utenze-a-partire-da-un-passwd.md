@@ -2,7 +2,7 @@
 layout: post
 title: "generare comandi di creazione utenze a partire da un passwd"
 description: ""
-category:
+category: sysadmin
 tags: [linux, command line, scripting, awk, automation]
 ---
 {% include JB/setup %}

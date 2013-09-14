@@ -2,7 +2,7 @@
 layout: post
 title: "Enerduino"
 description: "il porting del progetto per il nuovo IDE Arduino 1.0"
-category:
+category: hardware
 tags: [italiano, arduino, elettronica, opensource]
 ---
 {% include JB/setup %}

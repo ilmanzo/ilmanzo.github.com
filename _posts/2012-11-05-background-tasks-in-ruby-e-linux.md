@@ -2,7 +2,7 @@
 layout: post
 title: "background tasks in Ruby e linux"
 description: ""
-category:
+category: programming
 tags: [linux, ruby]
 ---
 {% include JB/setup %}

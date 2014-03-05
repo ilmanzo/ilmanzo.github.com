@@ -2,7 +2,7 @@
 layout: post
 title: "dovecot: cleaning old Spam and Trash messages after some days"
 description: "a script to do maintenance of a small number of mail folders"
-category: linux, sysadmin 
+category: sysadmin 
 tags: [dovecot, linux, sysadmin, mail, postfix]
 ---
 {% include JB/setup %}

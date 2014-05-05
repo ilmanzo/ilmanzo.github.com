@@ -20,6 +20,7 @@ echo >> /etc/issue
 
 In brief: since the file **/etc/issue** is displayed before login, you get a quick overview of all ipv4 addresses configured. Of course it can be expanded and adapted for your needs.
 
+![a minimalistic screenshot](/img/2014-05-05-Screenshot.png "Screenshot of the new login prompt")
 
 
 

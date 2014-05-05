@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "how to see the IP address of a virtual machine before logon"
+title: "how to display the IP address of a virtual machine before logon"
 description: "a small trick to save time when using linux virtual machines"
 category: automation
 tags: [linux, tips, virtual machine, ip address]

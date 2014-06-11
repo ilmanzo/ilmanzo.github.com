@@ -19,7 +19,7 @@ tar -Jcf - directory | openssl aes-256-cbc -salt -k mypassword -out backup.tar.x
 
 to decrypt and decompress:
 {% highlight bash %}
-openssl aes-256-cbc -d -salt -k mypassword -in directory.tar.xz.aes | tar -xJ -f - 
+openssl aes-256-cbc -d -salt -k mypassword -in backup.tar.xz.aes | tar -xJ -f - 
 {% endhighlight %}
 
 Another trick with the tar command is useful for remote backups:

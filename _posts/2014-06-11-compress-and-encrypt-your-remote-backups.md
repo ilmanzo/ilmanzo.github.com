@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Compress and encrypt your [remote] backups"
+title: "Compress and encrypt your backups"
 description: "How to securely backup your files in a remote location"
 category: sysadmin
 tags: [linux, backup, sysadmin]

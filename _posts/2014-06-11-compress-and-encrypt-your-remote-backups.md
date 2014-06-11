@@ -8,8 +8,8 @@ tags: [linux, backup, sysadmin]
 {% include JB/setup %}
 
 
-To backup your data is secure, but for better security let's encrypt your
-backups!
+It's always recommended to backup your data for safety, but for safety AND
+security let's encrypt your backups!
 
 
 to compress and encrypt with 'mypassword':

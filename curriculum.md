@@ -33,7 +33,7 @@ description: "curriculum vitae"
 - 2006: Microsoft MOC 2153 Implementing a Microsoft Windows 2000 Network Infrastructure
 - 2007: Microsoft MOC 2150 Designing a Secure Microsoft Windows 2000 Network
 - 2007: Microsoft MOC 2159 Deploying and Managing Microsoft Internet Security and Acceleration (ISA) Server
-- 2008: Cisco BCMSN – Building Cisco Multilayer Switched Networks
+- 2008: Cisco BCMSN - Building Cisco Multilayer Switched Networks
 - 2009: Java Fundamentals, the Java programming language presso Overnet Education
 - 2010: MIE3510 Programming in ANSI C++  presso Mondadori Informatica
 - 2010: MIE3520 Win32 System Programming presso Mondadori Informatica

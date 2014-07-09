@@ -15,7 +15,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda2       5.8G  590M  5.0G  11% /data
 {% endhighlight %}
 
-thanks to the power of [btrfs](http://en.wikipedia.org/wiki/Btrfs), let's add a second hard disk, mirrored AND without reformatting! :)
+thanks to the power of [btrfs](http://en.wikipedia.org/wiki/Btrfs), let's add a second hard disk, with mirrored data AND without unmounting/reformatting! :)
 also note the different size....
 
 {% highlight bash %}

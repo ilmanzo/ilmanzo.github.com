@@ -8,7 +8,7 @@ tags: [linux, embedded, debian, ruby]
 {% include JB/setup %}
 
 Natale si avvicina: mentre smanettavo su queste ottime [PC Engines ALIX](http://pcengines.ch/alix.htm) su cui ho installato una [Debian modificata](http://code.google.com/p/debian-for-alix/),
-ho scritto una comoda interfaccia per accendere/spegnere e far lampeggiare i led alla velocità desiderata...
+ho scritto una comoda interfaccia per accendere/spegnere e far lampeggiare i led alla velocita' desiderata...
 
 {% highlight ruby %}
 class Led

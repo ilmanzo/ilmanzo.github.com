@@ -7,7 +7,7 @@ tags: [linux, ruby]
 ---
 {% include JB/setup %}
 
-A volte negli script Ruby ho bisogno di controllare l'esecuzione di un comando eseguito in modalità asincrona, ho creato pertanto una classe apposita:
+A volte negli script Ruby ho bisogno di controllare l'esecuzione di un comando eseguito in modalita' asincrona, ho creato pertanto una classe apposita:
 
 {% highlight ruby %}
 class BackgroundJob

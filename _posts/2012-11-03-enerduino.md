@@ -8,7 +8,7 @@ tags: [italiano, arduino, elettronica, opensource]
 {% include JB/setup %}
 
 
-Cos'è Enerduino? Un progetto nato per controllare il consumo di energia nella mia casa. E perche' dovrei fare questo tipo di monitoraggio, chiederete voi? Per esempio per capire le mie abitudini di consumo, per valutare offerte biorarie. Oppure solo per capire dove consumo di piu' e magari risparmiare un po' di energia.
+Cos'e' Enerduino? Un progetto nato per controllare il consumo di energia nella mia casa. E perche' dovrei fare questo tipo di monitoraggio, chiederete voi? Per esempio per capire le mie abitudini di consumo, per valutare offerte biorarie. Oppure solo per capire dove consumo di piu' e magari risparmiare un po' di energia.
 
 Esistono molti strumenti per poter fare questo tipo di monitoraggio che si possono acquistare su internet. Questa e' la mia soluzione fai-da-te, basata sul controller hardware Arduino.
 

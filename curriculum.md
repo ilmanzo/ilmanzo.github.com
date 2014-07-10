@@ -6,23 +6,25 @@ description: "curriculum vitae"
 {% include JB/setup %}
 
 ##Fondamentali##
-- nato nel 1973 a Bovolone (VR)
-- ho studiato elettronica e telecomunicazioni
-- inizio a lavorare nel settore IT nel 1993
-- ho installato il mio primo server Linux nel 1995
-- 1999-2000: programmatore, DBA Oracle e sysadmin VAX/VMS
-- 2000-2001: sysadmin, network administrator presso Internet Service Provider Netbusiness spa
-- 2001-2005: network & security administrator presso Quercia Software spa
-- 2005-2011: sviluppatore prodotti remote payments e remote banking, Unicredit
+- born in VR, Italy on 1973 
+- studied electronics and telecommunications
+- started working in IT industry since 1993
+- firts Linux server installed on 1995 
+- 1999-2000: developer, DBA Oracle and sysadmin VAX/VMS
+- 2000-2001: sysadmin, network administrator in a local Internet Service Provider Netbusiness spa
+- 2001-2005: network & security administrator in Quercia Software spa
+- 2005-2011: developer of remote payments and remote banking product for
+  Unicredit group
 - 2011-oggi: linux senior system engineer, Unicredit
 
 ##Pubblicazioni##
-- 2004: [Linux&C][lc], serie di articoli su sottosistema PAM (Pluggable Authentication Modules)
-- 2005: [Linux&C][lc], serie di articoli su Unicode e sulle implementazioni in Linux
-- 2006: [Linux&C][lc], serie di articoli su SNMP, MRTG e monitoraggio di rete
-- 2008: [Linux&C][lc], articolo su gnome desklets
-- 2010: [Linux&C][lc], articolo sul wiki MoinMoin scritto in python
-- 2010: [Linux&C][lc], serie di articoli su imagemagick (fare grafica a linea di comando)
+- 2004: [Linux&C][lc], magazine features on PAM subsystem (Pluggable Authentication Modules)
+- 2005: [Linux&C][lc], magazine features on Unicode and its Linux
+  implementation
+- 2006: [Linux&C][lc], series on SNMP, MRTG and network monitoring
+- 2008: [Linux&C][lc], features on gnome desklets
+- 2010: [Linux&C][lc], wiki MoinMoin, how to extend it with python
+- 2010: [Linux&C][lc], features on imagemagick (command line graphics)
 [lc]: http://www.oltrelinux.com "Linux & C Edizioni Vinco"
 
 ##Formazione##
@@ -31,14 +33,14 @@ description: "curriculum vitae"
 - 2006: Microsoft MOC 2153 Implementing a Microsoft Windows 2000 Network Infrastructure
 - 2007: Microsoft MOC 2150 Designing a Secure Microsoft Windows 2000 Network
 - 2007: Microsoft MOC 2159 Deploying and Managing Microsoft Internet Security and Acceleration (ISA) Server
-- 2008: Cisco BCMSN – Building Cisco Multilayer Switched Networks
-- 2009: Fondamenti di Java , the Java programming language presso Overnet Education
+- 2008: Cisco BCMSN - Building Cisco Multilayer Switched Networks
+- 2009: Java Fundamentals, the Java programming language presso Overnet Education
 - 2010: MIE3510 Programming in ANSI C++  presso Mondadori Informatica
 - 2010: MIE3520 Win32 System Programming presso Mondadori Informatica
 - 2011: RH346 Red Hat Enterprise Clustering and Storage Management
-- 2011: RH442 Red Hat Enterprise Performance Tuning - Ottimizzazione delle prestazioni e pianificazione della capacità di Red Hat Enterprise Linux
+- 2011: RH442 Red Hat Enterprise Performance Tuning 
 - 2012: **Novell CLA certification** with score 791/800
-- 2012: RH423 Red Hat Enterprise Directory Services and Authentication - Gestione e distribuzione di servizi di directory per i sistemi Red Hat Enterprise Linux
+- 2012: RH423 Red Hat Enterprise Directory Services and Authentication 
 
 
 

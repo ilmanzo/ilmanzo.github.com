@@ -9,7 +9,7 @@ description: "curriculum vitae"
 - born in VR, Italy on 1973 
 - studied electronics and telecommunications
 - started working in IT industry since 1993
-- firts Linux server installed on 1995 
+- first Linux server installed on 1995 
 - 1999-2000: developer, DBA Oracle and sysadmin VAX/VMS
 - 2000-2001: sysadmin, network administrator in a local Internet Service Provider Netbusiness spa
 - 2001-2005: network & security administrator in Quercia Software spa

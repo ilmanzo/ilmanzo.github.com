@@ -40,7 +40,7 @@ description: "curriculum vitae"
 - 2011: RH346 Red Hat Enterprise Clustering and Storage Management
 - 2011: RH442 Red Hat Enterprise Performance Tuning 
 - 2012: **Novell CLA certification** with score 791/800
-- 2012: RH423 Red Hat Enterprise Directory Services and Authentication 
+- 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
 
 
 

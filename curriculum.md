@@ -39,8 +39,8 @@ description: "curriculum vitae"
 - 2010: MIE3520 Win32 System Programming presso Mondadori Informatica
 - 2011: RH346 Red Hat Enterprise Clustering and Storage Management
 - 2011: RH442 Red Hat Enterprise Performance Tuning 
-- 2012: **Novell CLA certification** with score 791/800
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
-- 2014: **RedHat Certified System Administrator in Red Hat Openstack** with score 300/300
 
-
+##Certificazioni###
+- 2012: **Novell CLA certification** with score 791/800
+- 2014: **RedHat Certified System Administrator in Red Hat Openstack** with score 300/300 (certificate number 140-219-585)

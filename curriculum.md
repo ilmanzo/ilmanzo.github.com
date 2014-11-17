@@ -41,6 +41,6 @@ description: "curriculum vitae"
 - 2011: RH442 Red Hat Enterprise Performance Tuning 
 - 2012: **Novell CLA certification** with score 791/800
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
-
+- 2014: **RedHat Certified System Administrator in Red Hat Openstack** with score 300/300
 
 

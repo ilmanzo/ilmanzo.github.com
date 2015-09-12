@@ -15,7 +15,14 @@ description: "curriculum vitae"
 - 2001-2005: network & security administrator in Quercia Software spa
 - 2005-2011: developer of remote payments and remote banking product for
   Unicredit group
-- 2011-oggi: linux senior system engineer, Unicredit
+- 2011-2013: linux senior system engineer, Unicredit
+- 2013-oggi: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
+
+##Certificazioni###
+- 2012: **Novell CLA certification** with score 791/800
+- 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 
 ##Pubblicazioni##
 - 2004: [Linux&C][lc], magazine features on PAM subsystem (Pluggable Authentication Modules)
@@ -41,9 +48,5 @@ description: "curriculum vitae"
 - 2011: RH442 Red Hat Enterprise Performance Tuning 
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
 
-##Certificazioni###
-- 2012: **Novell CLA certification** with score 791/800
-- 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+
 

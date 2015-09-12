@@ -43,7 +43,7 @@ description: "curriculum vitae"
 
 ##Certificazioni###
 - 2012: **Novell CLA certification** with score 791/800
-- 2014: [**RedHat Certified System Administrator in Red Hat Openstack**][https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify] (certificate number 140-219-585)
-- 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**][https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify] (certificate number 140-219-585)
-- 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**][https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify] (certificate number 140-219-585)
+- 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 [rh]:  "Red Hat Certification Central"

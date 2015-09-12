@@ -25,13 +25,13 @@ description: "curriculum vitae"
 - 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 
 ##Pubblicazioni##
-- 2004: [Linux&C][lc], magazine features on PAM subsystem (Pluggable Authentication Modules)
-- 2005: [Linux&C][lc], magazine features on Unicode and its Linux
+- 2004: [Linux&C](lc), magazine features on PAM subsystem (Pluggable Authentication Modules)
+- 2005: [Linux&C](lc), magazine features on Unicode and its Linux
   implementation
-- 2006: [Linux&C][lc], series on SNMP, MRTG and network monitoring
-- 2008: [Linux&C][lc], features on gnome desklets
-- 2010: [Linux&C][lc], wiki MoinMoin, how to extend it with python
-- 2010: [Linux&C][lc], features on imagemagick (command line graphics)
+- 2006: [Linux&C](lc), series on SNMP, MRTG and network monitoring
+- 2008: [Linux&C](lc), features on gnome desklets
+- 2010: [Linux&C](lc), wiki MoinMoin, how to extend it with python
+- 2010: [Linux&C](lc), features on imagemagick (command line graphics)
 [lc]: http://www.oltrelinux.com "Linux & C Edizioni Vinco"
 
 ##Formazione##

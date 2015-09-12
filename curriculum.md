@@ -45,5 +45,5 @@ description: "curriculum vitae"
 - 2012: **Novell CLA certification** with score 791/800
 - 2014: [**RedHat Certified System Administrator in Red Hat Openstack**][rh] (certificate number 140-219-585)
 - 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**][rh] (certificate number 140-219-585)
-- 2015: [**RedHat Certified System Engineer in Red Hat Enterprise Linux 7**][rh] (certificate number 140-219-585)
+- 2015: [**RedHat Certified Engineer in Red Hat Enterprise Linux 7**][rh] (certificate number 140-219-585)
 [rh]: https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify "Red Hat Certification Central"

@@ -3,7 +3,7 @@ layout: post
 title: "redirect output of an already running process"
 description: "how to store standard output/error of a process after the execution"
 category: linux
-tags: [linux sysadmin gdb scripting]
+tags: [linux, sysadmin, gdb, scripting]
 ---
 {% include JB/setup %}
 

@@ -16,7 +16,7 @@ description: "curriculum vitae"
 - 2005-2011: developer of remote payments and remote banking product for
   Unicredit group
 - 2011-2013: linux senior system engineer, Unicredit
-- 2013-oggi: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
+- 2013-now: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
 
 ##Certificazioni###
 - 2012: **Novell CLA certification** with score 791/800
@@ -25,14 +25,13 @@ description: "curriculum vitae"
 - 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/wapps/training/certification/verify.html?certNumber=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 
 ##Pubblicazioni##
-- 2004: [Linux&C](lc), magazine features on PAM subsystem (Pluggable Authentication Modules)
-- 2005: [Linux&C](lc), magazine features on Unicode and its Linux
+- 2004: [Linux&C](http://www.oltrelinux.com), magazine features on PAM subsystem (Pluggable Authentication Modules)
+- 2005: [Linux&C](http://www.oltrelinux.com), magazine features on Unicode and its Linux
   implementation
-- 2006: [Linux&C](lc), series on SNMP, MRTG and network monitoring
-- 2008: [Linux&C](lc), features on gnome desklets
-- 2010: [Linux&C](lc), wiki MoinMoin, how to extend it with python
-- 2010: [Linux&C](lc), features on imagemagick (command line graphics)
-[lc]: http://www.oltrelinux.com "Linux & C Edizioni Vinco"
+- 2006: [Linux&C](http://www.oltrelinux.com), series on SNMP, MRTG and network monitoring
+- 2008: [Linux&C](http://www.oltrelinux.com), features on gnome desklets
+- 2010: [Linux&C](http://www.oltrelinux.com), wiki MoinMoin, how to extend it with python
+- 2010: [Linux&C](http://www.oltrelinux.com), features on imagemagick (command line graphics)
 
 ##Formazione##
 - 2005: ES-331 Sun Enterprise Cluster Administration Veritas Volume

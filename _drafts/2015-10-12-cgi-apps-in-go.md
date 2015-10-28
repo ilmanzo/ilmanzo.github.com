@@ -8,6 +8,11 @@ tags: [golang, template,programming,example]
 {% include JB/setup %}
 
 
+Following with the GO standard library exploration, I've written a toy example for using the CGI features.
+Native GoLang CGI web applications are very fast and can be useful for example in embedded systems, or in cheap web hosting where is not possible to run custom HTTP servers.
+The solution has some weak points, starting from lock management, but is only presented as a concept and not for real use cases.
+
+
 {% highlight c %}
 package main
 
@@ -69,5 +74,29 @@ func main() {
 }
 
 {% endhighlight %}
+
+this is the template with a simple form that displays the data and send back a POST request to the CGI:
+
+{% raw %}
+<!DOCTYPE html>
+<html>
+<head><title>my todo list</title></head>
+<body>
+<h1>my TODO list</h1>
+{{ if .DisplayTodos }}
+<ul>
+{{ range $index,$item := .Todos }}
+<li> {{ $index }} {{ $item }} </li>
+{{ end }}
+</ul>
+{{ end }}
+<form action="/testcgi" method="post">
+  <input type="text" name="entry" size="25">
+  <input type="submit" name="submit" value="New TODO">
+</form>
+</body>
+</html>
+{% endraw %}
+
 
 

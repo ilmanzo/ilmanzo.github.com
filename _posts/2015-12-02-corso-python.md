@@ -7,7 +7,7 @@ tags: [python, programming, learning]
 ---
 {% include JB/setup %}
 
-Pubblico qui le slide del corso base di programmazione Python, svoltasi presso il [FabLab Verona](http://www.veronafablab.it)
+Pubblichero' qui le slide del corso base di programmazione Python, che sto tenendo presso il [FabLab Verona](http://www.veronafablab.it)
 
 
 Prima lezione:

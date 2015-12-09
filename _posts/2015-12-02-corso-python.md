@@ -13,3 +13,7 @@ Pubblichero' qui le slide del corso base di programmazione Python, che sto tenen
 Prima lezione:
 [http://ilmanzo.github.io/files/lezione1.html](http://ilmanzo.github.io/files/lezione1.html)
 
+Seconda lezione:
+[http://ilmanzo.github.io/files/lezione2.html](http://ilmanzo.github.io/files/lezione2.html)
+
+

@@ -17,8 +17,6 @@ Prima lezione:
 Seconda lezione:
 [http://ilmanzo.github.io/files/lezione2.html](http://ilmanzo.github.io/files/lezione2.html)
 
-Terza lezione:
-
-[http://ilmanzo.github.com/files/corso_base_Python_FabLabVR_lezione3.html](http://ilmanzo.github.com/files/corso_base_Python_FabLabVR_lezione3.html)
+Terza lezione, a cura del professor [Maurizio Boscaini](http://www.aidosnet.it): [http://ilmanzo.github.com/files/corso_base_Python_FabLabVR_lezione3.html](http://ilmanzo.github.com/files/corso_base_Python_FabLabVR_lezione3.html)
 
 

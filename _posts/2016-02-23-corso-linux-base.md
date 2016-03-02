@@ -9,7 +9,7 @@ tags: [linux, sysadmin, learning]
 
 Pubblichero' qui le slide del corso base di GNU/Linux, che sto tenendo presso il [FabLab Verona](http://www.veronafablab.it)
 
-le prime tre lezioni sono a cura di [Maurizio Boscaini](http://www.aidosnet.it)
+le prime tre lezioni sono a cura di [Maurizio Boscaini](http://www.aidosnet.it/linux1b.html)
 
 [Quarta lezione](http://ilmanzo.github.io/files/corso_linux_base_fablab_2016/lezione4.html)
 

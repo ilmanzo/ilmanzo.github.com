@@ -8,7 +8,7 @@ tags: [golang, CGI, template,programming,example]
 {% include JB/setup %}
 
 
-Following with the [GO standard library exploration](http://ilmanzo.github.io/programming/2015/09/30/templating-in-go), I've written a toy example for using the CGI features.
+Following with the [GO standard library exploration](http://ilmanzo.github.io/programming/2015/09/30/templating-in-go/), I've written a toy example for using the CGI features.
 Native [GoLang](https://golang.org/) CGI web applications are very fast and can be useful for example in embedded systems, or in cheap web hosting where is not possible to run custom HTTP servers.
 The solution has some weak points, starting from lock management, but is only presented as a proof of concept and not for real use cases.
 

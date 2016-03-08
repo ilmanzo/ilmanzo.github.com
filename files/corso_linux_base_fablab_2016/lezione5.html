@@ -1902,7 +1902,7 @@ echo "hai scritto $# cose: $*"
             
             <section><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 <span class="k">for</span> i in a b c d e<span class="p">;</span> <span class="k">do</span>
-  <span class="nb">echo</span> item: $i
+  <span class="nb">echo</span> item: <span class="nv">$i</span>
 <span class="k">done</span>
 </pre></div>
 
@@ -1947,8 +1947,8 @@ echo "hai scritto $# cose: $*"
             
             <section><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash </span>
 <span class="nv">COUNTER</span><span class="o">=</span>0
-<span class="k">while</span> <span class="o">[</span>  <span class="nv">$C</span>OUNTER -lt <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> The counter is <span class="nv">$C</span>OUNTER
+<span class="k">while</span> <span class="o">[</span>  <span class="nv">$COUNTER</span> -lt <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> The counter is <span class="nv">$COUNTER</span>
     <span class="nb">let</span> <span class="nv">COUNTER</span><span class="o">=</span>COUNTER+1   
 <span class="k">done</span>
 </pre></div>
@@ -1985,8 +1985,8 @@ echo "hai scritto $# cose: $*"
             
             <section><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash </span>
 <span class="nv">COUNTER</span><span class="o">=</span>20
-<span class="k">until</span> <span class="o">[</span>  <span class="nv">$C</span>OUNTER -lt <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
-    <span class="nb">echo</span> COUNTER <span class="nv">$C</span>OUNTER
+<span class="k">until</span> <span class="o">[</span>  <span class="nv">$COUNTER</span> -lt <span class="m">10</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> COUNTER <span class="nv">$COUNTER</span>
     <span class="nb">let</span> COUNTER-<span class="o">=</span>1
 <span class="k">done</span>
 </pre></div>
@@ -2023,7 +2023,7 @@ echo "hai scritto $# cose: $*"
             <section><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nv">T1</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span>
 <span class="nv">T2</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span>$<span class="s2">T1&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span>$<span class="s2">T2&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$T1</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="nv">$T2</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
   <span class="nb">echo</span> expression evaluated as <span class="nb">true</span>
 <span class="k">else</span>
   <span class="nb">echo</span> expression evaluated as <span class="nb">false</span>
@@ -2065,7 +2065,7 @@ echo "hai scritto $# cose: $*"
 <span class="nb">read</span> nome
 <span class="nb">echo</span> -n <span class="s2">&quot;e il tuo cognome: &quot;</span>
 <span class="nb">read</span> cognome
-<span class="nb">echo</span> <span class="s2">&quot;Piacere, </span>$<span class="s2">nome </span><span class="nv">$c</span><span class="s2">ognome!&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Piacere, </span><span class="nv">$nome</span><span class="s2"> </span><span class="nv">$cognome</span><span class="s2">!&quot;</span>
 </pre></div>
 </section>
             
@@ -2099,7 +2099,7 @@ echo "hai scritto $# cose: $*"
             
             <section><div class="highlight"><pre><span></span><span class="nb">echo</span> -n <span class="s2">&quot;Vuoi proseguire ? [si o no]: &quot;</span>
 <span class="nb">read</span> risp
-<span class="k">case</span> $risp in
+<span class="k">case</span> <span class="nv">$risp</span> in
 
     <span class="o">[</span>sS<span class="o">]</span> <span class="p">|</span> <span class="o">[</span>sS<span class="o">][</span>Ii<span class="o">]</span> <span class="o">)</span>
             <span class="nb">echo</span> <span class="s2">&quot;OK!&quot;</span>
@@ -2289,7 +2289,7 @@ $ <span class="nb">echo</span> <span class="si">${</span><span class="p">!nome</
 $ <span class="nb">echo</span> <span class="si">${</span><span class="nv">ARRAY</span><span class="p">[*]</span><span class="si">}</span>
 one two three
 
-$ <span class="nb">echo</span> <span class="nv">$A</span>RRAY<span class="o">[</span>*<span class="o">]</span>
+$ <span class="nb">echo</span> <span class="nv">$ARRAY</span><span class="o">[</span>*<span class="o">]</span>
 one<span class="o">[</span>*<span class="o">]</span>
 
 $ <span class="nb">echo</span> <span class="si">${</span><span class="nv">ARRAY</span><span class="p">[2]</span><span class="si">}</span>
@@ -2628,7 +2628,7 @@ one two three four
   <span class="nb">exit</span>
 <span class="k">fi</span>
 <span class="k">for</span> file in *.<span class="nv">$1</span><span class="p">;</span> <span class="k">do</span>
-   mv <span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">ile&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>basename <span class="nv">$f</span>ile .<span class="nv">$1</span><span class="k">)</span><span class="s2">.</span><span class="nv">$2</span><span class="s2">&quot;</span>
+   mv <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="k">$(</span>basename <span class="nv">$file</span> .<span class="nv">$1</span><span class="k">)</span><span class="s2">.</span><span class="nv">$2</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </pre></div>
 

@@ -1807,7 +1807,7 @@ div.slide div.presenter_notes {
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;nome parametro: {0} valore parametro: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
 
 
-<span class="n">funzione</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">funzione</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </section>
             
@@ -1844,9 +1844,9 @@ div.slide div.presenter_notes {
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
       <span class="k">print</span><span class="p">(</span><span class="s2">&quot;parametro posizionale: {0}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
-      <span class="k">print</span><span class="p">(</span><span class="s2">&quot;nome parametro: {0} valore parametro: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">args</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+      <span class="k">print</span><span class="p">(</span><span class="s2">&quot;nome parametro: {0} valore parametro: {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
 
-  <span class="n">funzione</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+  <span class="n">funzione</span><span class="p">(</span><span class="s2">&quot;uno&quot;</span><span class="p">,</span><span class="s2">&quot;due&quot;</span><span class="p">,</span><span class="s2">&quot;tre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </section>
             

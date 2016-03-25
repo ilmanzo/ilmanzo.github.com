@@ -2790,13 +2790,13 @@ azioni:
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_obj</span><span class="p">:</span>
   <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file_obj</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">riga</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="c1"># row e&#39; una lista</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">riga</span><span class="p">)</span> <span class="c1"># riga e&#39; una lista</span>
 
 <span class="n">csv_path</span> <span class="o">=</span> <span class="s2">&quot;TB_data_dictionary_2014-02-26.csv&quot;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_obj</span><span class="p">:</span>
-  <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file_obj</span><span class="p">)</span>
+  <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f_obj</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">riga</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;cognome&#39;</span><span class="p">])</span> <span class="c1"># row e&#39; un dizionario</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">riga</span><span class="p">[</span><span class="s1">&#39;nome&#39;</span><span class="p">],</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;cognome&#39;</span><span class="p">])</span> <span class="c1"># riga e&#39; un dizionario</span>
 </pre></div>
 </section>
             

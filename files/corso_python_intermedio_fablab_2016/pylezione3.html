@@ -1400,12 +1400,12 @@ div.slide div.presenter_notes {
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prelievo</span><span class="p">(</span><span class="n">valore</span><span class="p">)</span>
   <span class="k">def</span> <span class="nf">versamento</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">valore</span><span class="p">):</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prelievo</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prelievo</span><span class="p">(</span><span class="n">valore</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">versamento</span><span class="p">(</span><span class="n">valore</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
   <span class="n">ccA</span><span class="o">=</span><span class="n">ContoCorrenteConSpese</span><span class="p">(</span><span class="s2">&quot;Andrea&quot;</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
   <span class="n">ccA</span><span class="o">.</span><span class="n">prelievo</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="n">ccS</span><span class="o">.</span><span class="n">dimmisaldo</span><span class="p">())</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">ccA</span><span class="o">.</span><span class="n">dimmisaldo</span><span class="p">())</span>
 </pre></div>
 
 <h1>super() e' una funzione built-in di Python <a href="https://docs.python.org/3/library/functions.html#super">che ritorna la classe padre</a></h1>
@@ -1445,6 +1445,7 @@ div.slide div.presenter_notes {
   <span class="k">def</span> <span class="nf">prelievo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">valore</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">saldo</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>
       <span class="k">print</span><span class="p">(</span><span class="s2">&quot;mi dispiace {0} non puoi piu&#39; prelevare&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">intestatario</span><span class="p">))</span>
+      <span class="k">return</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prelievo</span><span class="p">(</span><span class="n">valore</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -1557,7 +1558,7 @@ div.slide div.presenter_notes {
   <span class="n">guess</span><span class="o">=</span><span class="p">(</span><span class="n">start</span><span class="o">+</span><span class="n">end</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="c1"># trova la meta&#39; NB: divisione intera!</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Secondo me hai pensato a&quot;</span><span class="p">,</span><span class="n">guess</span><span class="p">)</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Scrivi A se e&#39; troppo alto&quot;</span><span class="p">)</span>
-  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Scrivi B se e&#39; troppo alto&quot;</span><span class="p">)</span>
+  <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Scrivi B se e&#39; troppo basso&quot;</span><span class="p">)</span>
   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Scrivi OK se e&#39; giusto&quot;</span><span class="p">)</span>
   <span class="n">risp</span><span class="o">=</span><span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="c1"># converto in maiuscolo</span>
   <span class="k">if</span> <span class="n">risp</span><span class="o">==</span><span class="s2">&quot;OK&quot;</span><span class="p">:</span>

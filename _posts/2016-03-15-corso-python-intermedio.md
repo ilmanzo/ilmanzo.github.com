@@ -14,3 +14,5 @@ Pubblichero' qui le slide del corso Python, che sto tenendo presso il [FabLab Ve
 [Seconda lezione](http://ilmanzo.github.io/files/corso_python_intermedio_fablab_2016/pylezione2.html)
 
 [Terza lezione](http://ilmanzo.github.io/files/corso_python_intermedio_fablab_2016/pylezione3.html)
+
+[Quarta lezione](http://ilmanzo.github.io/files/corso_python_intermedio_fablab_2016/pylezione4.html)

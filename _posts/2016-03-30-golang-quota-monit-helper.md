@@ -7,7 +7,7 @@ tags: [linux, quota, golang, sysadmin, monit]
 ---
 {% include JB/setup %}
 
-I want to keep under control a system where each user has an amount of filesystem quota reserved; in particolar I want to get notified if and when a user exceeds some treshold. Since I already have [Monit](https://mmonit.com/monit/) in place in the server, I took the chance to write a small [Go](https://golang.org/) utility in order to retrieve the quota percentage.
+I want to keep under control a system where each user has an amount of filesystem quota reserved; in particular I would like to get notified if and when a user exceeds some treshold. Since I already have [Monit](https://mmonit.com/monit/) in place in the server, I took the chance to write a small [Go](https://golang.org/) utility in order to retrieve the quota percentage.
 
 {% highlight c++ %}
 // quotachecker.go

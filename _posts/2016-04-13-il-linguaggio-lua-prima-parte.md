@@ -3,7 +3,7 @@ layout: post
 title: "il linguaggio Lua: prima parte"
 description: "introduzione al linguaggio Lua"
 category: programming
-tags: [lua, programming, tutorial]
+tags: [lua, programming, tutorial, linux, italian]
 ---
 {% include JB/setup %}
 

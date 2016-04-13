@@ -7,12 +7,13 @@ tags: [lua, programming, tutorial]
 ---
 {% include JB/setup %}
 
-#introduzione
+# introduzione
 
 Ho sempre avuto un debole per il software leggero e snello: sara' un retaggio di quando la memoria si misurava in Kb e lo storage era basato su... audiocassette! [Lua](https://www.lua.org/) e' un linguaggio che incarna questa filosofia: occupa circa un centinaio di kbyte (meno di molte pagine web), ha una stupefacente rapidita' di esecuzione, una sintassi chiara e, come bonus, gira su qualsiasi CPU per cui sia disponibile un compilatore C.
 
 
-#'Dalla terra alla luna', ovvero breve storia di Lua
+# 'Dalla terra alla luna', ovvero breve storia di Lua
+
 Per capire da dove viene questo gioiellino, facciamo qualche passo indietro nel tempo...
 
 Nel 1992, all'universita' cattolica pontificia di Rio de Janeiro, un gruppo specializzato in computer graphics chiamato Tecgraf sta sviluppando interfacce interattive nel settore dell'elaborazione dati per l'industria petrolifera. 
@@ -28,7 +29,7 @@ Il progetto ormai e' piuttosto stabile: Lua 4.0 fu rilasciato nel 2000 e present
 
 Essendo nato come linguaggio ausiliario (o, meglio, satellite), Lua e' ideale per aggiungere capacita' di scripting in grossi progetti. Benche' sia nato in un'universita', è tutto fuorche' un linguaggio accademico, pieno di feature o utilizzato solo da chi scrive trattati teorici: Lua punta alla sostanza e lo si vede già dalla [licenza (MIT) con cui e' distribuito](http://www.lua.org/license.html), la stessa di software diffusi come X Window System, Ruby on Rails e Mono.
 
-#'lo stolto guarda il dito'
+# 'lo stolto guarda il dito'
 Ovviamente la prima domanda che vi frullera' in testa sara': perché dovrei usare Lua e non Perl o Ruby o  Tcl o Python o Javascript o PHP? Ecco 7 motivi:
 
 - Lua e' molto piccolo: basta linkare al progetto una libreria di 150kb. Altri linguaggi hanno esigenze ben diverse;

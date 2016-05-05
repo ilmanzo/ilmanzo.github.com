@@ -12,7 +12,7 @@ tags: [golang, template,programming,example]
 
 Here I wrote an example, generating HTML output from a simple data structure.
 
-{% raw %}
+{% highlight Go linenos %}
     package main
 
     import (
@@ -53,7 +53,7 @@ Here I wrote an example, generating HTML output from a simple data structure.
                     log.Println("executing template:", err)
             }
     }
-{% endraw %}
+{% endhighlight %}
 
 
 This program generates the following HTML output:

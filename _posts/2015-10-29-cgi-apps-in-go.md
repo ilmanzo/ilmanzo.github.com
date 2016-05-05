@@ -13,7 +13,7 @@ Native [GoLang](https://golang.org/) CGI web applications are very fast and can 
 The solution has some weak points, starting from lock management, but is only presented as a proof of concept and not for real use cases.
 
 
-{% highlight c++ %}
+{% highlight Go linenos %}
 //save this as todoapp.go
 package main
 
@@ -98,7 +98,7 @@ following, the template:  a simple form that displays the data and send back a P
     </body>
     </html>
 
-{% endraw %}
+{% endhighlight %}
 
 the template should be saved in a folder reachable by the CGI app (see from the source: /data/templates/page.gtpl)
 

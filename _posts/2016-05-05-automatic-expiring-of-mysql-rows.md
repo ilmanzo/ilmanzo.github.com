@@ -36,6 +36,20 @@ WHERE TIMESTAMPDIFF(DAY, ts_create , NOW()) > 7
 ;
 {% endhighlight %}
 
+to getit working, make sure you have enabled the event scheduler:
+
+{% highlight SQL %}
+SET GLOBAL event_scheduler = ON; 
+{% endhighlight %}
+
+or by placing
+
+{% highlight bash %}
+event_scheduler=ON
+{% endhighlight %}
+
+in your my.cnf, section [mysqld]
+
 
 
 

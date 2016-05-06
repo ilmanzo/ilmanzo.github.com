@@ -36,7 +36,7 @@ WHERE TIMESTAMPDIFF(DAY, ts_create , NOW()) > 7
 ;
 {% endhighlight %}
 
-to getit working, make sure you have enabled the event scheduler:
+to get it started, make sure you have enabled the event scheduler:
 
 {% highlight SQL %}
 SET GLOBAL event_scheduler = ON; 

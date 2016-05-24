@@ -23,44 +23,56 @@ questo \n invece no
 
 La funzione built-in print è piuttosto povera nella formattazione, se volessimo qualcosa di più complesso dovremmo ricorrere alla libreria string.format, ma andiamo con ordine. Attenzione: Lua converte stringhe numeriche in numeri dove ciò abbia senso, quindi è lecito fare
 
+{% highlight lua %}
 $ lua
 >a=”3”+1
 >b=2+2
 >print(a,b,a==b)
 4 4 true
+{% endhighlight %}
 
 Mentre una riga come
 
+{% highlight lua %}
 >a=”3”+”x”
+{% endhighlight %}
 
 causa un errore di sintassi: per concatenare due stringhe usiamo l'operatore doppio punto:
 
+{% highlight lua %}
 > print(“ciao”..”mondo”).
+{% endhighlight %}
 
 (da ora in avanti ometterò l'invocazione dell'interprete e indicherò con il prompt > dove scrivere le istruzioni Lua).
 Proseguiamo con l'analisi del tipo di dato boolean, che può assumere esclusivamente i valori true e false e a cui sono associati gli operatori logici and, or, not e che, come possiamo immaginare, viene usato specialmente nelle istruzioni condizionali:
 
+{% highlight lua %}
 if <expr> then <blocco> end
 if <expr> then <blocco1> else <blocco2> end
+{% endhighlight %}
 
 dove <expr> indica una qualsiasi espressione che restituisca un risultato booleano, mentre <blocco> sono le istruzioni che vengono o meno eseguite.
 Già che parliamo di costrutti di controllo, citiamo anche i classici loop:
 
+{% highlight lua %}
 while <expr> do <blocco> end
 repeat <blocco> until <expr>
+{% endhighlight %}
 
 rispettivamente, ripetono il <blocco> finché la condizione <expr> è vera (nel while..do) o falsa (repeat..until). Per terminare anzitempo un ciclo si può usare nel blocco l'istruzione break:
 
-[script2.lua]
+{% highlight lua %}
 n=43
 repeat
   if n%2==0 then n=n/2
   else n=n*3+1 end
   print(n)
 until n==1
+{% endhighlight %}
 
 Un altro tipo che si usa spesso nelle condizioni è nil: esso rappresenta l'assenza di un valore (ad esempio una variabile non ancora inizializzata). Attenzione perché nil è considerato false, ma qualsiasi valore non nil è true , compresi quindi il numero zero, le stringhe vuote e gli array senza elementi:
 
+{% highlight lua %}
 -- questo è un commento
 -- inizia lo script3.lua
 
@@ -89,6 +101,7 @@ end
 if s~='' then
   print "stringa non vuota"
 end
+{% endhighlight %}
 
-questo pezzo di codice, oltre a mostrare le sintassi per i commenti, non funziona come ci aspettiamo: all'inizio v vale nil, perciò otteniamo il primo output, mentre il test sulla variabile s non fa scattare la condizione: per controllare la lunghezza di una stringa o di un array in Lua c'è l'apposito operatore #. Nell'esempio notiamo anche la sintassi per esprimere la condizione “diverso da”.
+questo pezzo di codice, oltre a mostrare lo stile per i commenti, non funziona come ci aspettiamo: all'inizio v vale nil, perciò otteniamo il primo output, mentre il test sulla variabile s non fa scattare la condizione: per controllare la lunghezza di una stringa o di un array in Lua c'è l'apposito operatore #. Nell'esempio notiamo anche la particolare sintassi per esprimere la condizione “diverso da”.
 

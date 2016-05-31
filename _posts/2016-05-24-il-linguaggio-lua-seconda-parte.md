@@ -13,7 +13,7 @@ segue dalla [prima parte](http://ilmanzo.github.io/programming/2016/04/13/il-lin
 
 Nello scorsa puntata abbiamo utilizzato due degli otto tipi disponibili: i numeri e le stringhe. Per semplicita', Lua non distingue tra interi e floating point: tutti i valori numerici sono conservati come double, cioe' in virgola mobile a doppia precisione. Nel caso la CPU non disponesse di unita' FPU, è possibile cambiare una riga nel sorgente (per l'esattezza, #define LUA_NUMBER in lua.h) e ricompilare; questo si fa tipicamente nei sistemi embedded con processori a basse prestazioni. Le stringhe posso essere delimitate da apici singoli o doppi, nel qual caso vengono espanse le usuali sequenze di escape come \b e \n; usando invece i delimitatori [[ ]], possiamo scrivere stringhe su piu' righe e disattivare l'interpolazione. Vediamo un paio di esempi, sfruttando l'opzione -e per eseguire codice da riga di comando:
 
-{% highlight lua %}
+{% highlight bash %}
 $ lua -e 'print("questo va\n a capo")'
 questo va
  a capo
@@ -23,7 +23,7 @@ questo \n invece no
 
 La funzione built-in print è piuttosto povera nella formattazione, se volessimo qualcosa di più complesso dovremmo ricorrere alla libreria string.format, ma andiamo con ordine. Attenzione: Lua converte stringhe numeriche in numeri dove ciò abbia senso, quindi è lecito fare
 
-{% highlight lua %}
+{% highlight bash %}
 $ lua
 >a=”3”+1
 >b=2+2
@@ -33,17 +33,17 @@ $ lua
 
 Mentre una riga come
 
-{% highlight lua %}
+{% highlight bash %}
 >a=”3”+”x”
 {% endhighlight %}
 
 causa un errore di sintassi: per concatenare due stringhe usiamo l'operatore doppio punto:
 
-{% highlight lua %}
+{% highlight bash %}
 > print(“ciao”..”mondo”).
 {% endhighlight %}
 
-(da ora in avanti ometterò l'invocazione dell'interprete e indicherò con il prompt > dove scrivere le istruzioni Lua).
+(da ora in avanti omettero' l'invocazione dell'interprete e indicherò con il prompt > dove scrivere le istruzioni Lua).
 Proseguiamo con l'analisi del tipo di dato boolean, che può assumere esclusivamente i valori true e false e a cui sono associati gli operatori logici and, or, not e che, come possiamo immaginare, viene usato specialmente nelle istruzioni condizionali:
 
 {% highlight lua %}

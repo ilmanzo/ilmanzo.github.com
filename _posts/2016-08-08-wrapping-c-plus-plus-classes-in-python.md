@@ -75,11 +75,11 @@ compile and run:
 g++ myprog.cpp myclass.cpp -o myprog  ; ./myprog
 {% endhighlight %}
 
-To use this code from Python, we need to create a **wrapper** using [Cython](http://cython.org/). 
+To use the Dog class from Python, we can create a **wrapper** using [Cython](http://cython.org/). 
 
 Cython is a programming language that makes writing C extensions for the Python language as easy as Python itself. It aims to become a superset of the Python language which gives it high-level, object-oriented, functional, and dynamic programming. Its main feature on top of these is support for optional static type declarations as part of the language. The source code gets translated into optimized C/C++ code and compiled as Python extension modules. This allows for both very fast program execution and tight integration with external C libraries, while keeping up the high programmer productivity for which the Python language is well known.
 
-So this is the "C++ to python" wrapper glue code:
+So this is the "C++ to python" (Cython) wrapper glue code:
 
 
 ```
@@ -103,7 +103,7 @@ cdef class PyDog:
 
 ```
 
-we can also write a setup script to create an easy and smooth compilation/install process:
+we can also write a setup script in oreder to provide an easy and smooth compilation/install process:
 
 {% highlight python %}
 #setup.py
@@ -121,7 +121,7 @@ setup(
 )
 {% endhighlight %}
 
-using this, to compile all the code in a single shared library, we run:
+using this, to compile all the code in a single shared library, the user can run:
 
 {% highlight bash %}
 python3 setup.py build_ext --inplace

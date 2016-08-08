@@ -2,8 +2,8 @@
 layout: post
 title: "wrapping c plus plus classes in Python"
 description: ""
-category: 
-tags: []
+category: programming
+tags: [c++ python]
 ---
 {% include JB/setup %}
 

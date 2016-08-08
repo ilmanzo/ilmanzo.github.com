@@ -3,7 +3,7 @@ layout: post
 title: "wrapping c plus plus classes in Python"
 description: ""
 category: programming
-tags: [c++ python]
+tags: [c++, python]
 ---
 {% include JB/setup %}
 

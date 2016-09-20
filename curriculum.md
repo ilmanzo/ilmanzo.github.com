@@ -25,7 +25,7 @@ description: "curriculum vitae"
 - 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2016: [**RHCVA: RedHat Certified Virtualization Administrator 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 
 
 ##Published writings##

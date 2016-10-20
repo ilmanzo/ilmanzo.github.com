@@ -33,4 +33,4 @@ $ hexdump -e '/2 "%d\n"' file.bin
 2055
 {% endhighlight %}
 
-
+also see more on [https://www.suse.com/communities/blog/making-sense-hexdump/](https://www.suse.com/communities/blog/making-sense-hexdump/)

@@ -5,7 +5,7 @@ description: "curriculum vitae"
 ---
 {% include JB/setup %}
 
-#Fundamentals#
+# Fundamentals 
 
 - born in VR, Italy on 1973 
 - studied electronics and telecommunications
@@ -19,7 +19,7 @@ description: "curriculum vitae"
 - 2011-2013: linux senior system engineer, Unicredit
 - 2013-now: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
 
-#Certifications#
+# Certifications
 
 - 2012: **Novell CLA certification** with score 791/800
 - 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
@@ -28,7 +28,7 @@ description: "curriculum vitae"
 - 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 
 
-#Published writings#
+# Published writings
 
 - 2004: [Linux&C](http://www.oltrelinux.com), magazine features on PAM subsystem (Pluggable Authentication Modules)
 - 2005: [Linux&C](http://www.oltrelinux.com), magazine features on Unicode and its Linux
@@ -38,7 +38,7 @@ description: "curriculum vitae"
 - 2010: [Linux&C](http://www.oltrelinux.com), wiki MoinMoin, how to extend it with python
 - 2010: [Linux&C](http://www.oltrelinux.com), features on imagemagick (command line graphics)
 
-#Training#
+# Training
 
 - 2005: ES-331 Sun Enterprise Cluster Administration Veritas Volume
 - 2006: Microsoft MOC 2087 Implementing Windows 2000 clustering

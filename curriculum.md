@@ -53,6 +53,7 @@ description: "curriculum vitae"
 - 2011: RH442 Red Hat Enterprise Performance Tuning 
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
 - 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
+- 2016: Red Hat Enterprise Virtualization (RH318)
 
 
 

@@ -54,3 +54,10 @@ description: "curriculum vitae"
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
 - 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
 - 2016: Red Hat Enterprise Virtualization (RH318)
+
+## Other experiences
+
+- 2016: held a Python training course in [FabLab Verona](http://www.veronafablab.it/)
+- 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
+- 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
+

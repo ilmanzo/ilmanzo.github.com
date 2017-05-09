@@ -17,3 +17,7 @@ Pubblico qui le slide del corso presso [ES-I](http://www.es-i.it)
 
 [lezione 4](http://ilmanzo.github.io/files/corso_linux_base_esi_2017/lezione04.html)
 
+[lezione 5](http://ilmanzo.github.io/files/corso_linux_base_esi_2017/lezione05.html)
+
+[lezione 6](http://ilmanzo.github.io/files/corso_linux_base_esi_2017/lezione06.html)
+

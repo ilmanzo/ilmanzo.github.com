@@ -5,19 +5,21 @@ layout: default
 
 
 <div class="row-fluid">
-  <div class="span2"><img src="img/foto_lavoro_bn.png"/> </div>
+  <div class="span2"><img src="{{ site.url }}/img/foto_lavoro_bn.png"/> </div>
 
   <div class="span5">
   {{content}}
   </div>
 
   <div class="span5">
-        <h2>from the blog:</h2>
+        <h2>latest from the blog:</h2>
         <ul class="posts">
-          {% for post in site.posts %}
+          {% for post in site.posts limit:10 %}
             <li><span>{{ post.date | date_to_string }}</span> &raquo;
                 <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
           {% endfor %}
-        </ul>  </div>
-
+        </ul>
+        <h2>all the old posts are in the <a href="{{ site.url }}/archive">archive</a></h2>
+        </div>
+        
 </div>

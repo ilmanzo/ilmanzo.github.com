@@ -2,6 +2,8 @@
 layout: front
 title: Hello world!
 tagline: Welcome to my blog =)
+pagination:
+  enabled: true
 ---
 {% include JB/setup %}
 

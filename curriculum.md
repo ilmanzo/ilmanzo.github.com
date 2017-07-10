@@ -17,7 +17,8 @@ description: "curriculum vitae"
 - 2005-2011: developer of remote payments and remote banking product for
   Unicredit group
 - 2011-2013: linux senior system engineer, Unicredit
-- 2013-now: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
+- 2013-2016: linux senior system engineer, Value Transformation Services (Unicredit / IBM Joint venture)
+- 2017-now: cloud & automation, Value Transformation Services (Unicredit / IBM Joint venture)
 
 ## Certifications
 
@@ -26,6 +27,7 @@ description: "curriculum vitae"
 - 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2017: **SUSE Certified Administrator in Enterprise Linux - SLES 12** (certificate id 10170115)
 
 
 ## Published writings
@@ -54,10 +56,12 @@ description: "curriculum vitae"
 - 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
 - 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
 - 2016: Red Hat Enterprise Virtualization (RH318)
+- 2017: Suse Linux 12 academy, SUSE OpenStack Cloud Academy
 
 ## Other experiences
 
 - 2016: held a Python training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
+
 

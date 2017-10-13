@@ -77,7 +77,7 @@ func main() {
 
 following, the template:  a simple form that displays the data and send back a POST request to the CGI.
 
-{% raw %}
+{% highlight html %}
 
     <!DOCTYPE html>
     <html>

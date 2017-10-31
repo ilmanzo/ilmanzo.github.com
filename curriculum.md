@@ -57,6 +57,7 @@ description: "curriculum vitae"
 - 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
 - 2016: Red Hat Enterprise Virtualization (RH318)
 - 2017: Suse Linux 12 academy, SUSE OpenStack Cloud Academy
+- 2017: Red Hat JBoss Application Administration I (JB248)
 
 ## Other experiences
 

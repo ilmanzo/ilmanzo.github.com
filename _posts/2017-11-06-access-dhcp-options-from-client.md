@@ -19,8 +19,8 @@ option WPAD code 252 = string;
 also request WPAD;
 {% endhighlight %}
 
-done that, when you'll ask for a dhcp, the dhclient process will invoke your hook scripts with two
-environment variables, `old_WPAD` and `new_WPAD`, with the values before and after the renewal.
+done that, when you'll ask for a dhcp, the **dhclient** process will invoke your hook scripts with two new
+environment variables, `old_WPAD` and `new_WPAD`, with the values before and after the renewal. 
 
 so you can put a script in the folder `/etc/dhcp/dhclient-enter-hooks.d` or 
 `/etc/dhcp/dhclient-exit-hooks.d` to simply "use" the value, by writing it in

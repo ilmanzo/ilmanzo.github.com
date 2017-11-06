@@ -3,7 +3,7 @@ layout: post
 title: "linux: how to access DHCP options from client"
 description: "how to access DHCP options from client"
 category: linux
-tags: [linux, script, dhcp, network]
+tags: [linux, debian, scripting, sysadmin, dhcp, network]
 ---
 {% include JB/setup %}
 

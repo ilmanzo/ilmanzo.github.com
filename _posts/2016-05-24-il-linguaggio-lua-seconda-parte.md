@@ -51,7 +51,7 @@ if <expr> then <blocco> end
 if <expr> then <blocco1> else <blocco2> end
 {% endhighlight %}
 
-dove <expr> indica una qualsiasi espressione che restituisca un risultato booleano, mentre <blocco> sono le istruzioni che vengono o meno eseguite.
+dove \<expr\> indica una qualsiasi espressione che restituisca un risultato booleano, mentre \<blocco\> sono le istruzioni che vengono o meno eseguite.
 Già che parliamo di costrutti di controllo, citiamo anche i classici loop:
 
 {% highlight lua %}
@@ -59,7 +59,7 @@ while <expr> do <blocco> end
 repeat <blocco> until <expr>
 {% endhighlight %}
 
-rispettivamente, ripetono il <blocco> finché la condizione <expr> è vera (nel while..do) o falsa (repeat..until). Per terminare anzitempo un ciclo si può usare nel blocco l'istruzione break:
+rispettivamente, ripetono il \<blocco\> finché la condizione \<expr\> è vera (nel while..do) o falsa (repeat..until). Per terminare anzitempo un ciclo si può usare nel blocco l'istruzione break:
 
 {% highlight lua %}
 n=43

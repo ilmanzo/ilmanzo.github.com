@@ -13,6 +13,6 @@ pubblico qui le slide del corso 'linux base' presso il FabLab Verona
 - [20/11/2017 Lezione2](http://ilmanzo.github.io/files/corso_linux_base_fablab_2017/lezione2.html)
 - [27/11/2017 Lezione3](http://ilmanzo.github.io/files/corso_linux_base_fablab_2017/lezione3.html)
 - [04/12/2017 Lezione4](http://ilmanzo.github.io/files/corso_linux_base_fablab_2017/lezione4.html)
-- Lezione5
+- [11/12/2017 Lezione5](http://ilmanzo.github.io/files/corso_linux_base_fablab_2017/lezione5.html)
 - Lezione6
 

@@ -7,7 +7,7 @@ tags: [golang, programming, binary, file, hacking]
 ---
 {% include JB/setup %}
 
-while working with image files, I needed a simple way to analize content of a picture; so I wrote this tool that "walks" inside a PNG file and reports all the chunks seen; this is intended to be expanded with more features in a future.
+while working with image files, I needed a simple way to analyze content of a picture; so I wrote this tool that "walks" inside a PNG file and reports all the chunks seen; this is intended to be expanded with more features in a future.
 
 
 {% highlight go %}

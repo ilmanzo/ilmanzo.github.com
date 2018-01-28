@@ -19,7 +19,7 @@ author :
   twitter : ilmanzo
   feedburner : feedname
 
-gems:
+plugins:
   - jekyll-archives
 
 

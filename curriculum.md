@@ -5,12 +5,12 @@ description: "curriculum vitae"
 ---
 {% include JB/setup %}
 
-## Fundamentals 
+## Fundamentals
 
-- born in VR, Italy on 1973 
+- born in Verona, Italy on 1973
 - studied electronics and telecommunications
 - started working in IT industry since 1993
-- first Linux server installed on 1995 
+- first Linux server installed on 1995
 - 1999-2000: developer, DBA Oracle and sysadmin VAX/VMS
 - 2000-2001: sysadmin, network administrator in a local Internet Service Provider Netbusiness spa
 - 2001-2005: network & security administrator in Quercia Software spa
@@ -28,6 +28,7 @@ description: "curriculum vitae"
 - 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2017: **SUSE Certified Administrator in Enterprise Linux - SLES 12** (certificate id 10170115)
+- 2018: **SUSE Certified Engineer in Enterprise Linux - SLES 12** (certificate id 10170115)
 
 
 ## Published writings
@@ -64,5 +65,6 @@ description: "curriculum vitae"
 - 2016: held a Python training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
+- 2017: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
 
 

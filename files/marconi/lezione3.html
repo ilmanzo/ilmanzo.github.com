@@ -1297,7 +1297,7 @@ div.slide div.presenter_notes {
             </aside>
             
             <aside class="page_number">
-              1/9
+              1/11
             </aside>
           </footer>
         </div>
@@ -1338,7 +1338,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              2/9
+              2/11
             </aside>
           </footer>
         </div>
@@ -1394,7 +1394,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              3/9
+              3/11
             </aside>
           </footer>
         </div>
@@ -1425,7 +1425,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              4/9
+              4/11
             </aside>
           </footer>
         </div>
@@ -1457,7 +1457,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              5/9
+              5/11
             </aside>
           </footer>
         </div>
@@ -1497,7 +1497,43 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              6/9
+              6/11
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: lezione3.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>Node-RED library</h1></header>
+            
+            
+            <section><p>quando importo/esporto un flow o un insieme di nodi, Node-RED salva i dati nella directory:</p>
+<div class="highlight"><pre><span></span><span class="nv">$HOME</span>/.node-red/lib/flows
+</pre></div>
+
+<p>dove $HOME è la directory dell'utente che sta usando Node-RED. Per rimuovere un oggetto dalla library è sufficiente cancellare il file relativo.</p>
+<p>Per cambiare la posizione della library (ad esempio volendo metterla su un disco condiviso) si può modificare il file <strong>settings.js</strong> oppure passare un setting diverso all'avvio di Node-RED con l'opzione -s .</p>
+<p>In questo modo ad esempio si possono far eseguire più istanze Node-RED nello stesso computer, necessariamente con l'interfaccia web attiva su porte diverse (ad esempio la prima sulla porta 1880, la seconda 2880, la terza 3880 e così via).</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="lezione3.md">lezione3.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/11
             </aside>
           </footer>
         </div>
@@ -1532,7 +1568,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
             </aside>
             
             <aside class="page_number">
-              7/9
+              8/11
             </aside>
           </footer>
         </div>
@@ -1551,7 +1587,10 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 GET http://{mioserver}/hello?name=Paolo
 </code></pre>
 <h2>inizialmente visualizziamo la richiesta in un nodo di DEBUG</h2>
-<h2>aggiungiamo un "endpoint" HTTP /orario che se chiamato visualizzi in un nodo debug data e ora del sistema attuale</h2></section>
+<h2>aggiungiamo un "endpoint" HTTP /orario che se chiamato visualizzi in un nodo debug data e ora del sistema attuale</h2>
+<h2>domande:</h2>
+<h2>perchè il browser non visualizza nessuna risposta ?</h2>
+<h2>Abbiamo un metodo alternativo per mandare una richiesta al nostro server Node-RED ?</h2></section>
             
           </div>
           <div class="presenter_notes">
@@ -1567,7 +1606,54 @@ GET http://{mioserver}/hello?name=Paolo
             </aside>
             
             <aside class="page_number">
-              8/9
+              9/11
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: lezione3.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>dimostrazione</h1></header>
+            
+            
+            <section><p>anzichè usare il metodo GET, il nodo HTTP accetta anche altri tipi di richiesta. Ad esempio possiamo inviare una richiesta POST tramite un form HTML, e leggere i dati che l'utente scrive nel form dal flusso Node-RED</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">title</span><span class="p">&gt;</span>form di esempio<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/picnic&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex four demo&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;http://127.0.0.1:1880/leggiform&quot;</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;name&quot;</span><span class="p">&gt;</span>Nome:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;name&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;user_name&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;mail&quot;</span><span class="p">&gt;</span>E-mail:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;mail&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;user_mail&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;msg&quot;</span><span class="p">&gt;</span>Commento:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">textarea</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;msg&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;user_message&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">textarea</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>Invia il tuo commento<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+
+<p>NOTA: il nodo http-POST può ricevere anche file in upload</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="lezione3.md">lezione3.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/11
             </aside>
           </footer>
         </div>
@@ -1597,7 +1683,7 @@ GET http://{mioserver}/hello?name=Paolo
             </aside>
             
             <aside class="page_number">
-              9/9
+              11/11
             </aside>
           </footer>
         </div>
@@ -1648,20 +1734,32 @@ GET http://{mioserver}/hello?name=Paolo
       
       
       <tr id="toc-row-7">
-        <th><a href="#slide7">panoramica sui nodi</a></th>
+        <th><a href="#slide7">Node-RED library</a></th>
         <td><a href="#slide7">7</a></td>
       </tr>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">esercizio</a></th>
+        <th><a href="#slide8">panoramica sui nodi</a></th>
         <td><a href="#slide8">8</a></td>
       </tr>
       
       
       <tr id="toc-row-9">
-        <th><a href="#slide9">domande?</a></th>
+        <th><a href="#slide9">esercizio</a></th>
         <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-10">
+        <th><a href="#slide10">dimostrazione</a></th>
+        <td><a href="#slide10">10</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-11">
+        <th><a href="#slide11">domande?</a></th>
+        <td><a href="#slide11">11</a></td>
       </tr>
       
       

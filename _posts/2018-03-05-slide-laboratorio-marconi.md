@@ -3,7 +3,7 @@ layout: post
 title: "slide laboratorio ITIS G.Marconi"
 description: "slide del laboratorio"
 category: linux
-tags: [linux, programming, tutorial, italian]
+tags: [linux, programming, tutorial, italian, node-red]
 ---
 {% include JB/setup %}
 

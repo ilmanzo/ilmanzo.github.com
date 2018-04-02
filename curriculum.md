@@ -29,6 +29,7 @@ description: "curriculum vitae"
 - 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2017: **SUSE Certified Administrator in Enterprise Linux - SLES 12** (certificate id 10170115)
 - 2018: **SUSE Certified Engineer in Enterprise Linux - SLES 12** (certificate id 10170115)
+- 2018: **Certified Openstack Administrator** Linux Foundation Certificate id COA-1800-001215-0100
 
 
 ## Published writings

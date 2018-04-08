@@ -14,4 +14,4 @@ tags: [linux, programming, tutorial, italian, node-red]
 - [lunedì 19 marzo](http://ilmanzo.github.com/files/marconi/lezione3.html): esercitazioni e approfondimento Node-RED in dettaglio
 - [venerdì 23 marzo](http://ilmanzo.github.com/files/marconi/lezione4.html): programmazione in Node-RED : dashboard, nodi function
 - [lunedì 26 marzo](http://ilmanzo.github.com/files/marconi/lezione5.html): Node-RED gestione errori, interazione con altri sistemi (database) 
-- lunedì 9 aprile: MQTT, varie ed eventuali
+- [lunedì 9 aprile](http://ilmanzo.github.com/files/marconi/lezione6.html): ripasso Node-RED, MQTT ; varie ed eventuali

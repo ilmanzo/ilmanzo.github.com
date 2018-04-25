@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "il linguaggio Lua: terza parte"
+title: "il linguaggio Lua: parte 3"
 description: "introduzione al linguaggio Lua"
 category: programming
 tags: [lua, programming, tutorial, linux, italian]
 ---
 {% include JB/setup %}
 
-segue dalla [seconda parte](http://ilmanzo.github.io/programming/2016/05/24/il-linguaggio-lua-seconda-parte)
+segue dalla [seconda parte](http://ilmanzo.github.io/programming/2016/05/24/il-linguaggio-lua-02)
 
 # Che fai tu luna in ciel ? : le funzioni
 

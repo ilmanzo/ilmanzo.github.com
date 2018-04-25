@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "il linguaggio Lua: quarta parte"
+title: "il linguaggio Lua: parte 4"
 description: "introduzione al linguaggio Lua"
 category: programming
 tags: [lua, programming, tutorial, linux, italian]
 ---
 {% include JB/setup %}
 
-segue dalla [terza parte](http://ilmanzo.github.io/programming/2017/03/20/il-linguaggio-lua-terza-parte)
+segue dalla [terza parte](http://ilmanzo.github.io/programming/2017/03/20/il-linguaggio-lua-03)
 
 # “Moonlight Bay” (ovvero: “chiedi chi erano i vectors”)
 

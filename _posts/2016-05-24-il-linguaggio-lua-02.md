@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "il linguaggio Lua: seconda parte"
+title: "il linguaggio Lua: parte 2"
 description: "introduzione al linguaggio Lua"
 category: programming
 tags: [lua, programming, tutorial, linux, italian]
 ---
 {% include JB/setup %}
 
-segue dalla [prima parte](http://ilmanzo.github.io/programming/2016/04/13/il-linguaggio-lua-prima-parte)
+segue dalla [prima parte](http://ilmanzo.github.io/programming/2016/04/13/il-linguaggio-lua-01)
 
 # Moonwalking: Tipi di dato
 

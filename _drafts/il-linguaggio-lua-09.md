@@ -59,7 +59,7 @@ Le funzioni di dialogo col sistema operativo sono raggruppate nel package os:
 >os.execute('/bin/ls')
 {% endhighlight %}
 
-mentre per gestire flussi di dati in ingresso e in uscita (input/output) servirà io:
+mentre per gestire flussi di dati in ingresso e in uscita (input/output) servirà il modulo *'io'*:
 
 {% highlight lua %}
 fdati=io.open('dati.txt','w')

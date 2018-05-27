@@ -9,7 +9,7 @@ tags: [linux, tutorial, learning, ssh]
 
 Pubblico qui le slide per il laboratorio ssh presso ITIS G. Marconi(VR)
 
-[http://ilmanzo.github.io/files/lez_ssh.html](http://ilmanzo.github.io/files/lez_ssh.html)
+[http://ilmanzo.github.io/files/lab_ssh.html](http://ilmanzo.github.io/files/lab_ssh.html)
 
 
 

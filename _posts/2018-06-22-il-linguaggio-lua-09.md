@@ -9,16 +9,18 @@ tags: [lua, programming, tutorial, linux, italian]
 
 segue dalla [parte 8](http://ilmanzo.github.io/programming/2018/04/23/il-linguaggio-lua-ottava-parte)
 
-# Vi presento il modulo lunare
+# il modulo lunare
 
-Per mantenere la sua natura minimalista, Lua ha ben poche funzionalità incluse nel linguaggio e delega molti aspetti a librerie e moduli esterni. Ad esempio le operazioni matematiche sono accessibili nel package, o se preferite, namespace col prefisso math:
+Per mantenere la sua natura minimalista, Lua ha ben poche funzionalità incluse nel linguaggio e delega molti aspetti a librerie e moduli esterni. Ad esempio le operazioni matematiche sono accessibili nel package, o se preferite, **namespace** col prefisso *math*:
 
+{% highlight bash %}
 $ lua
 >print(math.sin(math.pi/2))
 1
+{% endhighlight %}
 
 sarebbe oltremodo noioso elencare tutte le funzioni presenti, basti dire che oltre alle funzioni trigonometriche abbiamo logaritmi, esponenziali, modulo, minimo, massimo, arrotondamenti e generazione di valori random.
-Per operare in modo agevole con tabelle e vettori abbiamo a disposizione il modulo table:
+Per operare in modo agevole con tabelle e vettori abbiamo a disposizione il modulo *table*:
 
 {% highlight lua %}
 >t={10,30,40}
@@ -38,7 +40,7 @@ Per operare in modo agevole con tabelle e vettori abbiamo a disposizione il modu
 1-3-6-7-8
 {% endhighlight %}
 
-e come promesso ecco versione ottimizzata della funzione chain():
+e, come promesso tempo fa, ecco versione ottimizzata della funzione chain():
 
 {% highlight lua %}
 function chain2(...)
@@ -51,7 +53,7 @@ end
 {% endhighlight %}
 
 poiché evita la creazione di stringhe temporanee, questa funzione risulta di gran lunga più efficiente della precedente.
-Le funzioni di dialogo col sistema operativo sono raggruppate nel package os:
+Le funzioni di dialogo col sistema operativo sono invece raggruppate nel package *os*:
 
 {% highlight lua %}
 >print(os.getenv('HOME'))
@@ -75,7 +77,7 @@ end
 
 
 
-Per la manipolazione di stringhe useremo il prefisso string:
+Per la manipolazione di stringhe useremo il prefisso *string*:
 
 {% highlight lua %}
 $lua
@@ -101,5 +103,5 @@ lo stesso modulo contiene anche funzioni di formattazione, con una sintassi anal
 {% endhighlight %}
 
 *string* fornisce una implementazione ridotta, ma efficace, **delle regular expression**.
-Nell'interprete interattivo e nei nostri script le librerie built-in come math, io, os, string sono già disponibili senza dover specificare nient'altro; come vedremo più avanti, questo non vale più quando useremo Lua come libreria 'embedded' nei programmi C, perché potremo scegliere di volta in volta le funzionalità da includere o meno.
+Nell'interprete interattivo e nei nostri script le librerie built-in come math, io, os, string sono già disponibili senza dover specificare nient'altro; come vedremo più avanti, questo non vale più quando useremo Lua come libreria 'embedded' nei programmi C, perché potremo scegliere di volta in volta le funzionalità da includere o meno, con il beneficio di snellire i nostri programmi togliendo le funzionalità che non usiamo.
 

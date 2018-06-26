@@ -3,7 +3,7 @@ layout: post
 title: "CGI with the Go Programming Language"
 description: "standard library of the Go Programming Language: CGI and templates"
 category: programming
-tags: [golang, CGI, template,programming,example]
+tags: [go, golang, CGI, template,programming,example]
 ---
 {% include JB/setup %}
 

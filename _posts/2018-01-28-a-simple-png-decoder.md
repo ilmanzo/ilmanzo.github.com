@@ -3,7 +3,7 @@ layout: post
 title: "a simple PNG decoder"
 description: ""
 category: programming
-tags: [golang, programming, binary, file, hacking]
+tags: [go, golang, programming, binary, file, hacking]
 ---
 {% include JB/setup %}
 

@@ -13,7 +13,7 @@ Native [GoLang](https://golang.org/) CGI web applications are very fast and can 
 The solution has some weak points, starting from lock management, but is only presented as a proof of concept and not for real use cases.
 
 
-{% highlight Go linenos %}
+{% highlight go linenos %}
 //save this as todoapp.go
 package main
 

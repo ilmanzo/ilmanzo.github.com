@@ -3,7 +3,7 @@ layout: post
 title: "monit helper for quota monitoring in go"
 description: "a small program to parse quota information and report via monit"
 category: sysadmin
-tags: [linux, quota, golang, sysadmin, monit]
+tags: [linux, quota, go, golang, sysadmin, monit]
 ---
 {% include JB/setup %}
 

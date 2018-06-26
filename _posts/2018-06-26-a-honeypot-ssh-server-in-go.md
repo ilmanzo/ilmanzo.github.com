@@ -3,7 +3,7 @@ layout: post
 title: "a honeypot ssh server in Go"
 description: "a fake ssh server that works as a honeypot, written in Go"
 category: programming
-tags: [go, programming, ssh, linux]
+tags: [go, golang, programming, ssh, linux, hacking]
 ---
 {% include JB/setup %}
 

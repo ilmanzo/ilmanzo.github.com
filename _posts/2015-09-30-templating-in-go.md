@@ -3,7 +3,7 @@ layout: post
 title: "sample template usage in the Go Programming Language"
 description: "how to use the standard library template of the Go Programming Language"
 category: programming
-tags: [golang, template,programming,example]
+tags: [go, golang, template,programming,example]
 ---
 {% include JB/setup %}
 

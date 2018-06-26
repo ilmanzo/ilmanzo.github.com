@@ -3,7 +3,7 @@ layout: post
 title: "a simple HTTP rewriting proxy"
 description: ""
 category: programming
-tags: [golang, programming, proxy, http, hacking]
+tags: [go, golang, programming, proxy, http, hacking]
 ---
 {% include JB/setup %}
 

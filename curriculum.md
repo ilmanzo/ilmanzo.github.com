@@ -62,6 +62,7 @@ description: "curriculum vitae"
 - 2017: Suse Linux 12 academy, SUSE OpenStack Cloud Academy
 - 2017: Red Hat JBoss Application Administration I (JB248)
 - 2018: Red Hat Automation with Ansible (DO407)
+- 2018: [Developing on AWS](https://aws.amazon.com/training/course-descriptions/developing/)
 
 ## Other experiences
 

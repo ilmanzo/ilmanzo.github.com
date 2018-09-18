@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "a simple PNG decoder"
+title: "a simple PNG decoder in Go"
 description: ""
 category: programming
 tags: [go, golang, programming, binary, file, hacking]

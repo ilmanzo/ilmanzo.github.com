@@ -16,11 +16,15 @@ Tra le *rocks* più interessanti citiamo quelle che permettono le operazioni di 
 Concludiamo la panoramica sulle librerie accennando ai moduli per creare interfacce grafiche; al pari degli altri linguaggi di scripting, Lua offre binding per i maggiori toolkit grafici: curses, GTK, QT, fltk, wx si usano come negli altri linguaggi e sarebbe qui tedioso illustrarne le modalità. Ci focalizzeremo invece su due progetti peculiari, rispettivamente Lua Visual Controls (VCLua) e LÖVE , che hanno l'ulteriore pregio di essere leggeri e snelli.
 Scarichiamo e installiamo VCLua:
 
+{% highlight bash %}
 $ wget http://luaforge.net/frs/download.php/4705/vclua-0.3.5-linux-gtk2.zip
+{% endhighlight %}
 
 scompattiamo e copiamo la shared library nella directory corrente:
 
+{% highlight bash %}
 $ unzip vclua*.zip && cp vclua*/bin/vcl.so .
+{% endhighlight %}
 
 Di seguito una piccola dimostrazione dell’uso di questa libreria.
 
@@ -52,15 +56,21 @@ mainForm:Free()
 
 LÖVE, che ha come motto “Don’t forget to have fun” non è solo una libreria grafica, ma un completo framework: il programmatore ha il compito di scrivere poche funzioni che vengono richiamate periodicamente dal motore runtime. Vediamo il meccanismo con un esempio pratico. Anzitutto scarichiamo e installiamo il software con un 
 
+{% highlight bash %}
 $ sudo apt-get install love
+{% endhighlight %}
 
 oppure visitando il sito [http://love2d.org/](http://love2d.org/) ; verifichiamo il funzionamento con un 
 
+{% highlight bash %}
 $ love --version 
+{% endhighlight %}
 
 ora creiamo una nuova directory
 
+{% highlight bash %}
 $ mkdir hello ; cd hello
+{% endhighlight %}
 
 e dentro questa prepariamo un file di nome main.lua con il seguente contenuto:
 
@@ -78,7 +88,9 @@ end
 
 abbiamo finito; possiamo vedere il risultato lanciando
 
+{% highlight bash %}
 $ love hello
+{% endhighlight %}
 
 o, per i pigri, in figura:
 

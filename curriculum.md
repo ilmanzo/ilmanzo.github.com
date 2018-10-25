@@ -70,5 +70,5 @@ description: "curriculum vitae"
 - 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
 - 2017: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
-- 2018: gave a talk for [FEVR](http://www.fevr.it/eventi/2018/10/challenge-of-the-go-bots/) about chatbots and Go Programming language [Slides](http://go-talks.appspot.com/github.com/ilmanzo/ChallengeOfTheGoBots/present.slide)
+- 2018: gave a talk for [FEVR](http://www.fevr.it/eventi/2018/10/challenge-of-the-go-bots/) about chatbots and Go Programming language. Slides linked [here](http://go-talks.appspot.com/github.com/ilmanzo/ChallengeOfTheGoBots/present.slide)
 

@@ -63,6 +63,7 @@ description: "curriculum vitae"
 - 2017: Red Hat JBoss Application Administration I (JB248)
 - 2018: Red Hat Automation with Ansible (DO407)
 - 2018: [Developing on AWS](https://aws.amazon.com/training/course-descriptions/developing/)
+- 2018: [Systems Operations on AWS (AWSSYS) ](https://aws.amazon.com/it/training/course-descriptions/sysops/)
 
 ## Other experiences
 

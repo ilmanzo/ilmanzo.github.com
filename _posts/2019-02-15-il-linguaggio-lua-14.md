@@ -11,13 +11,13 @@ segue dalla [parte 13](http://ilmanzo.github.io/programming/2019/01/19/il-lingua
 
 # Coroutine
 
-Come approccio alla programmazione concorrente, il linguaggio Lua non ha meccanismi interni per gestire nativamente i thread, ma si può appoggiare a ciò che offre il sistema operativo sottostante. Lua invece internamente offre il supporto alle coroutine: un programma Lua può avere diversi percorsi di esecuzione parallela ognuno col proprio stack e variabili locali ma che condividono risorse e variabili globali con le altre coroutine. 
+Come approccio alla programmazione concorrente, il linguaggio Lua non ha meccanismi interni per gestire nativamente i thread, ma si può appoggiare a ciò che offre il sistema operativo sottostante. Lua invece internamente offre il supporto alle **coroutine**: un programma Lua può avere diversi percorsi di esecuzione 'parallela' ognuno col proprio stack e variabili locali ma che condividono risorse e variabili globali con le altre coroutine. 
 
-La prima differenza sostanziale col modello classico dei thread è che in un determinato istante 'gira' una e una sola coroutine, mentre in un sistema multiprocessore ci possono essere più thread in esecuzione. 
+La prima differenza sostanziale col modello classico dei thread è che in un determinato istante 'gira' una e una sola coroutine, mentre in un sistema multiprocessore ci possono essere più thread in esecuzione in contemporanea. 
 
-La seconda grande differenza è che nei thread c'è una entità esterna (di solito lo scheduler del il sistema operativo) che sovrintende all'ordine e assegna la 'fetta' di processore a disposizione di ciascun thread, mentre in Lua ciascuna coroutine decide quando è il momento di “sospendersi” per lasciare la cpu alle altre. 
+La seconda grande differenza è che nei thread c'è una entità esterna (di solito lo scheduler del il sistema operativo) che sovrintende all'ordine e assegna la 'fetta' di processore a disposizione di ciascun thread, mentre in Lua ciascuna coroutine decide quando è il momento di “sospendersi” per lasciare la CPU alle altre. 
 
-In questo caso, si parla infatti di cooperative multitasking. Le ragioni di questa scelta degli autori sono molteplici: anzitutto la semplicità di implementazione, poi ricordiamo il fatto che Lua è nato come linguaggio 'embedded', perciò qualora ci fosse veramente bisogno dei thread si sfrutteranno le capacità del linguaggio ospitante.
+In questo caso, si parla infatti di **cooperative multitasking**. Le ragioni di questa scelta degli autori sono molteplici: anzitutto la semplicità di implementazione, poi ricordiamo il fatto che Lua è nato come linguaggio 'embedded', perciò qualora ci fosse veramente bisogno dei thread si sfrutteranno le capacità del linguaggio ospitante.
 
 Le funzionalità per gestire le coroutine in Lua sono raggruppate nel package *'coroutine'*. La prima funzione che serve è la create, che riceve come unico argomento una funzione e ritorna un valore di tipo thread:
 

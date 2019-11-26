@@ -7,7 +7,7 @@ pagination:
 ---
 {% include JB/setup %}
 
-my name is [**Andrea Manzini**](about.html). I'm an Unix System Administrator and a developer.
+Hi! :wave: my name is [**Andrea Manzini**](about.html). I'm an Unix System Administrator and a developer.
 
 You can email me at [ilmanzo@gmail.com](mailto:ilmanzo@gmail.com), or
 

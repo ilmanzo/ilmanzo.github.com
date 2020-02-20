@@ -3,7 +3,7 @@ layout: post
 title: "A new project to learn the D Programming Language"
 description: "learn D programming language by solving simple exercises"
 category: programming
-tags: [D, programming, learning]
+tags: [D, dlang, programming, learning]
 ---
 {% include JB/setup %}
 

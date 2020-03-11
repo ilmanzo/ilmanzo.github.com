@@ -7,7 +7,7 @@ tags: [linux, programming, shared lib, D, dlang, hacking]
 ---
 {% include JB/setup %}
 
-I like playing with the [D programming language](https://dlang.org/) and I wrote this little post to show how it's easy to create a dynamic library (shared object, `.so`) that can be invoked in other programs; to have a little fun we will write a D replacement for the `rand()` C standard library function call.
+I like playing with the [D programming language](https://dlang.org/) and I wrote this little post to show how it's easy to create a dynamic library (shared object, `.so`) that can be invoked in other programs; to have a little fun we will write a D replacement for the `rand()` C standard library function call. For your convenience, all the code is also [on github](https://github.com/ilmanzo/hijack_C_stdlib_func_with_D)
 
 Let's start with the demo implementation, a C program that calls 10 times the stdlib function `rand()` to get a random number.
 

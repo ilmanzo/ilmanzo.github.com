@@ -2,7 +2,7 @@
 layout: post
 title: "a very simple NTP client in D"
 description: ""
-category: 
+category: [linux, programming]
 tags: [linux, programming, D, dlang, network, socket]
 ---
 {% include JB/setup %}

@@ -74,6 +74,5 @@ description: "curriculum vitae"
 - 2017: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2018: gave a talk for [FEVR](http://www.fevr.it/eventi/2018/10/challenge-of-the-go-bots/) about chatbots and Go Programming language. Slides linked [here](http://go-talks.appspot.com/github.com/ilmanzo/ChallengeOfTheGoBots/present.slide)
 - 2019: held Linux and Python and training courses 
-- 2020: held a Cryptography / security (blockchain) training course
-
+- 2020: held a Cryptography / security (blockchain) training course for [Verona FabLab](https://www.veronafablab.it/)
 

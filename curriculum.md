@@ -65,6 +65,7 @@ description: "curriculum vitae"
 - 2018: [Developing on AWS](https://aws.amazon.com/training/course-descriptions/developing/)
 - 2018: [Systems Operations on AWS](https://aws.amazon.com/training/course-descriptions/sysops)
 - 2019: [DevOps Engineering on AWS](https://aws.amazon.com/it/training/course-descriptions/devops-engineering/)
+- 2021: [Red Hat Linux Automation with Ansible (RH294)](https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible)
 
 ## Other experiences
 

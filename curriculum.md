@@ -31,7 +31,7 @@ description: "curriculum vitae"
 - 2018: **SUSE Certified Engineer in Enterprise Linux - SLES 12** (certificate id 10170115)
 - 2018: [**Certified Openstack Administrator**](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
 - 2018: [**Red Hat Certified Specialist in Ansible Automation**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-
+- 2021: [**Red Hat Certified Engineer**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585)
 
 ## Published writings
 

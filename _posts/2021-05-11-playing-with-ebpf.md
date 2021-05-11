@@ -19,7 +19,7 @@ Now let's test our installation with the classical 'Hello, world'
 {% highlight python %}
 #!/usr/bin/python3
 # run with:
-# sudo ./hello_world.py"
+# sudo ./hello_world.py
 
 import bcc
 

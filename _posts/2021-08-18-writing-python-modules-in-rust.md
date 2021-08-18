@@ -11,6 +11,8 @@ Let's get our feet wet; in this first part I'll write about a very simple way to
 First of all let's build a Rust dynamic library with some basic functions.
 
 {% highlight rust %}
+// this file is: src/lib.rs
+
 #[no_mangle]
 pub extern "C" fn hello() {
     println!("Hello from the library!");

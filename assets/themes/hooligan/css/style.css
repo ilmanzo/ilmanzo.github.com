@@ -70,7 +70,7 @@ h2 {
 /* line 61, ../_sass/_base.scss */
 pre, code {
   color: #ccc;
-  font-family: Inconsolata; 
+  font-family: monospace; 
   font-size: 18px;
   font-weight: bold;
 }

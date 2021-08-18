@@ -3,7 +3,7 @@ layout: post
 title: "playing with eBPF interface - 2"
 description: "some fun experiments with tracing and snooping linux kernel"
 category: programming
-tags: [python, C, linux, programming, learning, linux, kernel, ebpf]
+tags: [python, C, linux, programming, learning, kernel, ebpf]
 ---
 {% include JB/setup %}
 
@@ -45,10 +45,6 @@ It works like this: eBPF probe writes to a shared pipe named ```/sys/kernel/debu
 | 3     |   | flags |   | Various process context flags |
 | 4     |   | ts    |   | A timestamp |
 | 5     |   | msg   |   | The string that we passed to bpf_trace_printk() |
-
-
-
-
 
     task=b'Xorg'	msg=b'size=24'
     task=b'Xorg'	msg=b'size=24'

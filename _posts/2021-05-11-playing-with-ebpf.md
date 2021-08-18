@@ -3,7 +3,7 @@ layout: post
 title: "playing with eBPF interface"
 description: "some fun experiments with tracing and snooping linux kernel"
 category: programming
-tags: [python, C, linux, programming, learning, linux, kernel, ebpf]
+tags: [python, C, linux, programming, learning, kernel, ebpf]
 ---
 {% include JB/setup %}
 

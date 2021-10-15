@@ -32,6 +32,7 @@ description: "curriculum vitae"
 - 2018: [**Certified Openstack Administrator**](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
 - 2018: [**Red Hat Certified Specialist in Ansible Automation**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2021: [**Red Hat Certified Engineer**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585)
+- 2021: [AZ-900 Microsoft Azure Fundamentals](https://www.credly.com/badges/434b8973-2f19-4a18-b526-10e3652b433b)
 
 ## Published writings
 
@@ -68,6 +69,7 @@ description: "curriculum vitae"
 - 2021: [Red Hat Linux Automation with Ansible (RH294)](https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible)
 - 2021: Data Center Automation with vRealize Orchestrator and vSphere PowerCLI
 - 2021: Building Modern Python Applications on AWS, Coursera
+
 
 ## Other experiences
 

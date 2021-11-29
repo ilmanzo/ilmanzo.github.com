@@ -69,6 +69,7 @@ description: "curriculum vitae"
 - 2021: [Red Hat Linux Automation with Ansible (RH294)](https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible)
 - 2021: Data Center Automation with vRealize Orchestrator and vSphere PowerCLI
 - 2021: Building Modern Python Applications on AWS, Coursera
+- 2021: Learn Rust by Building Real Application, udemy
 
 
 ## Other experiences

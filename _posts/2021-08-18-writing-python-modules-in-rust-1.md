@@ -3,7 +3,7 @@ layout: post
 title: "integration between Python and Rust - Part 1"
 description: "some experiments with language FFI"
 category: programming
-tags: [python, Rust, linux, programming, learning, ebpf]
+tags: [python, Rust, linux, programming, learning]
 ---
 {% include JB/setup %}
 

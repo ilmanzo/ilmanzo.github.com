@@ -70,6 +70,7 @@ description: "curriculum vitae"
 - 2021: Data Center Automation with vRealize Orchestrator and vSphere PowerCLI
 - 2021: Building Modern Python Applications on AWS, Coursera
 - 2021: Learn Rust by Building Real Application, udemy
+- 2022: Ultimate Rust Crash Course, udemy
 
 
 ## Other experiences
@@ -82,4 +83,5 @@ description: "curriculum vitae"
 - 2019: held Linux and Python and training courses 
 - 2020: held a Cryptography / security (blockchain) training course for [Verona FabLab](https://www.veronafablab.it/)
 - 2021: held an IoT server security webinar for [Verona FabLab](https://www.veronafablab.it/)
+- 2021: held c# training for young students doing internship in a private company
 

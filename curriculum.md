@@ -22,16 +22,16 @@ description: "curriculum vitae"
 
 ## Certifications
 
-- 2012: **Novell CLA certification** with score 791/800
-- 2014: [**RedHat Certified System Administrator in Red Hat Openstack**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [**RedHat Certified System Administrator in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [**RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2016: [**RHCVA: RedHat Certified Virtualization Administrator**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2017: **SUSE Certified Administrator in Enterprise Linux - SLES 12** (certificate id 10170115)
-- 2018: **SUSE Certified Engineer in Enterprise Linux - SLES 12** (certificate id 10170115)
-- 2018: [**Certified Openstack Administrator**](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
-- 2018: [**Red Hat Certified Specialist in Ansible Automation**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2021: [**Red Hat Certified Engineer**](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585)
+- 2012: Novell CLA certification with score 791/800
+- 2014: [RedHat Certified System Administrator in Red Hat Openstack](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [RedHat Certified System Administrator in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2016: [RHCVA: RedHat Certified Virtualization Administrator](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2017: SUSE Certified Administrator in Enterprise Linux - SLES 12 (certificate id 10170115)
+- 2018: SUSE Certified Engineer in Enterprise Linux - SLES 12 (certificate id 10170115)
+- 2018: [Certified Openstack Administrator](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
+- 2018: [Red Hat Certified Specialist in Ansible Automation](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2021: [Red Hat Certified Engineer](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585)
 - 2021: [AZ-900 Microsoft Azure Fundamentals](https://www.credly.com/badges/434b8973-2f19-4a18-b526-10e3652b433b)
 
 ## Published writings

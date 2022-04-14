@@ -33,6 +33,7 @@ description: "curriculum vitae"
 - 2018: [Red Hat Certified Specialist in Ansible Automation](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
 - 2021: [Red Hat Certified Engineer](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585)
 - 2021: [AZ-900 Microsoft Azure Fundamentals](https://www.credly.com/badges/434b8973-2f19-4a18-b526-10e3652b433b)
+- 2022: [AZ-204 Microsoft Azure Developer Associate](https://www.credly.com/badges/32aec1c3-bed7-4724-9355-1f4ab8aa7241)
 
 ## Published writings
 

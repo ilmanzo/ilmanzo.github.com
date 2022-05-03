@@ -3,7 +3,7 @@ layout: post
 title: "simple and easy linux job queue"
 description: "exploiting linux printing queue facility to manage heterogeneous jobs"
 category: linux
-tags: [linux script job queue batch]
+tags: [linux, script, job, queue, batch]
 ---
 {% include JB/setup %}
 

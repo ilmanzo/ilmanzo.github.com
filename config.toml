@@ -8,6 +8,7 @@ paginate = 3
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 enableEmoji = true
+googleAnalytics = 'G-YWMGBSCHM5'
 
 # Automatically add content sections to main menu
 sectionPagesMenu = "main"
@@ -21,7 +22,7 @@ mode = "dark-mode"
 # Sidebar: about/bio
 [params.about]
 title = "Andrea Manzini"
-description = "A minimalist and pragmatic website and personal blog"
+description = "A minimalist, pragmatic website and personal blog"
 logo = "images/rice.svg"
 
 # Sidebar: social links

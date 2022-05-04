@@ -1,11 +1,2 @@
-_site/
-_theme_packages/
-vendor/
-Thumbs.db
-.DS_Store
-
-!.gitkeep
-
-.rbenv-version
-.rvmrc
-Gemfile.lock
+/public/
+/resources/_gen/

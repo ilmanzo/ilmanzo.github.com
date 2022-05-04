@@ -9,7 +9,7 @@ date: 2018-10-24
 ---
 
 
-segue dalla [parte 11](http://ilmanzo.github.io/programming/2018/09/04/il-linguaggio-lua-11)
+segue dalla [parte 11](https://ilmanzo.github.io/post/il-linguaggio-lua-11/)
 
 # segnalazioni lunari
 

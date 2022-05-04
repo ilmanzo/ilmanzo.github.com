@@ -9,7 +9,7 @@ date: 2018-08-03
 ---
 
 
-segue dalla [parte 9](http://ilmanzo.github.io/programming/2018/06/22/il-linguaggio-lua-09)
+segue dalla [parte 9](https://ilmanzo.github.io/post/il-linguaggio-lua-09/)
 
 # stringhe e regular expression
 

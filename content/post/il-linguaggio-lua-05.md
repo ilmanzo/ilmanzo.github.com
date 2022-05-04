@@ -9,7 +9,7 @@ date: 2017-10-16
 ---
 
 
-segue dalla [quarta parte](http://ilmanzo.github.io/programming/2017/04/11/il-linguaggio-lua-quarta-parte)
+segue dalla [quarta parte](https://ilmanzo.github.io/post/il-linguaggio-lua-04/)
 
 # “Sonata al chiaro di luna” : un plugin per vlc
 

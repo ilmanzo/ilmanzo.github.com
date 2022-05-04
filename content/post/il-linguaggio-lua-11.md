@@ -9,7 +9,7 @@ date: 2018-09-07
 ---
 
 
-segue dalla [parte 10](http://ilmanzo.github.io/programming/2018/08/03/il-linguaggio-lua-10)
+segue dalla [parte 10](https://ilmanzo.github.io/post/il-linguaggio-lua-10/)
 
 # Rocce di Luna
 Poter organizzare il codice in più file è molto utile per modularizzare i programmi, creando package che verranno caricati tramite l'istruzione require “nomefile”. Vediamo un esempio:

@@ -9,7 +9,7 @@ date: 2017-12-22
 ---
 
 
-segue dalla [quinta parte](http://ilmanzo.github.io/programming/2017/10/16/il-linguaggio-lua-quinta-parte)
+segue dalla [quinta parte](https://ilmanzo.github.io/post/il-linguaggio-lua-05/)
 
 # Quando il saggio indica la luna, lo sciocco guarda il dito
 

@@ -9,7 +9,7 @@ date: 2017-03-20
 ---
 
 
-segue dalla [seconda parte](http://ilmanzo.github.io/programming/2016/05/24/il-linguaggio-lua-02)
+segue dalla [seconda parte](https://ilmanzo.github.io/post/il-linguaggio-lua-02/)
 
 # Che fai tu luna in ciel ? : le funzioni
 

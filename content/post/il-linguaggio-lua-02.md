@@ -9,7 +9,7 @@ date: 2016-05-24
 ---
 
 
-segue dalla [prima parte](http://ilmanzo.github.io/programming/2016/04/13/il-linguaggio-lua-01)
+segue dalla [prima parte](https://ilmanzo.github.io/post/il-linguaggio-lua-01/)
 
 # Moonwalking: Tipi di dato
 

@@ -9,7 +9,7 @@ date: 2018-04-23
 ---
 
 
-segue dalla [settima parte](http://ilmanzo.github.io/programming/2018/03/03/il-linguaggio-lua-settima-parte)
+segue dalla [settima parte](https://ilmanzo.github.io/post/il-linguaggio-lua-07/)
 
 ## Oggetti volanti e non
 

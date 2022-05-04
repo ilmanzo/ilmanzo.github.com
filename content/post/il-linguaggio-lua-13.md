@@ -9,7 +9,7 @@ date: 2019-01-19
 ---
 
 
-segue dalla [parte 12](http://ilmanzo.github.io/programming/2018/10/24/il-linguaggio-lua-12)
+segue dalla [parte 12](https://ilmanzo.github.io/post/il-linguaggio-lua-12/)
 
 # Upvalue e Closure
 

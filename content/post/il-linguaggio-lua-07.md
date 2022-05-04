@@ -9,7 +9,7 @@ date: 2018-03-03
 ---
 
 
-segue dalla [sesta parte](http://ilmanzo.github.io/programming/2017/12/22/il-linguaggio-lua-sesta-parte)
+segue dalla [sesta parte](https://ilmanzo.github.io/post/il-linguaggio-lua-06/)
 
 # Iteratori e lua funzionale
 

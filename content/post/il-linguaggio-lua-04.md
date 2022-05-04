@@ -9,7 +9,7 @@ date: 2017-04-11
 ---
 
 
-segue dalla [terza parte](http://ilmanzo.github.io/programming/2017/03/20/il-linguaggio-lua-03)
+segue dalla [terza parte](https://ilmanzo.github.io/post/il-linguaggio-lua-03/)
 
 # “Moonlight Bay” (ovvero: “chiedi chi erano i vectors”)
 

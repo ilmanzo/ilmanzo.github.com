@@ -9,7 +9,7 @@ date: 2018-06-22
 ---
 
 
-segue dalla [parte 8](http://ilmanzo.github.io/programming/2018/04/23/il-linguaggio-lua-ottava-parte)
+segue dalla [parte 8](https://ilmanzo.github.io/post/il-linguaggio-lua-08/)
 
 # il modulo lunare
 

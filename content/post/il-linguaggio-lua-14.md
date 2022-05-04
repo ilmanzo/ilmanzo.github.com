@@ -9,7 +9,7 @@ date: 2019-02-15
 ---
 
 
-segue dalla [parte 13](http://ilmanzo.github.io/programming/2019/01/19/il-linguaggio-lua-13)
+segue dalla [parte 13](https://ilmanzo.github.io/post/il-linguaggio-lua-13/)
 
 # Coroutine
 

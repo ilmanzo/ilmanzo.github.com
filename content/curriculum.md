@@ -8,7 +8,6 @@ author = "Andrea Manzini"
 
 ## Fundamentals
 
-- born in Verona, Italy on 1973
 - studied electronics and telecommunications
 - started working in IT industry since 1993
 - first Linux server installed on 1995
@@ -23,19 +22,18 @@ author = "Andrea Manzini"
 
 ## Certifications
 
-- 2012: Novell CLA certification with score 791/800
-- 2014: [RedHat Certified System Administrator in Red Hat Openstack](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [RedHat Certified System Administrator in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2015: [RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2016: [RHCVA: RedHat Certified Virtualization Administrator](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2017: SUSE Certified Administrator in Enterprise Linux - SLES 12 (certificate id 10170115)
-- 2018: SUSE Certified Engineer in Enterprise Linux - SLES 12 (certificate id 10170115)
-- 2018: [Certified Openstack Administrator](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
-- 2018: [Red Hat Certified Specialist in Ansible Automation](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
-- 2021: [Red Hat Certified Engineer](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585) (certificate number 140-219-585)
-- 2021: [AZ-900 Microsoft Azure Fundamentals](https://www.credly.com/badges/434b8973-2f19-4a18-b526-10e3652b433b)
 - 2022: [AZ-204 Microsoft Azure Developer Associate](https://www.credly.com/badges/32aec1c3-bed7-4724-9355-1f4ab8aa7241)
-
+- 2021: [AZ-900 Microsoft Azure Fundamentals](https://www.credly.com/badges/434b8973-2f19-4a18-b526-10e3652b433b)
+- 2021: [Red Hat Certified Engineer](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585) (certificate number 140-219-585)
+- 2018: [Red Hat Certified Specialist in Ansible Automation](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2018: [Certified Openstack Administrator](https://training.linuxfoundation.org/certification/verify-certifications) Linux Foundation Certificate id COA-1800-001215-0100
+- 2018: SUSE Certified Engineer in Enterprise Linux - SLES 12 (certificate id 10170115)
+- 2017: SUSE Certified Administrator in Enterprise Linux - SLES 12 (certificate id 10170115)
+- 2016: [RHCVA: RedHat Certified Virtualization Administrator](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [RHCE: RedHat Certified Engineer in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2015: [RedHat Certified System Administrator in Red Hat Enterprise Linux 7](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2014: [RedHat Certified System Administrator in Red Hat Openstack](https://www.redhat.com/rhtapps/certification/verify/?certId=140-219-585&isSearch=False&verify=Verify) (certificate number 140-219-585)
+- 2012: Novell CLA certification with score 791/800
 
 ## Published writings
 
@@ -49,43 +47,41 @@ author = "Andrea Manzini"
 
 ## Training
 
-- 2005: ES-331 Sun Enterprise Cluster Administration Veritas Volume
-- 2006: Microsoft MOC 2087 Implementing Windows 2000 clustering
-- 2006: Microsoft MOC 2153 Implementing a Microsoft Windows 2000 Network Infrastructure
-- 2007: Microsoft MOC 2150 Designing a Secure Microsoft Windows 2000 Network
-- 2007: Microsoft MOC 2159 Deploying and Managing Microsoft Internet Security and Acceleration (ISA) Server
-- 2008: Cisco BCMSN - Building Cisco Multilayer Switched Networks
-- 2009: Java Fundamentals, the Java programming language presso Overnet Education
-- 2010: MIE3510 Programming in ANSI C++  presso Mondadori Informatica
-- 2010: MIE3520 Win32 System Programming presso Mondadori Informatica
-- 2011: RH346 Red Hat Enterprise Clustering and Storage Management
-- 2011: RH442 Red Hat Enterprise Performance Tuning 
-- 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
-- 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
-- 2016: Red Hat Enterprise Virtualization (RH318)
-- 2017: Suse Linux 12 academy, SUSE OpenStack Cloud Academy
-- 2017: Red Hat JBoss Application Administration I (JB248)
-- 2018: Red Hat Automation with Ansible (DO407)
-- 2018: [Developing on AWS](https://aws.amazon.com/training/course-descriptions/developing/)
-- 2018: [Systems Operations on AWS](https://aws.amazon.com/training/course-descriptions/sysops)
-- 2019: [DevOps Engineering on AWS](https://aws.amazon.com/it/training/course-descriptions/devops-engineering/)
-- 2021: [Red Hat Linux Automation with Ansible (RH294)](https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible)
-- 2021: Data Center Automation with vRealize Orchestrator and vSphere PowerCLI
-- 2021: Building Modern Python Applications on AWS, Coursera
-- 2021: Learn Rust by Building Real Application, udemy
 - 2022: Ultimate Rust Crash Course, udemy
-
+- 2021: Learn Rust by Building Real Application, udemy
+- 2021: Building Modern Python Applications on AWS, Coursera
+- 2021: Data Center Automation with vRealize Orchestrator and vSphere PowerCLI
+- 2021: [Red Hat Linux Automation with Ansible (RH294)](https://www.redhat.com/en/services/training/rh294-red-hat-linux-automation-with-ansible)
+- 2019: [DevOps Engineering on AWS](https://aws.amazon.com/it/training/course-descriptions/devops-engineering/)
+- 2018: [Systems Operations on AWS](https://aws.amazon.com/training/course-descriptions/sysops)
+- 2018: [Developing on AWS](https://aws.amazon.com/training/course-descriptions/developing/)
+- 2018: Red Hat Automation with Ansible (DO407)
+- 2017: Red Hat JBoss Application Administration I (JB248)
+- 2017: Suse Linux 12 academy, SUSE OpenStack Cloud Academy
+- 2016: Red Hat Enterprise Virtualization (RH318)
+- 2015: RHCE Certification lab with RHCSA and RHCE exams (RH300)
+- 2014: Red Hat OpenStack Administration with Expertise Exam (CL211)
+- 2011: RH442 Red Hat Enterprise Performance Tuning 
+- 2011: RH346 Red Hat Enterprise Clustering and Storage Management
+- 2010: MIE3520 Win32 System Programming presso Mondadori Informatica
+- 2010: MIE3510 Programming in ANSI C++  presso Mondadori Informatica
+- 2009: Java Fundamentals, the Java programming language presso Overnet Education
+- 2008: Cisco BCMSN - Building Cisco Multilayer Switched Networks
+- 2007: Microsoft MOC 2159 Deploying and Managing Microsoft Internet Security and Acceleration (ISA) Server
+- 2007: Microsoft MOC 2150 Designing a Secure Microsoft Windows 2000 Network
+- 2006: Microsoft MOC 2153 Implementing a Microsoft Windows 2000 Network Infrastructure
+- 2006: Microsoft MOC 2087 Implementing Windows 2000 clustering
+- 2005: ES-331 Sun Enterprise Cluster Administration Veritas Volume
 
 ## Other experiences
 
+- 2022: workshop about web application testing for a private company
+- 2021: held c# training for young students doing internship in a private company
+- 2021: held an IoT server security webinar for [Verona FabLab](https://www.veronafablab.it/)
+- 2020: held a Cryptography / security (blockchain) training course for [Verona FabLab](https://www.veronafablab.it/)
+- 2019: held Linux and Python and training courses 
+- 2018: gave a talk for [FEVR](http://www.fevr.it/eventi/2018/10/challenge-of-the-go-bots/) about chatbots and Go Programming language. Slides linked [here](http://go-talks.appspot.com/github.com/ilmanzo/ChallengeOfTheGoBots/present.slide)
+- 2017: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
+- 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
 - 2016: held a Python training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
-- 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
-- 2017: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
-- 2018: gave a talk for [FEVR](http://www.fevr.it/eventi/2018/10/challenge-of-the-go-bots/) about chatbots and Go Programming language. Slides linked [here](http://go-talks.appspot.com/github.com/ilmanzo/ChallengeOfTheGoBots/present.slide)
-- 2019: held Linux and Python and training courses 
-- 2020: held a Cryptography / security (blockchain) training course for [Verona FabLab](https://www.veronafablab.it/)
-- 2021: held an IoT server security webinar for [Verona FabLab](https://www.veronafablab.it/)
-- 2021: held c# training for young students doing internship in a private company
-- 2022: workshop about web application testing
-

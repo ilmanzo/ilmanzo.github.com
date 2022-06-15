@@ -190,7 +190,6 @@ echo "$otp"
 
 have fun,
 
-
 ## Credits
 
 Kudos to [Sasha](https://github.com/sashajenner) for most of detailed instructions

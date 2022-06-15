@@ -14,7 +14,10 @@ I work with one or more terminal command-line always opened and having to pick u
 
 Therefore I was looking for a way to login through [Okta](https://www.okta.com/) portals *without* a phone. 
 You may argument that this defeats the whole meaning of MFA, but let's say *it's only an hack for research and fun purpose* ...
-So use it at your own risk, and be sure to always protect your credentials: security is a very serious topic.
+
+## DISCLAIMER:
+
+This setup should be used only on ANOTHER trusted device, so use it at your own risk, and be sure to always properly protect your credentials: security is a very serious topic.
 
 ## TLDR:
 

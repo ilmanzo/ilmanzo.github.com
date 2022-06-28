@@ -50,6 +50,11 @@ icon = "fab fa-twitter"
 title = "Twitter"
 url = "https://twitter.com/ilmanzo"
 
+[[params.socialLinks]]
+icon = "fas fa-rss-square"
+title = "RSS Feed"
+url = "https://ilmanzo.github.io/index.xml"
+
 
 [menu]
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "playing with eBPF interface -1"
+title: "playing with eBPF interface - 1"
 description: "some fun experiments with tracing and snooping linux kernel"
 categories: programming
 tags: [python, C, linux, programming, learning, kernel, ebpf]

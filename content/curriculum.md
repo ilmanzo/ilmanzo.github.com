@@ -8,17 +8,22 @@ author = "Andrea Manzini"
 
 ## Fundamentals
 
-- studied electronics and telecommunications
-- started working in IT industry since 1993
-- first Linux server installed on 1995
-- 1999-2000: developer, DBA Oracle and sysadmin VAX/VMS
-- 2000-2001: sysadmin, network administrator in a local Internet Service Provider Netbusiness spa
-- 2001-2005: network & security administrator in Quercia Software spa
-- 2005-2011: developer of remote payments and remote banking product for Unicredit group
-- 2011-2013: linux senior system engineer, Unicredit
-- 2013-2016: linux senior system engineer, [Value Transformation Services](https://www.v-tservices.com/)
-- 2017-2022: cloud & automation, [Value Transformation Services](https://www.v-tservices.com/) 
-- 2022-now: QE Automation Engineer, [SUSE](https://www.suse.com/) 
+- started working in IT industry since 1993 - first Linux server installed on 1995
+- 1999-2000: *developer, DBA Oracle and VAX/VMS sysadmin*
+  Implemented customizations and migrations on world largest library management software
+- 2000-2001: *sysadmin, network administrator* in a local Internet Service Provider Netbusiness spa
+  Managed ISP services, network and operations
+- 2001-2005: *network & security administrator* in Quercia Software spa
+  Administration of LAN and WAN devices, security and implementation of VoIP infrastructure
+- 2005-2011: *developer* of remote payments and remote banking product for Unicredit group
+  Worked on remote banking products, both on desktop and POS technologies
+- 2011-2013: *linux system engineer*, Unicredit
+- 2013-2016: *linux senior system engineer*, [Value Transformation Services](https://www.v-tservices.com/)
+  Managed and introduced full automation on a multi-datacenter fleet of approx 18.000 linux servers
+- 2017-2022: *cloud & automation senior sw engineer*, [Value Transformation Services](https://www.v-tservices.com/) 
+  Worked on a fully automated hybrid cloud implementation. Deliver and manage, with DevOps best practices, a custom platform that customer uses to request IaaS and PaaS solutions
+- 2022-now: *QE Automation Engineer*, [SUSE](https://www.suse.com/) 
+  Automated test development and quality assurance for SUSE product release. Became maintainer of some RPM package. Opensource contributor
 
 ## Certifications
 
@@ -75,6 +80,7 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2022: became maintainer of rpm packages
 - 2022: workshop about web application testing for a private company
 - 2021: held c# training for young students doing internship in a private company
 - 2021: held an IoT server security webinar for [Verona FabLab](https://www.veronafablab.it/)

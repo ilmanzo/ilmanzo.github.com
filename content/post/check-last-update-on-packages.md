@@ -12,6 +12,10 @@ being lazy, I made a small utility to check last pkgs update date on [Open Build
 
 You can find the project repository [on my github](https://github.com/ilmanzo/package_last_update), but it's so simple I can paste also here.
 
+The [usage](https://github.com/ilmanzo/package_last_update/blob/master/README.md) is pretty simple: just run the command giving it a package name, and then it will tell you when it was last updated. With this information, you can decide/check if the package needs some work on!
+
+
+
 <!--more-->
 
 {{< highlight python >}}

@@ -12,6 +12,8 @@ I got bored of *'waiting'* for an [OpenQA](http://open.qa/) [openSUSE](https://o
 
 For the same purpose there's also the excellent and full-fledged [openqa-mon](https://openqa-bites.github.io/posts/2021-02-25-openqa-mon/), but I took the chance to learn something by implementing a simpler version myself.
 
+<!--more-->
+
 {{< highlight bash >}}
 #!/bin/sh
 JOB=$1

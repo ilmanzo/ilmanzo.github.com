@@ -19,6 +19,7 @@ This program is only for didactic use and not intended for deployment in a produ
 
 If you want to have it exposed on the public internet, you must map port 22 of your wan router to the internal server port ( 2222 by default)... Do it at your risk!
 
+<!--more-->
 
 {{< highlight go >}}
 

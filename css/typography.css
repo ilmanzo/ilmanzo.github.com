@@ -1,6 +1,7 @@
 /* Fonts */
 :root {
     --font-monospace: "Fira Mono", monospace;
+    --font-sansserif: "Verdana", sans-serif;
 }
 
 body {
@@ -10,11 +11,11 @@ body {
 }
 
 /* Headings */
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 h6 {
     font-size: 1rem;
     margin: 1.5rem 0 0 0;
@@ -39,20 +40,37 @@ h5+h6 {
     margin: 0;
 }
 
-h1:before { content: "# "; }
-h2:before { content: "## "; }
-h3:before { content: "### "; }
-h4:before { content: "#### "; }
-h5:before { content: "##### "; }
-h6:before { content: "###### "; }
+h1:before {
+    content: "# ";
+}
 
-h1:before, 
-h2:before, 
-h3:before, 
-h4:before, 
-h5:before, 
+h2:before {
+    content: "## ";
+}
+
+h3:before {
+    content: "### ";
+}
+
+h4:before {
+    content: "#### ";
+}
+
+h5:before {
+    content: "##### ";
+}
+
 h6:before {
-    color: var(--muted);
+    content: "###### ";
+}
+
+h1:before,
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before {
+    color: var(--bright-bg);
 }
 
 h1:first-child {
@@ -67,11 +85,11 @@ p {
 /* Links */
 
 a:link, a:visited {
-    color: var(--link);
+    color: var(--fg);
 }
 
-a:hover, a:active, a.active {
-    color: var(--hover);
+a:hover, a:active {
+    color: var(--bright-fg);
 }
 
 /* Lists */
@@ -94,29 +112,29 @@ ol ol {
 
 ul li::marker {
     content: '∗\00A0';
-    color: var(--muted);
+    color: var(--bright-bg);
 }
 
 ol li::marker {
-    color: var(--muted);
+    color: var(--bright-bg);
 }
 
 dt {
-  margin: 0;
-  font-weight: bold;
+    margin: 0;
+    font-weight: bold;
 }
 
 dd {
-  margin: 0 0 0 1.5rem;
-  font-style: italic;
+    margin: 0 0 0 1.5rem;
+    font-style: italic;
 }
 
-dd + dt {
-  margin-top: 1.5rem;
+dd+dt {
+    margin-top: 1.5rem;
 }
 
 dl {
-  margin: 0 0 1.5rem 0;
+    margin: 0 0 1.5rem 0;
 }
 
 /* Blockquotes */
@@ -129,7 +147,7 @@ blockquote::before {
     position: absolute;
     left: -1.5rem;
     content: ">";
-    color: var(--muted);
+    color: var(--bright-bg);
 }
 
 .twitter-tweet::before {
@@ -140,12 +158,12 @@ blockquote::before {
 
 /* Code */
 pre,
-code, 
+code,
 kbd,
 samp {
-    background: var(--inner-bg) !important;
+    background: var(--dark-bg) !important;
     font-family: var(--font-monospace);
-    color: var(--off-fg);
+    color: var(--bright-bg);
 }
 
 pre {
@@ -163,7 +181,7 @@ strong {
 /* Highlighting */
 ::selection,
 mark {
-    background-color: var(--highlight);
+    background-color: var(--yellow);
     color: var(--bg);
 }
 
@@ -175,19 +193,21 @@ hr {
 
 hr:after {
     content: '---';
-    color: var(--muted);
+    color: var(--bright-bg);
 }
 
 
 /* Prevent super/sub from affecting line height */
-sup, sub {
+sup,
+sub {
     vertical-align: baseline;
     position: relative;
     top: -0.25rem;
     font-size: unset;
 }
-sub { 
-    top: 0.25rem; 
+
+sub {
+    top: 0.25rem;
 }
 
 /* Tables */
@@ -196,13 +216,18 @@ table {
     margin: 0 0 1.5rem 0;
     overflow-wrap: anywhere;
 }
-th, td {
+
+th,
+td {
     padding: 0 .75rem;
     vertical-align: top;
 }
-th:first-child, td:first-child {
+
+th:first-child,
+td:first-child {
     padding-left: 0;
 }
+
 th {
     text-align: inherit;
 }

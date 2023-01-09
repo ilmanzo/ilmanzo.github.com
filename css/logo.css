@@ -11,8 +11,7 @@
 
 .page__logo-inner {
     display: block;
-    background: var(--logo);
-    opacity: 0.90;
+    background: var(--green);
     padding: 0.25rem;
 }
 
@@ -23,7 +22,7 @@ a.page__logo-inner:link, a.page__logo-inner:visited {
 
 a.page__logo-inner:hover,
 a.page__logo-inner:active {
-    opacity: 1;
+    background: var(--bright-green);
 }
 
 .page__logo-inner:before {

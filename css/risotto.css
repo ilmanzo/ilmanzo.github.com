@@ -1,4 +1,3 @@
-@import 'colours.css';
 @import 'typography.css';
 @import 'layout.css';
 @import 'header.css';
@@ -7,6 +6,6 @@
 @import 'footer.css';
 
 body {
-    background-color: var(--bg);
+    background-color: var(--dark-bg);
     color: var(--fg);
 }

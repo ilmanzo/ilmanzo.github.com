@@ -8,10 +8,11 @@ author: Andrea Manzini
 date: 2023-01-09
 ---
 
-As a following on [previous post](https://ilmanzo.github.io/post/check-last-update-on-packages/), I added an useful feature in order to have more information about a package.
-
-Since I maintain some openSUSE packages, I want to be informed if they gets outdated and if other packagers have released newer versions.
 TLDR: This script now answers the question "Do some of my openSUSE packages have newer versions in other distros?"
+
+
+As a following on [previous post](https://ilmanzo.github.io/post/check-last-update-on-packages/), I added an useful feature in order to have more information about a package.
+Since I maintain some openSUSE packages, I want to be informed if they gets outdated and if other packagers have released newer versions.
 
 <!--more-->
 
@@ -63,7 +64,7 @@ No newer versions found in other repositories
 
 {{</ highlight >}}
 
-There are of course tons of possible improvements. For example use directly [osc-tiny](https://github.com/crazyscientist/osc-tiny) by [Andreas Hasenkopf](https://github.com/crazyscientist) and improve the OBS version detection . Pull requests are welcome! 
+There are of course tons of possible improvements. For example use directly [osc-tiny](https://github.com/crazyscientist/osc-tiny) by [Andreas Hasenkopf](https://github.com/crazyscientist) and improve the OBS version detection. At this stage for example it does not support macros . Pull requests are welcome! 
 
 Have fun ;) 
 

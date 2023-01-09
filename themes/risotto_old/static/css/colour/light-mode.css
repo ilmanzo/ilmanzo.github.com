@@ -1,0 +1,10 @@
+:root {
+    --bg: var(--white);
+    --dark-bg: var(--dark-white);
+    --bright-bg: var(--bright-black);
+    --fg: var(--black);
+    --bright-fg: var(--bright-black);
+    --logo-bg: var(--green);
+    --logo-hover: var(--bright-green);
+    --highlight-bg: var(--yellow);
+}

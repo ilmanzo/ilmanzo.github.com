@@ -4,7 +4,7 @@ title = "ilManzo's blog"
 theme = 'risotto'
 author = "Andrea Manzini"
 copyright = "© 2022 Andrea Manzini"
-paginate = 3
+paginate = 4
 DefaultContentLanguage = "en"
 enableInlineShortcodes = true
 enableEmoji = true
@@ -16,7 +16,7 @@ sectionPagesMenu = "main"
 [params]
 
 [params.theme]
-palette = "base16-dark"
+palette = "gruvbox-dark"
 mode = "dark-mode"
 
 # Sidebar: about/bio

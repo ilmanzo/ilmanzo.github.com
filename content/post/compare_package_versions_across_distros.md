@@ -43,17 +43,16 @@ for p in $(osc -A https://api.opensuse.org my packages | cut -d '/' -f 2) ; do .
 
 {{</ highlight >}}
 
-which output:
+which outputs:
 
-    rang last version on openSUSE:Factory is 3.2 changed on Dec 17 2022
-    Other 7 repos may have newer versions, consider updating!
-    pgn-extract last version on openSUSE:Factory is 22.11 changed on Dec 23 2022
-    flacon last version on openSUSE:Factory is 9.5.1 changed on Dec 26 2022
-    goodvibes last version on openSUSE:Factory is 0.7.5 changed on Oct 16 2022
-    openconnect last version on openSUSE:Factory is 9.01 changed on Dec 15 2022
-    oidentd last version on openSUSE:Factory is 3.0.0 changed on Oct 21 2022
-    pgbackrest last version on openSUSE:Factory is 2.43 changed on Dec 07 2022
-
+    - rang last version on openSUSE:Factory is 3.2 changed on Dec 17 2022
+      Other 7 repos may have newer versions, consider updating!
+    - pgn-extract last version on openSUSE:Factory is 22.11 changed on Dec 23 2022
+    - flacon last version on openSUSE:Factory is 9.5.1 changed on Dec 26 2022
+    - goodvibes last version on openSUSE:Factory is 0.7.5 changed on Oct 16 2022
+    - openconnect last version on openSUSE:Factory is 9.01 changed on Dec 15 2022
+    - oidentd last version on openSUSE:Factory is 3.0.0 changed on Oct 21 2022
+    - pgbackrest last version on openSUSE:Factory is 2.43 changed on Dec 07 2022
 
 
 There are of course tons of possible improvements. For example use directly [osc-tiny](https://github.com/crazyscientist/osc-tiny) by [Andreas Hasenkopf](https://github.com/crazyscientist) and improve the OBS version detection. At this stage for example it does not yes support rpm macros. Pull requests are welcome! 

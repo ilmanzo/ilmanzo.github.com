@@ -55,7 +55,7 @@ which outputs:
     - pgbackrest last version on openSUSE:Factory is 2.43 changed on Dec 07 2022
 
 
-There are of course tons of possible improvements. For example use directly [osc-tiny](https://github.com/crazyscientist/osc-tiny) by [Andreas Hasenkopf](https://github.com/crazyscientist) and improve the OBS version detection. At this stage for example it does not yes support rpm macros. Pull requests are welcome! 
+There are of course tons of possible improvements. For example use directly [osc-tiny](https://github.com/crazyscientist/osc-tiny) by [Andreas Hasenkopf](https://github.com/crazyscientist) and improve the OBS version detection. At this stage for example it does not yet support rpm macros. Pull requests are welcome! 
 
 Have fun ;) 
 

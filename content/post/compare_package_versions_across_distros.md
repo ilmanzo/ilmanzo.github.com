@@ -42,25 +42,13 @@ A companion shell script gets the info for all the packages I'm in charge of; I 
 for p in $(osc -A https://api.opensuse.org my packages | cut -d '/' -f 2) ; do ./last_update $p ; done
 
 rang last version on openSUSE:Factory is 3.2 changed on Dec 17 2022
-Other repos may have newer versions, consider updating!
-
+Other 7 repos may have newer versions, consider updating!
 pgn-extract last version on openSUSE:Factory is 22.11 changed on Dec 23 2022
-No newer versions found in other repositories
-
 flacon last version on openSUSE:Factory is 9.5.1 changed on Dec 26 2022
-No newer versions found in other repositories
-
 goodvibes last version on openSUSE:Factory is 0.7.5 changed on Oct 16 2022
-No newer versions found in other repositories
-
 openconnect last version on openSUSE:Factory is 9.01 changed on Dec 15 2022
-No newer versions found in other repositories
-
 oidentd last version on openSUSE:Factory is 3.0.0 changed on Oct 21 2022
-No newer versions found in other repositories
-
 pgbackrest last version on openSUSE:Factory is 2.43 changed on Dec 07 2022
-No newer versions found in other repositories
 
 {{</ highlight >}}
 

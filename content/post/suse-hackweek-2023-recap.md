@@ -23,7 +23,10 @@ My project has four main purposes:
 
 So I decided to write a simple library that lets you describe a container image with a DSL (Domain Specific Language) that reflects the standard, declarative style standard for Dockerfile and Containerfile. The benefits of this approach are multiple: you have the compiler checking for any errors and you can use a proper programming language to add any logic you need.
 
-Usage is straightforward: you can basically mix Containerfile syntax with powerful Nim language contructs: variables, loops, arrays and [anything else](https://nim-lang.org/docs/manual.html). Nim compiles to small native binary but can also generate javascript, see [these](https://pietroppeter.github.io/p5nim/okazz_220919a.html) beautiful [generative art](https://pietroppeter.github.io/p5nim/okazz_221026a.html) examples.
+Nim is a statically typed compiled systems programming language. It compiles to small native binary but can also generate javascript, see [these](https://pietroppeter.github.io/p5nim/okazz_220919a.html) beautiful [generative art](https://pietroppeter.github.io/p5nim/okazz_221026a.html) examples.
+
+The library usage is straightforward: you can basically mix Containerfile syntax with powerful Nim language contructs: variables, loops, arrays and [anything else](https://nim-lang.org/docs/manual.html).
+
 
 {{< highlight nim >}}
 import containertools

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "a SUSE hackweek22 report"
-description: "writeup about learnings and achievements in last hackweek"
+description: "writeup about learnings and achievements in last SUSE hackweek"
 categories: hacking
 tags: [linux, programming, testing, nim, container]
 author: Andrea Manzini

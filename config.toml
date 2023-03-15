@@ -1,7 +1,7 @@
 baseURL = 'https://ilmanzo.github.io/'
 languageCode = 'en-us'
 title = "ilManzo's blog"
-theme = 'risotto'
+theme = 'PaperMod'
 author = "Andrea Manzini"
 copyright = "© 2012-2023 Andrea Manzini"
 paginate = 4
@@ -12,8 +12,13 @@ googleAnalytics = 'G-6PN4FTRLNL'
 
 # Automatically add content sections to main menu
 sectionPagesMenu = "main"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
 
 [params]
+defaultTheme = "dark"
 
 [params.theme]
 palette = "base16-dark"

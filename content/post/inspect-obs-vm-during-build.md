@@ -1,20 +1,22 @@
 ---
 layout: post
-title: "debugging a problematic build"
-description: "a technique to follow build process"
+title: "Debugging a problematic build"
+description: "A technique to inspect Open Build Service build process"
 categories: linux
 tags: [linux, programming, testing, nim, building, obs, ]
 author: Andrea Manzini
 date: 2023-03-14
 ---
 
-Today it's [PI Day](https://en.wikipedia.org/wiki/Pi_Day), and among other activities I decided to submit an openSUSE package update for the [nim compiler](https://nim-lang.org/). 
+# The Good  :innocent:
+Today I decided to submit an openSUSE package update for the [nim compiler](https://nim-lang.org/). 
 It went almost all well but unfortunately I faced a problem: on the i586 platform it fails to build. 
 
 <!--more-->
 
-In this particolar situation, [Open Build Service](https://build.opensuse.org/) logs were not so useful. They only says that the vm running the build was terminated after 5400 seconds of inactivity, meaning that something got stuck and the system waited a lot before terminating the process:
+In this particolar situation, [Open Build Service](https://build.opensuse.org/) logs were not so useful. They only says that the vm running the build was terminated after 5400 seconds of inactivity, meaning that something got stuck and the system kindly waited a lot before terminating the process:
 
+# The Bad :sweat:
 
     [ 6748s] qemu-kvm: terminating on signal 15 from pid 14593 (<unknown process>)
     [ 6748s] ### VM INTERACTION END ###
@@ -24,13 +26,16 @@ In this particolar situation, [Open Build Service](https://build.opensuse.org/) 
 
     Job seems to be stuck here, killed. (after 5400 seconds of inactivity)
 
-So I tried to reproduce the problem on my local system:
+So as a first move, I try to reproduce the problem on my local system:
 
 {{< highlight bash >}}
 $ osc build openSUSE_Factory i586
 {{</ highlight >}}
 
-After some output, it hangs running the unit test suite; so it's a reproducible issue, but still we don't know the reason. 
+After some output, it hangs running the unit test suite; good news because means it's a reproducible issue, but still *we don't know the reason*. 
+
+# The Ugly :frowning:
+
 Build happens inside a qemu-kvm virtual machine, which is spawned and killed on demand; can we break inside this vm ?
 Well, we could leverage the **QEMU Monitor** to send commands via an *Unix Socket*, but there's another solution: `osc` has a cool option to start a telnet server in the build system.
 
@@ -53,8 +58,12 @@ Close enough, seems we only need to add some missing packages to the build virtu
 osc build openSUSE_Factory i586 --clean -x procps -x psmisc -x psutils -x iproute2 -x telnet-server --shell-after-fail --vm-telnet 8023
 {{</ highlight >}}
 
-I added the luxury of running `top` in the virtual machine; I mean, why not ? :) 
+I added the luxury of running `top` in the virtual machine; I mean, why not ? :smiley_cat:
 After running the build command, we are free to `telnet localhost 8023` and get a root shell inside our building environment.
 
-# We are inside! 
-Once here, it's simple to make it reach the hanging step, detect the problem from inside and solve with a simple fix in the `.spec` file, which means in this instance to exclude two special test cases from running in a 32 bit networkless system.
+# We are inside! :grin:
+Once here, it's simple to make the build reach the hanging step, detect the problem from inside and solve with a simple fix in the `.spec` file. 
+In this instance we need to exclude two GC test cases because they seems not running in a 32 bit networkless system, which is also worth to report upstream.
+
+# Post Scriptum:
+Today it's [PI Day](https://en.wikipedia.org/wiki/Pi_Day); Enjoy!

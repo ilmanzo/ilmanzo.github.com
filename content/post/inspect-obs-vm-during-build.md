@@ -32,6 +32,8 @@ So as a first move, I try to reproduce the problem on my local system:
 $ osc build openSUSE_Factory i586
 {{</ highlight >}}
 
+(You may need to change the `openSUSE_Factory` parameter with one of the repositories you are building for, configured at project level)
+
 After some output, it hangs running the unit test suite; good news because means it's a reproducible issue, but still *we don't know the reason*. 
 
 # The Ugly :frowning:
@@ -55,7 +57,7 @@ $ osc build openSUSE_Factory i586 --vm-telnet 8023
 Close enough, seems we only need to add some missing packages to the build virtual machine.
 
 {{< highlight bash >}}
-osc build openSUSE_Factory i586 --clean -x procps -x psmisc -x psutils -x iproute2 -x telnet-server --shell-after-fail --vm-telnet 8023
+$ osc build openSUSE_Factory i586 --clean -x procps -x psmisc -x psutils -x iproute2 -x telnet-server --shell-after-fail --vm-telnet 8023
 {{</ highlight >}}
 
 I added the luxury of running `top` in the virtual machine; I mean, why not ? :smiley_cat:

@@ -15,7 +15,7 @@ Then the size of input data grew, and also for a language comparison, I wanted t
 
 The usage is pretty similar to Python:
 
-{{<highlight dlang >}}
+{{<highlight d>}}
 import fileinput;
 import std.stdio;
 
@@ -34,7 +34,7 @@ Once compiled, this will lead to an executable that can accept any number of tex
 
 Thanks to the [range interface](https://tour.dlang.org/tour/en/basics/ranges); every struct / class implementing these methods can be used in a foreach statement.
 
-{{<highlight dlang >}}
+{{<highlight d >}}
 interface InputRange(E)
 {
         bool empty();

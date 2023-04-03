@@ -135,7 +135,7 @@ criterion_main!(benches);
 With this setup, we are able to run `cargo benchmark` and get cool statistics and measurements of a significant number of executions of our code :sunglasses:.
 
 ```
-     Running benches/benchmark.rs (target/release/deps/benchmark-8bdc3718c6c81796)
+Running benches/benchmark.rs (target/release/deps/benchmark-8bdc3718c6c81796)
 part1_1                 time:   [9.5933 µs 9.5953 µs 9.5974 µs]
 Found 20 outliers among 100 measurements (20.00%)
   5 (5.00%) low mild
@@ -160,7 +160,7 @@ pub fn part1_2(input: &[usize]) -> usize {
 Turns out our 'smart' implementation has slightly better performance, as **Criterion** is able to detect:
 
 ```
-     Running benches/benchmark.rs (target/release/deps/benchmark-8bdc3718c6c81796)
+Running benches/benchmark.rs (target/release/deps/benchmark-8bdc3718c6c81796)
 part1_2                 time:   [8.9454 µs 8.9482 µs 8.9505 µs]
                         change: [-6.9929% -6.8888% -6.7959%] (p = 0.00 < 0.05)
                         Performance has improved.
@@ -201,8 +201,6 @@ Found 5 outliers among 100 measurements (5.00%)
 ```  
 
 # Doin’ It Right
-
-Soundtrack: 
 
 Our new function is `~30%` faster, and the most important thing is that it runs in *O(n)* time since it iterates over the original data only once. 
 I don't want to keep this post too long, also because the main purpose of this exercise isn't abount finding the absolute fastest implementation, but rather to show how to set up a proper benchmark to measure your Rust code. 

@@ -3,7 +3,7 @@ layout: post
 title: "Old-School demo effects with Crystal"
 description: "revisiting old code with a new programming language"
 categories: programming
-tags: [programming, Crystal, demoscene ]
+tags: [programming, 'crystal lang', crystal, graphics, demoscene ]
 author: Andrea Manzini
 date: 2023-05-18
 ---
@@ -14,6 +14,7 @@ Technically speaking, the "plasma" effect is just a two variables noise function
 
 The interesting part here is the easyness of graphics programming in a Linux environment with a high level, yet performant and statically typed programming language.
 
-The code is straightforward and a simple port of the original 'C' source, I got surprised how the [Crystal Language](https://crystal-lang.org/) is easy to use and produces a quite fast native binary. If you want to check it out, you can find on my [github account](https://github.com/ilmanzo/plasmademo), in the meantime enjoy the mandatory screenshot :)
+The code is straightforward and a simple port of the original 'C' source, I got surprised how the [Crystal Language](https://crystal-lang.org/) is easy to use and produces a quite fast native binary. If you want to check it out, you can find on my [github account](https://github.com/ilmanzo/plasmademo); in the meantime enjoy the mandatory video/screenshot :)
 
-![plasma.gif](/img/plasma.gif)
+{{< video src="/img/plasma.mp4" type="video/mp4" preload="auto" >}}
+

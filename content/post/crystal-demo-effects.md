@@ -16,6 +16,10 @@ The interesting part here is the easyness of graphics programming in a Linux env
 
 The code is straightforward and a simple port of the original 'C' source, I got surprised how the [Crystal Language](https://crystal-lang.org/) is easy to use and produces a quite fast native binary. If you want to check it out, you can find on my [github account](https://github.com/ilmanzo/plasmademo); in the meantime enjoy the mandatory video/screenshot :)
 
+- static:
+![plasma](/img/plasma.png)
+
+- video:
 {{< video src="/img/plasma.mp4" type="video/mp4" preload="auto" >}}
 
 p.s. Thanks to [Ian Rash](https://github.com/sol-vin/raylib-cr) who created the awesome bindings! 

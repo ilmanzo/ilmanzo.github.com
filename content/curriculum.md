@@ -87,7 +87,8 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
-- 2022: became maintainer of rpm packages on [Open Build Service](https://build.opensuse.org)
+- 2023: became [Ambassador](https://forum.crystal-lang.org/t/ambassador-introductions/5734) for the [Crystal Programming Language](https://crystal-lang.org/)
+- 2022: became maintainer of openSUSE rpm packages on [Open Build Service](https://build.opensuse.org)
 - 2022: workshop about web application testing for a private company
 - 2021: held c# training for young students doing internship in a private company
 - 2021: held an IoT server security webinar for [Verona FabLab](https://www.veronafablab.it/)

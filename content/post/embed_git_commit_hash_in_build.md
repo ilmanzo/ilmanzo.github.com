@@ -31,7 +31,7 @@ Including the Git commit hash into an executable program can be a helpful practi
 
 - **Testing and QA**: By including the Git commit hash in the executable, testers and quality assurance teams can quickly identify the version being tested, making it easier to report bugs and issues accurately.
 
-Overall, including the Git commit hash in an executable program improves traceability, accountability, and collaboration throughout the development and deployment lifecycle, making it an important best practice for software development teams. While it's mostly documented for [mainstream languages](https://developers.redhat.com/articles/2022/11/14/3-ways-embed-commit-hash-go-programs) 
+Overall, including the Git commit hash in an executable program improves traceability, accountability, and collaboration throughout the development and deployment lifecycle, making it an important best practice for software development teams. While it's a mostly documented practice for [mainstream languages](https://developers.redhat.com/articles/2022/11/14/3-ways-embed-commit-hash-go-programs), I'd like to show and promote solutions also on other languages.
 
 
 ## Crystal Solution

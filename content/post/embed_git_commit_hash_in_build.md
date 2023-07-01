@@ -84,7 +84,7 @@ const
   programVersion: string = "0.1.0"
 
 when isMainModule:
-  echo fmt"This is MyProgram v{programVersion}#{gitCommitHash}"
+  echo fmt"This is MyProgram v{programVersion}#[{gitCommitHash}]"
 
 {{</ highlight >}}
 

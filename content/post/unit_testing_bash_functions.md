@@ -14,8 +14,9 @@ Unit testing of Bash functions involves the process of systematically verifying 
 
 ## Fixing bugs
 
-Working on a bugfix for an internal shell script, I wanted to add some unit tests to ensure correctness. After a quick search, I found this [single-file "framework"](https://github.com/rafritts/bunit) (thanks, Ryan) that provides *xUnit*-style assertions.
-The main problem was that the original script directly manipulates the host filesystem, so it can be hard to extract and *mock* those interactions for proper testing.
+Working on a bugfix for an internal shell script, I wanted to add some unit tests to ensure correctness. After a quick search, I found this [single-file "framework"](https://github.com/rafritts/bunit) (thanks, Ryan) that provides *xUnit*-style assertions. So we can use it as a starting point.
+
+The main problem with the script under test is that it contains functions that directly manipulates the host filesystem, so it can be hard to extract and *mock* those interactions for proper testing.
 
 So I decided to use a simple container to run the script in an isolated environment. While we are at, no need for daemons, just use rootless podman. This is the main script, the only to be executed and which runs all the testsuites:
 

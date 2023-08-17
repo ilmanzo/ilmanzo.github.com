@@ -17,7 +17,7 @@ Unit testing of Bash functions involves the process of systematically verifying 
 Working on a bugfix for an internal shell script, I wanted to add some unit tests to ensure correctness. After a quick search, I found this [single-file "framework"](https://github.com/rafritts/bunit) (thanks, Ryan) that provides *xUnit*-style assertions.
 The main problem was that the original script directly manipulates the host filesystem, so it can be hard to extract and *mock* those interactions for proper testing.
 
-So I decided to use a simple container to run the script in an isolated environment. While we are at, no need for daemons, just use rootless podman:
+So I decided to use a simple container to run the script in an isolated environment. While we are at, no need for daemons, just use rootless podman. This is the main script, the only to be executed and which runs all the testsuites:
 
 {{< highlight bash >}}
 #!/bin/bash
@@ -30,7 +30,7 @@ if [ "$EUID" -eq 0 ]
   exit
 fi
 # optionally, you can use different distro images here
-podman run -v ..:/mnt registry.opensuse.org/opensuse/leap:latest bash /mnt/unit_tests/test_lib_nfs.ut
+podman run -v ..:/mnt registry.opensuse.org/opensuse/leap:latest bash /mnt/unit_tests/test_mylib.ut
 {{</ highlight >}}
 
 ## Run your test without damaging your system

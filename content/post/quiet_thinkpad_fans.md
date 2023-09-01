@@ -3,7 +3,7 @@ layout: post
 title: "Quiet fans on Thinkpad P15"
 description: "How to lower the default fan noise on Thinkpad P15 Gen2"
 categories: hardware
-tags: [linux, hacking, sysadmin, thinkpad, fan, noise]
+tags: [linux, desktop, sysadmin, thinkpad, fan, noise]
 author: Andrea Manzini
 date: 2023-09-01
 ---
@@ -11,11 +11,11 @@ date: 2023-09-01
 ## Intro
 
 The `Thinkpad P15` laptop is a nice linux machine, but there is an annoying detail, as [Arch wiki](https://wiki.archlinux.org/title/Lenovo_ThinkPad_P15_Gen_1) writes:
-*"The default operation of fans is noisy, as they are basically at medium power all the time. The thinkfan program can be used to create a quieter operation, while retaining reasonable temperatures."* 
+*"The default operation of fans is noisy, as they are basically at medium power all the time. The thinkfan program can be used to create a quieter operation, while retaining reasonable temperatures."* . Let's make it quieter.
 
 ## Prerequisite
 
-Install [thinkfan](https://github.com/vmatare/thinkfan) rpm package and enable service:
+Install [thinkfan](https://github.com/vmatare/thinkfan) rpm package and enable the daemon:
 ```shell
 # zypper in thinkfan && systemctl enable --now thinkfan
 ```
@@ -25,12 +25,13 @@ $ cat /etc/modules-load.d/thinkpad.conf
 thinkpad_acpi
 coretemp
 
-# echo 'options thinkpad_acpi fan_control=1 experimental=1' > /etc/modprobe.d/thinkpad_acpi.conf
+$ cat /etc/modprobe.d/thinkpad_acpi.conf
+options thinkpad_acpi fan_control=1 experimental=1
 ```
 
 ## Configuration
 
-The configuration consists in a single, short file. On the first part we need to specify the `virtual file` containing the temperatures; then the file which controls the fan speed, and a third section wich maps the `fan level` to the temperature range:
+The daemon configuration consists in a single and short file. On the first part we need to specify the `virtual file` containing the temperatures; then the file which controls the fan speed, and a third section wich maps the `fan level` to the temperature range:
 
 ```shell
 $ cat /etc/thinkfan.conf 

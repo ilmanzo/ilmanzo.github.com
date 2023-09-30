@@ -57,4 +57,3 @@ levels:
 ## Conclusion
 
 Depending on your system, you can use [many other programs](https://wiki.archlinux.org/title/fan_speed_control) to control fan speed in linux; thinkfan has the advantage to be lightweight and very configurable.
-

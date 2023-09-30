@@ -14,6 +14,8 @@ As you can see, I enjoy minimalism and pragmatic solutions for a problem. I am f
 
 If you are interested, you can find my resume following this [link](/curriculum) or contact me using social links on this page.
 
+If you appreciate my work, you can buy me a book from my [wishlist](https://www.amazon.it/hz/wishlist/ls/20DQF8QV2FJAZ?ref_=wl_share)
+
 ## About this site
 
 This site is entirely static HTML, built with [Hugo](https://gohugo.io/) website generator

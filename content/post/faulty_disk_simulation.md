@@ -10,7 +10,7 @@ date: 2023-11-19
 
 ## *"You sound like a broken record"* 
 
-Is something we complain when someone repeats again and again the same concepts. But even broken disks can sometime be useful... 
+Is something we complain when someone repeats again and again the same concepts. But even broken disks can sometime be useful 
 
 DISCLAIMER: No filesystem or device were harmed in the making of this experiment 😉
 
@@ -18,12 +18,12 @@ DISCLAIMER: No filesystem or device were harmed in the making of this experiment
 Image credits: [Mick Haupt](https://www.pexels.com/@mickhaupt/)
 
 
-In this article I would like to explore the tools we have available in linux to simulate dealing with broken disks, that is, drives that more or less randomly report errors. 
+In this article I would like to explore the powerful tools we have in Linux to simulate dealing with broken disks, that is, drives that more or less randomly report errors. 
 Why is this important ? Because by simulating errors that will also happen sooner or later in the real world, we are able to create software that is more robust and can withstand any problems on the infrastructure. 
 
 ## Setup
 
-In order not to create problems in our development system, and to make the process as portable as possible, we start by creating a dummy 1GB disk based on the loop filesystem. 
+In order not to have troubles in our development system, and to make the process as portable as possible, we start by creating a dummy 1GB disk based on the [loop device](https://en.wikipedia.org/wiki/Loop_device).
 
 ```bash
 # dd if=/dev/zero of=/myfakedisk.bin bs=1M count=1024
@@ -31,7 +31,7 @@ In order not to create problems in our development system, and to make the proce
 1024+0 records out
 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 0.446898 s, 2.4 GB/s
 
-# losetup -P /dev/loop0 blockfile
+# losetup /dev/loop0 /myfakedisk.bin
 ```
 
 Now we can use the loop device just like any other block device: we can create a filesystem and mount it
@@ -53,7 +53,7 @@ Writing superblocks and filesystem accounting information: done
 # mkdir /mnt/good && mount /dev/loop0 /mnt/good && echo "test" > /mnt/good/test.txt && umount /mnt/good
 ```
 
-our working "disk" is ready, now we can create a faulty one using linux's [device mapper](https://docs.kernel.org/admin-guide/device-mapper/index.html) features
+our working "virtual disk" is ready, now we can create a faulty one using linux's [device mapper](https://docs.kernel.org/admin-guide/device-mapper/index.html) features.
 
 ## What's device mapper ?
 
@@ -62,9 +62,9 @@ Image credits: [Monstera Production](https://www.pexels.com/@gabby-k/)
 
 The Linux Device Mapper is a kernel-level framework that enables the creation of virtual block devices by mapping physical storage devices or logical volumes to these virtual devices. It operates within the Linux kernel, providing a layer for creating, managing, and manipulating storage devices through various mapping techniques such as mirroring, striping, encryption, and snapshots. This framework allows for the implementation of advanced storage features like volume management, RAID, and thin provisioning, offering greater flexibility, scalability, and reliability in managing storage resources within the Linux operating system.
 
-Basically we are going to create a "map" between our working device and a "new" one, with this schema:
+Basically we are going to create a "map" between our working device and a "new" one, with this rough schema:
 
-- from sector 0 to 2047, get the data from the underlying device
+- from sector 0 to 2047, get the data from the underlying device (because we don't want to mess with partition table and metadata)
 - from sector 2048 to half disk size, return an error, or the original data, with 20% odds of failure
 - from half size to the end, return again the data from the underlying device
 
@@ -92,9 +92,9 @@ For each table entry, we need to specify:
 - start sector/offset of mapping
 - size of the mapping 
 - which mapper is being used
-- options of the mapper 
+- options of the mapper (for details refer to the [documentation](https://docs.kernel.org/admin-guide/device-mapper/index.html))
 
-In this setup we are using the [linear](https://docs.kernel.org/admin-guide/device-mapper/linear.html) mapper and the [flakey](https://docs.kernel.org/admin-guide/device-mapper/dm-flakey.html) one. Another useful can be [delay](https://docs.kernel.org/admin-guide/device-mapper/delay.html) to simulate very slow disks or [dust](https://docs.kernel.org/admin-guide/device-mapper/dm-dust.html) that emulates the behavior of bad sectors at arbitrary locations, and the ability to enable the emulation of the failures at an arbitrary time.
+In this setup we are using the [linear](https://docs.kernel.org/admin-guide/device-mapper/linear.html) mapper and the [flakey](https://docs.kernel.org/admin-guide/device-mapper/dm-flakey.html) one. Another useful one can be [delay](https://docs.kernel.org/admin-guide/device-mapper/delay.html) to simulate very slow disks or [dust](https://docs.kernel.org/admin-guide/device-mapper/dm-dust.html) that emulates the behavior of bad sectors at arbitrary locations, and the ability to enable the emulation of the failures at an arbitrary time.
 
 ## Let's try it out
 
@@ -133,7 +133,7 @@ dd: failed to open 'trytowrite.bin': Read-only file system
 
 ## Disk failure is a success! 
 
-As we can see, at first some I/O operations succeeds, then disk fails and in `dmesg` log we can find more details:
+As we can see, at first some I/O operations succeeds, then the disk fails and in `dmesg` log we can find more details:
 
 ```
 [ 7962.645178] EXT4-fs (dm-0): error loading journal
@@ -165,9 +165,8 @@ As we can see, at first some I/O operations succeeds, then disk fails and in `dm
 [ 8016.961142] EXT4-fs error (device dm-0): ext4_journal_check_start:83: comm kworker/u2:3: Detected aborted journal
 [ 8016.966200] EXT4-fs error (device dm-0): ext4_journal_check_start:83: comm dd: Detected aborted journal
 ```
-
 In a more general sense, these concepts fall under the principle of ["chaos engineering"](https://en.wikipedia.org/wiki/Chaos_engineering). 
-
+This can be also a good practice for junior sysadmins that wants to learn how to cope with a damaged filesystem and try to recover data.
 
 ## Cleanup
 

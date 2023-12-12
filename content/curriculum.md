@@ -59,6 +59,7 @@ author = "Andrea Manzini"
 
 ## Training
 
+- 2023: Schrödinger Session: Learning Rust, one step at the time from [Schrödinger Hat community](https://www.schrodinger-hat.it/)
 - 2022: Ultimate Rust Crash Course, udemy
 - 2021: Learn Rust by Building Real Application, udemy
 - 2021: Building Modern Python Applications on AWS, Coursera
@@ -87,6 +88,7 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2023: speaker at Google Developer Group Trento [DevFest](https://gdg.community.dev/events/details/google-gdg-trento-presents-devfest-trento-2023/)
 - 2023: became [Ambassador](https://forum.crystal-lang.org/t/ambassador-introductions/5734) for the [Crystal Programming Language](https://crystal-lang.org/)
 - 2022: became maintainer of openSUSE rpm packages on [Open Build Service](https://build.opensuse.org)
 - 2022: workshop about web application testing for a private company

@@ -1,7 +1,7 @@
 +++
 title = "my resume"
 description = "curriculum vitae"
-date = "2019-02-28"
+date = "2023-12-12"
 aliases = ["cv", "resume", "curriculum"]
 author = "Andrea Manzini"
 +++

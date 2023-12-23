@@ -14,7 +14,7 @@ author: Andrea Manzini
 
 Here I wrote an example, generating HTML output from a simple data structure.
 
-{{< highlight Go linenos >}}
+{{< highlight Go "linenos=true" >}}
     package main
 
     import (

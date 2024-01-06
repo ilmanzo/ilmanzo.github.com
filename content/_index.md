@@ -21,3 +21,5 @@ If you appreciate my work, you can buy me a book from my [wishlist](https://www.
 This site is entirely static HTML, built with [Hugo](https://gohugo.io/) website generator
 
 I use any text editor to write all content in [MarkDown](http://en.wikipedia.org/wiki/Markdown) formatting. After editing or creating, the entire site is versioned and published on [github pages](http://github.com)
+
+## Posts

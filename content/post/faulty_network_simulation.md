@@ -10,6 +10,8 @@ date: 2024-01-06
 
 ## Prelude
 
+This is a followup from my [previous post](https://ilmanzo.github.io/post/faulty_disk_simulation/) and a sort of continuation on the series of the topic, where we are exploring ways to make our test system more "unreliable" in order to observe if our applications behave nicely under challenging and not-ideal environments.
+
 In this article we are going to explore some linux technologies:
 - Network Namespaces (**netns**)
 - Virtual Ethernet Devices (**veth**)

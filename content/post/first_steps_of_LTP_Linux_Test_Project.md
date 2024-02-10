@@ -89,6 +89,8 @@ For a reference of the syscalls, just consult your system's **man pages**. As a 
 
 ## 👟 How to run the test
 
+Thanks to the build system setup, we can just `make` our single testcase and run the standalone executable. LTP will add lots of useful information to our little program:
+
 ```bash
 $ make open03
 [... compiler messages omitted...]
@@ -105,7 +107,7 @@ skipped  0
 warnings 0
 ```
 
-The compiled executable is also accepting some options, courtesy of the LTP framework:
+The compiled executable is also accepting some options, again courtesy of the LTP framework:
 
 ```bash
 ./open03 -h

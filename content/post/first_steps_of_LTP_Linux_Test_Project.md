@@ -110,7 +110,7 @@ warnings 0
 The compiled executable is also accepting some options, again courtesy of the LTP framework:
 
 ```bash
-./open03 -h
+$ ./open03 -h
 Environment Variables
 ---------------------
 KCONFIG_PATH         Specify kernel config file

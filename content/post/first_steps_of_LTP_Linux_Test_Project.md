@@ -182,10 +182,12 @@ After saving your source code with a name like `mynewtest01.c`, you just need to
 ```bash
 $ make mynewtest01
 CC testcases/kernel/syscalls/open/mynewtest01
-ls -l mynewtest*
+
+$ ls -l mynewtest*
 -rwxr-xr-x 1 andrea andrea 738064 Feb 10 11:46 mynewtest01
 -rw-r--r-- 1 andrea andrea    475 Feb 10 11:46 mynewtest01.c
-./mynewtest01
+
+$ ./mynewtest01
 tst_test.c:1741: TINFO: LTP version: 20240129
 tst_test.c:1625: TINFO: Timeout per run is 0h 00m 30s
 mynewtest01.c:5: TINFO: example setup

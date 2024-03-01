@@ -6,19 +6,20 @@ categories: programming
 tags: [rust, device, programming, arm]
 author: Andrea Manzini
 date: 2024-03-01
-draft: true
 ---
 
-## Intro
+### An old find
 
-I had an old cubietruck board collecting dust in a drawer, so why not give it a try ?
-- installed arm version of arch linux
+I found an old [cubieboard3 (cubietruck)](http://cubieboard.org/tag/cubietruck/) collecting dust in a drawer, so I took the chance to try out Rust cross compilation and collect here some notes about the process. Here's the baby:
 
-```
-$ uname -a
-Linux alarm 6.2.10-1-ARCH #1 SMP PREEMPT Fri Apr  7 11:19:04 MDT 2023 armv7l GNU/Linux
+![cubietruck](/img/cubietruck.jpg)
 
-$ cat /proc/cpuinfo 
+### Give it a penguin 
+
+First of all, I installed an ARM linux distro on a MicroSD card and started the device:
+
+```bash
+[user@arm ~]$ cat /proc/cpuinfo 
 processor	: 0
 model name	: ARMv7 Processor rev 4 (v7l)
 BogoMIPS	: 50.52
@@ -43,11 +44,14 @@ Hardware	: Allwinner sun7i (A20) Family
 Revision	: 0000
 ```
 
-So our device is ARM model `v7l` ; this means is a 32bit CPU, if you are curious there's also a [reference manual](https://dl.linux-sunxi.org/A20/A20%20User%20Manual%202013-03-22.pdf)
+So our device is ARM model `v7l` ; this means is a 32bit CPU, if you are curious there's also a [reference manual](https://dl.linux-sunxi.org/A20/A20%20User%20Manual%202013-03-22.pdf) around. Now we will work from a development machine.
+
+### Get Rusty
 
 Let's check rust support:
-```
-$ rustup target list | grep armv7
+
+```bash
+[x86]$ rustup target list | grep armv7
 armv7-linux-androideabi
 armv7-unknown-linux-gnueabi
 armv7-unknown-linux-gnueabihf
@@ -57,22 +61,25 @@ armv7a-none-eabi
 armv7r-none-eabi
 armv7r-none-eabihf
 ```
+
 Plenty of options! I'd leave out android and musl variants for now.
 
-```
-$ cargo init tryarm
+```bash
+[x86]$ cargo init tryarm
      Created binary (application) package
-$ cd tryarm      
-$ cargo build --target armv7-unknown-linux-gnueabihf
+[x86]$ cd tryarm      
+[x86]$ cargo build --target armv7-unknown-linux-gnueabihf
 
 error: could not compile `tryarm` (bin "tryarm") due to 1 previous error
 ```
 
+### Please retry 
+
 Seems not sufficient ... Let's try [cross tool](https://github.com/rust-embedded/cross) from the rust embedded team
 
-```
-$ cargo install cross
-$ /home/andrea/.cargo/bin/cross build --target armv7-unknown-linux-gnueabihf
+```bash
+[x86]$ cargo install cross
+[x86]$ /home/andrea/.cargo/bin/cross build --target armv7-unknown-linux-gnueabihf
 
 Trying to pull ghcr.io/cross-rs/armv7-unknown-linux-gnueabihf:0.2.5...
 Getting image source signatures
@@ -101,13 +108,14 @@ Writing manifest to image destination
     Finished dev [unoptimized + debuginfo] target(s) in 0.26s
 ```
 
-This tool pulls a container with the right compiler toolchain and use it to build your project. Seems our program is in place, and it's compiled 
+This tool pulls a container with the right compiler toolchain and use it to build your project. Seems our program is in place, and it's compiled! 
 
 
-```
-$ file target/armv7-unknown-linux-gnueabihf/debug/tryarm
+```bash
+[x86]$ file target/armv7-unknown-linux-gnueabihf/debug/tryarm
 target/armv7-unknown-linux-gnueabihf/debug/tryarm: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=7ff3fc41deb8b4820cc64ff2857cddbfa577111c, with debug_info, not stripped
-$ objdump -d target/armv7-unknown-linux-gnueabihf/debug/tryarm
+
+[x86]$ objdump -d target/armv7-unknown-linux-gnueabihf/debug/tryarm
     3428:       e59d300c        ldr     r3, [sp, #12]
     342c:       e0802080        add     r2, r0, r0, lsl #1
     3430:       e08b108b        add     r1, fp, fp, lsl #1
@@ -120,13 +128,21 @@ $ objdump -d target/armv7-unknown-linux-gnueabihf/debug/tryarm
     344c:       e0521001        subs    r1, r2, r1
     3450:       e0d41003        sbcs    r1, r4, r3
 ```
+
+### Run baby run
+
 So, let's transfer our binary to the device and run it
 
-```
-$ scp target/armv7-unknown-linux-gnueabihf/debug/tryarm user@cubietruck:/home/user
+```bash
+[x86]$ scp target/armv7-unknown-linux-gnueabihf/debug/tryarm user@cubietruck:/home/user
 user@cubietruck's password: 
 tryarm                                                      100% 3443KB   5.3MB/s   00:00 
+```
 
+Switching to the device shell:
+
+
+```bash
 [user@arm ~]$ ./tryarm 
 Hello, world!
 [user@arm ~]$ ldd tryarm 
@@ -139,7 +155,12 @@ Hello, world!
 	/lib/ld-linux-armhf.so.3 => /usr/lib/ld-linux-armhf.so.3 (0xb6eda000)
 ```
 
+It' working :smile:
 
+### Future awaits
 
+We are able to compile and run Rust code on our little device, so this Proof of Concept is over. In the future we will can use to develop and test software on a foreign architecture.
+
+Some resources for further reference:
 
 - https://www.modio.se/cross-compiling-rust-binaries-to-armv7.html

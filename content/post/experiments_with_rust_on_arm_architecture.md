@@ -155,7 +155,7 @@ Hello, world!
 	/lib/ld-linux-armhf.so.3 => /usr/lib/ld-linux-armhf.so.3 (0xb6eda000)
 ```
 
-It' working :smile:
+It's working :smile:
 
 ### Future awaits
 

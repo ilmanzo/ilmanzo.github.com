@@ -159,7 +159,7 @@ It' working :smile:
 
 ### Future awaits
 
-We are able to compile and run Rust code on our little device, so this Proof of Concept is over. In the future we will can use to develop and test software on a foreign architecture.
+We are able to compile and run Rust code on our little device, so this Proof of Concept is over. In the future we will use it to develop and test software on a foreign architecture.
 
 Some resources for further reference:
 

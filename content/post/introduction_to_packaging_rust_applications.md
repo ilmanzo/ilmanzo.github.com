@@ -309,5 +309,7 @@ If you want to get better as packager be sure to read this excellent [guide](htt
 
 More details on the history and choices behind Rust packaging in openSUSE are in [William Brown's talk on RustConf 2022](https://youtu.be/ppJCeAhpx7E) {{< youtube ppJCeAhpx7E >}}
 
+More packaging tutorials on OpenSUSE YouTube channel: https://www.youtube.com/opensuse
+
 You can find all the files and the project in my home folder on the [openSUSE build service](https://build.opensuse.org/package/show/home:amanzini/battleship-rs). Happy hacking!
 

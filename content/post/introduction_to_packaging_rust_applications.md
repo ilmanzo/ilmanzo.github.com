@@ -54,7 +54,7 @@ To properly build a Rust package, we need three items:
 2. a `_service` file
 3. a `cargo_config` file
 
-The first one is the classic RPM `.spec`, the recipe we need for cooking any `rpm` package. We leverage some macros to make the process smooth and easy. This also makes me notice there isn't yet a syntax highlighter for `spec` files...🤨
+The first one is the classic RPM `.spec`, the recipe we need for cooking any `rpm` package. We leverage some macros to make the process smooth and easy. This also makes me notice there isn't yet a syntax highlighter in Hugo for `spec` files...🤨
 
 ```bash
 $ cat battleship-rs.spec 

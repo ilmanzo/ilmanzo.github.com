@@ -11,18 +11,18 @@ date: 2024-05-03
 ## Intro
 
 [Bubbletea](https://github.com/charmbracelet/bubbletea) is a framework with a philosophy based on [The Elm Architecture](https://guide.elm-lang.org/architecture/):
-It always breaks into three parts:
+Making it simple, it breaks into three parts:
 
 - *Model*: the state of your application
 - *View*: a way to turn your state into something to display
 - *Update*: a way to update your state based on messages
 
-The framework's runtime manages everything else: messages orchestration and low-level rendering details.
+The framework's runtime manages everything else: from messages orchestration to low-level rendering details.
 
 ## Example
 
 Let's say you want to create the classic to-do list:
-- your model will be a list of tasks, with a flag to mark them "Done"
+- your model will be a struct holding a list of tasks, and a flag to mark them "Done"
 {{< highlight Go >}}
 type model struct {
     tasks  []string // items on the to-do list
@@ -50,7 +50,8 @@ func (m model) View() string {
 }
 {{</ highlight >}}
 
-- your update will be a function that takes a message and reacts to it, for example a keypress. Check the [docs](https://pkg.go.dev/github.com/charmbracelet/bubbletea) for details. 
+- your update will be a function that takes a message that comes from the framework and reacts to it, for example a keypress, a mouse click or a window resize. 
+Check the [docs](https://pkg.go.dev/github.com/charmbracelet/bubbletea) for details. 
 {{< highlight Go >}}
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
@@ -59,7 +60,6 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	}
 }
 {{</ highlight >}}
-
 
 - As a final step, you only need to pass the model to the framework:
 {{< highlight Go >}}
@@ -177,8 +177,4 @@ With [Bubbletea](https://github.com/charmbracelet/bubbletea) I can also recommen
 - [Lipgloss](https://github.com/charmbracelet/lipgloss) for colorization, layout and styling, more or less "CSS for the terminal"
 
 Have fun!
-
-
-
-
 

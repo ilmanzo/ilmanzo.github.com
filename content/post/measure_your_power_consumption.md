@@ -155,7 +155,7 @@ fn main() {
             n += 1;
         }
     }
-    println!("Prime number = {}", i);
+    println!("Prime = {}", i);
 }
 ```
 
@@ -167,7 +167,7 @@ $ cargo build --release
     Finished `release` profile [optimized] target(s) in 0.12s
 
 # perf stat -ae power/energy-cores/,power/energy-pkg/,power/energy-psys/ ./target/release/prime1m
-Prime number = 15485863
+Prime = 15485863
 
  Performance counter stats for 'system wide':
 

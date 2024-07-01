@@ -1,7 +1,7 @@
 ---
 layout: post
 description: "Understand how much power you are using"
-title: "Measure your programs power consumption"
+title: "Measure your program's power consumption"
 categories: linux
 tags: [linux, tutorial, system, hardware, power, energy, optimization]
 author: Andrea Manzini

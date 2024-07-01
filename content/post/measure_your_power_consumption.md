@@ -22,7 +22,7 @@ There are many way to do it; the most reliable probably is using a proper extern
 
 [image from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SWR_%26_power_meter_front_view.jpg)
 
-Since I'm a software engineers, don't want to mess much with cables; and on many occasion it's not practical to disconnect the servers just to do some power measure. As a pure software solution, some rough measurements can be obtained with the help of [powerstat](https://github.com/ColinIanKing/powerstat) utility, which uses many methods (like battery stats or the *Intel RAPL interface*, which stands for Running Average Power Limit) to estimate the power consumption of a running computer.
+Since I'm a software engineer, I don't want to mess much with cables; and on many occasion it's not practical to disconnect the servers in a remote datacenter just to do some quick power measure. As a pure software solution, some rough measurements can be obtained with the help of [powerstat](https://github.com/ColinIanKing/powerstat) utility, which uses many methods (like battery stats or the *Intel RAPL interface*, which stands for Running Average Power Limit) to estimate the power consumption of a running computer.
 
 ```
 # powerstat -zR

@@ -22,7 +22,7 @@ There are many way to do it; the most reliable probably is using a proper extern
 
 [image from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SWR_%26_power_meter_front_view.jpg)
 
-As a software engineers, we don't want to mess with cables; so as a pure softwaer solution, some rough measurements can be obtained with the help of [powerstat](https://github.com/ColinIanKing/powerstat) utility, which uses many methods (like battery stats or the *Intel RAPL interface*, which stands for Running Average Power Limit) to estimate the power consumption of a running computer.
+Since I'm a software engineers, don't want to mess much with cables; and on many occasion it's not practical to disconnect the servers just to do some power measure. As a pure software solution, some rough measurements can be obtained with the help of [powerstat](https://github.com/ColinIanKing/powerstat) utility, which uses many methods (like battery stats or the *Intel RAPL interface*, which stands for Running Average Power Limit) to estimate the power consumption of a running computer.
 
 ```
 # powerstat -zR
@@ -44,7 +44,7 @@ These readings do not cover all the hardware in this device.
 
 ## ⚡ Put it to work
 
-So my computer uses ~30 Watts (or ~30 Joule / sec) to do nothing, which if you ask me, I'd rate pretty bad. Let's make some experiments with different workloads, like what every computer should be good at: calculating prime numbers!
+So my computer, a ThinkPad P15 Gen 2i, uses ~30 Watts (or ~30 Joule / sec) to do nothing, which if you ask me, I'd rate pretty bad. Let's make some experiments with different workloads, like what every computer should be good at: calculating prime numbers!
 
 The experiment idea is to see how much energy it costs to get the first million prime numbers; accordingly to [prime numbers wiki](https://prime-numbers.fandom.com/) the 1,000,000th prime number should be 15,485,863.
 

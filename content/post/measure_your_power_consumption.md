@@ -18,9 +18,9 @@ As a starting point, let's measure how much power my PC is consuming when idle, 
 
 There are many way to do it; the most reliable probably is using a proper external power meter device like this one.
 
-![powermeter](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/SWR_%26_power_meter_front_view.jpg/640px-SWR_%26_power_meter_front_view.jpg) 
+![powermeter](/img/powermeter.jpg) 
 
-[image from Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SWR_%26_power_meter_front_view.jpg)
+[public domain image from Flickr; credits to Emilian Robert Vicol](https://www.flickr.com/photos/free-stock/5000495108/)
 
 Since I'm a software engineer, I don't want to mess much with cables; and on many occasion it's not practical to disconnect the servers in a remote datacenter just to do some quick power measure. As a pure software solution, some rough measurements can be obtained with the help of [powerstat](https://github.com/ColinIanKing/powerstat) utility, which uses many methods (like battery stats or the *Intel RAPL interface*, which stands for Running Average Power Limit) to estimate the power consumption of a running computer.
 

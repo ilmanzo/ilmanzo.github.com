@@ -16,6 +16,8 @@ Linux capabilities is a feature, gradually introduced starting from kernel 2.2, 
 
 ## What 
 
+The idea is simple: just split all the possible privileged kernel calls up into groups of related functionality, then we can assign processes only to the subset they need. So the kernel calls were split up into a few dozen different categories, largely successfully.
+
 The Linux kernel implements a multitude of these micro-grained permissions. Some of the most common capabilities used are:
 
 - CAP_SYS_ADMIN: Allows a wide range of operations. This capability should be avoided in favor of more specific capabilities.
@@ -27,15 +29,22 @@ The Linux kernel implements a multitude of these micro-grained permissions. Some
 - CAP_SYS_NICE: Modify the niceness value and scheduling priority of processes among others.
 - CAP_SYS_RESOURCE: Allows overriding various limits on system resources, such as disk quotas, CPU time limits, etc.
 
-At the time of writing, there are more than 40 capabilities defined and implementes; the full list is available in the `capabilities(7)` manual page. On the early years, only running processes could manipulate capabilities, while nowadays we can manage them directly on a binary file before it starts. 
+The capabilities feature was introduced in 2.2 kernel in the year 1999, but it was only scoped to processes. In 2008, capabilities were introduced for files too.
+At the time of writing, there are 40 capabilities defined and implementes; you can get the full list with the command
 
-There are two different packages for capability management: libcap and libcap-ng. The latter is designed to be easier than the former, so we will focus on that one. 
+```bash
+$ systemd-analyze capability
+```
+
+or in the `capabilities(7)` manual page.   
+
+Talking about user space, there are two different packages for capability management: libcap and libcap-ng. The latter is designed to be easier than the former, so we will focus on that one. 
 
 ## setup
 
 let's install the package we will use for our experiments: 
 
-```
+```bash
 # zypper install libpcap-ng-utils 
 
 # rpm -ql libcap-ng-utils 
@@ -55,7 +64,7 @@ let's install the package we will use for our experiments:
 
 It's easy to launch a basic http server in Python:
 
-```
+```bash
 /usr/bin/python3 -m http.server   
 Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
 ^C
@@ -64,7 +73,7 @@ Keyboard interrupt received, exiting.
 
 by default it starts on port 8000, because unprivileged users can't bind lower port:
 
-```
+```bash
 $ /usr/bin/python3 -m http.server 80
 Traceback (most recent call last):
 [...]
@@ -73,7 +82,7 @@ PermissionError: [Errno 13] Permission denied
 
 it's sufficient to give the Python binary the capability to bind lower ports:
 
-```
+```bash
 $ sudo filecap /usr/bin/python3 net_bind_service
 
 $ /usr/bin/python3 -m http.server 80               
@@ -84,7 +93,7 @@ Keyboard interrupt received, exiting.
 
 to reset it back, we can use the `none` keyword:
 
-```
+```bash
 $ sudo filecap /usr/bin/python3 none
 
 $ /usr/bin/python3 -m http.server 80
@@ -95,4 +104,33 @@ PermissionError: [Errno 13] Permission denied
 
 ##
 
-On Linux kernel, capabilities are implemented as set of bits. There are five capability sets: Permitted, Inheritable, Effective, Bounding and Ambient. Of those, however, only the first three can be assigned to executable files. The Permitted capability set includes the capabilities assigned to a certain executable; the Effective set is a subset of the Permitted one and includes the capabilities which are effectively used. Finally, the Inheritable set, includes capabilities which can be inherited by child processes.
+On Linux kernel, Conceptually capabilities are maintained in sets, which are represented as bit masks. For all running processes capability information is maintained per thread; for binaries in the file system it’s stored in extended attributes. 
+There are five capability sets: *Permitted*, *Inheritable*, *Effective*, *Bounding* and *Ambient*. Of those, however, only the first three can be assigned to executable files. The *Permitted* capability set includes the capabilities assigned to a certain executable; the *Effective* set is a subset of the Permitted one and includes the capabilities which are effectively used. Finally, the *Inheritable* set, includes capabilities which can be inherited by child processes. For a detailed explanation of capabilities flow paths, please check [this blog post](https://blog.ploetzli.ch/2014/understanding-linux-capabilities/) from Henryk Plötz or [this one](https://blog.container-solutions.com/linux-capabilities-why-they-exist-and-how-they-work) from Adrian Mouat.
+
+
+For running processes, you can easily get the bit mask looking at the `/proc/$PID/status`:
+
+```bash
+$ grep Cap "/proc/$(pidof chronyd)/status"
+CapInh:	0000000000000000
+CapPrm:	0000000002000400
+CapEff:	0000000002000400
+CapBnd:	000001c08380fddf
+CapAmb:	0000000000000000
+```
+
+But it's easier to read if decoded:
+
+```bash
+$ pscap -p $(pidof chronyd)
+ppid  pid   uid         command             capabilities
+1     1803  chrony      chronyd             net_bind_service, sys_time +
+```
+
+
+## why should I care ?
+
+In the era of containers and kubernetes, capabilities plays an important role 
+
+
+

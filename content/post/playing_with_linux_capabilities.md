@@ -1,6 +1,6 @@
 ---
 layout: post
-description: "What are and how to use linux kernel capabilities"
+description: "What are and how to use the linux kernel capabilities feature"
 title: "Playing with linux kernel capabilities"
 categories: linux
 tags: [linux, tutorial, system, kernel, security, sysadmin, access control]
@@ -11,8 +11,9 @@ draft: true
 
 ## Intro
 
-If you are an old-school sysadmin, you could be used to the "all-or-nothing" approach: if a shell or process is running with UID=0, it can do almost everything on a system; while a plain user process is restricted by some means: tipically it can't open RAW sockets, can't bind "privileged" ports under 1024, can't change a file ownership and so on. 
-Linux capabilities is a feature, gradually introduced starting from kernel 2.2, that permits a more fine-grained control over privileged operations, breaking the traditional binary root/non-root distinction. Just as by using sudo we can run specific commands as another user (even root), without permanently becoming that user, by using capabilities, we can grant a process only certain privileges without having to run it as root.
+If you are an old-school sysadmin, you could be used to the "all-or-nothing" approach: if a shell or process is running with `UID=0`, it can do almost everything on a system; while a plain user process is restricted by some means: tipically it can't open RAW sockets, can't bind "privileged" ports under 1024, can't change a file ownership and so on.
+
+Linux capabilities is a feature, gradually introduced starting from kernel 2.2, that permits a more fine-grained control over privileged operations, breaking the traditional binary root/non-root distinction. Just as by using sudo we can run specific commands as another user (even root), without permanently becoming that user, by using capabilities, **we can grant a program only certain privileges without having to run it as root**.
 
 ## What 
 
@@ -102,7 +103,7 @@ PermissionError: [Errno 13] Permission denied
 ```
 
 
-##
+## 
 
 On Linux kernel, Conceptually capabilities are maintained in sets, which are represented as bit masks. For all running processes capability information is maintained per thread; for binaries in the file system it’s stored in extended attributes. 
 There are five capability sets: *Permitted*, *Inheritable*, *Effective*, *Bounding* and *Ambient*. Of those, however, only the first three can be assigned to executable files. The *Permitted* capability set includes the capabilities assigned to a certain executable; the *Effective* set is a subset of the Permitted one and includes the capabilities which are effectively used. Finally, the *Inheritable* set, includes capabilities which can be inherited by child processes. For a detailed explanation of capabilities flow paths, please check [this blog post](https://blog.ploetzli.ch/2014/understanding-linux-capabilities/) from Henryk Plötz or [this one](https://blog.container-solutions.com/linux-capabilities-why-they-exist-and-how-they-work) from Adrian Mouat.

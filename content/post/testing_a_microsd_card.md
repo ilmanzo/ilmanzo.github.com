@@ -95,7 +95,7 @@ Now we can eject the card, waiting for the last writes to finalize; then we can 
 
 ## 👀 The read test 
 
-The `sha256sum` program has a special and convenient `-c` option that accepts a file containing the pairs of checksum and filename:
+The `sha256sum` program has a special and convenient `-c` option that accepts a file containing the pairs of checksum and filename, which is what we produced in the previous step:
 
 ```bash
 DESTDIR=/run/media/andrea/9016-4EF8 # the mount path of the microsd card

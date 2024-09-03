@@ -88,7 +88,7 @@ sys     0m1,614s
 
 Note that thanks to the [`tee` command](https://www.geeksforgeeks.org/tee-command-linux-example/), the sha256sum of each file is also conveniently stored in a `checksums.txt`, for a later use.
 
-Not a truly *scientific* measure but we can see that writing ~1GB to this card takes somewhat more than 40 seconds, which means transfer speed is a little under ~25 MB/s (which qualifies for "High Speed"). Since this specific card was advertised as UHS-1, we can say it passes the write speed test.
+Not a truly *scientific* measure but we can see that writing ~1GB to this card takes somewhat more than 40 seconds, which means **transfer speed is a little under ~25 MB/s** (which qualifies for "High Speed"). Since this specific card was advertised as UHS-1, we can say it passes the write speed test.
 
 If we want to "stress" the media a bit, we can also repeat the script many times until we think it's sufficient.
 Now we can eject the card, waiting for the last writes to finalize; then we can easily check if the content is the same when read back.
@@ -126,5 +126,5 @@ The measured read speed is somewhat around 192 MB/s , altough filesystem cache p
 ## ⚠️ Conclusion
 
 The interesting part of the final test is that some files failed the checksum, this could be sufficient to consider this card not reliable for a production usage.
-In short: be aware of cheap microsd card you buy, and be sure to always keep a testing mindset ✅
+In short: be aware of cheap microsd card you buy, and be sure to always keep a testing mindset! ✅
 

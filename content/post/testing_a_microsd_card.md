@@ -12,7 +12,7 @@ date: 2024-09-03
 
 I just found a *very* cheap SD card on an online store and since I know that [there are some fake around](https://iboysoft.com/sd-card-recovery/fake-sd-card.html), I wanted to quickly test if its size and speed respect the specs.
 
-edit: a kind reader noticed me that [The F3 tools](https://fight-flash-fraud.readthedocs.io/en/latest/introduction.html) are a perfect fit for the same task and that's right; if you want to follow a manual path and learn something in the journey, continue reading... 
+Edit: after first publish, a kind reader noticed me that [The F3 tools](https://fight-flash-fraud.readthedocs.io/en/latest/introduction.html) are a perfect fit for the same task and that's right; if you want to follow a manual path and learn something in the journey, continue reading... 
 
 ## ✍️ The write test
 

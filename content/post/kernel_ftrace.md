@@ -74,7 +74,7 @@ At this point you can turn on tracing with `echo 1 > tracing_on` and start readi
 
 ## 🔧 A better tool
 
-If dealing with filesystem is a bit cumbersome, there is an handy command-line tool  created by [Steven Rostedt](https://github.com/rostedt), called `trace-cmd`:
+If dealing with filesystem may be a bit cumbersome, there is an handy command-line tool created by [Steven Rostedt](https://github.com/rostedt) and called `trace-cmd`:
 
 ```bash
 $ sudo zypper in trace-cmd
@@ -352,6 +352,6 @@ I'll leave here some other websites and blog post that talks about ftrace:
 
 If you are interested in the topic as I am, feel free to drop me any comment or feedback and I will be happy to have a follow up 😉
 
-Thanks and Happy hacking! 
+Thanks for reading and Happy hacking! 
 
 

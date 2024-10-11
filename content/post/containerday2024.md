@@ -41,7 +41,7 @@ Key points:
 - Practical applications in performance tuning and security
 
 **PlatformOps with Crossplane: Building Next-Gen Kubernetes Platforms**
-Daniele Monti's presentation on "PlatformOps with Crossplane" was another highlight. It shed light on how Crossplane is changing the game in Kubernetes-based platform engineering.
+Daniele Monti's presentation on *"PlatformOps with Crossplane"* was another highlight. He explained on how Crossplane is changing the game in Kubernetes-based platform engineering.
 Takeaways:
 
 - Crossplane's role in abstracting complex infrastructure

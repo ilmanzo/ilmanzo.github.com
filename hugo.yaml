@@ -44,6 +44,7 @@ params:
   ShowBreadCrumbs: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
+  social: true
   theme:
     palette: base16-dark
     mode: dark-mode

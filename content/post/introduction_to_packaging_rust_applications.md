@@ -145,7 +145,7 @@ $ cat _service
 </services>
 ```
 
-The last item we need is a small file that instructs Rust build system to use **vendored** dependencies, instead of downloading from the internet.
+~~The last item we need is a small file that instructs Rust build system to use **vendored** dependencies, instead of downloading from the internet.~~
 
 
 ```bash
@@ -158,6 +158,17 @@ replace-with = "vendored-sources"
 
 [source.vendored-sources]
 directory = "vendor"
+```
+
+**Update:** with the new release, che `cargo_config` is automatically created and no more needed as external asset, as you can see running the service:
+
+```
+...
+This rewrite introduces some small changes to how vendoring functions for your package.
+
+* cargo_config is no longer created - it's part of the vendor.tar now
+    * You can safely remove lines related to cargo_config from your spec file
+...
 ```
 
 ## 🚢 Fetch upstream source and check in to OBS

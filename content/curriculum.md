@@ -88,6 +88,8 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2024: speaker at [Linux Day Brescia](https://lugotto.it/2024/09/12/linux-day-2024-brescia/)
+- 2024: speaker at [Linux Day Spring Edition](https://lugman.org/Linux_day_2024_SE) @Mantova 
 - 2023: speaker at Google Developer Group Trento [DevFest](https://gdg.community.dev/events/details/google-gdg-trento-presents-devfest-trento-2023/)
 - 2023: became [Ambassador](https://forum.crystal-lang.org/t/ambassador-introductions/5734) for the [Crystal Programming Language](https://crystal-lang.org/)
 - 2022: became maintainer of openSUSE rpm packages on [Open Build Service](https://build.opensuse.org)

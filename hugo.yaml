@@ -59,6 +59,8 @@ params:
       url: 'mailto:ilmanzo@gmail.com'
     - name: linkedin
       url: 'https://www.linkedin.com/in/andreamanzini'
+    - name: mastodon
+      url: 'https://fosstodon.org/@ilmanzo'
     - name: x
       url: 'https://twitter.com/ilmanzo'
     - name: rss

@@ -34,42 +34,8 @@ git push hgmigrate master
 cd /tmp
 rm -rf /tmp/${REPONAME}_hg /tmp/${REPONAME}_git
 echo "...done"
-Before running the script, you only need to install git and create a git repository (remote or local).'><meta name=author content="Andrea Manzini"><link rel=canonical href=https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=https://ilmanzo.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://ilmanzo.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://ilmanzo.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://ilmanzo.github.io/apple-touch-icon.png><link rel=mask-icon href=https://ilmanzo.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-6PN4FTRLNL"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-6PN4FTRLNL")}</script><meta property="og:title" content="migrating a repository from mercurial to git"><meta property="og:description" content='Since bitbucket is sunsetting the support for mercurial repositories, I wrote a quick and dirty script to automate the migration from mercurial to GIT:
-#!/bin/bash
-set -e
-set -u
-
-if [ "$#" -ne 3 ]; then
-    echo "Illegal number of parameters"
-    echo "usage: migrate.sh reponame hgrepourl gitrepourl"
-    exit 1
-fi
-
-REPONAME=$1
-HGURL=$2
-GITURL=$3
-
-echo "Migrating $REPONAME from $HGURL to $GITURL..."
-
-cd /tmp
-hg clone $HGURL
-cd $REPONAME
-hg bookmark -r default master
-hg bookmarks hg
-cd ..
-mv $REPONAME ${REPONAME}_hg
-mkdir ${REPONAME}_git
-cd ${REPONAME}_git
-git init --bare .
-cd ../${REPONAME}_hg
-hg push ../${REPONAME}_git
-cd ../${REPONAME}_git
-git remote add hgmigrate $GITURL
-git push hgmigrate master
-cd /tmp
-rm -rf /tmp/${REPONAME}_hg /tmp/${REPONAME}_git
-echo "...done"
-Before running the script, you only need to install git and create a git repository (remote or local).'><meta property="og:type" content="article"><meta property="og:url" content="https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/"><meta property="article:section" content="post"><meta property="article:published_time" content="2019-12-15T00:00:00+00:00"><meta property="article:modified_time" content="2019-12-15T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="migrating a repository from mercurial to git"><meta name=twitter:description content='Since bitbucket is sunsetting the support for mercurial repositories, I wrote a quick and dirty script to automate the migration from mercurial to GIT:
+Before running the script, you only need to install git and create a git repository (remote or local).'><meta name=author content="Andrea Manzini"><link rel=canonical href=https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/><link crossorigin=anonymous href=/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as=style><link rel=icon href=https://ilmanzo.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://ilmanzo.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://ilmanzo.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://ilmanzo.github.io/apple-touch-icon.png><link rel=mask-icon href=https://ilmanzo.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-6PN4FTRLNL"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-6PN4FTRLNL")}</script><meta property="og:url" content="https://ilmanzo.github.io/post/migrating-a-repository-from-mercurial-to-git/"><meta property="og:site_name" content="ilManzo's blog"><meta property="og:title" content="migrating a repository from mercurial to git"><meta property="og:description" content='Since bitbucket is sunsetting the support for mercurial repositories, I wrote a quick and dirty script to automate the migration from mercurial to GIT:
+#!/bin/bash set -e set -u if [ "$#" -ne 3 ]; then echo "Illegal number of parameters" echo "usage: migrate.sh reponame hgrepourl gitrepourl" exit 1 fi REPONAME=$1 HGURL=$2 GITURL=$3 echo "Migrating $REPONAME from $HGURL to $GITURL..." cd /tmp hg clone $HGURL cd $REPONAME hg bookmark -r default master hg bookmarks hg cd .. mv $REPONAME ${REPONAME}_hg mkdir ${REPONAME}_git cd ${REPONAME}_git git init --bare . cd ../${REPONAME}_hg hg push ../${REPONAME}_git cd ../${REPONAME}_git git remote add hgmigrate $GITURL git push hgmigrate master cd /tmp rm -rf /tmp/${REPONAME}_hg /tmp/${REPONAME}_git echo "...done" Before running the script, you only need to install git and create a git repository (remote or local).'><meta property="og:locale" content="en-us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2019-12-15T00:00:00+00:00"><meta property="article:modified_time" content="2019-12-15T00:00:00+00:00"><meta property="article:tag" content="Scripting"><meta property="article:tag" content="Linux"><meta property="article:tag" content="Programming"><meta property="article:tag" content="Tips"><meta property="article:tag" content="Git"><meta property="article:tag" content="Mercurial"><meta name=twitter:card content="summary"><meta name=twitter:title content="migrating a repository from mercurial to git"><meta name=twitter:description content='Since bitbucket is sunsetting the support for mercurial repositories, I wrote a quick and dirty script to automate the migration from mercurial to GIT:
 #!/bin/bash
 set -e
 set -u

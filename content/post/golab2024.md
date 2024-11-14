@@ -3,9 +3,9 @@ layout: post
 description: "Personal highlights from GoLab 2024 conference"
 title: "Wrapping up GoLab 2024"
 categories: conference
-tags: [Go, programming, developers, SUSE, conference]
+tags: [go, golang, programming, developers, SUSE, conference]
 author: Andrea Manzini
-date: 2024-11-15
+date: 2024-11-14
 ---
 
 ## Intro

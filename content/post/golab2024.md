@@ -1,11 +1,11 @@
 ---
 layout: post
-description: "Personal highlights from GoLab 2024 conference"
+description: "Personal recap of GoLab 2024 conference"
 title: "Wrapping up GoLab 2024"
 categories: conference
 tags: [go, golang, programming, developers, SUSE, conference]
 author: Andrea Manzini
-date: 2024-11-14
+date: 2024-11-15
 ---
 
 ## Intro
@@ -14,7 +14,7 @@ Since 2015, GoLab is one of the oldest and most renowned conferences about the [
 
 {{< figure src="/img/golab_2024/IMG_20241113_074003.jpg" height=300 link="/img/golab_2024/IMG_20241113_074003.jpg" caption="My bad, I forgot to take a picture of the t-shirt 🤷" >}} 
 
-In the last years, the [organizers](https://www.develer.com/en/) hosted some of the biggest names in the industry who have shared their insights and experiences with our attendees.
+In recent years, the [organizers](https://www.develer.com/en/) hosted some of the biggest names in the industry who have shared their insights and experiences with our attendees.
 
 As a welcoming first impression, the venue was a beautiful hotel in the charming city of Florence ⚜️, I just love this place and can't add much more.
 
@@ -30,25 +30,25 @@ The three days of the [schedule](https://golab.io/schedule) were packed, with th
 
 {{< figure src="/img/golab_2024/IMG_20241112_100342.jpg" height=300 target="_blank" link="/img/golab_2024/IMG_20241112_100342.jpg" caption="a crowded welcome" >}} 
 
-As I could follow like half of the talks, I feel like I missed some very good ones; here you can have a quick recap of my favorites:
+As I was able to attend approximately half of the talks, I feel like I missed some very good ones; here you can have a quick recap of my favorites:
 
 ### Day one 
 
 - [Russ Cox](https://hachyderm.io/@rsc) shed some light on a controversial but important topic: telemetry. How the Go team collects specific build metrics {{< figure src="/img/golab_2024/IMG_20241112_101913.jpg" height=400em caption="Russ Cox" >}} 
 
-- [Alessio Greggi](https://golab.io/speakers/greggi) from [SUSE](https://www.suse.com) gave a presentation with a demo about automatic creation of [SECCOMP profiles](https://en.wikipedia.org/wiki/Seccomp) using many different toolsm, like strace and [Harpoon](https://github.com/alegrey91/harpoon). {{< figure height=300 src="/img/golab_2024/IMG_20241112_115519.jpg" link="/img/golab_2024/IMG_20241112_115519.jpg" caption="Alessio Greggi" >}}
+- [Alessio Greggi](https://golab.io/speakers/greggi) from [SUSE](https://www.suse.com) gave a presentation with a demo about automatic creation of [SECCOMP profiles](https://en.wikipedia.org/wiki/Seccomp) using many different tools, like strace and [Harpoon](https://github.com/alegrey91/harpoon). {{< figure height=300 src="/img/golab_2024/IMG_20241112_115519.jpg" link="/img/golab_2024/IMG_20241112_115519.jpg" caption="Alessio Greggi" >}}
 - [Tomáš Sedláček](https://www.linkedin.com/in/tomasedlacek/) got in the deep of design reasons for choosing sync or async I/O communication.
-- [Roberto Clapis](https://twitter.com/empijei) held a workshop on secure coding and talked about defensive approach expecially when parsing unknown complex input data.
+- [Roberto Clapis](https://twitter.com/empijei) held a workshop on secure coding and talked about defensive approach especially when parsing unknown complex input data.
 - [Alan Donovan](https://github.com/adonovan) explained how they managed to scale [gopls](https://pkg.go.dev/golang.org/x/tools/gopls) (the Go Language Server) performance by an order of magnitude (10x).
 
  {{< figure height=300 src="/img/golab_2024/IMG_20241113_104428.jpg" link="/img/golab_2024/IMG_20241113_104428.jpg" caption="Coffee Breaks and networking time!" >}}
 
 - [Teea Alarto](https://twitter.com/TeeaTime) talked about a practical and effective approach on using generics (a relatively young feature of the Go Language) to write more robust and simple code.
-- [Ron Evans](https://twitter.com/deadprogram) made us travel trough time with a "Back to the future" mood (12th november, hint hint): the keynote included tinyGo flying drones, facial recognition and a panel of evil LLM "talking heads" about humanity's future.
+- [Ron Evans](https://twitter.com/deadprogram) made us travel through time with a "Back to the future" mood (12th november, hint hint): the keynote included [tinyGo](https://tinygo.org/) powered flying drones, video capture and streaming with facial recognition and a panel of evil LLM "talking heads" about humanity's future.
 
  {{< figure height=300 src="/img/golab_2024/IMG_20241112_175133.jpg" link="/img/golab_2024/IMG_20241112_175133.jpg" target="_blank" caption="tin-foil hat Ron Evans, moderating the automated LLM panel" >}}
 
-At the end, there was a Birthday Party to celebrate the 15 years of Go 🎂
+At the end of this long day, we celebrated the 15th year of Go with a proper Birthday Party! 🎂
 
 ### Day two
 
@@ -77,10 +77,9 @@ At the end, there was a Birthday Party to celebrate the 15 years of Go 🎂
 
 {{< figure height=300 src="/img/golab_2024/IMG_20241113_153718.jpg" link="/img/golab_2024/IMG_20241113_153718.jpg" target="_blank" caption="resizing animated GIFs without external tools" >}}
 
-- last but not least, there was even time for many lightning talks... 
+- last but not least, there was even time for many interesting lightning talks... 
 
 {{< figure height=300 src="/img/golab_2024/IMG_20241113_164917.jpg" link="/img/golab_2024/IMG_20241113_164917.jpg" target="_blank" caption="Otter for frontend development" >}}
-
 
 ## Takeaways
 

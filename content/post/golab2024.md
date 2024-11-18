@@ -44,11 +44,14 @@ As I was able to attend approximately half of the talks, I feel like I missed so
  {{< figure height=300 src="/img/golab_2024/IMG_20241113_104428.jpg" link="/img/golab_2024/IMG_20241113_104428.jpg" caption="Coffee Breaks and networking time!" >}}
 
 - [Teea Alarto](https://twitter.com/TeeaTime) talked about a practical and effective approach on using generics (a relatively young feature of the Go Language) to write more robust and simple code.
-- [Ron Evans](https://twitter.com/deadprogram) made us travel through time with a "Back to the future" mood (12th november, hint hint): the keynote included [tinyGo](https://tinygo.org/) powered flying drones, video capture and streaming with facial recognition and a panel of evil LLM "talking heads" about humanity's future.
+- [Ron Evans](https://twitter.com/deadprogram) made us travel through time with a "Back to the future" mood (12th november, hint hint): the keynote included [tinyGo](https://tinygo.org/) powered flying drones, video capture and streaming with facial recognition and a panel of evil LLM "talking heads" about humanity's future; check out the [video recording](https://www.youtube.com/watch?v=T-U98y-mlIs).
+
+{{< youtube T-U98y-mlIs >}}
+
+At the end of this long day, we celebrated the 15th year of Go with a proper Birthday Party! 🎂
 
  {{< figure height=300 src="/img/golab_2024/IMG_20241112_175133.jpg" link="/img/golab_2024/IMG_20241112_175133.jpg" target="_blank" caption="tin-foil hat Ron Evans, moderating the automated LLM panel" >}}
 
-At the end of this long day, we celebrated the 15th year of Go with a proper Birthday Party! 🎂
 
 ### Day two
 

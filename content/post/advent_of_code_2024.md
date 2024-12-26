@@ -17,7 +17,7 @@ First of all, I wish to thank [Eric Wastl](https://was.tl/) because he's giving 
 ![aoc_picture](/img/aoc2024.jpeg)
 [image source: [Reddit](https://www.reddit.com/r/adventofcode/) [u/edo360](https://www.reddit.com/user/edo360/) ]
 
-## 🎅 What's Advent of Code ?
+## ✨ What's Advent of Code ?
 
 More than just a countdown to Christmas, *AoC* is a joyful game that invites developers of all age and levels to sharpen their problem-solving abilities and coding skills. Like a virtual advent calendar, AoC presents a new programming puzzle each day from December 1st to 25th. These puzzles are often deceptively simple at first glance, but they quickly unfold into intricate challenges requiring clever algorithms and efficient code.
 
@@ -26,10 +26,10 @@ This year was so special because it's the 10th anniversary, so at the end I mana
 
 ![500_stars](/img/aoc2024_stars.png)
 
-## 🎁 Some Personal Highlights
+## 🎁 Some personal highlights
 
 As a deliberate choice, I solved most of the days using a mix of two languages: the [D Programming Language](https://dlang.org/) and the [Crystal Programming Language](https://crystal-lang.org/). 
-I like to advocate those less-known languages and I think it would be a good occasion to spread some knowledge about them. If you are curious, you can find most of the solutions on [my github](https://github.com/ilmanzo/advent_of_code/tree/master/2024) repository, just be aware that this is **not** intended to be production-ready code, it's written just for fun at 6AM every morning and it's not following any best practice: on the opposite side it's my vacation and experiment time to play some dirty trick and write concise, almost unreadable code on purpose... You are warned 😅
+I wish to advocate those lesser-known languages and I think it would be a good occasion to spread some knowledge about them. If you are curious, you can find most of the solutions on [my github](https://github.com/ilmanzo/advent_of_code/tree/master/2024) repository, just be aware that this is **not** intended to be production-ready code, it's written just for fun at 6AM every morning and it's not following any best practice: on the opposite side it's my vacation and experiment time to play some dirty trick and write concise, almost unreadable code on purpose... You are warned 😅
 
 If you understand Italian and want to hear me talking about Advent of Code I also had the pleasure to be a guest in a [podcast episode](https://pointerpodcast.it/p/pointer234-advent-of-code-grandmaster-con-andrea-manzini/) from the guys at [Pointer Podcast](https://pointerpodcast.it/) 🎙️. Highly recommended to subscribe!
 
@@ -51,6 +51,15 @@ Among all the 25 puzzles solved during the month, I can cite:
 
 According to [Leaderboard times](https://aoc.xhyrom.dev/), the most difficult days where [15](https://adventofcode.com/2024/day/15), [17](https://adventofcode.com/2024/day/17), [21](https://adventofcode.com/2024/day/21) and [24](https://adventofcode.com/2024/day/24). I totally agree, go check them if you like hard challenges 😁 
 
+## 🎅 You are not alone 
+A special mention to the community: the best thing of [Advent of Code](https://adventofcode.com/) is being part of a collective experience, where for each day you can share opinions, get or give advice, read funny memes and play together with a lot of smart people. It can be [Reddit](https://www.reddit.com/r/adventofcode) or your local friends, a Telegram Group or a Slack Channel, but sharing it with other people is the real reason why it's enjoyable.
+
+- *Collaboration sparks creativity*: Tackling AoC with friends or colleagues opens up a world of shared insights and diverse problem-solving approaches, leading to "aha!" moments you might miss on your own.
+- *Motivation and accountability*: Knowing others are working on the same puzzles keeps you motivated and engaged, even when the challenges get tough.
+- *Learning and skill-sharing*: Explaining your solutions and discussing different coding techniques with others solidifies your understanding and exposes you to new ideas.
+- *Friendly competition and camaraderie*: A little friendly competition can be a great motivator, and celebrating successes together makes the experience even more rewarding.
+- *Turn coding into a social event*: AoC can become a fun social activity, whether it's through online groups or in-person coding sessions with friends.
+
 ## ☃️ Final thoughts
 
 Whether you're a seasoned developer or just starting your coding journey, [Advent of Code](https://adventofcode.com/) offers a unique and rewarding experience. Beyond the satisfaction of solving intricate puzzles, it's an opportunity to explore new programming languages, optimize your code for efficiency, and learn from a vibrant community of fellow developers.  So, embrace the holiday spirit, grab your favorite programming language, and dive into the captivating world of Advent of Code.  Who knows, you might just discover a new trick or two along the way!
@@ -59,4 +68,3 @@ As this year's advent finished, the puzzles are still online: you can try and so
 
 *ps:*
 If you are interested in Rust and crazy performance optimization, I can recommend to checkout [Advent of CodSpeed](https://codspeed.io/advent) 🐇 
-

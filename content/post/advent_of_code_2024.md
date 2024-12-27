@@ -21,15 +21,20 @@ First of all, I wish to thank [Eric Wastl](https://was.tl/) because he's giving 
 
 More than just a countdown to Christmas, *AoC* is a joyful game that invites developers of all age and levels to sharpen their problem-solving abilities and coding skills. Like a virtual advent calendar, AoC presents a new programming puzzle each day from December 1st to 25th. These puzzles are often deceptively simple at first glance, but they quickly unfold into intricate challenges requiring clever algorithms and efficient code.
 
-Over the years the number of people playing is steady increasing, with almost *300.000* users completing  at least one puzzle.
+Over the years the number of people playing is steadily increasing, with almost *300.000* users completing  at least one puzzle.
 This year was so special because it's the 10th anniversary, so at the end I managed to complete **ALL** the puzzles and **reach 500 Stars!**
 
 ![500_stars](/img/aoc2024_stars.png)
 
 ## 🎁 Some personal highlights
 
-As a deliberate choice, I solved most of the days using a mix of two languages: the [D Programming Language](https://dlang.org/) and the [Crystal Programming Language](https://crystal-lang.org/). 
-I wish to advocate those lesser-known languages and I think it would be a good occasion to spread some knowledge about them. If you are curious, you can find most of the solutions on [my github](https://github.com/ilmanzo/advent_of_code/tree/master/2024) repository, just be aware that this is **not** intended to be production-ready code, it's written just for fun at 6AM every morning and it's not following any best practice: on the opposite side it's my vacation and experiment time to play some dirty trick and write concise, almost unreadable code on purpose... You are warned 😅
+As a deliberate choice, I solved most of the days using a mix of two languages: the [D Programming Language](https://dlang.org/) and the [Crystal Programming Language](https://crystal-lang.org/). I've been wanting to explore both further, and AoC seemed like the perfect playground. 
+
+*Crystal*, with its Ruby-like syntax, lets me write expressive code quickly, which is ideal for those early morning puzzle-solving sessions. And when performance becomes critical, Crystal's compiled nature really shines.  
+
+*D*, on the other hand, offers powerful metaprogramming tools that allow me to experiment with different approaches and build reusable solutions. Plus, its modern features and blend of high-level and low-level capabilities make it a joy to use.
+
+Despite being lesser-known, I think these are great languages to use and they should be more widely known in the IT environment, so I took the occasion to advocate and spread some knowledge about them. If you are curious, you can find most of the solutions on [my github](https://github.com/ilmanzo/advent_of_code/tree/master/2024) repository, just be aware that this is **not** intended to be production-ready code, it's written just for fun at 6AM every morning and it's not following any best practice: on the opposite side it's my vacation and experiment time to play some dirty trick and write concise, almost unreadable code on purpose... You are warned 😅
 
 If you understand Italian and want to hear me talking about Advent of Code I also had the pleasure to be a guest in a [podcast episode](https://pointerpodcast.it/p/pointer234-advent-of-code-grandmaster-con-andrea-manzini/) from the guys at [Pointer Podcast](https://pointerpodcast.it/) 🎙️. Highly recommended to subscribe!
 
@@ -44,12 +49,12 @@ Among all the 25 puzzles solved during the month, I can cite:
 - [Day 12](https://adventofcode.com/2024/day/12) gardening: weird shaped area and perimeter measurements 
 - [Day 14](https://adventofcode.com/2024/day/14) moving robots: an unexpected plot twists on the second part!
 - [Day 15](https://adventofcode.com/2024/day/15) instruct a robot to play a [sokoban](https://en.wikipedia.org/wiki/Sokoban) variant
-- [Day 16](https://adventofcode.com/2024/day/16) and [Day 20](https://adventofcode.com/2024/day/20) maze puzzles with a "Race Condition" twist, where players can "glitch" trough some walls
+- [Day 16](https://adventofcode.com/2024/day/16) and [Day 20](https://adventofcode.com/2024/day/20) maze puzzles with a "Race Condition" twist, where players can "glitch" through some walls
 - [Day 21](https://adventofcode.com/2024/day/21) where even the problem statement is recursive: you need to control a robot that controls another robot that controls a robot to press some buttons ... 
 - [Day 23](https://adventofcode.com/2024/day/23) and [Day 24](https://adventofcode.com/2024/day/24) two classic theory problems about [graphs](https://en.wikipedia.org/wiki/Bron%E2%80%93Kerbosch_algorithm) and boolean logic
 - [Day 25](https://adventofcode.com/2024/day/25) a final easy one that can be solved in many ways, with special attention to performance optimization
 
-According to [Leaderboard times](https://aoc.xhyrom.dev/), the most difficult days where [15](https://adventofcode.com/2024/day/15), [17](https://adventofcode.com/2024/day/17), [21](https://adventofcode.com/2024/day/21) and [24](https://adventofcode.com/2024/day/24). I totally agree, go check them if you like hard challenges 😁 
+According to [Leaderboard times](https://aoc.xhyrom.dev/), the most difficult days were [15](https://adventofcode.com/2024/day/15), [17](https://adventofcode.com/2024/day/17), [21](https://adventofcode.com/2024/day/21) and [24](https://adventofcode.com/2024/day/24). I totally agree, go check them if you like hard challenges 😁 
 
 ## 🎅 You are not alone 
 A special mention to the community: the best thing of [Advent of Code](https://adventofcode.com/) is being part of a collective experience, where for each day you can share opinions, get or give advice, read funny memes and play together with a lot of smart people. It can be [Reddit](https://www.reddit.com/r/adventofcode) or your local friends, a Telegram Group or a Slack Channel, but sharing it with other people is the real reason why it's enjoyable.

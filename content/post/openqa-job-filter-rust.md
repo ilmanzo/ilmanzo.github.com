@@ -28,7 +28,7 @@ Cloning parents of sle-15-SP4-Server-DVD-Updates-x86_64-Build20250112-1-fips_ker
  - sle-15-SP4-Server-DVD-Updates-x86_64-Build20250112-1-fips_ker_mode_gnome@64bit -> https://openqa.suse.de/tests/16425392
 ```
 
-And when I want to monitor those jobs, I'd need to copy-paste all the job URLs and pass them as arguments to the cool [openqa-mon](https://github.com/os-autoinst/openqa-mon) utility which will show and notify me of the job status in terminal.
+And when I want to monitor those jobs, I'd need to copy-paste all the job URLs and pass them as arguments to the cool [openqa-mon](https://github.com/os-autoinst/openqa-mon) utility which will show and notify me of the job status in the terminal.
 
 ```bash
 $ openqa-mon https://openqa.suse.de/tests/16425390+2
@@ -40,7 +40,7 @@ Imagine having to monitor 50 openQA jobs simultaneously. Manually copying and pa
 
 While openQA offers a web interface for monitoring jobs, I prefer the terminal-based workflow of `openqa-mon` for its flexibility and scripting capabilities. However, even with `openqa-mon`, manually gathering the URLs remains a pain point.
 
-I'm a lazy person, so when I do two or three times the same thing, I'm always asking to myself: can I automate it ? 
+As a lazy person, I'm always asking myself: Can I automate this? Whenever I find myself doing the same thing two or three times. 
 Of course we can. Shall we do it in Rust :crab: ? Well, why not ? Maybe I will learn something in the process :smile:
 
 ```
@@ -51,8 +51,8 @@ The complete project is available on [GitHub](https://github.com/ilmanzo/oqa-job
 
 ## Problem statement
 
-1. the program should take input via stdin and output via stdout, so it acts like a shell filter: `$ openqa-clone-job <myjobs> | oqa-jobfilter`
-2. the program should be testable, e.g. I want to develop it in a Test-Driven development process and be free to change design and inner architecture while maintaining the same behaviour
+1. The program should act as a shell filter, taking input via stdin and outputting via stdout: `$ openqa-clone-job <myjobs> | oqa-jobfilter`
+2. The program should be testable: I want to develop it using a Test-Driven development process, which allows me to change its design and inner architecture while maintaining the same behavior
 3. output should be in order and ready to be passed as an `openqa-mon` invocation as-is
 4. output should be as compact as possible, so for example when I have consecutive test IDs like https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1202, https://openqa.suse.de/tests/1203, https://openqa.suse.de/tests/1204 I can simply send 1201+3 to `openqa-mon` . Likewise, different job IDs for the same openQA instance can be grouped with a comma separate, so https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1207, https://openqa.suse.de/tests/1210, https://openqa.suse.de/tests/1215 becomes
 
@@ -71,7 +71,7 @@ So our main will read and write from stdin/stdout, while the real computing func
 pub fn process_input<R: Read, W: Write>(input: R, mut output: W) -> io::Result<()> {
 ```
 
-Requisite #3 is just a matter of some ordering, [de-duplication](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.dedup), and formatting, which are features included in the comprehensive Rust standard library. 
+Requisite #3: Ordering, [de-duplication](https://doc.rust-lang.org/std/vec/struct.Vec.html#method.dedup), and formatting are handled by features included in the comprehensive Rust standard library.
 
 Requisite #4 is the trickiest: to implement the consecutive-id checking and same-domain grouping we need to store each job into a proper data structure
 
@@ -82,7 +82,7 @@ pub struct OpenQAJob {
     pub consecutive_count: u32,
 }
 ```
-which at this point deserves to be placed in a separate source file. It's a good occasion to learn how to organize a Rust project and modelling of Domain "objects". Note that each `OpenQAJob` have associated functions (very similar to "methods"). 
+which at this point deserves to be placed in a separate source file. It's a good occasion to learn how to organize a Rust project and modelling of "Domain Objects". Note that each `OpenQAJob` have associated functions (very similar to "methods"). 
 
 ## Some fancy stuff
 

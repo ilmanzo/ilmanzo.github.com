@@ -5,12 +5,12 @@ title: "Writing shell filters for fun and profit"
 categories: programming
 tags: [programming, Rust, shell, command line, openqa, testing]
 author: Andrea Manzini
-date: 2025-01-18
+date: 2025-01-19
 ---
 
 ## Why ? 
 
-During my work I have sometimes to debug failed [openqa test jobs](https://open.qa/). 
+During my daily job I have sometimes to debug failed [openqa test jobs](https://open.qa/). 
 
 One of the testing mantra is to [reproduce the issue](https://www.testdevlab.com/blog/issue-reproduction-why-reproducing-bugs-matter) and for that task the openqa community has [developed some tooling](https://github.com/os-autoinst/scripts). 
 
@@ -47,6 +47,9 @@ Of course we can. Shall we do it in Rust :crab: ? Well, why not ? Maybe I will l
 $ cargo init oqa-jobfilter
 ```
 
+![crab-shell](/img/pexels-taryn-elliott-6405711.jpg)
+Image credits to: [@taryn-elliott](https://www.pexels.com/@taryn-elliott/)
+
 The complete project is available on [GitHub](https://github.com/ilmanzo/oqa-jobfilter) and it's MIT licensed.
 
 ## Problem statement
@@ -54,7 +57,7 @@ The complete project is available on [GitHub](https://github.com/ilmanzo/oqa-job
 1. The program should act as a shell filter, taking input via stdin and outputting via stdout: `$ openqa-clone-job <myjobs> | oqa-jobfilter`
 2. The program should be testable: I want to develop it using a Test-Driven development process, which allows me to change its design and inner architecture while maintaining the same behavior
 3. output should be in order and ready to be passed as an `openqa-mon` invocation as-is
-4. output should be as compact as possible, so for example when I have consecutive test IDs like https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1202, https://openqa.suse.de/tests/1203, https://openqa.suse.de/tests/1204 I can simply send 1201+3 to `openqa-mon` . Likewise, different job IDs for the same openQA instance can be grouped with a comma separate, so https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1207, https://openqa.suse.de/tests/1210, https://openqa.suse.de/tests/1215 becomes
+4. output should be as compact as possible, so for example when I have consecutive test IDs like https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1202, https://openqa.suse.de/tests/1203, https://openqa.suse.de/tests/1204 I can simply send 1201+3 to `openqa-mon` . Likewise, different job IDs for the same openQA instance can be grouped with a comma separate, so when I have some cloned tests like https://openqa.suse.de/tests/1201, https://openqa.suse.de/tests/1207, https://openqa.suse.de/tests/1210, https://openqa.suse.de/tests/1215 should become
 
 
 ```bash
@@ -86,14 +89,14 @@ which at this point deserves to be placed in a separate source file. It's a good
 
 ## Some fancy stuff
 
-- I tried to make use of the language feature as well:
+- I tried to make use of some Rust language feature as well:
   - [constant evaluation at compile time](https://doc.rust-lang.org/reference/const_eval.html)
-  - code is organized and split in logically separated source files
+  - the code is organized and split in logically separated source files
   - the ["clippy" linter](https://github.com/rust-lang/rust-clippy) is configured as picky as possible
   - documentation comments: we can easily extract documentation directly from the source code
   - unit testing to cover all the cases and enable a fearless refactoring
 
-- As a bonus, I added a GitHub action to run unit tests and compile the project at each commit+push; ready for a proper release.
+- As a bonus, I added a GitHub action to run unit tests and compile the project at each commit+push; ready for a proper release cycle.
 
 ## Closing words
 

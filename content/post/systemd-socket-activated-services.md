@@ -78,7 +78,7 @@ Seems working!
 
 ## 🌿 Don't waste resources
 
-After some frantic weeks, you discover that your service is actually used, but not as much you expected. Only some people call it during to get random numbers, and only a few times per day; so it seems a bit of wasteful to have a Python interpreter always running and taking some megabytes of memory for a such small purpose. So, let's prepare a `socket` unit file: 
+After some frantic weeks, you discover that your service is actually used, but not as much you expected. Only some people wants to get random numbers, and only a few times per day; so it seems a bit of wasteful to have a Python interpreter always running and taking some megabytes of memory for a such small purpose. So, let's prepare a `socket` unit file: 
 
 ```ini
 # /etc/systemd/system/diceroll.socket 

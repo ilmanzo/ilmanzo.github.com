@@ -5,7 +5,7 @@ description: "Stop Wasting Resources: how to start your services on demand"
 categories: [linux, automation, sysadmin]
 tags: [systemd, sysadmin, command line, linux, services, server, socket, learning, tutorial]
 author: Andrea Manzini
-date: 2025-02-03
+date: 2025-02-02
 ---
 
 ## 💭 What ? 

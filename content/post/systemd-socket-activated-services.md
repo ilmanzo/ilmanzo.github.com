@@ -122,7 +122,7 @@ Whoa, something has gone wrong :thinking:
 
 ## 🩹 Fixing the issue
 
-There's an issue in our solution: when the server spawns up, it tries to listen on the connection it finds the socket already in use by systemd. We need to change our application to handle the socket opened and passed by systemd:
+There's an issue in our solution: when the server spawns up, it tries to listen on the connection and it finds the socket already in use by systemd. We need to change our application to handle the socket opened and passed by systemd:
 
 {{< highlight python >}}
 import socket
@@ -158,10 +158,10 @@ $ curl http://127.0.0.1:5000/roll
 {"result":1}
 ```
 
-Now it works and the server starts on demand. Someone could notice that it runs forever and never stops, so after the first startup, it stays up and consuming some resources, even when idle! 
+Now it works and the server starts on demand. Someone could notice that it runs forever and never stops, so after the first startup, it stays up and take some resources, even when idle! 
 On the other hand, we cannot simply have a service that serves one connection and then immediately quit, because handling lots of connections would be less efficient and quite similar to a inetd/CGI server. 
 
-## 🖐️ Please stop ?
+## 🫳 Please stop ?
 
 To solve this inconvenience, we could add some checks and logic in our application in order to quit when has been idle for too long. A similar effect can be obtained by using the  `--exit-idle-time` option of the [`systemd-socket-proxyd` utility](https://www.freedesktop.org/software/systemd/man/latest/systemd-socket-proxyd.html), we can even use a [systemd timer](https://documentation.suse.com/smart/systems-management/html/systemd-working-with-timers/index.html) to gracefully kill our application after some pre-defined time. The first solution is more robust and cleaner but it's out of scope of this tutorial, maybe we will get deeper in a future article; as we want to play with `systemd` features for now:
 
@@ -190,4 +190,4 @@ WantedBy=multi-user.target
 
 ## :wave: Bye
 
-While we've explored several methods for managing timeouts and service lifecycles with systemd, it's clear that the system is a powerful and complex beast.  Many aspects of systemd remain less widely known, and new features and capabilities are continually being added with each new version.  This exploration highlights just a fraction of its potential, and further investigation into its more advanced functionalities can often unlock even more elegant and efficient solutions for service management and automation.  Whether it's leveraging timers, socket activation, or exploring the intricacies of dependencies and targets, systemd offers a deep toolbox for administrators and developers alike.
+Many aspects of systemd remain less widely known, and new features and capabilities are continually being added with each new version. This exploration highlights just a fraction of its potential, and further investigation into its more advanced functionalities can often unlock even more elegant and efficient solutions for service management and automation.  Whether it's leveraging timers, socket activation, or exploring the intricacies of dependencies and targets, systemd offers a deep toolbox for administrators and developers alike.

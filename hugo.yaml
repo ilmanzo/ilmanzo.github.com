@@ -4,7 +4,8 @@ title: ilManzo's blog
 theme: PaperMod
 author: Andrea Manzini
 copyright: '© 2012-2024 Andrea Manzini'
-paginate: 4
+pagination:
+  pagerSize: 4
 DefaultContentLanguage: en
 enableInlineShortcodes: true
 enableEmoji: true
@@ -102,7 +103,7 @@ privacy:
   vimeo:
     disabled: false
     simple: true
-  twitter:
+  x:
     disabled: false
     enableDNT: true
     simple: true

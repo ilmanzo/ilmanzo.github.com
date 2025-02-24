@@ -245,6 +245,7 @@ GOCOVERDIR=covdatafiles pytest
 go tool covdata percent -i covdatafiles
 ```
 
+
 ## 🔎 Use the source, Luke
 
 Now a question for the reader; looking at the source code of the program:
@@ -283,7 +284,14 @@ func main() {
 
 can you think of one last test we can write to reach 100% coverage ? 😉 
 
-(Hint: there's a *name* involved)
+Good news: we can have a visual hint by producing an html output! 
+We just need to add a couple more lines of post-processing:
+
+```bash
+$ go tool covdata textfmt -i=covdatafiles -o=coverage.txt
+$ go tool cover -html coverage.txt
+```
+
 
 ## 🧪 Final words
 

@@ -66,7 +66,7 @@ _________________________________ test_hello _________________________________
 capfd = <_pytest.capture.CaptureFixture object at 0x7f3824e41650>
 
     def test_smoke(capfd):
-        subprocess.call(["./hello"])
+        run(["./hello"])
         out, err = capfd.readouterr()
 >       assert out == ""
 E       AssertionError: assert 'Hello, World!\n' == ''
@@ -249,7 +249,8 @@ go tool covdata percent -i covdatafiles
 
 Now a question for the reader; looking at the source code of the program:
 
-```Go
+
+{{< highlight go >}}
 package main
 
 import (
@@ -278,9 +279,11 @@ func main() {
 		fmt.Println(message)
 	}
 }
-```
+{{</ highlight >}}
 
 can you think of one last test we can write to reach 100% coverage ? 😉 
+
+(Hint: there's a *name* involved)
 
 ## 🧪 Final words
 

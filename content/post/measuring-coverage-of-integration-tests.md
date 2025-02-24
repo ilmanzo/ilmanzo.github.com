@@ -149,7 +149,7 @@ For each test run, we need to measure the ratio between the code executed and th
 So, let's rebuild the program with coverage informations in the binary:
 
 ```bash
-go build -cover hello.go
+$ go build -cover hello.go
 ```
 
 Once compiled, the program gives us an hint on something changed:
@@ -250,7 +250,6 @@ go tool covdata percent -i covdatafiles
 
 Now a question for the reader; looking at the source code of the program:
 
-
 {{< highlight go >}}
 package main
 
@@ -307,7 +306,6 @@ def test_andrea(capfd):
 
 Thanks to the excellent [Go tooling](https://go.dev/doc/build-cover), adding coverage information to compiled binaries is straightforward and we can finally have an idea on how much code our tests are probing. 
 
-I'm sure it's a very important metric to have, so We can think about some ways to expand this concept to other languages and technologies.
+I'm sure it's a very important metric to have, so we can think about some ways to expand this concept to other languages and technologies.
 
-Feel free to leave me comments and feedback, happy hacking!
-
+Feel free to leave me comments and feedback, happy hacking! :wave:

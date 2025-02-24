@@ -292,6 +292,16 @@ $ go tool covdata textfmt -i=covdatafiles -o=coverage.txt
 $ go tool cover -html coverage.txt
 ```
 
+![html coverage](/img/integration-coverage-html-screenshot.png)
+
+Oh yes, now it's very clear what we are missing :smile:
+
+```python
+def test_andrea(capfd):
+    run(["./hello","-name","Andrea"])
+    out, err = capfd.readouterr()
+    assert out == "Hello, Andrea! Welcome back!\n"
+```
 
 ## 🧪 Final words
 

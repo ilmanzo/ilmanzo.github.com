@@ -12,7 +12,7 @@ date: 2025-03-30
 
 On the [previous post](https://ilmanzo.github.io/post/measuring-coverage-of-integration-tests/) we started our journey with a very simple scenario, and we used a [nice feature](https://go.dev/blog/integration-test-coverage) of the Go programming language to get a measure of how much % of the target program our test is exercising.
 
-This time I am going to experiment on a Proof of Concept about how can we obtain a test code coverage metric estimation for a normal binary program, **without any recompilation.**
+This time I am going to experiment a Proof of Concept about how we can obtain a test code coverage metric estimation for a normal binary program, **without any recompilation.**
 
 In this example we will pretend that our task is to write integration tests for the famous `gzip` program, and try to measure the progresses we are doing about *coverage* of our tests.
 
@@ -20,6 +20,12 @@ In this example we will pretend that our task is to write integration tests for 
 *Even pets need coverage!* Image credits to: [Em Hopper](https://www.pexels.com/@emhopper/)
 
 ## 🧮 How ?
+
+The main idea is 
+- get in some way the *complete* list of functions present in the program = N
+- record, during test, which of those functions are executed = E
+
+The ratio E/N provides an approximation of test effectiveness, guiding us to areas needing expanded coverage.
 
 We don't want to recompile `gzip` with coverage instrumentation, but in our distro we have the *debug information* of the program. Usually they are provided in separate packages, and the repository is not enabled by default, so first of all let's enable them and install the related packages.
 On Tumbleweed:
@@ -29,12 +35,6 @@ $ sudo zypper modifyrepo -e repo-debug
 $ sudo zypper refresh
 $ sudo zypper in gzip-debuginfo gzip-debugsource
 ```
-
-The main idea is 
-- get in some way the *complete* list of functions present in the program = N
-- record, during test, which of those functions are executed = E
-
-The ratio E/N provides an approximation of test effectiveness, guiding us to areas needing expanded coverage.
 
 ## 👐 Functions all the way down
 

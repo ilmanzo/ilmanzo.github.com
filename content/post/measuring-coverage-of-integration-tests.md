@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How much code are you testing ?"
+title: "How much code are you testing ? (1)"
 description: "Measuring coverage of integration tests"
 categories: [programming, testing]
 tags: [testing, tutorial, coverage, go, golang, qa]

@@ -186,7 +186,7 @@ gdb -ex 'set pagination off' -ex 'info functions' -ex quit \
   $(which $BINARY) > $TEMP_DIR/all_funcs.gdb
 python3 analyze.py --binary $BINARY -d $TEMP_DIR
 # Clean up: Remove the temporary directory and its contents
-rm -rf "$TEMP_DIR
+rm -rf "$TEMP_DIR"
 ```
 
 ```

@@ -36,7 +36,7 @@ The main idea is
 
 The ratio E/N provides an approximation of test effectiveness, guiding us to areas needing expanded coverage.
 
-## 👐 Gimme all
+## 👐 Functions all the way down
 
 We can use the `gdb` debugger to have a list of all the functions in a program:
 

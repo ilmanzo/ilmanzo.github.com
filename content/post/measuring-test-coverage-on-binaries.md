@@ -17,7 +17,7 @@ This time I am going to experiment on a Proof of Concept about how can we obtain
 In this example we will pretend that our task is to write integration tests for the famous `gzip` program, and try to measure the progresses we are doing about *coverage* of our tests.
 
 ![coverage](/img/pexels-emhopper-1359036.jpg)
-*Even pets needs coverage!* Image credits to: [Em Hopper](https://www.pexels.com/@emhopper/)
+*Even pets need coverage!* Image credits to: [Em Hopper](https://www.pexels.com/@emhopper/)
 
 ## 🧮 How ?
 
@@ -34,7 +34,7 @@ The main idea is
 - get in some way the *complete* list of functions present in the program = N
 - record, during test, which of those functions are executed = E
 
-The ratio between the two numbers E/N tells us, with some approximation, how good are our test, and we can use the indication to look at areas when we want to expand the test coverage.
+The ratio E/N provides an approximation of test effectiveness, guiding us to areas needing expanded coverage.
 
 ## 👐 Gimme all
 
@@ -160,7 +160,7 @@ Ir               file:function
  2,064 ( 0.84%)  /usr/src/debug/glibc-2.41/stdio-common/Xprintf_buffer_write.c:__printf_buffer_write [/usr/lib64/libc.so.6]
 ```
 
-While a bit confusing, it contains all the informations we need. It just needs some elaboration ...
+While a bit confusing, it contains all the information we need. It just needs some elaboration ...
 
 ## 🤖 Automate it
 
@@ -338,7 +338,7 @@ In this way, we have also some *hints* about which features of the program we ar
 
 ## 🧵 Final words
 
-This technique has some drawbacks: it's not precise in comparison with source code level coverage, and it would be extremely improbable to reach 100% coverage in any real life scenario. Also, the fact that a function is run does not mean you are effectively testing all the code in that function. 
+It's crucial to remember that the coverage percentage obtained using this method is an approximation. `valgrind` tracks function calls, not individual line or branch executions. Therefore, a function might be called but not fully tested, leading to potential false positives. Additionally, functions indirectly exercised by other calls might not be explicitly listed, resulting in false negatives. The performance overhead introduced by `valgrind` also means this technique is more suitable for offline analysis than real-time testing.
 
 On the other hand, it has the benefits that it's simple to implement, doesn't require big effort nor special setup and you can use it as an indication if the integration tests you are writing are improving over the time or not. Another good use can be to detect when the new version of the programs have more features, as your coverage will get lower with the update would mean you are not testing the new stuff.
 

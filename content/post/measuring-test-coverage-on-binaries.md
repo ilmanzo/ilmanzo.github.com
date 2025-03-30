@@ -3,7 +3,7 @@ layout: post
 title: "How much code are you testing ? (2)"
 description: "Measuring test coverage on binaries"
 categories: [programming, testing]
-tags: [testing, tutorial, coverage, e2e, qa, tracing, scripting]
+tags: [testing, tutorial, linux, coverage, e2e, qa, tracing, scripting]
 author: Andrea Manzini
 date: 2025-03-30
 ---
@@ -342,4 +342,4 @@ It's crucial to remember that the coverage percentage obtained using this method
 
 On the other hand, it has the benefits that it's simple to implement, doesn't require big effort nor special setup and you can use it as an indication if the integration tests you are writing are improving over the time or not. Another good use can be to detect when the new version of the programs have more features, as your coverage will get lower with the update would mean you are not testing the new stuff.
 
-Thanks for following me until the end of this long post, feel free to leave me comments and feedback, happy hacking! :wave:
+Thanks for following me until the end of this long post, feel free to send comments and feedback, happy hacking! :wave:

@@ -258,7 +258,7 @@ We are on a good track. We doubled the coverage, and still we haven't compressed
 
 ## 🏋️ Do some actual work
 
-Time to write a test to compress and decompress a file!
+Time to write a test to compress and decompress a file! We introduce also an helper function in the test, as we will need it more than once:
 
 ```python
 SAMPLE_FILE='sample.txt'
@@ -277,6 +277,18 @@ def test_compress_decompress(capfd):
     with open(SAMPLE_FILE) as file:
         assert(file.readlines()==content)
     os.remove(SAMPLE_FILE)
+
+# helper function to create a dummy sample file
+def create_test_file(file_name):
+    sample_text = """This is a dummy sample text file.
+    It contains some random lines of text.
+    This is line 3 of the text file.
+    Here is line 4, just for testing purposes.
+    Feel free to modify or extend this text.
+    """
+    # Open the file in write mode ('w') and write the sample text to it
+    with open(file_name, 'w') as file:
+        file.write(sample_text)    
 ```
 
 ```

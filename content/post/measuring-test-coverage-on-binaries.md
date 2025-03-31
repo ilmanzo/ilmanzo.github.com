@@ -207,7 +207,7 @@ As expected, our "smoke" test on `gzip` runs only 9 functions of 80, with a low 
 
 ## 🏃‍➡️ Let's move forward
 
-Now we can improve our testing, as we are driven by the coverage metric. Shall we try the `-V` version option ?
+Now we can improve our testing, as we are driven by the coverage metric. Shall we try with `gzip -V` option ? 
 
 ```python
 # program should display version information
@@ -218,6 +218,8 @@ def test_version(capfd):
     assert "This is free software" in stdout 
     assert re.search(r"gzip \d.\d\d", stdout)
 ```
+
+A simple test to ensure the program outputs a numeric version.
 
 ```
 $ ./coverage.sh

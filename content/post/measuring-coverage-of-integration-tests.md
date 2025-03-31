@@ -308,4 +308,6 @@ Thanks to the excellent [Go tooling](https://go.dev/doc/build-cover), adding cov
 
 I'm sure it's a very important metric to have, so we can think about some ways to expand this concept to other languages and technologies.
 
+update: there is a follow up post, you can read it [here](https://ilmanzo.github.io/post/measuring-test-coverage-on-binaries/)
+
 Feel free to leave me comments and feedback, happy hacking! :wave:

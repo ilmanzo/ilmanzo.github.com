@@ -160,7 +160,7 @@ Ir               file:function
  2,064 ( 0.84%)  /usr/src/debug/glibc-2.41/stdio-common/Xprintf_buffer_write.c:__printf_buffer_write [/usr/lib64/libc.so.6]
 ```
 
-While a bit confusing, it contains all the information we need. It just needs some elaboration ...
+While a bit verbose, it contains all the information we need. It just needs some massaging ...
 
 ## 🤖 Automate it
 
@@ -184,7 +184,7 @@ done
 # dump all the functions in the binary
 gdb -ex 'set pagination off' -ex 'info functions' -ex quit \
   $(which $BINARY) > $TEMP_DIR/all_funcs.gdb
-python3 analyze.py --binary $BINARY -d $TEMP_DIR
+python3 calc_coverage.py --binary $BINARY -d $TEMP_DIR
 # Clean up: Remove the temporary directory and its contents
 rm -rf "$TEMP_DIR"
 ```
@@ -326,7 +326,7 @@ That's some good number! Can you think of some areas of improvement ?
 
 ## 👓 We miss something
 
-If you use the `-v` verbose option, the python `analyzer` script will output the functions which are tested and which aren't:
+If you use the `-v` verbose option, the python `calc_coverage` script will output the functions which are tested and which aren't:
 
 ```
 Executed functions: atdir_eq,atdir_set,bi_windup,build_tree,compress_block,ct_tally,discard_input_bytes,do_exit,fd_safer,file_read,fill_inbuf,fill_window,finish_out,finish_up_gzip,flush_block,flush_outbuf,flush_window,gen_codes,get_input_size_and_time,get_method,get_suffix,huft_build,huft_free,inflate_codes,inflate_dynamic,init_block,input_eof,last_component,license,longest_match,main,open_and_stat,open_safer,openat_safer,pqdownheap,progerror,read_buffer,remove_output_file,rpl_fclose,rpl_fflush,rpl_fprintf,rpl_printf,rpl_vfprintf,scan_tree,send_bits,send_tree,strlwr,treat_file,unzip,updcrc,vasnprintf,write_buf,xstrdup,zip

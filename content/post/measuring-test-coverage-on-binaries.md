@@ -25,7 +25,7 @@ The main idea is
 - get in some way the *complete* list of functions present in the program = N
 - record, during test, which of those functions are executed = E
 
-The ratio E/N provides an approximation of test effectiveness, guiding us to areas needing expanded coverage.
+The ratio E/N provides an approximation of test effectiveness, driving us toward areas needing coverage expansion.
 
 We don't want to recompile `gzip` with coverage instrumentation, but in our distro we have the *debug information* of the program. Usually they are provided in separate packages, and the repository is not enabled by default, so first of all let's enable them and install the related packages.
 On Tumbleweed:

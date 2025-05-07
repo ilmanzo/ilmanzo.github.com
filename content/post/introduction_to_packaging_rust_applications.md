@@ -86,7 +86,6 @@ Mainly for package practice
 # The number passed to -a (a stands for "after") should be equivalent to the Source tag number
 # of the vendor tarball, 1 in this case (from Source1).
 %autosetup -p1 -a1
-install -D -m 644 %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking. Uncomment only if required.
 # find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 

@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 
 (this is a stripped down version, the complete program is available [on my repository](https://github.com/ilmanzo/BinaryCoverage)). Many thanks to [@simotin13](https://github.com/simotin13) for providing a valuable starting point!
 
-We need to compile this program in a shared `.so` library, following the [documentation](https://software.intel.com/sites/landingpage/pintool/docs/98869/Pin/doc/html/index.html#BUILDINGTOOLS) ; if you are lazy or eager, you will find an handy [`build.sh`](https://github.com/ilmanzo/BinaryCoverage) script and *Makefiles* to compile everything.
+We need to compile this program in a shared `.so` library, following the [documentation](https://software.intel.com/sites/landingpage/pintool/docs/98869/Pin/doc/html/index.html#BUILDINGTOOLS) ; if you are lazy or eager, you will find an handy [`build.sh`](https://github.com/ilmanzo/BinaryCoverage) script and *Makefiles* to properly compile and link everything.
 
 ## 💌 [What is logged ?](https://www.youtube.com/watch?v=HEXWRTEbj1I)
 

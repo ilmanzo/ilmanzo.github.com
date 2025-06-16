@@ -6,7 +6,7 @@ package main import ( "encoding/binary" "fmt" "io" "os" ) type chunk struct { Le
 let’s create the sample file:
 $ echo -en "\x01\x02\x03\x04\x05\x06\x07\x08" > file.bin and show its content in binary form:
 $ hexdump -C file.bin 00000000 01 02 03 04 05 06 07 08 |........| 00000008 to get the desired output we can use the powerful, but little documented format string option of hexdump:
-...</p></div><footer class=entry-footer><span title='2016-10-20 00:00:00 +0000 UTC'>October 20, 2016</span>&nbsp;·&nbsp;Andrea Manzini</footer><a class=entry-link aria-label="post link to convert a binary file to ascii using hexdump" href=https://ilmanzo.github.io/post/hexdump-for-binary-file-manipulation/></a></article></main><footer class=footer><span>© 2012-2024 Andrea Manzini</span> ·
+...</p></div><footer class=entry-footer><span title='2016-10-20 00:00:00 +0000 UTC'>October 20, 2016</span>&nbsp;·&nbsp;Andrea Manzini</footer><a class=entry-link aria-label="post link to convert a binary file to ascii using hexdump" href=https://ilmanzo.github.io/post/hexdump-for-binary-file-manipulation/></a></article></main><footer class=footer><span>© 2012-2025 Andrea Manzini</span> ·
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
 <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z"/></svg>

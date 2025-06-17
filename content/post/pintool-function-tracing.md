@@ -5,14 +5,15 @@ description: "Using Intel PIN to measure test coverage on binaries"
 categories: [programming, testing]
 tags: [testing, tutorial, linux, coverage, e2e, qa, tracing, scripting, C, C++, instrumentation]
 author: Andrea Manzini
-date: 2025-06-16
+date: 2025-06-17
+
 ---
 
-## ▶️ Intro : [Let Me Be Your Fantasy](https://www.youtube.com/watch?v=f17b8m5fniU) 
+## ▶️ Intro : [Let Me Be](https://www.youtube.com/watch?v=mjPVv5ojKTo) 
 
 On the [previous post](https://ilmanzo.github.io/post/measuring-test-coverage-on-binaries/) we continued our journey with a more complex scenario, using a mix of `gdb` and `valgrind` to trace all the function execution inside a given binary.
 
-This time, we're cranking up the complexity. We'll dive deeper into low-level analysis and explore how to use [Intel PIN](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html), a powerful dynamic instrumentation framework for manipulating and inspecting executable code at runtime.
+This time, hold on because we're cranking up the complexity. We'll dive deeper into low-level analysis and explore how to use [Intel PIN](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html), a powerful dynamic instrumentation framework for manipulating and inspecting executable code at runtime.
 
 ![probe](/img/pexels-furqan-khurshid-484332193-25655714.jpg)
 (Photo by [FURQAN KHURSHID](https://www.pexels.com/photo/close-up-of-a-man-soldering-25655714/))
@@ -53,12 +54,16 @@ int main(int argc, char **argv)
 Then we compile it and it will be our test bed
 
 {{< highlight bash >}}
-cc -g -gdwarf-4 main.c -o cov_sample
+$ cc -g -gdwarf-4 main.c -o cov_sample
+$ example/cov_sample 7 3
+the answer is a * b = 21
+$ example/cov_sample 2 5
+the answer is a + b = 7
 {{< /highlight >}}
 
 We're compiling with the `-g` flag to embed debug information directly into the executable. While this isn't strictly required - Pin can also work with external debug symbol files - it simplifies our example.
 
-## 📌 A tracing tool: [Somebody's Watching Me](https://www.youtube.com/watch?v=7YvAYIJSSZY)
+## 📌 A tracing tool: [Surrender](https://www.youtube.com/watch?v=Uj_oZ48ccPc)
 
 [Intel PIN](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html) is a dynamic binary instrumentation framework for the the IA-32 and x86-64 instruction-set architectures that enables the creation of dynamic program analysis tools. Pin is provided and supported by Intel, free of charge for any type of use, under the terms of the Intel Simplified Software License ([ISSL](https://software.intel.com/sites/landingpage/pintool/intel-simplified-software-license.txt)).
 All source code contained in the Pin kit, including scripts, sample code and headers, is governed by the [MIT license](https://software.intel.com/sites/landingpage/pintool/LICENSE-mit.txt).
@@ -126,8 +131,7 @@ We need to compile this program in a shared `.so` library, following the [docume
 
 ## 💌 [What is logged ?](https://www.youtube.com/watch?v=HEXWRTEbj1I)
 
-Now we can run pin, passing it our plugin, and executing the target.
-
+Now we can run pin, passing it our plugin, and execute the target, which will be injected with our instrumentation code.
 
 {{< highlight bash >}}
 export PIN_ROOT = <your PIN install directory>
@@ -187,12 +191,50 @@ Copyright 2002-2024 Intel Corporation.
 
 Since the log contains both the list of all functions of our binary, and the functions that has been executed, it's easy to cook up a script that emits a fancy coverage report.
 
+```
+==================================================
+Image: /home/andrea/CodeCoverage/example/cov_sample
+==================================================
+  Functions Found:   15
+  Functions Called:  12
+  Coverage:          80.00%
+--------------------------------------------------
+  Called Functions:
+    - .plt
+    - __do_global_dtors_aux
+    - _fini
+    - _init
+    - _start
+    - atoi@plt
+    - deregister_tm_clones
+    - frame_dummy
+    - main
+    - add
+    - printf@plt
+    - register_tm_clones
+
+  Uncalled Functions:
+    - _dl_relocate_static_pie
+    - mul
+    - fwrite@plt
+```
+
+and with some markup:
+
 ![report](/img/pintool_coverage_report.png)
+
+now we also have an hint of where is better to focus our testing, because some of the program functions have not been called.
+
+As an improvement, we could prepare a "whitelist" of functions that are *intrinsic* to the execution environment (like `main`, `_start` and so on) that can be excluded from the report.
 
 ## 🪩 [Going further](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-On the [repository](https://github.com/ilmanzo/BinaryCoverage) you can find also
+On the [repository](https://github.com/ilmanzo/BinaryCoverage) you can find some bonus content:
 - a Python program that analyzes the log and outputs the coverage reports
 - a convenient `wrap.sh` utility that takes a binary, replaces it with the proper instrumentation call, and then optionally restore the previous state.
 
 Next step: instead of a dummy target, we'll "measure" operating system binaries, with full automation and without the need of recompilation. Never give (U) up 🙂‍↔️
+
+p.s.
+If you didn't notice: as a summer easter egg, every section of this post is an Eurodance 90 song 🎧 Enjoy!
+

@@ -72,7 +72,7 @@ $ ./qboot -d my-disk.qcow2
 
 That's it. It just works. If I need to do some setup first:
 ```bash
-$ ./qboot -d my-disk.qcow2 -i
+$ ./qboot -d my-disk.qcow2 -w
 ```
 
 My QEMU headache is gone, replaced by the quiet hum of a tool that does exactly what I want.

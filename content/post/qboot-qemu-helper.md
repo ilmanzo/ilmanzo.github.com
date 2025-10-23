@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "From QEMU Headache to Headless"
-description: "Taming a Command-Line Monster with D"
+description: "Taming a Command-Line Monster"
 categories: [programming, testing]
-tags: [testing, tutorial, linux, dlang, virtualization, emulation, scripting]
+tags: [testing, tutorial, linux, dlang, golang, virtualization, emulation, scripting]
 author: Andrea Manzini
 date: 2025-09-28
 

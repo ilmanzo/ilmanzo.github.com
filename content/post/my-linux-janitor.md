@@ -17,9 +17,14 @@ My `~/Downloads` directory is a digital dumping ground. It's a collection of ISO
 
 Disk space is cheap nowadays, but I like to have things nice and clean. I could go in and manually clean it... But who remembers to do that ?
 
-So I setup a quick automated solution; a good occation to study **Systemd timers!**
+So I setup a quick automated solution; it turns out as a good occation to study **Systemd timers!**
 
 My rule is simple: if I haven't accessed (or "opened") a file in either of those places for 30 days, I consider it junk and want it gone.
+
+![linux janitor](/img/linux_janitor.jpg)
+
+*(please forgive the mandatory cheesy AI-generated picture)*
+
 
 ## 🗂️ Your Own Systemd Janitor
 
@@ -112,7 +117,7 @@ systemctl --user list-timers
 
 ## 🗑️ Bonus Step: Package Cleanup 
 
-### (for openSUSE users)
+### (for openSUSE 🦎 users)
 
 File cleanup is great, but as a Tumbleweed user, My system gets constant updates, which can leave behind "unneeded" packages—dependencies that were installed for something but are no longer required. So I have also an handy alias
 

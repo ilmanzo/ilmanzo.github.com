@@ -48,7 +48,7 @@ Description=Clean up old files in Download and Screenshots
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/find %h/Download %h/Pictures/Screenshots -type f -atime +29 -delete
+ExecStart=/usr/bin/find %h/Downloads %h/Pictures/Screenshots -type f -atime +29 -delete
 Nice=19
 IOSchedulingClass=idle
 ```
@@ -57,7 +57,7 @@ Let's break that down:
 
 - `Type=oneshot`: This just means it runs a single command and stops.
 - `ExecStart=...`: This is the magic command!
-- `%h/Download %h/Pictures/Screenshots`: %h is systemd's special shortcut for your home directory. We tell find to look in both places.
+- `%h/Downloads %h/Pictures/Screenshots`: %h is systemd's special shortcut for your home directory. We tell find to look in both places.
 - `-type f`: Only find files, not empty directories.
 - `-atime +29`: Find files that were last accessed more than 29 days ago (i.e., 30 days or more).
 - `-delete`: Yep. It deletes them.
@@ -69,7 +69,7 @@ note: if your `/home/` filesystem is mounted with `noatime` or `relatime` option
 
 ```bash
 # THIS WILL ONLY LIST FILES. IT WILL NOT DELETE ANYTHING.
-find ~/Download ~/Pictures/Screenshots -type f -atime +29
+find ~/Downloads ~/Pictures/Screenshots -type f -atime +29
 ```
 
 Now, let's make the schedule.

@@ -86,11 +86,26 @@ Ca' Foscari University has a futuristic design, no wonder they call it *"the Jav
 My proposed talk was accepted here so I went to speak about green computing and how to [measure energy consumption](https://ilmanzo.github.io/post/measure_your_power_consumption/) without any special equipment. Also took the occasion to spread some cool company-provided swag! 
 
 ![venezia3](/img/octoberconf_2025/venezia3.jpg)
+
+(Yes I even managed to spell my name wrong 😑)
+
 ![venezia4](/img/octoberconf_2025/venezia4.jpg)
 
 ## Brescia, Oct 25, 2025: Linux Day
 
 Linux Day is an old-time favorite of mine, since 2001 every year I like to partecipate and share the knowledge and passion about Linux and Open Source
+
+I gave two talks, one in the morning about the basics of Linux kernel (showing the anatomy of a syscall) and a larger "workshop" about Kubernetes. 
+
+![brescia1](/img/octoberconf_2025/brescia1.jpg)
+
+Very Interesting optical equipment and software for astrophotography
+
+![brescia2](/img/octoberconf_2025/brescia2.jpg)
+
+Brought home this nifty swag that summarizes well the spirit of Open Source: do it your own penguin! 
+
+![brescia3](/img/octoberconf_2025/brescia3.jpg)
 
 
 # Back home

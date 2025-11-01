@@ -1,17 +1,16 @@
 ---
 layout: post
-title: "Oct 2025 conferences recap"
+title: "October 2025 conferences recap"
 description: "Quick debriefing after autumn events"
 categories: conference
 tags: [linux, opensource, conferences, networking, social]
 author: Andrea Manzini
-date: 2025-11-03
-draft: true
+date: 2025-11-01
 ---
 
 # Intro
 
-October is almost at an end, and I want to share a quick recap of my participation to some conferences. First of all, a big thanks to the organizers who dedicate their energy to these efforts, and to [SUSE](https://www.suse.com) for supporting my attendance!
+October is at an end, and I want to share a quick recap of my participation to some conferences. First of all, a big thanks to the organizers who dedicate their energy to these efforts, and to [SUSE](https://www.suse.com) for supporting my attendance!
 
 ## Modena, Oct 4, 2025 : GDG DevFest 2025
 
@@ -19,7 +18,7 @@ October is almost at an end, and I want to share a quick recap of my participati
 
 - Ancient, historical location : The venue was in the city center: an actual church and a teathre
 - I managed to be there only on saturday
-- modena.rb guys and linux booth!
+- `modena.rb` guys and linux booth!
 
 ![modena2](/img/octoberconf_2025/modena2.jpg)
 
@@ -35,11 +34,11 @@ October is almost at an end, and I want to share a quick recap of my participati
 ![modena3](/img/octoberconf_2025/modena3.jpg)
 ![modena4](/img/octoberconf_2025/modena4.jpg)
 
-I've never seen Business cards shaped as Magic Cards, and they looks amazing!
+I've never seen Business cards shaped as Magic Cards, and they look gorgeous!
 
 ## Florence, Oct 5-7, 2025 : [GoLab](https://golab.io/) 
 
-speaking of amazing locations, the 10th edition GoLab was held in Florence.
+Speaking of amazing locations, the 10th edition GoLab was held in Florence.
 
 ![firenze1](/img/octoberconf_2025/firenze1.jpg)
 
@@ -70,7 +69,7 @@ Among all, I preferred the most low-level and deep-dive talks, and I wasn't disa
 
 ![firenze3](/img/octoberconf_2025/firenze3.jpg)
 
-Who doesn't love stickers ?
+Who doesn't love cool stickers ?
 
 
 ## Venice, Oct 11, 2025: GDG DevFest 2025
@@ -85,15 +84,16 @@ Ca' Foscari University has a futuristic design, no wonder they call it *"the Jav
 
 My proposed talk was accepted here so I went to speak about green computing and how to [measure energy consumption](https://ilmanzo.github.io/post/measure_your_power_consumption/) without any special equipment. Also took the occasion to spread some cool company-provided swag! 
 
+![venezia4](/img/octoberconf_2025/venezia4.jpg)
+
 ![venezia3](/img/octoberconf_2025/venezia3.jpg)
 
 (Yes I even managed to spell my name wrong 😑)
 
-![venezia4](/img/octoberconf_2025/venezia4.jpg)
 
 ## Brescia, Oct 25, 2025: Linux Day
 
-Linux Day is an old-time favorite of mine, since 2001 every year I like to partecipate and share the knowledge and passion about Linux and Open Source
+Linux Day is an old-time favorite of mine, since 2001 every year I like to partecipate and share the knowledge and passion about Linux and Open Source. On this edition I had the pleasure to speak in a crowded hall, with lots of young people as well as veteran Linux users.
 
 I gave two talks, one in the morning about the basics of Linux kernel (showing the anatomy of a syscall) and a larger "workshop" about Kubernetes. 
 
@@ -103,7 +103,7 @@ Very Interesting optical equipment and software for astrophotography
 
 ![brescia2](/img/octoberconf_2025/brescia2.jpg)
 
-Brought home this nifty swag that summarizes well the spirit of Open Source: do it your own penguin! 
+I also brought home this nifty swag that summarizes well the spirit of Open Source: do it your own penguin!  :smile:
 
 ![brescia3](/img/octoberconf_2025/brescia3.jpg)
 

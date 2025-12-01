@@ -3,7 +3,7 @@ layout: post
 description: "Having fun with Christmas code challenges"
 title: "Advent of code 2025: the diaries"
 categories: programming
-tags: [hackweek, programming, Rust, D, Crystal, performance, benchmark, algorithms]
+tags: [hackweek, programming, algorithms, quiz, challenges]
 author: Andrea Manzini
 date: 2025-12-01
 ---
@@ -23,7 +23,7 @@ If you are looking for the Global Leaderboard or preparing for a 25-day marathon
 While these changes might feel surprising to veterans, they come with a message of empathy. Maintaining a project of this magnitude for ten years is a grueling, massive commitment. Eric has consistently operated on a whole other level to bring us these elegant, funny, and creative challenges. Acknowledging the "human cost" of this event means supporting the creator’s need to protect his time and mental health.
 
 ### Why We Still Solve
-In 2025, amid the noise of AI and code assistants, a valid question arises: "Why bother solving puzzles when an AI can do it in seconds?"
+In 2025, amid the noise of AI and code assistants, a valid question arises: *"Why bother solving puzzles when an AI can do it in seconds?"*
 
 The answer is simple: People still go to musicals and live concerts even though Spotify exists.
 
@@ -38,13 +38,27 @@ Now, let's open up the editor and solve Day 1. SPOILER ALERT!
 
 ## ✨ [Day 1](https://adventofcode.com/2025/day/1)
 
-You have a safe with 100-positions dial (0 to 99), and istructions to rotate Left and Right a number of time : `L68 L30 R48 L5 R60 L55 L1 L99 R14` and so on. In the first part, you need to count how many times the dial STOPS exactly at number 0; on the second part (revealed after 1st solution) you need to count how many times it PASSED by the 0 number. 
+Oh no, apparently Elves have discovered Project Management! (I suspect this to be an hint about the reduced number of stars this year)
+
+You have a safe with 100-positions dial (0 to 99), and istructions to rotate Left and Right a number of time : `L68 L30 R48 L5 R60 L55 L1 L99 R14 L82` and so on. Initial dial position is 50. In the first part, you need to count how many times the dial STOPS exactly at number 0; on the second part (revealed after 1st solution) you need to count how many times it PASSED by the 0 number. 
 
 ![day01](/img/aoc2025/day01.gif)
 (image courtesy of https://www.reddit.com/user/Ok-Curve902/)
 
+Here an elegant solution in AWK:
+```awk
+BEGIN { p = 50 }
+{
+    c = substr($0, 2)
+    p = (p + (substr($0, 1, 1) == "R" ? c : 100 - c)) % 100
+    n += !p
+}
+END { print n }
+```
+This takes advantage of modular arithmetic: rotating Left by N is equivalent to rotate Right by 100-N.
 
-    [code will follow...]
+
+
 
 
 

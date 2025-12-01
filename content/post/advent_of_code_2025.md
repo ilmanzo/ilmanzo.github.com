@@ -41,6 +41,8 @@ Now, let's open up the editor and solve Day 1. SPOILER ALERT!
 You have a safe with 100-positions dial (0 to 99), and istructions to rotate Left and Right a number of time : `L68 L30 R48 L5 R60 L55 L1 L99 R14` and so on. In the first part, you need to count how many times the dial STOPS exactly at number 0; on the second part (revealed after 1st solution) you need to count how many times it PASSED by the 0 number. 
 
 ![day01](/img/aoc2025/day01.gif)
+(image courtesy of https://www.reddit.com/user/Ok-Curve902/)
+
 
     [code will follow...]
 

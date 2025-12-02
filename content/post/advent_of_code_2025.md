@@ -70,12 +70,37 @@ For part1 , the invalid ids are the ones that repeats exactly twice, like `11` o
 ![day02](/img/aoc2025/day02.gif)
 (animation courtesy of https://www.reddit.com/user/Boojum/)
 
+Given the problem is all about filtering a list, I reached for some *functional style* . The [D Programming Language](https://dlang.org/) has nice features:
 
-Given the problem is all about filtering a list, I reached for some *functional style* 
+{{< highlight D >}} 
+bool isInvalidId1(string id) {
+    auto mid = id.length / 2;
+    return id.length > 0 && id.length % 2 == 0 && id[0 .. mid] == id[mid .. $];
+}
 
-`[code will follow]`
+bool isInvalidId2(string id) {
+    auto m = id.length;
+    foreach (k; 2 .. m + 1)
+    {
+        if (m % k == 0)
+        {
+            auto firstToken = id[0 .. m / k];
+            if (firstToken.replicate(k).equal(id)) return true;
+        }
+    }
+    return false;
+}
 
-BTW this problem is insteresting because it can be tackled in many ways: string comparison, regular expressions, and pure mathematics.
+void main() {
+    auto ranges = stdin.readln().strip.split(',').map!(pair => pair.split('-').map!(to!long));
+    auto numbers = ranges.map!(r => iota(r[0], r[1] + 1).map!(to!string)).joiner;
+    writeln(numbers.filter!isInvalidId1.map!(to!long).sum);
+    writeln(numbers.filter!isInvalidId2.map!(to!long).sum);
+}
+{{</ highlight >}}
+
+
+BTW this problem is insteresting because it can be tackled in many ways: string comparison, regular expressions, and purely arithmetic.
 We can also notice that our input range is limited, e.g. the biggest numbers are ten digits. This means that the possible ways to "repeat" any digit pattern are limited as well.
 
 

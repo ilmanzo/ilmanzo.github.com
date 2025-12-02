@@ -100,8 +100,12 @@ void main() {
 {{</ highlight >}}
 
 
-BTW this problem is insteresting because it can be tackled in many ways: string comparison, regular expressions, and purely arithmetic.
+BTW this problem is interesting because it can be tackled in many ways: string comparison, regular expressions, and purely arithmetic.
 We can also notice that our input range is limited, e.g. the biggest numbers are ten digits. This means that the possible ways to "repeat" any digit pattern are limited as well.
+
+## 🎅 [Day 3](https://adventofcode.com/2025/day/3)
+
+
 
 
 ## ☃️ Notes and references

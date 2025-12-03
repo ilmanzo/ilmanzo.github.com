@@ -103,13 +103,38 @@ void main() {
 BTW this problem is interesting because it can be tackled in many ways: string comparison, regular expressions, and purely arithmetic.
 We can also notice that our input range is limited, e.g. the biggest numbers are ten digits. This means that the possible ways to "repeat" any digit pattern are limited as well.
 
-## 🎅 [Day 3](https://adventofcode.com/2025/day/3)
+## 🔋 [Day 3](https://adventofcode.com/2025/day/3)
+
+You need to reach the lower floors, but unfortunately the elevators are out of power. Today's problem is about connecting together some batteries to get the most "Joltage" out of them.
+So you have four battery packs, represented here by the following lines:
+
+```
+987654321111111
+811111111111119
+234234234234278
+818181911112111
+```
+
+for each pack, you want to find the greatest number you can get by connecting two batteries, for example on the first row, the `9` and the `8` gives `98`.
+
+![day01](/img/aoc2025/day03.gif)
+(animation courtesy of https://www.reddit.com/user/danmaps/)
 
 
+[SPOILER] 
 
+On the second part you'll need to connect 12 batteries.
+
+[SPOILER] 
+
+`[code will follow]`
+
+<!-- ## 🎅 [Day 4](https://adventofcode.com/2025/day/4) -->
 
 ## ☃️ Notes and references
 
 I will collect here all the links and references or related things to AoC25
 
+(warning: there might be commercial offers)
 Advent of DevOps: https://sadservers.com/advent
+Advent of Cyber: https://tryhackme.com/adventofcyber25

@@ -127,7 +127,36 @@ On the second part you'll need to connect 12 batteries.
 
 [SPOILER] 
 
-`[code will follow]`
+Today's solution in Nim (I'll publish here just part1, you can find [part2 on my repo](https://github.com/ilmanzo/advent_of_code/tree/master/2025/day03))
+
+{{< highlight nim >}} 
+template benchmark(code: untyped) =
+  block:
+    let t0 = getMonoTime()
+    code
+    let elapsed = getMonoTime() - t0
+    echo "Time ", elapsed.inMilliseconds(), " ms"
+
+proc part1(data: seq[int]): int =
+  for i in 0 ..< data.len - 1:
+    let currentVal = 10 * data[i] + data[i + 1 .. ^1].max
+    result = max(result, currentVal)
+
+var input: seq[seq[int]]
+for line in stdin.lines:
+  input.add line.map(proc(c: char): int = parseInt($c))
+
+benchmark:
+  echo "Part 1: ", input.map(part1).sum
+{{</ highlight >}}
+
+The algorithm is straightforward: for each digit, pair it with the biggest subsequent one. The pair is a candidate to become the new maximum.
+
+A couple of observations about the Nim language, which in my opinion has a lot of potential:
+- I like how you can easily write templates (see the benchmark at the top) and how they seamlessly integrate with the language syntax
+- the special `result` variable is handy for any calculation and automatically returned at the end of the function
+- the program compile to very fast native binary: using the real 100x200 input, the program outputs the correct value in ~2 milliseconds.
+
 
 <!-- ## 🎅 [Day 4](https://adventofcode.com/2025/day/4) -->
 
@@ -136,5 +165,6 @@ On the second part you'll need to connect 12 batteries.
 I will collect here all the links and references or related things to AoC25
 
 (warning: there might be commercial offers)
-Advent of DevOps: https://sadservers.com/advent
-Advent of Cyber: https://tryhackme.com/adventofcyber25
+- Advent of DevOps: https://sadservers.com/advent
+- Advent of Cyber: https://tryhackme.com/adventofcyber25
+- AoC in Kotlin: https://blog.jetbrains.com/kotlin/2025/11/advent-of-code-in-kotlin-2025/

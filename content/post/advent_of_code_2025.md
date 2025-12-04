@@ -158,7 +158,33 @@ A couple of observations about the Nim language, which in my opinion has a lot o
 - the program compile to very fast native binary: using the real 100x200 input, the program outputs the correct value in ~2 milliseconds.
 
 
-<!-- ## 🎅 [Day 4](https://adventofcode.com/2025/day/4) -->
+## 🧻 [Day 4](https://adventofcode.com/2025/day/4)
+
+Proceeding towards the underground base, we find the Elves printing department, where they print the famous "good and bad" list.
+The forklifts are very busy with giant rolls of paper `@` so you decide to give an hand.
+
+```
+..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.
+```
+
+Turns out we can move the rolls that have less than 4 adjacent items!
+
+![day04](/img/aoc2025/day04.gif)
+(animation courtesy of https://www.reddit.com/user/wimglenn/)
+
+I want to try out [Zig](https://ziglang.org/) for this exercise, so I fear the code will be too long to be included here. If you're interested, check the [repository](!
+
+
+<!-- ## 🎅 [Day 5](https://adventofcode.com/2025/day/5) -->
 
 ## ☃️ Notes and references
 

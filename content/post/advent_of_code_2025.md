@@ -214,7 +214,7 @@ end
 
 
 
-To solve second part, we basically need to "join" all the ranges and sum together all the IDs inside the range. This is a work for the [pipe operator](https://elixirschool.com/en/lessons/basics/pipe_operator)!
+To solve second part, we basically need to "join" all the ranges and count all the IDs that falls inside the range. This is a work for the [pipe operator](https://elixirschool.com/en/lessons/basics/pipe_operator)!
 
 {{< highlight elixir >}} 
 def part2(fresh) do

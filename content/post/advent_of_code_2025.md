@@ -36,7 +36,7 @@ So, to [Eric](https://was.tl/): Thank you for the last 10 years. We are here for
 
 Now, let's open up the editor and solve Day 1. SPOILER ALERT! 
 
-## ✨ [Day 1](https://adventofcode.com/2025/day/1)
+## ⏰ [Day 1](https://adventofcode.com/2025/day/1)
 
 Oh no, apparently Elves have discovered Project Management! (I suspect this to be an hint about the reduced number of stars this year, did [Eric](https://was.tl/) switch role?)
 
@@ -120,12 +120,7 @@ for each pack, you want to find the greatest number you can get by connecting tw
 ![day01](/img/aoc2025/day03.gif)
 (animation courtesy of https://www.reddit.com/user/danmaps/)
 
-
-[SPOILER] 
-
 On the second part you'll need to connect 12 batteries.
-
-[SPOILER] 
 
 Today's solution in Nim (I'll publish here just part1, you can find [part2 on my repo](https://github.com/ilmanzo/advent_of_code/tree/master/2025/day03))
 
@@ -176,17 +171,38 @@ The forklifts are very busy with giant rolls of paper `@` so you decide to give 
 @.@.@@@.@.
 ```
 
-Turns out we can move the rolls that have less than 4 adjacent items!
+Turns out we can move only the rolls that have less than 4 adjacent items!
 
 ![day04](/img/aoc2025/day04.gif)
 (animation courtesy of https://www.reddit.com/user/wimglenn/)
 
-I want to try out [Zig](https://ziglang.org/) for this exercise, so I fear the code will be too long to be included here. If you're interested, check the [repository](!
+I want to try out [Zig](https://ziglang.org/) for this exercise, so I fear the code will be too long to be included here. If you're interested, check the [repository](https://github.com/ilmanzo/advent_of_code/tree/master/2025/day04)!
 
 
-<!-- ## 🎅 [Day 5](https://adventofcode.com/2025/day/5) -->
+## 🥐 [Day 5](https://adventofcode.com/2025/day/5)
 
-## ☃️ Notes and references
+After breaking the wall (!) with a forklift, you discover there is a cafeteria behind. Today's task is to find *fresh* ingredients id among the spoiled ones, given a list of ranges and the id to check:
+
+```
+3-5
+10-14
+16-20
+12-18
+
+1
+5
+8
+11
+17
+32
+```
+
+Upper half of the input is the fresh ranges, lower one contains the ingredients. For example `1` is spoiled because is not contained in any range, while `11` belongs to `10-14` so it's fresh. 
+
+
+
+
+## 🎅 Notes and references
 
 I will collect here all the links and references or related things to AoC25
 

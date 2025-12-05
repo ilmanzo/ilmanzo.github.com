@@ -226,7 +226,7 @@ def part2(fresh) do
 end
 {{</ highlight >}}
 
-![day05](/img/aoc2025/day05.gif)
+![day05a](/img/aoc2025/day05a.gif)
 (animation courtesy of https://www.reddit.com/user/Ok-Curve902/)
 
 The core logic is performed by the `merge_ranges()` function. Let's see it:
@@ -250,6 +250,10 @@ It's a recursive function, that takes advantage of Elixir pattern matching.
 - the "no merge" case: since `head` doesn't overlap with the next range, it's considered a final, complete range for now. We can place it at the front of our result list. The function then calls `merge_ranges` on the `tail` of the list to continue the process for all subsequent ranges. The result of that recursive call is appended to head.
 
 By combining these three clauses, the function elegantly walks through the sorted list, merging ranges as it goes, until the entire list has been processed.
+
+
+![day05b](/img/aoc2025/day05b.gif)
+(animation courtesy of https://www.reddit.com/user/Just-Routine-5505/)
 
 ## 🎅 Notes and references
 

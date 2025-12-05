@@ -234,47 +234,22 @@ The core logic is performed by the `merge_ranges()` function. Let's see it:
 {{< highlight elixir >}} 
 defp merge_ranges([]), do: []
 
+defp merge_ranges([r1, r2 | rest]) when r2.first <= r1.last + 1 do
+  merged_range = r1.first..max(r1.last, r2.last)
+  merge_ranges([merged_range | rest])
+end
+
 defp merge_ranges([head | tail]) do
-  reducer =
-    fn
-      current_range, [last_merged | acc_tail] when current_range.first <= last_merged.last + 1 ->
-      new_end = max(last_merged.last, current_range.last)
-      [last_merged.first..new_end | acc_tail]
-      current_range, acc ->
-      [current_range | acc]
-    end
-  Enum.reduce(tail, [head], reducer)
-  |> Enum.reverse()
+  [head | merge_ranges(tail)]
 end
 {{</ highlight >}} 
 
-It starts by taking the first range (head) as the initial "merged" range.
+It's a recursive function, that takes advantage of Elixir pattern matching.
+- the base case, an empty list, just return the empty list
+- the merge case: when the ranges overlaps, it creates a `merged_range`. This new range starts at the beginning of the first range `(r1.first)` and ends at the greater of the two ending points `(max(r1.last, r2.last))`. It then calls `merge_ranges` again. Crucially, it passes a new list where `r1` and `r2` have been replaced by the single merged_range. This allows the newly formed range to be checked for overlaps against the next range in the list `(rest)`.
+- the "no merge" case: since `head` doesn't overlap with the next range, it's considered a final, complete range for now. We can place it at the front of our result list. The function then calls `merge_ranges` on the `tail` of the list to continue the process for all subsequent ranges. The result of that recursive call is appended to head.
 
-It then iterates through the rest of the ranges (tail) using Enum.reduce.
-
-The *reducer* function is called for each current_range. It looks at the accumulator (acc), which holds the list of already-merged ranges.
-
-- Merge Case: The first clause of the reducer checks if the current_range overlaps with or touches the last range that was added to our merged list (last_merged). The condition current_range.first <= last_merged.last + 1 checks this. For example, 4..8 overlaps with 1..5 because 4 is less than or equal to 5 + 1. If they do overlap, it creates a new, larger range that starts at the beginning of last_merged and ends at the maximum of the two ranges' endpoints. This new range replaces last_merged.
-- Non-merge Case: If the ranges don't overlap (e.g., 10..12 and 1..8), the current_range is simply added to the front of the list of merged ranges, starting a new "merged" group.
-
-Finally, because ranges are added to the front of the accumulator, the list is reversed at the end (Enum.reverse) to restore the correct order.
-
-### Example Walkthrough
-Let's trace `part2([1..5, 10..12, 4..8])`:
-
-```
-Input: [1..5, 10..12, 4..8]
-Enum.sort: [1..5, 4..8, 10..12]
-merge_ranges:
-  Starts with [1..5] as the merged list.
-  Processes 4..8. It overlaps with 1..5. The new merged list is [1..8].
-  Processes 10..12. It does not overlap with 1..8. The new merged list is [10..12, 1..8].
-The list is reversed to [1..8, 10..12].
-Enum.map(&Range.size/1): [8, 3]
-Enum.sum: 11
-Output: 11
-```
-
+By combining these three clauses, the function elegantly walks through the sorted list, merging ranges as it goes, until the entire list has been processed.
 
 ## 🎅 Notes and references
 

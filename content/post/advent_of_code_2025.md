@@ -199,7 +199,81 @@ After breaking the wall (!) with a forklift, you discover there is a cafeteria b
 
 Upper half of the input is the fresh ranges, lower one contains the ingredients. For example `1` is spoiled because is not contained in any range, while `11` belongs to `10-14` so it's fresh. 
 
+This problem is very nice because it can be solved in many different ways, exploring efficiency concepts and set theory algorithms.
+I adopted a functional approach, using Elixir as a language. Complete code is on the [repository](https://github.com/ilmanzo/advent_of_code/tree/master/2025/day05)
 
+On first part, we just count how many ingredients falls into our "fresh ranges".
+
+{{< highlight elixir >}} 
+def part1(fresh, ingredients) do
+  Enum.count(ingredients, fn ingredient ->
+    Enum.any?(fresh, &(ingredient in &1))
+  end)
+end
+{{</ highlight >}}
+
+
+
+To solve second part, we basically need to "join" all the ranges and sum together all the IDs inside the range. This is a work for the [pipe operator](https://elixirschool.com/en/lessons/basics/pipe_operator)!
+
+{{< highlight elixir >}} 
+def part2(fresh) do
+      fresh
+      |> Enum.sort()
+      |> merge_ranges()
+      |> Enum.map(&Range.size/1)
+      |> Enum.sum()
+end
+{{</ highlight >}}
+
+![day05](/img/aoc2025/day05.gif)
+(animation courtesy of https://www.reddit.com/user/Ok-Curve902/)
+
+The core logic is performed by the `merge_ranges()` function. Let's see it:
+
+{{< highlight elixir >}} 
+defp merge_ranges([]), do: []
+
+defp merge_ranges([head | tail]) do
+  reducer =
+    fn
+      current_range, [last_merged | acc_tail] when current_range.first <= last_merged.last + 1 ->
+      new_end = max(last_merged.last, current_range.last)
+      [last_merged.first..new_end | acc_tail]
+      current_range, acc ->
+      [current_range | acc]
+    end
+  Enum.reduce(tail, [head], reducer)
+  |> Enum.reverse()
+end
+{{</ highlight >}} 
+
+It starts by taking the first range (head) as the initial "merged" range.
+
+It then iterates through the rest of the ranges (tail) using Enum.reduce.
+
+The *reducer* function is called for each current_range. It looks at the accumulator (acc), which holds the list of already-merged ranges.
+
+- Merge Case: The first clause of the reducer checks if the current_range overlaps with or touches the last range that was added to our merged list (last_merged). The condition current_range.first <= last_merged.last + 1 checks this. For example, 4..8 overlaps with 1..5 because 4 is less than or equal to 5 + 1. If they do overlap, it creates a new, larger range that starts at the beginning of last_merged and ends at the maximum of the two ranges' endpoints. This new range replaces last_merged.
+- Non-merge Case: If the ranges don't overlap (e.g., 10..12 and 1..8), the current_range is simply added to the front of the list of merged ranges, starting a new "merged" group.
+
+Finally, because ranges are added to the front of the accumulator, the list is reversed at the end (Enum.reverse) to restore the correct order.
+
+### Example Walkthrough
+Let's trace `part2([1..5, 10..12, 4..8])`:
+
+```
+Input: [1..5, 10..12, 4..8]
+Enum.sort: [1..5, 4..8, 10..12]
+merge_ranges:
+  Starts with [1..5] as the merged list.
+  Processes 4..8. It overlaps with 1..5. The new merged list is [1..8].
+  Processes 10..12. It does not overlap with 1..8. The new merged list is [10..12, 1..8].
+The list is reversed to [1..8, 10..12].
+Enum.map(&Range.size/1): [8, 3]
+Enum.sum: 11
+Output: 11
+```
 
 
 ## 🎅 Notes and references

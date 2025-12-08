@@ -57,6 +57,12 @@ author = "Andrea Manzini"
 - 2010: [Linux&C](http://www.oltrelinux.com), wiki MoinMoin, how to extend it with python
 - 2010: [Linux&C](http://www.oltrelinux.com), features on imagemagick (command line graphics)
 
+## Projects
+
+- [BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage), an innovative method to measure coverage of integration tests
+- [Q2Boot](https://github.com/ilmanzo/q2boot), a multi-arch automatic VM launcher
+
+
 ## Training
 
 - 2023: Schrödinger Session: Learning Rust, one step at the time from [Schrödinger Hat community](https://www.schrodinger-hat.it/)
@@ -88,6 +94,7 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2025: speaker at [GdG DevFest Venezia](https://devfest25.gdgvenezia.it/speakers/andrea-manzini/)
 - 2025: speaker at [Tech Community Day](https://www.techcommunityday.it/) by [Coding Bunker](https://codingbunker.it/) & [GrUSP](https://grusp.org/)
 - 2024: speaker at [Linux Day Brescia](https://lugotto.it/2024/09/12/linux-day-2024-brescia/)
 - 2024: speaker at [Linux Day Spring Edition](https://lugman.org/Linux_day_2024_SE) @Mantova 

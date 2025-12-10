@@ -36,14 +36,14 @@ So, to [Eric](https://was.tl/): Thank you for the last 10 years. We are here for
 
 Now, let's open up the editor and solve Day 1. SPOILER ALERT! 
 
-## ⏰ [Day 1](https://adventofcode.com/2025/day/1)
+## ⏰ [Day 1](https://adventofcode.com/2025/day/1) : The Safe
 
 Oh no, apparently Elves have discovered Project Management! (I suspect this to be an hint about the reduced number of stars this year, did [Eric](https://was.tl/) switch role?)
 
 You have a safe with 100-positions dial (0 to 99), and istructions to rotate Left and Right a number of time : `L68 L30 R48 L5 R60 L55 L1 L99 R14 L82` and so on. Initial dial position is 50. In the first part, you need to count how many times the dial STOPS exactly at number 0; on the second part (revealed after 1st solution) you need to count how many times it PASSED by the 0 number. 
 
 ![day01](/img/aoc2025/day01.gif)
-(animation courtesy of https://www.reddit.com/user/Ok-Curve902/)
+(animation courtesy of https://www.reddit.com/user/Disastrous-Funny-781/)
 
 Here an elegant solution in AWK:
 ```awk
@@ -57,7 +57,7 @@ END { print n }
 ```
 This takes advantage of modular arithmetic: rotating Left by N is equivalent to rotate Right by 100-N.
 
-## 🎁 [Day 2](https://adventofcode.com/2025/day/2)
+## 🎁 [Day 2](https://adventofcode.com/2025/day/2) : Gift Shop
 
 Some young elves played with the gift shop computer and messed up the product ids! 
 
@@ -103,7 +103,7 @@ void main() {
 BTW this problem is interesting because it can be tackled in many ways: string comparison, regular expressions, and purely arithmetic.
 We can also notice that our input range is limited, e.g. the biggest numbers are ten digits. This means that the possible ways to "repeat" any digit pattern are limited as well.
 
-## 🔋 [Day 3](https://adventofcode.com/2025/day/3)
+## 🔋 [Day 3](https://adventofcode.com/2025/day/3) : Battery Joltage
 
 You need to reach the lower floors, but unfortunately the elevators are out of power. Today's problem is about connecting together some batteries to get the most "Joltage" out of them.
 So you have four battery packs, represented here by the following lines:
@@ -153,7 +153,7 @@ A couple of observations about the Nim language, which in my opinion has a lot o
 - the program compile to very fast native binary: using the real 100x200 input, the program outputs the correct value in ~2 milliseconds.
 
 
-## 🧻 [Day 4](https://adventofcode.com/2025/day/4)
+## 🧻 [Day 4](https://adventofcode.com/2025/day/4) : Rolls of Paper
 
 Proceeding towards the underground base, we find the Elves printing department, where they print the famous "good and bad" list.
 The forklifts are very busy with giant rolls of paper `@` so you decide to give an hand.
@@ -179,7 +179,7 @@ Turns out we can move only the rolls that have less than 4 adjacent items!
 I want to try out [Zig](https://ziglang.org/) for this exercise, so I fear the code will be too long to be included here. If you're interested, check the [repository](https://github.com/ilmanzo/advent_of_code/tree/master/2025/day04)!
 
 
-## 🥐 [Day 5](https://adventofcode.com/2025/day/5)
+## 🥐 [Day 5](https://adventofcode.com/2025/day/5) : The Cafeteria
 
 After breaking the wall (!) with a forklift, you discover there is a cafeteria behind. Today's task is to find *fresh* ingredients id among the spoiled ones, given a list of ranges and the id to check:
 
@@ -214,7 +214,7 @@ end
 
 
 
-To solve second part, we basically need to "join" all the ranges and count all the IDs that falls inside the range. This is a work for the [pipe operator](https://elixirschool.com/en/lessons/basics/pipe_operator)!
+To solve second part, we basically need to "join" all the ranges and count all the IDs that falls inside the range. This is a job for the [pipe operator](https://elixirschool.com/en/lessons/basics/pipe_operator)!
 
 {{< highlight elixir >}} 
 def part2(fresh) do
@@ -263,3 +263,11 @@ I will collect here all the links and references or related things to AoC25
 - Advent of DevOps: https://sadservers.com/advent
 - Advent of Cyber: https://tryhackme.com/adventofcyber25
 - AoC in Kotlin: https://blog.jetbrains.com/kotlin/2025/11/advent-of-code-in-kotlin-2025/
+- AoC Subreddit: https://www.reddit.com/r/adventofcode/
+
+[Day 6](https://adventofcode.com/2025/day/6) visualization by https://www.reddit.com/user/Ok-Curve902/ 
+![day06](/img/aoc2025/day06.gif)
+
+[Day 7](https://adventofcode.com/2025/day/7) solved on a real Christmas Tree!
+![tree](https://i.ibb.co/dyCTz70/ezgif-39c8284705882154-1.gif)
+courtesy of https://www.reddit.com/user/EverybodyCodes/

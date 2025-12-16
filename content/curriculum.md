@@ -57,10 +57,11 @@ author = "Andrea Manzini"
 - 2010: [Linux&C](http://www.oltrelinux.com), wiki MoinMoin, how to extend it with python
 - 2010: [Linux&C](http://www.oltrelinux.com), features on imagemagick (command line graphics)
 
-## Projects
+## Personal Projects
 
 - [BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage), an innovative method to measure coverage of integration tests
 - [Q2Boot](https://github.com/ilmanzo/q2boot), a multi-arch automatic VM launcher
+- [DlangKoans](https://github.com/ilmanzo/DLangKoans) and [crystal-koans](https://github.com/ilmanzo/crystal-koans) educational testsuite to learn the language in an easy way
 
 
 ## Training
@@ -94,6 +95,7 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2025: speaker at [Linux Day Brescia](https://lugotto.it/2025/06/22/linux-day-2025-brescia/)
 - 2025: speaker at [GdG DevFest Venezia](https://devfest25.gdgvenezia.it/speakers/andrea-manzini/)
 - 2025: speaker at [Tech Community Day](https://www.techcommunityday.it/) by [Coding Bunker](https://codingbunker.it/) & [GrUSP](https://grusp.org/)
 - 2024: speaker at [Linux Day Brescia](https://lugotto.it/2024/09/12/linux-day-2024-brescia/)
@@ -111,3 +113,7 @@ author = "Andrea Manzini"
 - 2016: started contributing to open source projects [see github profile](https://github.com/ilmanzo)
 - 2016: held a Python training course in [FabLab Verona](http://www.veronafablab.it/)
 - 2016: held a linux training course in [FabLab Verona](http://www.veronafablab.it/)
+
+## Misc
+
+- Presentations (work related:) https://ilmanzo.github.io/suse_presentations

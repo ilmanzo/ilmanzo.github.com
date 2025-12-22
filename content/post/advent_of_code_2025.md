@@ -264,6 +264,7 @@ I will collect here all the links and references or related things to AoC25
 - Advent of Cyber: https://tryhackme.com/adventofcyber25
 - AoC in Kotlin: https://blog.jetbrains.com/kotlin/2025/11/advent-of-code-in-kotlin-2025/
 - AoC Subreddit: https://www.reddit.com/r/adventofcode/
+- An old time classic... [The Perl Advent Calendar](https://perladvent.org/2025/2025-12-01.html)
 
 [Day 6](https://adventofcode.com/2025/day/6) visualization by https://www.reddit.com/user/Ok-Curve902/ 
 ![day06](/img/aoc2025/day06.gif)

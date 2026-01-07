@@ -95,10 +95,10 @@ Output:
 - Starting clone process using config: krb5_ssh_test.yaml
 - Output will be saved to: krb5_ssh_test.urls.txt
 
-Processing: [https://openqa.suse.de/tests/20438098](https://openqa.suse.de/tests/20438098)
+Processing: https://openqa.suse.de/tests/20438098
    - Extracted 4 new job URLs.
 
-Processing: [https://openqa.suse.de/tests/20394793](https://openqa.suse.de/tests/20394793)
+Processing: https://openqa.suse.de/tests/20394793
    - Extracted 6 new job URLs.
 
 ========================================

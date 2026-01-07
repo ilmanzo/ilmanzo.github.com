@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Workflow on ilManzo's blog</title><link>https://ilmanzo.github.io/categories/workflow/</link><description>Recent content in Workflow on ilManzo's blog</description><generator>Hugo -- 0.154.3</generator><language>en-us</language><copyright>2012-2025 Andrea Manzini</copyright><lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ilmanzo.github.io/categories/workflow/index.xml" rel="self" type="application/rss+xml"/><item><title>Automating OpenQA Job Cloning with Python and YAML</title><link>https://ilmanzo.github.io/post/automating_job_cloning/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://ilmanzo.github.io/post/automating_job_cloning/</guid><description>&lt;h2 id="-happy-new-year"&gt;🎉 Happy New Year!&lt;/h2&gt;
+&lt;p&gt;As anyone working with &lt;a href="https://open.qa/"&gt;OpenQA&lt;/a&gt; knows, it is a powerful tool for automated testing. But sometimes, the workflow around re-triggering those tests for investigation purposes can feel a bit&amp;hellip; &lt;em&gt;Manual&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Recently, I found myself in a repetitive cycle while debugging complex test scenarios. My workflow looked something like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Take a known &amp;ldquo;good&amp;rdquo; job URL.&lt;/li&gt;
+&lt;li&gt;Open a scratchpad editor.&lt;/li&gt;
+&lt;li&gt;Craft a long &lt;code&gt;openqa-clone-job&lt;/code&gt; command with tons of specific override parameters (&lt;code&gt;BUILD=0&lt;/code&gt;, custom git branches, skipping specific modules, etc.).&lt;/li&gt;
+&lt;li&gt;Run the command in the terminal, wait for the output.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Painfully visual scan of the terminal output&lt;/strong&gt;, to identify the newly created job URLs, and select them with my mouse, to copy them.&lt;/li&gt;
+&lt;li&gt;Paste them into &lt;a href="https://github.com/os-autoinst/openqa-mon"&gt;&lt;code&gt;openqa-mon&lt;/code&gt;&lt;/a&gt; or a text file to track their progress.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Till now I used a &lt;code&gt;Bash&lt;/code&gt; script that kind of helped, but modifying giant arrays of arguments for every different debugging scenario was annoying and error-prone.&lt;/p&gt;</description></item></channel></rss>

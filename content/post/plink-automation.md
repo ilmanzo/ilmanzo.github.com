@@ -12,13 +12,13 @@ A quick and dirty way to send a bunch of commands to any ssh device (in my case,
 
 * create a plain old batch file with commands echoed inside:
 
-<pre>
+```
     @echo off
     echo ter len 0
     echo show ver
     echo show clock
     echo exit
-</pre>
+```
 
 * execute the batch, piping its output to [plink.exe](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 (putty command link ssh client):

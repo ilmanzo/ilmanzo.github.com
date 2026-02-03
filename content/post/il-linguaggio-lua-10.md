@@ -61,7 +61,7 @@ il tutto diventa più interessante quando ricerchiamo o sostituiamo un pattern:
 
 in questo caso scartiamo il primo valore ritornato assegnandolo a una variabile fittizia (underscore) perché ci serve solo il conteggio.
 
-{{< highlight lua >}}
+```lua
 >html=[[<a href=”http://www.kernel.org”> <img src=”pinguino.gif”> </a>]]
 >greedy=”href=(.+)>”
 >lazy=”href=(.-)>”
@@ -69,7 +69,7 @@ in questo caso scartiamo il primo valore ritornato assegnandolo a una variabile 
 "http://www.kernel.org"> img src="pinguino.gif" </a 
 >print(string.match(html,lazy))
 "http://www.kernel.org" 
-{{</ highlight >}}
+```
 
 *string.match* ha anche l'equivalente **string.gmatch** che funziona come un iteratore. La sequenza di escape %b serve per il matching di testo racchiuso tra delimitatori. Quindi per tirare fuori tutti i tag da un html:
 

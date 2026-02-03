@@ -36,7 +36,7 @@ mentre sul primo creiamo la chiave di cifratura e il certificato che verra' usat
 
 creiamo il file **/etc/csync2.cfg** che conterra' le definizioni per il gruppo di sincronizzazione
 
-<pre>
+```
 group mycluster
 {
         host nodo1;
@@ -47,7 +47,7 @@ group mycluster
         include /mnt/sync;
         exclude *~ .*;
 }
-</pre>
+```
 
 copiamo il tutto anche sul nodo2:
 {{< highlight bash >}}
@@ -70,9 +70,9 @@ Questo e' indispensabile anche nel caso di temporaneo down o spegnimento di uno 
 che usando l'interfaccia *inotify*, resta in ascolto di determinati eventi su una specifica directory e al verificarsi delle condizioni desiderate, esegue il comando configurato.
 Nel nostro caso, possiamo inserire nella [*incrontab*](http://linux.die.net/man/5/incrontab) una entry simile a questa:
 
-<pre>
+```
 /mnt/sync IN_ATTRIB,IN_CREATE,IN_DELETE,IN_CLOSE_WRITE,IN_MOVE /usr/sbin/csync2 -xv
-</pre>
+```
 
 ovvero, controlla la directory /mnt/sync e ogni volta che vengono cambiati attributi, creati, cancellati, salvati o spostati file esegui la sincronizzazione.
 

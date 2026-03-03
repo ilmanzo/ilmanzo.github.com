@@ -2,7 +2,6 @@ baseURL: 'https://ilmanzo.github.io/'
 languageCode: en-us
 title: ilManzo's blog
 theme: PaperMod
-author: Andrea Manzini
 copyright: '© 2012-2025 Andrea Manzini'
 pagination:
   pagerSize: 4
@@ -16,6 +15,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 params:
+  author: Andrea Manzini
   homeInfoParams:
     Title: "About me and this blog"
     Content: |

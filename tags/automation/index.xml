@@ -13,7 +13,7 @@
 &lt;ul&gt;
 &lt;li&gt;create a plain old batch file with commands echoed inside:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; @echo off
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; @echo off
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; echo ter len 0
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; echo show ver
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; echo show clock
@@ -22,7 +22,7 @@
 &lt;li&gt;execute the batch, piping its output to &lt;a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html"&gt;plink.exe&lt;/a&gt;
 (putty command link ssh client):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; c:\&amp;gt; commands.bat | plink -ssh -l username -pw password 11.22.33.44
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; c:\&amp;gt; commands.bat | plink -ssh -l username -pw password 11.22.33.44
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>generare comandi di creazione utenze a partire da un passwd</title><link>https://ilmanzo.github.io/post/generare-comandi-di-creazione-utenze-a-partire-da-un-passwd/</link><pubDate>Fri, 23 Nov 2012 00:00:00 +0000</pubDate><guid>https://ilmanzo.github.io/post/generare-comandi-di-creazione-utenze-a-partire-da-un-passwd/</guid><description>&lt;p&gt;A volte e&amp;rsquo; necessario replicare le utenze con gli stessi parametri su piu&amp;rsquo; server linux diversi.&lt;/p&gt;
 &lt;p&gt;Perche&amp;rsquo; farlo a mano ? Se sono tanti e&amp;rsquo; un lavoro noioso e potremmo anche commettere degli errori.&lt;/p&gt;
 &lt;p&gt;Ecco un semplice &lt;em&gt;one-liner&lt;/em&gt; che fa il parsing di un file &lt;strong&gt;/etc/passwd&lt;/strong&gt; e genera

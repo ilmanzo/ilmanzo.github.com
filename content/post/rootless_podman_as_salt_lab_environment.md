@@ -168,8 +168,11 @@ For a beginner, Salt can sound like a kitchen inventory. Here is the breakdown:
 ```bash
 $ podman exec -it salt-minion ping -c3 salt-master 
 
-PING salt-master.dns.podman (10.89.0.6) 56(84) bytes of data. 64 bytes from salt-master (10.89.0.6): icmp_seq=1 ttl=64 time=0.014 ms 64 bytes from salt-master (10.89.0.6): icmp_seq=2 ttl=64 time=0.037 ms 64 bytes from salt-master (10.89.0.6): icmp_seq=3 ttl=64 time=0.034 ms 64 bytes from
-...
+PING salt-master.dns.podman (10.89.0.6) 56(84) bytes of data. 
+64 bytes from salt-master (10.89.0.6): icmp_seq=1 ttl=64 time=0.014 ms 
+64 bytes from salt-master (10.89.0.6): icmp_seq=2 ttl=64 time=0.037 ms 
+64 bytes from salt-master (10.89.0.6): icmp_seq=3 ttl=64 time=0.034 ms 
+64 bytes from ...
 ```
 
 login to the master and check pending keys:

@@ -1,6 +1,6 @@
 ---
 title: "Rootless Podman as a Salt Lab Environment"
-date: 2026-03-17
+date: 2026-03-18
 tags: ["opensuse", "podman", "containers", "systemd", "linux", "tutorial", "salt"]
 categories: ["linux"]
 author: Andrea Manzini
@@ -10,9 +10,19 @@ author: Andrea Manzini
 
 Follow-up from [the previous post](https://ilmanzo.github.io/post/podman_quadlets_tutorial/), today we are going to put our systemd-managed containers to work and use them for some useful tasks.
 
-The idea is to set up an environment to learn how the configuration management [Salt](https://saltproject.io/) works, and play/hack around with it, without even needing root or `sudo` rights. After all, in the infra-world, **the Salt must flow**.
+The idea is to set up an environment to learn how the configuration management [Salt](https://saltproject.io/) works, and play/hack around with it, without even needing root or `sudo` rights. After all, in the infra-world, **the Salt must flow**!
 
-![podman-salt](/img/podman-salt.jpg)
+So we will setup two containers, one as a *salt server* and the other as a *salt "minion"* (representing the machine that will be configured via salt).
+
+```text
+    +-------------+                 +-------------+
+    |             |   Pub (4505)    |             |
+    | salt-master | --------------> | salt-minion |
+    |             |   Ret (4506)    |             |
+    |             | <-------------- |             |
+    +-------------+                 +-------------+
+```
+
 
 ## 🍳 Let's start cooking
 
@@ -89,6 +99,8 @@ Restart=always
 WantedBy=default.target
 ```
 
+![podman-salt](/img/podman-salt.jpg)
+
 ## 🛡️ What's with the :Z ?
 
 **Rootless Podman** is a security-first tool.
@@ -151,6 +163,7 @@ For a beginner, Salt can sound like a kitchen inventory. Here is the breakdown:
 
 
 ## 📡 Can you hear me now?
+
 
 ```bash
 $ podman exec -it salt-minion ping -c3 salt-master 

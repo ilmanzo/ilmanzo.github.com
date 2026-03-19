@@ -61,7 +61,7 @@ Network=saltnet
 
 Volume=%h/salt_lab/srv/salt:/mnt/salt:Z
 Volume=%h/salt_lab/srv/pillar:/mnt/pillar:Z
-Volume=%h/salt_lab/config/master_custom.conf:/etc/salt/master.d/custom.conf:Z
+Volume=%h/salt_lab/config/master_custom.conf:/etc/salt/master.d/master_custom.conf:Z
 # Persist our Master's keys across container restarts
 Volume=%h/salt_lab/config/pki/master:/etc/salt/pki:Z
 
@@ -86,7 +86,7 @@ ContainerName=salt-minion
 HostName=salt-minion
 Network=saltnet
 
-Volume=%h/salt_lab/config/minion.conf:/etc/salt/minion.d/lab_config.conf:Z
+Volume=%h/salt_lab/config/minion.conf:/etc/salt/minion.d/minion.conf:Z
 # Persist our Minion's keys across container restarts
 Volume=%h/salt_lab/config/pki/minion:/etc/salt/pki:Z
 

@@ -23,7 +23,7 @@ Image credits to: [Nubia Navarro](https://www.pexels.com/@nubikini/)
 
 Our exposed service will be very simple: once called, it will keep track of how many times it has been called and last date/time. We can also pass our name as parameter, just to show how parameter passing works.
 
-Thanks to a [wonderful Rust crate](https://dbus.pages.freedesktop.org/zbus/), creating D-Bus service is rather easy. We opt to make it async, because... Why not ? 
+Thanks to a [wonderful Rust crate](https://docs.rs/zbus/latest/zbus/), creating D-Bus service is rather easy. We opt to make it async, because... Why not ? 
 
 The core function is the trait implementation:
 

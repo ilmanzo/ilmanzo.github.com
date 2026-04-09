@@ -67,6 +67,8 @@ Our Nim wrapper balances this low-level control with **high-level safety**. We u
 
 Using Nim's metaprogramming, we can take this a step further. The `toStaticLandlock` macro calculates kernel bitmasks at **compile-time**, replacing runtime loops with literal integers. We also provide a declarative `sandbox:` DSL that transforms a readable block of code into a complex initialization sequence.
 
+Crucially, `restrictTo` (and the `sandbox:` macro) returns a **`Sandboxed` capability object** upon success. This follows the **Witness Pattern**: by requiring this object as an argument in your sensitive procedures, you create a compile-time guarantee that those procedures can *only* be executed after the sandbox has been correctly initialized.
+
 <div style="text-align: center;">
   <img src="/img/real_shield.svg" alt="Shield representing Safety" width="200" />
   <p style="font-size: 0.8em; color: gray;"><em>Image from <a href="https://commons.wikimedia.org/wiki/File:Shield.svg">Wikimedia Commons</a> (Public Domain)</em></p>
@@ -74,29 +76,31 @@ Using Nim's metaprogramming, we can take this a step further. The `toStaticLandl
 
 # 💻 Implementation Example
 
-Here is how all these pieces look in a real application. This example creates a sandbox that allows reading and writing in a specific workspace while permitting *only outbound connections* to a trusted port.
+Here is how all these pieces look in a real application. Note how `processInSandbox` requires the `Sandboxed` witness, ensuring it cannot be called accidentally before the restrictions are applied.
 
 ```nim
 import landlock, os
 
+# This procedure can ONLY be called if the caller provides a 
+# 'Sandboxed' witness, proving the process is restricted.
 proc processInSandbox(sb: Sandboxed, workDir: string) =
   echo "Working safely in: ", workDir
   writeFile(workDir / "test.txt", "Data secured by Landlock")
   
-  # This would fail at runtime:
+  # This would fail at runtime due to Landlock:
   # writeFile("/etc/shadow", "evil") 
 
 let myWorkDir = "/tmp/sandbox_data"
 if not dirExists(myWorkDir): createDir(myWorkDir)
 
 try:
-  sandbox:
+  # The 'sandbox:' macro returns a Sandboxed witness on success
+  let sb = sandbox:
     allow myWorkDir, {ReadFile, WriteFile, MakeReg, ReadDir}
     allowNet 443, {ConnectTcp}
     scope {Signal}
   
-  # The Sandboxed capability ensures this is only called when restricted
-  let sb = Sandboxed() 
+  # We pass the witness to our sensitive logic
   processInSandbox(sb, myWorkDir)
   
   echo "Operations completed successfully!"

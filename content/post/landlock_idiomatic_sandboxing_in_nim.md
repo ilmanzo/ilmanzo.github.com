@@ -31,11 +31,6 @@ The system is also *stackable*. You can apply multiple layers of rules, where ea
 
 The operational workflow follows a simple three-step pattern where you first **define** a ruleset of handled operations, then **bind** specific filesystem paths or network ports to those rights, and finally **commit** the restrictions to the current process.
 
-<div style="text-align: center;">
-  <img src="/img/real_padlock.jpg" alt="Padlock representing Security" width="200" />
-  <p style="font-size: 0.8em; color: gray;"><em>Image from <a href="https://commons.wikimedia.org/wiki/File:Padlock.jpg">Wikimedia Commons</a> (Public Domain)</em></p>
-</div>
-
 # ⚙️ The Kernel Interface
 
 Under the hood, Landlock is managed through three primary syscalls. First, `landlock_create_ruleset` initializes a new security ruleset where you specify which operations you want to manage. Any operation you do not specify remains *unrestricted*.
@@ -69,44 +64,33 @@ Using Nim's metaprogramming, we can take this a step further. The `toStaticLandl
 
 Crucially, `restrictTo` (and the `sandbox:` macro) returns a **`Sandboxed` capability object** upon success. This follows the **Witness Pattern**: by requiring this object as an argument in your sensitive procedures, you create a compile-time guarantee that those procedures can *only* be executed after the sandbox has been correctly initialized.
 
-<div style="text-align: center;">
-  <img src="/img/real_shield.svg" alt="Shield representing Safety" width="200" />
-  <p style="font-size: 0.8em; color: gray;"><em>Image from <a href="https://commons.wikimedia.org/wiki/File:Shield.svg">Wikimedia Commons</a> (Public Domain)</em></p>
-</div>
-
 # 💻 Implementation Example
 
 Here is how all these pieces look in a real application. Note how `processInSandbox` requires the `Sandboxed` witness, ensuring it cannot be called accidentally before the restrictions are applied.
 
 ```nim
-import landlock, os
+ import landlock, os
+ # This function REQUIRES proof of sandboxing
+ proc processFile(proof: Sandboxed, path: string) =
+   # 'proof' has no methods - it just proves we're sandboxed
+   writeFile(path, "Data processed securely")
+ let workDir = "/tmp/my_sandbox"
+ if not dirExists(workDir): createDir(workDir)
+ try:
+   # 'sb' is just proof - no fields, no methods to call
+   let sb = sandbox:
+     allow workDir, {ReadFile, WriteFile, MakeReg}
+   # The value of 'sb' is that it EXISTS - proving sandbox is active
+   processFile(sb, workDir / "safe.txt")  # Compiles - we have proof
+   # This won't compile - no proof available:
+   # processFile(???, "file.txt")  # Error: missing Sandboxed argument
+   echo "Sandboxed successfully!"
+ except LandlockError as e:
+   echo "Failed: ", e.msg
+```   
 
-# This procedure can ONLY be called if the caller provides a 
-# 'Sandboxed' witness, proving the process is restricted.
-proc processInSandbox(sb: Sandboxed, workDir: string) =
-  echo "Working safely in: ", workDir
-  writeFile(workDir / "test.txt", "Data secured by Landlock")
-  
-  # This would fail at runtime due to Landlock:
-  # writeFile("/etc/shadow", "evil") 
-
-let myWorkDir = "/tmp/sandbox_data"
-if not dirExists(myWorkDir): createDir(myWorkDir)
-
-try:
-  # The 'sandbox:' macro returns a Sandboxed witness on success
-  let sb = sandbox:
-    allow myWorkDir, {ReadFile, WriteFile, MakeReg, ReadDir}
-    allowNet 443, {ConnectTcp}
-    scope {Signal}
-  
-  # We pass the witness to our sensitive logic
-  processInSandbox(sb, myWorkDir)
-  
-  echo "Operations completed successfully!"
-except LandlockError as e:
-  echo "Security initialization failed: ", e.msg
-```
+The Sandboxed type is intentionally empty - it's a capability-based security pattern. The
+compiler enforces that security-critical code can only run when you have the proof token.
 
 # 🏁 Conclusion
 

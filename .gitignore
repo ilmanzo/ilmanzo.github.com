@@ -1,2 +1,11 @@
 /public/
 /resources/_gen/
+
+# AI assistants
+.claude/
+CLAUDE.md
+GEMINI.md
+.gemini/
+.cursorrules
+.cursor/
+.copilot/

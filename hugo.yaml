@@ -2,7 +2,7 @@ baseURL: 'https://ilmanzo.github.io/'
 languageCode: en-us
 title: ilManzo's blog
 theme: PaperMod
-copyright: '© 2012-2025 Andrea Manzini'
+copyright: '© 2012-2026 Andrea Manzini'
 pagination:
   pagerSize: 4
 DefaultContentLanguage: en

@@ -4,6 +4,8 @@ title: "How much code are you testing ? (1)"
 description: "Measuring coverage of integration tests"
 categories: [programming, testing]
 tags: [testing, tutorial, coverage, go, golang, qa]
+series: ["How much code are you testing?"]
+series_order: 1
 author: Andrea Manzini
 date: 2025-02-23
 ---

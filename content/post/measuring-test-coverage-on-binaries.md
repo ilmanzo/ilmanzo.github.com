@@ -4,6 +4,8 @@ title: "How much code are you testing ? (2)"
 description: "Measuring test coverage on binaries"
 categories: [programming, testing]
 tags: [testing, tutorial, linux, coverage, e2e, qa, tracing, scripting]
+series: ["How much code are you testing?"]
+series_order: 2
 author: Andrea Manzini
 date: 2025-03-30
 ---

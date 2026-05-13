@@ -4,6 +4,8 @@ title: "How much code are you testing ? (3)"
 description: "Using Intel PIN to measure test coverage on binaries"
 categories: [programming, testing]
 tags: [testing, tutorial, linux, coverage, e2e, qa, tracing, scripting, C, C++, instrumentation]
+series: ["How much code are you testing?"]
+series_order: 3
 author: Andrea Manzini
 date: 2025-06-17
 

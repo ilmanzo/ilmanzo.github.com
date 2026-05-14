@@ -47,7 +47,7 @@ The overhead difference is significant in practice. With valgrind, even a trivia
 
 The design is built around two cooperating binaries:
 
-```
+```txt
 ┌──────────────────┐         ┌──────────────────────────┐
 │   funkoverage    │  CLI    │    funkoverage-shim      │
 │  install/report  │         │  transparent replacement │

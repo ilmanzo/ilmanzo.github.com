@@ -47,12 +47,10 @@ The overhead difference is significant in practice. With valgrind, even a trivia
 
 The design is built around two cooperating binaries:
 
-```txt
-┌──────────────────┐         ┌──────────────────────────┐
-│   funkoverage    │  CLI    │    funkoverage-shim      │
-│  install/report  │         │  transparent replacement │
-└──────────────────┘         └──────────────────────────┘
-```
+| Component | Description |
+|---|---|
+| `funkoverage` | CLI (setup/install/report) |
+| `funkoverage-shim` | transparent replacement |
 
 **`funkoverage`** is the CLI you interact with: it installs and uninstalls the shim, enumerates functions, and generates coverage reports.
 

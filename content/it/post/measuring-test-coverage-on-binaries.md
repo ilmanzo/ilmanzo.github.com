@@ -165,7 +165,7 @@ Sebbene sia un po' prolisso, contiene tutte le informazioni di cui abbiamo bisog
 
 ## 🤖 Automatizzarlo
 
-Per renderci la vita più facile, conviene usare un po' di scripting di incollaggio (glue scripting) per automatizzare gli strumenti e analizzare i dati con del codice Python per ottenere le informazioni di cui abbiamo bisogno. Il progetto completo [è disponibile sul mio repository GitHub](https://github.com/ilmanzo/binarycoverage_callgrind), ma ecco un estratto dello script `coverage.sh` che esegue `pytest` e produce la misura di copertura:
+Per renderci la vita più facile, conviene usare un semplice script d'appoggio per automatizzare gli strumenti e analizzare i dati tramite codice Python, così da ottenere le informazioni necessarie. Il progetto completo [è disponibile sul mio repository GitHub](https://github.com/ilmanzo/binarycoverage_callgrind), ma ecco un estratto dello script `coverage.sh` che esegue `pytest` e produce la misura di copertura:
 
 ```bash
 #!/bin/bash

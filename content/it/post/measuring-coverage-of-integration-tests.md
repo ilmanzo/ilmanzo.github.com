@@ -17,7 +17,7 @@ Quando il vostro codice include una suite di unit test, la [copertura del codice
 ![metrics](/img/pexels-n-voitkevich-6120217.jpg)
 Crediti immagine: [Nataliya Vaitkevich](https://www.pexels.com/it-it/@n-voitkevich/)
 
-D'altra parte, spesso abbiamo anche bisogno di eseguire test di integrazione o E2E (end-to-end), poiché nel nostro percorso di QA eseguiamo principalmente programmi del mondo reale piuttosto che singole funzioni ben selezionate.
+D'altra parte, spesso abbiamo anche bisogno di eseguire test di integrazione o E2E (end-to-end), poiché nei nostri flussi di QA eseguiamo principalmente applicazioni reali piuttosto che singole funzioni isolate.
 
 Iniziamo con un caso d'uso di base e prepariamo un semplice programma su misura per questo scopo.
 

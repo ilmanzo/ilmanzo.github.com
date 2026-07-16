@@ -221,7 +221,7 @@ Quando avvii un Minion nuovo di zecca, questo non si fida ciecamente del Master,
     
 - Il Master non invierà ancora alcun comando a questo minion.
     
-- Quando esegui `salt-key -a salt-minion`, the Master sposta quella chiave pubblica nella cartella "Accepted" (`/etc/salt/pki/master/minions/`).
+- Quando esegui `salt-key -a salt-minion`, il Master sposta quella chiave pubblica nella cartella "Accepted" (`/etc/salt/pki/master/minions/`).
 
 - Il Master invia quindi la **propria chiave pubblica** al Minion.
     
@@ -261,7 +261,7 @@ Una guida rapida (Cheat Sheet) per la gestione delle chiavi:
 
 ## 🛠️ Fare qualcosa di veramente utile
 
-Invece di eseguire comandi manuali, Salt è dsignato per utilizzare i **File di Stato (SLS)**. Questi descrivono l'aspetto che il sistema _dovrebbe_ avere (configurazione dichiarativa).
+Invece di eseguire comandi manuali, Salt è progettato per utilizzare i **File di Stato (SLS)**. Questi descrivono l'aspetto che il sistema _dovrebbe_ avere (configurazione dichiarativa).
 
 Sulla tua **macchina host** (all'esterno del container), vai nella cartella `~/salt_lab/srv/salt` e crea un file chiamato `common_tools.sls`:
 

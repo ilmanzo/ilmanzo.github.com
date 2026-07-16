@@ -13,7 +13,7 @@ date: 2025-06-17
 
 ## ▶️ Intro: [Let Me Be](https://www.youtube.com/watch?v=mjPVv5ojKTo) 
 
-Nel [post precedente](https://ilmanzo.github.io/it/post/measuring-test-coverage-on-binaries/) abbiamo continuato il nostro viaggio affrontando uno scenario più complesso, utilizzando un mix di `gdb` and `valgrind` per tracciare l'esecuzione di tutte le funzioni all'interno di un dato binario.
+Nel [post precedente](https://ilmanzo.github.io/it/post/measuring-test-coverage-on-binaries/) abbiamo continuato il nostro viaggio affrontando uno scenario più complesso, utilizzando un mix di `gdb` e `valgrind` per tracciare l'esecuzione di tutte le funzioni all'interno di un dato binario.
 
 Questa volta reggetevi forte perché aumenteremo notevolmente la complessità. Ci immergeremo nell'analisi di basso livello ed esploreremo come utilizzare [Intel PIN](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html), un potente framework di strumentazione dinamica per manipolare e ispezionare il codice eseguibile a runtime.
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 }
 {{< /highlight >}}
 
-Quindi lo compiliamo e lo useremo come nostro banco di prova
+Compiliamolo, quindi, per usarlo come nostro banco di prova:
 
 {{< highlight bash >}}
 $ cc -g -gdwarf-4 main.c -o cov_sample

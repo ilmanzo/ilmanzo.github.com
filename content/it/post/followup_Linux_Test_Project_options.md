@@ -10,7 +10,7 @@ date: 2024-10-27
 
 ## 👻 Introduzione
 
-Mentre il nostro [post precedente](https://ilmanzo.github.io/it/post/first_steps_of_ltp_linux_test_project/) si concentrava sui componenti principali dei test LTP, oggi in questa seconda parte faremo un tuffo spaventosamente profondo nelle opzioni disponibili in `struct tst_test` 🦇.
+Mentre il nostro [post precedente](https://ilmanzo.github.io/it/post/first_steps_of_ltp_linux_test_project/) si concentrava sui componenti principali dei test LTP, oggi in questa seconda parte faremo un'immersione incredibilmente profonda nelle opzioni disponibili in `struct tst_test` 🦇.
 
 Il [Linux Test Project (LTP)](https://github.com/linux-test-project/ltp) è nato come uno sforzo collaborativo tra SGI, OSDL e Bull. Oggi vive grazie ai contributi congiunti di leader del settore come IBM, Cisco, Fujitsu, SUSE, Red Hat, Oracle e altri. La sua missione rimane chiara: fornire alla community open source test completi che verifichino l'affidabilità, la robustezza e la stabilità di Linux. 🕸️
 

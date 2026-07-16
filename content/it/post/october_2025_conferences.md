@@ -112,4 +112,4 @@ Ho anche portato a casa questo simpatico gadget che riassume bene lo spirito del
 
 Sono un grande fan delle piccole conferenze locali. Sono molto più semplici: sono economiche, vicine a casa e non ti portano via un'intera settimana. Anche il networking è molto più prezioso; ti metti in contatto con persone che lavorano e vivono effettivamente nella tua zona.
 
-Inoltre, le dimensioni ridotte significano meno caos, quindi puoi letteralmente avvicinarti e fare una vera conversazione con i relatori. E se stai pensando di salire tu stesso sul palco, questi eventi sono il trampolino di lancio perfetto. È un modo a bassa pressione per fare esperienza e farsi conoscere. Non posso raccomandarli abbastanza.
+Inoltre, le dimensioni ridotte significano meno caos, quindi puoi letteralmente avvicinarti e fare una vera conversazione con i relatori. E se stai pensando di salire tu stesso sul palco, questi eventi sono il trampolino di lancio perfetto. È un modo a bassa pressione per fare esperienza e farsi conoscere. Ve li consiglio caldamente.

@@ -3,7 +3,7 @@ layout: post
 title: "How much code are you testing ? (5)"
 description: "Tracing dlopen()'d libraries on-the-fly with event-driven eBPF JIT uprobes"
 categories: [programming, testing]
-tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl]
+tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl, pam]
 series: ["How much code are you testing?"]
 series_order: 5
 author: Andrea Manzini
@@ -111,13 +111,71 @@ The final report successfully processed **14,301 total functions** and logged **
 
 ---
 
+## 🩹 Round Two: Hardening After a Deeper Look
+
+A prototype that works once on your own machine and a feature you can trust in production are two different things. We put the JIT dlopen path through an independent code review — and a `go test -race` run turned up a real bug within minutes:
+
+- **A race condition on shutdown.** The dlopen handler runs on a background goroutine, appending newly discovered library links to a shared slice, while `Stop()` was concurrently closing and clearing that *same* slice from the caller's goroutine during teardown. Unsynchronized concurrent access — exactly the kind of bug that only shows up under load, at the worst possible time. Fixed with a small mutex around the shared state.
+- **Filters silently skipped dynamic libraries.** `--include`/`--exclude` regex filters worked correctly against statically-enumerated functions, but anything discovered later via `dlopen` bypassed them entirely. We now serialize the compiled filter patterns into a small `.filter.json` sidecar at install time, and the shim re-applies the exact same logic to whatever it discovers at runtime.
+- **A capacity ceiling with no alarm.** The kernel-side dedup map is sized once, at BPF load time, with headroom reserved for functions discovered later. Past that headroom, cookie lookups silently return `NULL` in the kernel — the call is simply dropped, with nothing logged anywhere. For a coverage tool, a silent false negative is about the worst failure mode there is. Now it clips and warns loudly instead.
+- **A debug `bpf_printk` we forgot to remove.** uprobes attach per file+offset, system-wide — not per-process. Two debug prints in the dlopen uretprobe were firing on *every* `dlopen()` call on the whole machine, not just the one we cared about, quietly working against the "0% overhead at scale" promise from Part 4. Gone now.
+- **Older glibc support.** `dlopen` only moved into `libc.so.6` in glibc 2.34 (2021) — before that it lived in `libdl.so.2`. The uretprobe attach logic now verifies the symbol is actually present in a candidate library before committing to it, instead of just checking the file exists on disk.
+
+Two more came from writing tests, not from reading code — which is exactly the point of writing them:
+
+- `isSystemLib()`, the heuristic that skips known system libraries to keep dynamic traces lean, had a regex where the `libstdc++` alternative could *never* actually match — a `\b` word-boundary anchor right after a `+` character can't fire, since `+` isn't a word character. `libstdc++.so.6` was quietly getting fully instrumented instead of skipped, every single time.
+- The ELF symbol reader for dynamically loaded libraries only fell back to `.dynsym` if reading `.symtab` failed outright — but glibc's own `libc.so.6` ships a `.symtab` that *succeeds* while omitting exported functions like `dlopen` itself, which live only in `.dynsym`. Fix: union both tables instead of picking one.
+
+## 👻 The Ghost That Got Away: NSS
+
+Remember the dynamic loading ghost from the top of this post? We caught it hiding in PAM modules and Nginx's own plugin system below — but there's one place it still gets away clean: glibc's Name Service Switch.
+
+Every time a program resolves a hostname or looks up a user (`getpwnam`, `gethostbyname`, and friends), glibc dynamically loads `libnss_dns.so.2`, `libnss_files.so.2`, or whichever backend `/etc/nsswitch.conf` points at — invisible to `ldd`, exactly the class of problem this whole feature exists to solve.
+
+Except it doesn't work here. We hooked the *public* `dlopen()` symbol; glibc's own NSS dispatcher calls a private, non-exported `__libc_dlopen_mode` instead — a completely different function, at a completely different address:
+
+```bash
+$ readelf -Ws /lib64/libc.so.6 | grep -w dlopen
+  2326: 0000000000096f3e   165 FUNC    GLOBAL DEFAULT   16 dlopen@@GLIBC_2.34
+$ readelf -Ws /lib64/libc.so.6 | grep libc_dlopen
+  3219: 000000000016fefe   140 FUNC    LOCAL  DEFAULT   16 __libc_dlopen_mode
+```
+
+We proved it empirically too: a tiny test program calling `getpwnam("root")` and `gethostbyname("localhost")` runs perfectly fine under the shim — but exactly zero dlopen events fire, and no `libnss_*.so` function is ever instrumented. The lookups work; our tracer simply never sees them happen.
+
+This isn't something we can code our way out of from userspace — it's a permanent scope boundary of hooking one specific, public ELF symbol. A real fix would mean also hooking `__libc_dlopen_mode`, a private glibc internal with no stability guarantee across versions. For now we document it plainly instead of pretending it isn't there.
+
+## 🧪 More Battle Scars: PAM and a Clean-Room Nginx
+
+Beyond the live nginx test above, we spun up a disposable, freshly installed openSUSE Tumbleweed VM specifically to hammer on real production binaries with zero prior configuration.
+
+**PAM** was the star performer. `su` links against `libpam.so.0` — visible to `ldd` — but the actual authentication modules underneath it (`pam_unix.so`, `pam_env.so`, `pam_limits.so`, `pam_systemd.so`, `pam_selinux.so`, ...) live under `/usr/lib64/security/` and get `dlopen()`'d purely at runtime, based on `/etc/pam.d/su`. A single `su - testuser -c true` triggered a whole realistic cascade — a dozen PAM modules plus their own transitively dlopen'd support libraries — all correctly JIT-instrumented with zero configuration:
+
+```
+CALLED /usr/lib64/security/pam_unix.so pam_sm_open_session
+CALLED /usr/lib64/security/pam_unix.so pam_sm_close_session
+```
+
+**Nginx**, on a completely fresh install this time, got the `nginx-module-echo` dynamic module wired up via `load_module`. The real payoff wasn't just seeing the module's `.so` show up in the trace — it was confirming the *actual per-request handler* got instrumented, not just its one-time initialization callbacks:
+
+```
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_handler
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_run_cmds
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_exec_echo
+```
+
+(That took two tries. Nginx daemonizes by default — forking and exiting its own parent process — and our tracer follows one specific PID. The fix was the one every process supervisor already knows: run with `-g "daemon off;"` and let the shell handle backgrounding instead.)
+
+---
+
 ## 🏁 [Conclusion](https://www.youtube.com/watch?v=xk8mm1Qmt-Y)
 
 With this new event-driven JIT architecture, `funkoverage` reaches full coverage transparency:
 
 - **100% Coverage**: Tracks both statically linked dependencies and JIT/dynamically loaded plugins.
-- **Enterprise Ready**: Designed to scale safely to **5,000+ instrumented binaries** with zero steady-state CPU or memory overhead.
+- **Enterprise Ready**: Designed to scale safely to **5,000+ instrumented binaries** with zero steady-state CPU or memory overhead, hardened by a real code review and validated on real hardware.
 - **Pure-Go and eBPF**: Works natively on both x86_64 and ARM64 architectures running modern Linux kernels.
+- **Honest about its edges**: NSS lookups are a documented limitation, not a silent gap.
 
 The project is at [github.com/ilmanzo/BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage) — issues, feedback, and pull requests are very welcome!
 

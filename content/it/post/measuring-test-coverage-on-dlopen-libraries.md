@@ -3,7 +3,7 @@ layout: post
 title: "Quanto codice stai testando ? (5)"
 description: "Tracciare le librerie caricate via dlopen() on-the-fly con eBPF JIT uprobes event-driven"
 categories: [programmazione, testing]
-tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl]
+tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl, pam]
 series: ["How much code are you testing?"]
 series_order: 5
 author: Andrea Manzini
@@ -111,13 +111,71 @@ Il report finale ha analizzato correttamente **14.301 funzioni totali** registra
 
 ---
 
+## 🩹 Round Due: Irrobustire Dopo uno Sguardo Più Attento
+
+Un prototipo che funziona una volta sulla propria macchina e una feature di cui ci si può fidare in produzione sono due cose diverse. Abbiamo sottoposto il percorso JIT di dlopen a una code review indipendente — e un run di `go test -race` ha scovato un bug vero in pochi minuti:
+
+- **Una race condition allo shutdown.** Il gestore di dlopen gira su una goroutine in background, aggiungendo i link delle librerie appena scoperte a uno slice condiviso, mentre `Stop()` chiudeva e svuotava concorrentemente lo *stesso* slice dalla goroutine chiamante durante lo spegnimento. Accesso concorrente non sincronizzato — esattamente il tipo di bug che si manifesta solo sotto carico, nel momento peggiore possibile. Risolto con un piccolo mutex attorno allo stato condiviso.
+- **I filtri ignoravano silenziosamente le librerie dinamiche.** I filtri regex `--include`/`--exclude` funzionavano correttamente sulle funzioni enumerate staticamente, ma qualsiasi cosa scoperta in seguito via `dlopen` li bypassava del tutto. Ora serializziamo i pattern del filtro compilato in un piccolo sidecar `.filter.json` al momento dell'installazione, e lo shim riapplica esattamente la stessa logica a tutto ciò che scopre a runtime.
+- **Un limite di capacità senza alcun allarme.** La mappa di deduplica lato kernel viene dimensionata una sola volta, al caricamento del programma BPF, con un margine riservato alle funzioni scoperte in seguito. Superato quel margine, le lookup dei cookie restituiscono silenziosamente `NULL` nel kernel — la chiamata viene semplicemente scartata, senza che nulla venga registrato da nessuna parte. Per uno strumento di coverage, un falso negativo silenzioso è quasi il peggior modo di fallire. Ora invece taglia e avvisa ad alta voce.
+- **Un `bpf_printk` di debug che avevamo dimenticato di rimuovere.** Le uprobe si agganciano per file+offset, a livello di intero sistema — non per processo. Due stampe di debug nella uretprobe di dlopen scattavano per *ogni* chiamata a `dlopen()` sull'intera macchina, non solo per quella che ci interessava, lavorando silenziosamente contro la promessa di "0% overhead su scala" della Parte 4. Ora sono sparite.
+- **Supporto per glibc più datate.** `dlopen` è finita dentro `libc.so.6` solo con glibc 2.34 (2021) — prima viveva in `libdl.so.2`. La logica di aggancio della uretprobe ora verifica che il simbolo sia effettivamente presente in una libreria candidata prima di impegnarsi su di essa, invece di limitarsi a controllare che il file esista su disco.
+
+Altri due bug sono emersi scrivendo test, non leggendo codice — che è esattamente il senso di scriverli:
+
+- `isSystemLib()`, l'euristica che salta le librerie di sistema note per mantenere le tracce dinamiche snelle, aveva una regex in cui l'alternativa per `libstdc++` non poteva *mai* effettivamente matchare — un ancoraggio di confine di parola `\b` subito dopo un carattere `+` non può scattare, dato che `+` non è un carattere di parola. `libstdc++.so.6` veniva silenziosamente instrumentata per intero invece di essere saltata, ogni singola volta.
+- Il lettore di simboli ELF per le librerie caricate dinamicamente ricadeva su `.dynsym` solo se la lettura di `.symtab` falliva del tutto — ma la `libc.so.6` di glibc distribuisce una `.symtab` che *ha successo* pur omettendo funzioni esportate come `dlopen` stessa, presenti solo in `.dynsym`. Soluzione: unire entrambe le tabelle invece di sceglierne una.
+
+## 👻 Il Fantasma Che Ci È Sfuggito: NSS
+
+Ricordate il fantasma del caricamento dinamico dell'inizio di questo post? Lo abbiamo scovato nascosto nei moduli PAM e nel sistema di plugin di Nginx qui sotto — ma c'è un posto in cui riesce ancora a farla franca: il Name Service Switch di glibc.
+
+Ogni volta che un programma risolve un hostname o cerca un utente (`getpwnam`, `gethostbyname` e simili), glibc carica dinamicamente `libnss_dns.so.2`, `libnss_files.so.2`, o qualunque backend punti `/etc/nsswitch.conf` — invisibile a `ldd`, esattamente la classe di problema che questa feature esiste per risolvere.
+
+Solo che qui non funziona. Abbiamo agganciato il simbolo `dlopen()` *pubblico*; il dispatcher NSS interno di glibc chiama invece una `__libc_dlopen_mode` privata, non esportata — una funzione completamente diversa, a un indirizzo completamente diverso:
+
+```bash
+$ readelf -Ws /lib64/libc.so.6 | grep -w dlopen
+  2326: 0000000000096f3e   165 FUNC    GLOBAL DEFAULT   16 dlopen@@GLIBC_2.34
+$ readelf -Ws /lib64/libc.so.6 | grep libc_dlopen
+  3219: 000000000016fefe   140 FUNC    LOCAL  DEFAULT   16 __libc_dlopen_mode
+```
+
+Lo abbiamo dimostrato anche empiricamente: un piccolo programma di test che chiama `getpwnam("root")` e `gethostbyname("localhost")` gira perfettamente sotto lo shim — ma non scatta esattamente nessun evento di dlopen, e nessuna funzione di `libnss_*.so` viene mai instrumentata. Le lookup funzionano; il nostro tracer semplicemente non le vede mai accadere.
+
+Non è qualcosa da cui possiamo uscire scrivendo altro codice lato userspace — è un confine permanente di ciò che si può fare agganciando un unico, specifico simbolo ELF pubblico. Una soluzione vera richiederebbe di agganciare anche `__libc_dlopen_mode`, un interno privato di glibc senza alcuna garanzia di stabilità tra le versioni. Per ora lo documentiamo apertamente invece di far finta che non esista.
+
+## 🧪 Altre Cicatrici di Battaglia: PAM e un Nginx in Camera Bianca
+
+Oltre al test live su nginx qui sopra, abbiamo tirato su una VM openSUSE Tumbleweed usa-e-getta, installata da zero apposta per martellare binari di produzione reali senza alcuna configurazione preventiva.
+
+**PAM** è stato il protagonista. `su` è linkato contro `libpam.so.0` — visibile a `ldd` — ma i moduli di autenticazione veri e propri sotto di esso (`pam_unix.so`, `pam_env.so`, `pam_limits.so`, `pam_systemd.so`, `pam_selinux.so`, ...) vivono sotto `/usr/lib64/security/` e vengono caricati con `dlopen()` puramente a runtime, in base a `/etc/pam.d/su`. Un singolo `su - testuser -c true` ha innescato un'intera cascata realistica — una dozzina di moduli PAM più le loro stesse librerie di supporto caricate transitivamente — tutte correttamente instrumentate al volo senza alcuna configurazione:
+
+```
+CALLED /usr/lib64/security/pam_unix.so pam_sm_open_session
+CALLED /usr/lib64/security/pam_unix.so pam_sm_close_session
+```
+
+**Nginx**, stavolta su un'installazione completamente pulita, ha ricevuto il modulo dinamico `nginx-module-echo` agganciato via `load_module`. Il vero risultato non è stato solo vedere comparire la `.so` del modulo nella traccia — è stato confermare che il *vero handler per-richiesta* fosse stato instrumentato, non solo le sue callback di inizializzazione una tantum:
+
+```
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_handler
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_run_cmds
+CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_exec_echo
+```
+
+(Ci sono voluti due tentativi. Nginx si demonizza di default — forkando ed uscendo dal proprio processo padre — e il nostro tracer segue un PID specifico. La soluzione è quella che ogni process supervisor già conosce: girare con `-g "daemon off;"` e lasciare che sia la shell a gestire il background.)
+
+---
+
 ## 🏁 [Conclusion](https://www.youtube.com/watch?v=xk8mm1Qmt-Y)
 
 Grazie a questa nuova architettura JIT event-driven, `funkoverage` raggiunge una trasparenza totale:
 
 - **100% Coverage**: Traccia le dipendenze statiche e i plugin caricati dinamicamente.
-- **Enterprise-Ready**: Scala in sicurezza su **5000+ binari** senza impatto stazionario su CPU e memoria.
+- **Enterprise-Ready**: Scala in sicurezza su **5000+ binari** senza impatto stazionario su CPU e memoria, irrobustita da una vera code review e validata su hardware reale.
 - **Pure-Go ed eBPF**: Funziona nativamente sia su x86_64 sia su ARM64 su kernel moderni.
+- **Onesta sui propri limiti**: le lookup NSS sono un limite documentato, non una lacuna silenziosa.
 
 Il progetto è ospitato su [github.com/ilmanzo/BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage) — segnalazioni, commenti e pull request sono i benvenuti!
 

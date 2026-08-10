@@ -3,7 +3,7 @@ layout: post
 title: "How much code are you testing ? (5)"
 description: "Tracing dlopen()'d libraries on-the-fly with event-driven eBPF JIT uprobes"
 categories: [programming, testing]
-tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl, pam]
+tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlopen, nginx, openssl]
 series: ["How much code are you testing?"]
 series_order: 5
 author: Andrea Manzini
@@ -11,24 +11,24 @@ date: 2026-08-30
 draft: true
 ---
 
-## 🧭 [Where we left off](https://www.youtube.com/watch?v=uB1D9wWxd2w)
+## 🧭 [Where we left off](https://www.youtube.com/watch?v=pAgnJDJN4VA)
 
 Welcome back to our technical journey on measuring binary test coverage!
 
-In [part 4](https://ilmanzo.github.io/post/measuring-test-coverage-with-ebpf/) we introduced **funkoverage**, a native, high-performance eBPF-based coverage tracer that leverages `uprobe_multi` to capture function entry events in GNU/Linux with less than 2% overhead. It parses static library dependencies using `ldd` during installation and maps uprobes to all discovered functions.
+In [part 4](https://ilmanzo.github.io/post/measuring-test-coverage-with-ebpf/) we introduced **[funkoverage](https://github.com/ilmanzo/BinaryCoverage/)**, a native, high-performance eBPF-based coverage tracer that leverages `uprobe_multi` to capture function entry events in GNU/Linux with less than 2% overhead. It parses static library dependencies using `ldd` during installation and maps uprobes to all discovered functions.
 
 But there was a big fat elephant in the room: **`dlopen()`**.
 
 Some of the most complex, modular software in the world — such as web servers with dynamic modules, plugin-based enterprise applications, and multi-protocol databases — load their dependencies *at runtime* on-the-fly. Because these libraries are not declared in the ELF binary's `DT_NEEDED` header, they are invisible to `ldd` during installation.
 
-Today, we are going to chase the dynamic library ghost, explore how we solved this with an elegant, highly scalable, event-driven eBPF JIT instrumentation strategy, and battle-test it live on standard, unmodified production binaries like **Nginx** and **OpenSSL**!
+Today, we are going to chase the dynamic loading ghost, explore how we solved this with an elegant, highly scalable, event-driven eBPF JIT instrumentation strategy, and battle-test it live on standard, unmodified production binaries like **Nginx** and **OpenSSL**!
 
 <!--more-->
 
 ![plug](/img/pexels-realtoughcandy-11034131.jpg)
 *(Image courtesy of https://www.pexels.com/@realtoughcandy/)*
 
-## 🕳️ [The Dynamic Loading Ghost](https://www.youtube.com/watch?v=7W3yz6abJkU)
+## 🕳️ [The dynamic loading ghost](https://www.youtube.com/watch?v=VqoyKzgkqR4)
 
 When a program loads a shared library dynamically at runtime, it uses the standard POSIX functions `dlopen()` or `dlmopen()`:
 
@@ -36,52 +36,110 @@ When a program loads a shared library dynamically at runtime, it uses the standa
 void *handle = dlopen("./libplugin.so", RTLD_NOW);
 ```
 
-Because this library is not mapped when the program starts, compile-time and link-time dependency analysis tools like `ldd` are completely blind to it. 
+Because this library is not mapped when the program starts, compile-time and link-time dependency analysis tools like `ldd` are completely blind to it.
 
 If we run `ldd` on standard distro executables like `nginx`, we see standard dynamic dependencies, but we are completely blind to runtime-loaded providers or plug-ins like OpenSSL's `legacy.so`. This means that as soon as the application calls dynamically loaded code, our coverage maps go dark.
 
 ---
 
-## 🧮 [Active Polling vs. Event-Driven JIT](https://www.youtube.com/watch?v=sfCLt0kTd5E)
+## 🧮 [Active polling vs. event-driven JIT](https://www.youtube.com/watch?v=bWXazVhlyxQ)
 
 How do we solve this?
 
-One naive approach is to run a loop in the Go shim that periodically polls `/proc/<pid>/maps` (say, every 10ms) to detect newly loaded libraries. 
-However, **polling does not scale**. 
+One naive approach is to run a loop in the Go shim that periodically polls `/proc/<pid>/maps` (say, every 10ms) to detect newly loaded libraries.
+However, **polling does not scale**.
 
 If we have **5,000 instrumented binaries** installed on a system, active polling would require reading `/proc/<pid>/maps` up to **500,000 times per second**. This triggers severe CPU cache thrashing, high I/O wait times, and process throttling.
 
-To keep the tool lightweight and enterprise-ready, we designed an **Event-Driven JIT (Just-In-Time) Instrumentation** strategy:
+To keep the tool lightweight and enterprise-ready, we designed an **event-driven JIT (just-in-time) instrumentation** strategy:
 
-1. **Uretprobe on `dlopen`**: During startup, `funkoverage` parses `/proc/<pid>/maps` once to locate the loaded `libc.so.6` path. It attaches a return uprobe (`uretprobe`) to the `dlopen` symbol.
-2. **The Special Token**: When `dlopen` successfully completes inside the target application and returns a non-NULL handle, our eBPF program catches the event and writes a reserved token (`0xFFFFFFFF`) into the lockless kernel-to-userspace `events` ring buffer.
-3. **Event-Driven Parse**: The Go shim receives the `0xFFFFFFFF` event in its background loop. Only *then* does it read `/proc/<pid>/maps` to scan for newly mapped `.so` files.
-4. **JIT Attach**: The shim parses the new library's ELF symbol table on-the-fly, matches them against current filter regexes, and registers new uprobes dynamically using a single `UprobeMulti` system call.
+1. **Uretprobe on `dlopen`**: At startup, `funkoverage` checks a short list of standard glibc paths for one that actually exports the `dlopen` symbol (fast path), falling back to a one-time `/proc/<pid>/maps` scan if none match. It then attaches a return uprobe (`uretprobe`) there.
+2. **The special token**: When `dlopen` successfully completes inside the target application and returns a non-NULL handle, our eBPF program catches the event and writes a reserved token (`0xFFFFFFFF`) into the lockless kernel-to-userspace `events` ring buffer.
+3. **Event-driven parse**: The Go shim receives the `0xFFFFFFFF` event in its background loop. Only *then* does it walk `/proc/<pid>/maps` — for *every* pid currently in the kernel-side `watched` map, not just the root process — to scan for newly mapped `.so` files. That map is what makes multi-process tracing work at all: a `sched_process_fork` tracepoint copies a process's watched bit to its children as they're born, so a forked worker calling `dlopen()` on its own gets caught too.
+4. **JIT attach**: The shim parses the new library's ELF symbol table on-the-fly, matches them against current filter regexes, and registers new uprobes dynamically using a single `UprobeMulti` system call.
 
 This keeps steady-state overhead at **0% CPU** and **0% I/O**!
 
+### Show me the code
+
+The eBPF side is a single `uretprobe` on `dlopen`, reading the return value straight off the architecture's return register:
+
+```c
+SEC("uretprobe/dlopen")
+int trace_dlopen_return(struct pt_regs *ctx)
+{
+    __u32 tgid = bpf_get_current_pid_tgid() >> 32;
+    if (!bpf_map_lookup_elem(&watched, &tgid))
+        return 0;
+
+#if defined(__x86_64__)
+    void *handle = (void *)ctx->ax;
+#elif defined(__aarch64__)
+    void *handle = (void *)ctx->regs[0];
+#endif
+    if (!handle)
+        return 0;
+
+    struct event *e = bpf_ringbuf_reserve(&events, sizeof(*e), 0);
+    if (!e)
+        return 0;
+    e->func_idx = 0xFFFFFFFF; // reserved token: "a library just got dlopen'd"
+    bpf_ringbuf_submit(e, 0);
+    return 0;
+}
+```
+
+On the Go side, `Tracer.Start` locates the right libc/libdl and attaches to it with the exact same `link.OpenExecutable` + `Uretprobe` API `cilium/ebpf` already gives us for regular function uprobes:
+
+```go
+libcPath, err := findLibcPath(rootPID)
+if err == nil {
+    if ex, err := link.OpenExecutable(libcPath); err == nil {
+        if l, err := ex.Uretprobe("dlopen", t.objs.TraceDlopenReturn, nil); err == nil {
+            t.addLink(l)
+        }
+    }
+}
+```
+
+And on the consumer side, the ringbuf read loop just special-cases the reserved token:
+
+```go
+idx := binary.LittleEndian.Uint32(record.RawSample[:4])
+if idx == 0xFFFFFFFF {
+    t.handleDynamicLoad() // walk watched pids, diff /proc/*/maps, JIT-attach new libs
+    continue
+}
+```
+
+`handleDynamicLoad` is where the actual JIT work happens: diff every watched process's memory map against what's already instrumented, read the new library's ELF symbol table, run it through the same `--include`/`--exclude` filters used at install time, and attach a fresh `UprobeMulti` batch — all without the target process ever noticing.
+
 ---
 
-## 🩺 [Overcoming Real-World Distro Obstacles](https://www.youtube.com/watch?v=xk8mm1Qmt-Y)
+## 🩺 [Overcoming real-world distro obstacles](https://www.youtube.com/watch?v=btPJPFnesV4)
 
 Moving this design from a "dummy program" to real-world production binaries like `nginx` and `openssl` threw some heavy technical curveballs at us. Here is how we solved them:
 
-### A. The Execute-Bit Bug in `cilium/ebpf`
+### A. The execute-bit bug in `cilium/ebpf`
 Standard system shared libraries (like `/usr/lib/x86_64-linux-gnu/ossl-modules/legacy.so` or `libcrypto.so.3`) are packaged without the executable bit set on disk (permissions are `0644`).
 In `github.com/cilium/ebpf` version `v0.21.0`, `link.OpenExecutable` strictly verified this execute bit and threw `file is not executable` errors, blocking uprobes.
-* **The Fix**: We upgraded `github.com/cilium/ebpf` to `v0.22.0` where this strict permission check is removed, allowing seamless uprobe attachment on all shared object files on disk.
+* **The fix**: We upgraded `github.com/cilium/ebpf` to `v0.22.0` where this strict permission check is removed, allowing seamless uprobe attachment on all shared object files on disk.
 
-### B. Resilient Symbol and DWARF Fallbacks
+### B. Resilient symbol and DWARF fallbacks
 Production executables are stripped of `.symtab` and DWARF debugging logs. To prevent `enumerate` crashes:
-* **The Fix**: We updated the symbol parser to handle DWARF decoding errors gracefully and automatically fall back to `.dynsym` (dynamic symbol table) parsing, which is guaranteed to be present for dynamically loaded plugins!
+* **The fix**: We updated the symbol parser to handle DWARF decoding errors gracefully and automatically fall back to `.dynsym` (dynamic symbol table) parsing, which is guaranteed to be present for dynamically loaded plugins!
 
-### C. Seamless 100% Silence for CI/CD
+### C. Seamless 100% silence for CI/CD
 To replace `/usr/sbin/nginx` transparently, the wrapped binary must behave **identically** to the original. Any debugging logs from the Go shim on `stdout` or `stderr` would break automation scripts.
-* **The Fix**: We introduced a silent mode by gating all JIT attachment and logging diagnostics behind a `FUNKOVERAGE_DEBUG` environment variable. In normal operation, the shim produces **exactly 0 extra bytes of output** on `stdout` or `stderr`!
+* **The fix**: We introduced a silent mode by gating all JIT attachment and logging diagnostics behind a `FUNKOVERAGE_DEBUG` environment variable. In normal operation, the shim produces **exactly 0 extra bytes of output** on `stdout` or `stderr`!
+
+### D. `CAP_SYS_RESOURCE` on modern kernels
+On kernels ≥ 6.6 running memcg-based BPF memory accounting (the default on current distros), `cilium/ebpf`'s `rlimit.RemoveMemlock()` is supposed to be a no-op — the kernel already does its own accounting, no `RLIMIT_MEMLOCK` bump needed. But its own probe for "does this kernel support memcg accounting" can misfire under BPF memory pressure and fall back to the old `RLIMIT_MEMLOCK` path, which requires `CAP_SYS_RESOURCE`. Without it, the shim hard-failed before even exec'ing the real binary (`remove memlock: operation not permitted`).
+* **The fix**: We grant `CAP_SYS_RESOURCE` to the shim binary alongside the capabilities it already needed, so that rare-but-real fallback path doesn't take the whole tracer down with it.
 
 ---
 
-## 🏆 [Battle-Testing Live on Nginx](https://www.youtube.com/watch?v=xk8mm1Qmt-Y)
+## 🏆 [Battle-testing live on Nginx](https://www.youtube.com/watch?v=qVHyl0P_P-M)
 
 We installed standard, stripped `nginx` on our machine, wrapped `/usr/sbin/nginx` permanently, and ran a configuration check:
 
@@ -90,7 +148,7 @@ $ sudo ./funkoverage install /usr/sbin/nginx
 Installed shim for /usr/sbin/nginx (original at /var/coverage/bin/nginx)
 
 $ sudo /usr/sbin/nginx -t
-2026/07/28 20:38:30 [emerg] 47221#47221: open() "/etc/letsencrypt/options-ssl-nginx.conf" failed (2: No such file or directory) in /etc/nginx/sites-enabled/manzoweb.duckdns.org:90
+2026/07/28 20:38:30 [emerg] 47221#47221: open() "/etc/letsencrypt/options-ssl-nginx.conf" failed (2: No such file or directory) in /etc/nginx/sites-enabled/example.duckdns.org:90
 nginx: configuration file /etc/nginx/nginx.conf test failed
 ```
 
@@ -111,7 +169,7 @@ The final report successfully processed **14,301 total functions** and logged **
 
 ---
 
-## 🩹 Round Two: Hardening After a Deeper Look
+## 🩹 Round two: hardening after a deeper look
 
 A prototype that works once on your own machine and a feature you can trust in production are two different things. We put the JIT dlopen path through an independent code review — and a `go test -race` run turned up a real bug within minutes:
 
@@ -126,56 +184,13 @@ Two more came from writing tests, not from reading code — which is exactly the
 - `isSystemLib()`, the heuristic that skips known system libraries to keep dynamic traces lean, had a regex where the `libstdc++` alternative could *never* actually match — a `\b` word-boundary anchor right after a `+` character can't fire, since `+` isn't a word character. `libstdc++.so.6` was quietly getting fully instrumented instead of skipped, every single time.
 - The ELF symbol reader for dynamically loaded libraries only fell back to `.dynsym` if reading `.symtab` failed outright — but glibc's own `libc.so.6` ships a `.symtab` that *succeeds* while omitting exported functions like `dlopen` itself, which live only in `.dynsym`. Fix: union both tables instead of picking one.
 
-## 👻 The Ghost That Got Away: NSS
-
-Remember the dynamic loading ghost from the top of this post? We caught it hiding in PAM modules and Nginx's own plugin system below — but there's one place it still gets away clean: glibc's Name Service Switch.
-
-Every time a program resolves a hostname or looks up a user (`getpwnam`, `gethostbyname`, and friends), glibc dynamically loads `libnss_dns.so.2`, `libnss_files.so.2`, or whichever backend `/etc/nsswitch.conf` points at — invisible to `ldd`, exactly the class of problem this whole feature exists to solve.
-
-Except it doesn't work here. We hooked the *public* `dlopen()` symbol; glibc's own NSS dispatcher calls a private, non-exported `__libc_dlopen_mode` instead — a completely different function, at a completely different address:
-
-```bash
-$ readelf -Ws /lib64/libc.so.6 | grep -w dlopen
-  2326: 0000000000096f3e   165 FUNC    GLOBAL DEFAULT   16 dlopen@@GLIBC_2.34
-$ readelf -Ws /lib64/libc.so.6 | grep libc_dlopen
-  3219: 000000000016fefe   140 FUNC    LOCAL  DEFAULT   16 __libc_dlopen_mode
-```
-
-We proved it empirically too: a tiny test program calling `getpwnam("root")` and `gethostbyname("localhost")` runs perfectly fine under the shim — but exactly zero dlopen events fire, and no `libnss_*.so` function is ever instrumented. The lookups work; our tracer simply never sees them happen.
-
-This isn't something we can code our way out of from userspace — it's a permanent scope boundary of hooking one specific, public ELF symbol. A real fix would mean also hooking `__libc_dlopen_mode`, a private glibc internal with no stability guarantee across versions. For now we document it plainly instead of pretending it isn't there.
-
-## 🧪 More Battle Scars: PAM and a Clean-Room Nginx
-
-Beyond the live nginx test above, we spun up a disposable, freshly installed openSUSE Tumbleweed VM specifically to hammer on real production binaries with zero prior configuration.
-
-**PAM** was the star performer. `su` links against `libpam.so.0` — visible to `ldd` — but the actual authentication modules underneath it (`pam_unix.so`, `pam_env.so`, `pam_limits.so`, `pam_systemd.so`, `pam_selinux.so`, ...) live under `/usr/lib64/security/` and get `dlopen()`'d purely at runtime, based on `/etc/pam.d/su`. A single `su - testuser -c true` triggered a whole realistic cascade — a dozen PAM modules plus their own transitively dlopen'd support libraries — all correctly JIT-instrumented with zero configuration:
-
-```
-CALLED /usr/lib64/security/pam_unix.so pam_sm_open_session
-CALLED /usr/lib64/security/pam_unix.so pam_sm_close_session
-```
-
-**Nginx**, on a completely fresh install this time, got the `nginx-module-echo` dynamic module wired up via `load_module`. The real payoff wasn't just seeing the module's `.so` show up in the trace — it was confirming the *actual per-request handler* got instrumented, not just its one-time initialization callbacks:
-
-```
-CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_handler
-CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_run_cmds
-CALLED /usr/lib64/nginx/modules/ngx_http_echo_module.so ngx_http_echo_exec_echo
-```
-
-(That took two tries. Nginx daemonizes by default — forking and exiting its own parent process — and our tracer follows one specific PID. The fix was the one every process supervisor already knows: run with `-g "daemon off;"` and let the shell handle backgrounding instead.)
-
 ---
 
-## 🏁 [Conclusion](https://www.youtube.com/watch?v=xk8mm1Qmt-Y)
+## 🏁 [Conclusion](https://www.youtube.com/watch?v=8fPf6L0XNvM)
 
-With this new event-driven JIT architecture, `funkoverage` reaches full coverage transparency:
+With this event-driven JIT architecture, `funkoverage` extends its uprobe-based tracing to libraries loaded at runtime via `dlopen()`, on top of the statically enumerated dependencies from Part 4 — pure Go and eBPF, running natively on both x86_64 and ARM64.
 
-- **100% Coverage**: Tracks both statically linked dependencies and JIT/dynamically loaded plugins.
-- **Enterprise Ready**: Designed to scale safely to **5,000+ instrumented binaries** with zero steady-state CPU or memory overhead, hardened by a real code review and validated on real hardware.
-- **Pure-Go and eBPF**: Works natively on both x86_64 and ARM64 architectures running modern Linux kernels.
-- **Honest about its edges**: NSS lookups are a documented limitation, not a silent gap.
+As of this post the project sits at **v0.8.0**. Next on the list, per the project's own roadmap: dropping the last `ldd` fork-exec in favor of parsing `DT_NEEDED` directly via `debug/elf`, and a guard that refuses to `install` on top of an already-shimmed binary.
 
 The project is at [github.com/ilmanzo/BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage) — issues, feedback, and pull requests are very welcome!
 

@@ -7,7 +7,7 @@ tags: [testing, linux, coverage, ebpf, bpf, uprobe, tracing, go, golang, qa, dlo
 series: ["How much code are you testing?"]
 series_order: 5
 author: Andrea Manzini
-date: 2026-08-10
+date: 2026-08-11
 ---
 
 ## 🧭 [Dove eravamo rimasti](https://www.youtube.com/watch?v=pAgnJDJN4VA)

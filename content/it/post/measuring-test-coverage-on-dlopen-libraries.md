@@ -28,20 +28,6 @@ Oggi diamo la caccia a questo fuggiasco tecnologico: scopriremo come lo abbiamo 
 ![plug](/img/pexels-realtoughcandy-11034131.jpg)
 *(Immagine cortesia di https://www.pexels.com/@realtoughcandy/)*
 
-## 🕳️ [Il fantasma del caricamento dinamico](https://www.youtube.com/watch?v=VqoyKzgkqR4)
-
-Quando un programma carica una libreria condivisa a runtime, utilizza le funzioni POSIX standard `dlopen()` o `dlmopen()`:
-
-```c
-void *handle = dlopen("./libplugin.so", RTLD_NOW);
-```
-
-Poiché questa libreria non viene mappata all'avvio del processo, gli strumenti di analisi statica come `ldd` non riescono a vederla.
-
-Se eseguiamo `ldd` su un binario standard di distribuzione come `nginx`, vediamo solo le sue dipendenze dinamiche principali: restiamo completamente ciechi ai moduli o ai provider caricati a runtime, come `legacy.so` di OpenSSL. Questo significa che, non appena l'applicazione esegue codice caricato dinamicamente, la nostra mappa di copertura si spegne nel buio.
-
----
-
 ## 🧮 [Polling attivo o JIT event-driven?](https://www.youtube.com/watch?v=bWXazVhlyxQ)
 
 Come risolviamo questa situazione?
@@ -59,6 +45,51 @@ Per mantenere il tool leggero ed efficiente a livello enterprise, abbiamo svilup
 4. **Aggancio JIT**: Lo shim analizza i simboli ELF del plugin on-the-fly, applica le regole di inclusione/esclusione e aggancia dinamicamente le nuove uprobe con un'unica chiamata di sistema `UprobeMulti`.
 
 Questo garantisce un consumo in stato stazionario pari allo **0% CPU** e **0% I/O**!
+
+## 🕳️ [Il fantasma del caricamento dinamico](https://www.youtube.com/watch?v=VqoyKzgkqR4)
+
+Quando un programma carica una libreria condivisa a runtime, utilizza le funzioni POSIX standard `dlopen()` o `dlmopen()`:
+
+```c
+void *handle = dlopen("./libplugin.so", RTLD_NOW);
+```
+
+Ecco un esempio minimo e completo. Carichiamo `libm.so.6` a runtime, risolve `sqrt` per nome, la chiama, e poi la scarica:
+
+```c
+#include <dlfcn.h>
+#include <stdio.h>
+
+int main(void) {
+    void *handle = dlopen("libm.so.6", RTLD_NOW);
+    if (!handle) { fprintf(stderr, "%s\n", dlerror()); return 1; }
+
+    double (*sqrt_fn)(double) = dlsym(handle, "sqrt");
+    if (!sqrt_fn) { fprintf(stderr, "%s\n", dlerror()); return 1; }
+
+    printf("sqrt(2) = %f\n", sqrt_fn(2.0));
+
+    dlclose(handle);
+    return 0;
+}
+```
+
+Si compila con `gcc example.c -ldl -o example` (`-ldl` potrebbe non servire sulle glibc moderne, ma conviene tenerlo per portabilità). Eseguendo `ldd example` vediamo solo `libc.so.6`: `libm.so.6` non è ancora mappata a quel punto, quindi resta invisibile finché `dlopen()` non viene davvero eseguita. Vale lo stesso su scala più grande: `ldd` su un binario di distribuzione come `nginx` mostra solo le dipendenze dinamiche principali, lasciandoci completamente ignari dei moduli o dei provider caricati a runtime, come `legacy.so` di OpenSSL. Non appena l'applicazione esegue codice caricato dinamicamente, la nostra mappa di copertura diventa meno efficace.
+
+Tracciando `example` con `funkoverage`, ecco come si comporta il log di copertura prima e dopo la chiamata a `dlopen()`:
+
+- **Prima**: all'installazione, `funkoverage` aggancia `uprobe_multi` solo su `main` e sulle funzioni della libc viste da `ldd`. Non c'è alcun indirizzo da agganciare per `sqrt`, finché `libm.so.6` non è mappata.
+- **Alla chiamata di `dlopen()`**: la `uretprobe` su `dlopen` scatta nel momento in cui questa restituisce un handle non nullo, inviando il token `0xFFFFFFFF` nel ringbuffer *prima ancora* che `example` arrivi alla riga con `dlsym()`.
+- **Dopo**: il loop in background dello shim Go si sveglia, confronta `/proc/<pid>/maps`, trova `libm.so.6` appena mappata, ne analizza la tabella dei simboli e aggancia via JIT una uprobe su `sqrt`, il tutto prima che venga eseguito `sqrt_fn(2.0)`. Quindi la primissima chiamata a `sqrt` in questo esempio viene già catturata:
+
+```bash
+CALLED /path/to/example main
+CALLED /lib/x86_64-linux-gnu/libm.so.6 sqrt
+```
+
+Senza l'aggancio JIT, quella seconda riga non comparirebbe mai: `sqrt` girerebbe invisibile e il report di copertura sottostimerebbe silenziosamente il risultato.
+
+---
 
 ### Il codice, per chi vuole vederlo
 

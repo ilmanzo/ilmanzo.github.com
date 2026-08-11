@@ -36,9 +36,40 @@ When a program loads a shared library dynamically at runtime, it uses the standa
 void *handle = dlopen("./libplugin.so", RTLD_NOW);
 ```
 
-Because this library is not mapped when the program starts, compile-time and link-time dependency analysis tools like `ldd` are completely blind to it.
+A minimal, complete example: load `libm.so.6` at runtime, resolve `sqrt` by name, call it, then unload:
 
-If we run `ldd` on standard distro executables like `nginx`, we see standard dynamic dependencies, but we are completely blind to runtime-loaded providers or plug-ins like OpenSSL's `legacy.so`. This means that as soon as the application calls dynamically loaded code, our coverage maps go dark.
+```c
+#include <dlfcn.h>
+#include <stdio.h>
+
+int main(void) {
+    void *handle = dlopen("libm.so.6", RTLD_NOW);
+    if (!handle) { fprintf(stderr, "%s\n", dlerror()); return 1; }
+
+    double (*sqrt_fn)(double) = dlsym(handle, "sqrt");
+    if (!sqrt_fn) { fprintf(stderr, "%s\n", dlerror()); return 1; }
+
+    printf("sqrt(2) = %f\n", sqrt_fn(2.0));
+
+    dlclose(handle);
+    return 0;
+}
+```
+
+Compile with `gcc example.c -ldl -o example` (`-ldl` may be a no-op on modern glibc, but keep it for portability). Run `ldd example` and you'll see only `libc.so.6`: `libm.so.6` isn't mapped yet at that point, so it stays invisible until `dlopen()` actually runs. The same holds at scale — `ldd` on a standard distro executable like `nginx` shows only the top-level dynamic dependencies, leaving us completely blind to runtime-loaded providers or plug-ins like OpenSSL's `legacy.so`. As soon as the application calls dynamically loaded code, our coverage maps go dark.
+
+Trace `example` with `funkoverage` and watch the coverage log before and after the `dlopen()` call:
+
+- **Before**: at install time, `funkoverage` attaches `uprobe_multi` only to `main` and the libc functions `ldd` can see. There's no address to hook for `sqrt` until `libm.so.6` is mapped.
+- **At the `dlopen()` call**: the `uretprobe` on `dlopen` fires the moment it returns a non-NULL handle, pushing the `0xFFFFFFFF` token into the ring buffer *before* `example` even reaches the `dlsym()` line.
+- **After**: the Go shim's event loop wakes up, diffs `/proc/<pid>/maps`, finds `libm.so.6` newly mapped, parses its symbol table, and JIT-attaches a uprobe on `sqrt` — all before `sqrt_fn(2.0)` executes. So the very first call to `sqrt` in this example is already captured:
+
+```bash
+CALLED /path/to/example main
+CALLED /lib/x86_64-linux-gnu/libm.so.6 sqrt
+```
+
+Without the JIT hook, that second line would never appear — `sqrt` would run invisibly and the coverage report would silently under-count.
 
 ---
 

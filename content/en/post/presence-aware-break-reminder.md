@@ -50,7 +50,7 @@ Only one thing crosses the boundary between `motion` and the rest of the system:
 
 ---
 
-## 🔌 1. Configuring `motion` to detect presence
+## 🔌 Configuring `motion` to detect presence
 
 `motion` has event hooks. I use two of them:
 
@@ -60,12 +60,8 @@ Only one thing crosses the boundary between `motion` and the rest of the system:
 Rather than spawn a shell script on every frame, I let `motion` write one word into `/tmp/presence_state`.
 
 In `/home/andrea/webcam-capture/config/motion.conf`:
-```text
-event_gap 60
 
-on_event_start echo active > /tmp/presence_state
-on_event_end echo idle > /tmp/presence_state
-```
+{{< code_import "static/files/motion.conf" "ini" >}}
 
 Note that there are no quotes around the shell commands. My first draft wrapped them in double quotes because it looked tidier, and it was wrong. `motion` passes the whole line to `/bin/sh -c` as it is. With an outer pair of quotes the `>` stops being a redirection and becomes literal text. The command then fails with "not found" every single time. I only noticed because the state file never changed. I had wired presence detection to a command that can never run.
 
@@ -84,7 +80,7 @@ exec motion -n -c /home/andrea/webcam-capture/config/motion.conf
 
 ---
 
-## 👑 2. The Nim state monitor, timer and live countdown
+## 👑 The Nim state monitor, timer and live countdown
 
 `motion` handles video capture and frame analysis in C, so the daemon only has to read `/tmp/presence_state` every few seconds and keep a timer.
 
@@ -156,7 +152,7 @@ Two smaller bugs appeared only after the service ran for a while. The countdown 
 
 ---
 
-## 🐧 3. Under the hood: the Void Linux `runit` supervision model
+## 🐧 Under the hood: the Void Linux `runit` supervision model
 
 Void Linux uses **`runit`** as its init and service supervisor instead of systemd. It is fast, predictable and small.
 
@@ -170,7 +166,7 @@ Once `runsv` runs the `break-reminder` service, it has one job: keep the daemon 
 
 ---
 
-## 🛠️ 4. Setting up the supervised service
+## 🛠️ Setting up the supervised service
 
 Compile in release mode, optimized for size, then strip the debug symbols with the standard `strip` utility:
 ```bash
@@ -262,6 +258,10 @@ Mem:             975         110          22           0         866         864
 975 MB is what the firmware leaves to Linux out of the nominal gigabyte. With everything running, including `motion`, the break reminder, `sshd` and about 130 processes, the machine uses 110 MB. Subtract the 40 MB that `motion` holds, and the base system sits near 70 MB.
 
 That leaves 864 MB available, close to 89% of the installed RAM, on hardware sold in 2009. There is no desktop environment, no display manager and no systemd here. Void Linux with `runit` and a text console is the reason a 1GB machine still feels roomy.
+
+Here is the netbook's BIOS setup screen—reminding us of its single-core 1.6GHz Intel Atom roots and the hardware limitations we are squeezing:
+
+![Samsung N130 BIOS Setup](/img/n130_2026-09-06_17-49-10.jpg)
 
 ---
 

@@ -50,7 +50,7 @@ Una cosa sola attraversa il confine tra `motion` e il resto del sistema: una sin
 
 ---
 
-## 🔌 1. Configurare `motion` per rilevare la presenza
+## 🔌 Configurare `motion` per rilevare la presenza
 
 `motion` mette a disposizione degli hook sugli eventi. Io ne uso due:
 
@@ -60,12 +60,8 @@ Una cosa sola attraversa il confine tra `motion` e il resto del sistema: una sin
 Invece di lanciare uno script di shell a ogni fotogramma, lascio che `motion` scriva una sola parola in `/tmp/presence_state`.
 
 In `/home/andrea/webcam-capture/config/motion.conf`:
-```text
-event_gap 60
 
-on_event_start echo active > /tmp/presence_state
-on_event_end echo idle > /tmp/presence_state
-```
+{{< code_import "static/files/motion.conf" "ini" >}}
 
 Nota che non ci sono virgolette attorno ai comandi di shell. La mia prima versione le aveva, perché sembrava più ordinato, ed era sbagliata. `motion` passa l'intera riga a `/bin/sh -c` così com'è. Con un paio di virgolette esterne il `>` smette di essere una redirezione e diventa testo letterale. Il comando fallisce quindi con "not found" tutte le volte. Me ne sono accorto solo perché il file di stato non cambiava mai. Avevo collegato il rilevamento della presenza a un comando che non poteva funzionare.
 
@@ -84,7 +80,7 @@ exec motion -n -c /home/andrea/webcam-capture/config/motion.conf
 
 ---
 
-## 👑 2. Il monitor di stato in Nim, il timer e il conto alla rovescia
+## 👑 Il monitor di stato in Nim, il timer e il conto alla rovescia
 
 `motion` si occupa in C della cattura video e dell'analisi dei fotogrammi, quindi il demone deve solo leggere `/tmp/presence_state` ogni pochi secondi e tenere un timer.
 
@@ -156,7 +152,7 @@ Due bug più piccoli sono saltati fuori solo dopo che il servizio è rimasto in 
 
 ---
 
-## 🐧 3. Sotto il cofano: il modello di supervisione `runit` di Void Linux
+## 🐧 Sotto il cofano: il modello di supervisione `runit` di Void Linux
 
 Void Linux usa **`runit`** come init e come supervisore dei servizi, al posto di systemd. È veloce, prevedibile e piccolo.
 
@@ -170,7 +166,7 @@ Una volta che `runsv` esegue il servizio `break-reminder`, ha un solo compito: t
 
 ---
 
-## 🛠️ 4. Preparare il servizio supervisionato
+## 🛠️ Preparare il servizio supervisionato
 
 Compila in modalità release, ottimizzata per la dimensione, poi togli i simboli di debug con la normale utility `strip`:
 ```bash
@@ -262,6 +258,10 @@ Mem:             975         110          22           0         866         864
 975 MB è ciò che il firmware lascia a Linux del gigabyte nominale. Con tutto in funzione, cioè `motion`, il promemoria delle pause, `sshd` e circa 130 processi, la macchina usa 110 MB. Togli i 40 MB che tiene `motion` e il sistema di base sta attorno ai 70 MB.
 
 Restano 864 MB disponibili, quasi l'89% della RAM installata, su hardware venduto nel 2009. Qui non c'è nessun ambiente desktop, nessun display manager e nessun systemd. Void Linux con `runit` e una console testuale è il motivo per cui una macchina da 1GB sembra ancora spaziosa.
+
+Ecco la schermata del setup del BIOS del netbook—un bel salto nel passato alle sue origini con l'Intel Atom single-core da 1.6GHz e ai limiti hardware che stiamo spremendo:
+
+![Samsung N130 BIOS Setup](/img/n130_2026-09-06_17-49-10.jpg)
 
 ---
 

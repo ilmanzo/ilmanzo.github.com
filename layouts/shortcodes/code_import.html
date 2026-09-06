@@ -1,0 +1,10 @@
+{{- $file := .Get 0 -}}
+{{- $lang := .Get 1 -}}
+{{- $options := .Get 2 | default "" -}}
+
+{{- if fileExists $file -}}
+  {{- $content := readFile $file -}}
+  {{- highlight $content $lang $options -}}
+{{- else -}}
+  {{- errorf "code_import shortcode: File %q not found" $file -}}
+{{- end -}}

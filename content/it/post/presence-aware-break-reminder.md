@@ -5,8 +5,7 @@ description: "Un vecchio netbook Intel Atom trasformato in un sorvegliante da sc
 categories: [programming, hacking]
 tags: [nim, linux, void, hacking, diy, retro, hardware, systems]
 author: Andrea Manzini
-date: 2026-09-05
-draft: true
+date: 2026-09-06
 ---
 
 La maggior parte dei promemoria per le pause usa un orologio. Imposti un timer da 50 minuti, poi ti allontani per 30 di quei minuti per andare a prendere un caffè. Il timer suona lo stesso, nel momento esatto in cui scade. Non sa che ti sei appena riseduto.
@@ -15,7 +14,7 @@ Ho già uno smartwatch. Mi dà un colpetto al polso quando sto seduto troppo a l
 
 Sono anche il tipo di persona che si concentra al punto di perdere del tutto la cognizione del tempo. Di solito il primo segnale che ho esagerato è il bruciore agli occhi.
 
-Volevo quindi qualcosa che guardasse la scrivania. Su quella scrivania c'è un pezzo di spazzatura elettronica del 2009: un **netbook Samsung N130** con processore Intel Atom a singolo core e 1GB di RAM. Ci gira [**Void Linux**](https://voidlinux.org/), ed è la stessa macchina che ho [trasformato in un router WiFi per la taverna]({{< ref "repurpose_old_netbook_as_wifi_repeater" >}}) qualche mese fa.
+Volevo quindi qualcosa che guardasse la scrivania. In un angolo della scrivania c'è un pezzo di spazzatura elettronica del 2009: un **netbook Samsung N130** con processore Intel Atom a singolo core e 1GB di RAM. Ci gira [**Void Linux**](https://voidlinux.org/), ed è la stessa macchina che ho [trasformato in un router WiFi per la taverna]({{< ref "repurpose_old_netbook_as_wifi_repeater" >}}) qualche mese fa.
 
 L'ho reso un sorvegliante da scrivania. Controlla se sono davvero seduto davanti alla postazione. Conta il tempo di lavoro solo mentre sono lì, e mi richiama quando resto troppo.
 

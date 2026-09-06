@@ -5,7 +5,7 @@ description: "An old Intel Atom netbook turned into a desk monitor that reminds 
 categories: [programming, hacking]
 tags: [nim, linux, void, hacking, diy, retro, hardware, systems]
 author: Andrea Manzini
-date: 2026-09-05
+date: 2026-09-06
 ---
 
 Most break reminders run on a plain clock. You set a 50 minute timer and then you walk away for 30 of those minutes to get a coffee. The timer still fires the moment it runs out. It does not know that you just sat back down.

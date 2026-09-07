@@ -8,27 +8,27 @@ author: Andrea Manzini
 date: 2026-09-06
 ---
 
-La maggior parte dei promemoria per le pause usa un orologio. Imposti un timer da 50 minuti, poi ti allontani per 30 di quei minuti per andare a prendere un caffè. Il timer suona lo stesso, nel momento esatto in cui scade. Non sa che ti sei appena riseduto.
+La maggior parte dei promemoria per le pause si basa su un semplice orologio, per cui l'allarme scatta comunque nell'istante in cui un timer da 50 minuti arriva a zero, anche se hai passato 30 di quei minuti lontano dalla scrivania a prendere un caffè, perché il timer non ha modo di sapere che ti sei già riseduto.
 
-Ho già uno smartwatch. Mi dà un colpetto al polso quando sto seduto troppo a lungo, e aiuta, ma misura la cosa sbagliata. Guarda il mio polso, non la mia scrivania. Bastano un paio di movimenti del braccio per convincerlo che mi sono alzato. Nel frattempo io sono ancora sulla stessa sedia, davanti allo stesso schermo.
+Ho già uno smartwatch che mi dà un colpetto al polso ogni volta che sto seduto troppo a lungo, il che aiuta, anche se misura la cosa sbagliata, dato che guarda il mio polso e non la mia scrivania, così che bastano un paio di movimenti del braccio per convincerlo che mi sono alzato, mentre io sono ancora sulla stessa sedia, davanti allo stesso schermo.
 
-Sono anche il tipo di persona che si concentra al punto di perdere del tutto la cognizione del tempo. Di solito il primo segnale che ho esagerato è il bruciore agli occhi.
+Sono anche il tipo di persona che si concentra al punto da perdere completamente la cognizione del tempo, per cui di solito il primo segnale che ho esagerato è il bruciore agli occhi.
 
-Volevo quindi qualcosa che guardasse la scrivania. In un angolo della scrivania c'è un pezzo di spazzatura elettronica del 2009: un **netbook Samsung N130** con processore Intel Atom a singolo core e 1GB di RAM. Ci gira [**Void Linux**](https://voidlinux.org/), ed è la stessa macchina che ho [trasformato in un router WiFi per la taverna]({{< ref "repurpose_old_netbook_as_wifi_repeater" >}}) qualche mese fa.
+Poiché volevo qualcosa che guardasse la scrivania al posto mio, mi sono rivolto a un pezzo di spazzatura elettronica del 2009 che sta proprio in un angolo di quella scrivania: un **netbook Samsung N130** con processore Intel Atom a singolo core e 1GB di RAM, sul quale gira [**Void Linux**](https://voidlinux.org/), la stessa macchina che ho [trasformato in un router WiFi per la taverna]({{< ref "repurpose_old_netbook_as_wifi_repeater" >}}) qualche mese fa.
 
-L'ho reso un sorvegliante da scrivania. Controlla se sono davvero seduto davanti alla postazione. Conta il tempo di lavoro solo mentre sono lì, e mi richiama quando resto troppo.
+L'ho reso un sorvegliante da scrivania che controlla se sono davvero seduto davanti alla postazione, conta il tempo di lavoro solo mentre sono lì, e mi richiama quando resto troppo.
 
 ![taking a break](/img/pixabay-bananayota-5956897.jpg)
 Crediti immagine: [Bananayota](https://pixabay.com/users/bananayota-20054590/), trovata su [Pixabay](https://pixabay.com/photos/person-sit-bench-alone-sitting-5956897/)
 
 ## TL;DR
 
-* Un vecchio netbook Samsung N130 con Void Linux fa ora da sorvegliante da scrivania.
-* [`motion`](https://motion-project.github.io/) osserva la webcam integrata. A ogni inizio e fine di movimento scrive `active` oppure `idle` in un semplice file di stato.
-* Un piccolo demone in Nim legge quel file e tiene il conto del tempo continuativo alla scrivania, con una barra di avanzamento su una sola riga. Al raggiungimento del limite chiama `espeak-ng` e `wall`. Un'assenza sotto i 5 minuti non azzera il conteggio.
-* Non viene registrato nulla. Il flusso video non lascia mai il netbook e nessun fotogramma finisce su disco.
-* Il demone gira come servizio `runit` supervisionato e senza privilegi. Costa lo 0,01% di un core e 2 MB di RAM. `motion` è il vero costo su questo hardware.
-* Strada facendo ho trovato e corretto una vera shell injection nel codice dell'allarme, un errore di quoting in `motion.conf` e due bug di visualizzazione. I dettagli sono qui sotto.
+* L'idea di base: quando qualcosa si muove nell'inquadratura della webcam, significa che sono alla scrivania. Se resto alla scrivania troppo a lungo senza pausa, il netbook mi avvisa a voce.
+* Un vecchio netbook Samsung N130 con Void Linux fa da sorvegliante da scrivania.
+* [`motion`](https://motion-project.github.io/) osserva la webcam integrata e, a ogni inizio e fine di movimento, scrive `active` oppure `idle` in un semplice file di stato.
+* Un piccolo demone in Nim legge quel file e tiene il conto del tempo continuativo alla scrivania con una barra di avanzamento su una sola riga, così che al raggiungimento del limite chiama `espeak-ng` e `wall`, mentre un'assenza sotto i 5 minuti non azzera mai il conteggio.
+* Non viene registrato nulla, perché il flusso video non lascia mai il netbook e nessun fotogramma finisce su disco.
+* Il demone gira come servizio `runit` supervisionato e senza privilegi, e costa lo 0,01% di un core e 2 MB di RAM, dato che `motion` è il vero costo su questo hardware.
 
 <!--more-->
 
@@ -36,23 +36,25 @@ Crediti immagine: [Bananayota](https://pixabay.com/users/bananayota-20054590/), 
 
 ## 🧠 L'idea: rilevare la presenza in modo passivo con la webcam
 
-Chi rileva la presenza con una telecamera di solito carica un modello di riconoscimento facciale o di object detection, per esempio una rete neurale di OpenCV o una cascata di Haar. Per un Atom a singolo core da 1.6GHz è tanto lavoro. Ed è anche più di quanto mi serve. Non mi interessa chi è alla scrivania. Mi serve solo sapere se qualcosa nell'inquadratura si muove.
+Chi rileva la presenza con una telecamera di solito carica un modello di riconoscimento facciale o di object detection, per esempio una rete neurale di OpenCV o un Haar cascade, il che rappresenta tanto lavoro per un Atom a singolo core da 1.6GHz ed è anche più di quanto mi serva davvero, dato che non mi interessa chi è alla scrivania, ma solo sapere se qualcosa nell'inquadratura si muove.
 
-Invece di scrivere un ciclo di lettura della telecamera ho quindi usato un demone in C che fa già esattamente questo: [**`motion`**](https://motion-project.github.io/).
+Così, invece di scrivere io stesso un ciclo di lettura della telecamera, ho usato un demone in C che fa già esattamente questo: [**`motion`**](https://motion-project.github.io/).
 
-`motion` rileva il movimento su `/dev/video0` confrontando fotogrammi consecutivi. È economico rispetto a un modello di detection. Può anche eseguire un comando nel momento in cui decide che il movimento è iniziato o finito.
+`motion` rileva il movimento su `/dev/video0` confrontando fotogrammi consecutivi, il che è economico rispetto a un modello di detection, e può anche eseguire un comando nel momento in cui decide che il movimento è iniziato o finito.
 
 ### Sulla privacy
 
-La cosa mi sta a cuore, quindi la dico chiaramente: questo sistema non registra nulla. `motion` sa salvare immagini e video, ma qui ogni opzione di output è disattivata. I fotogrammi vengono confrontati in memoria e poi buttati. Nessuna immagine arriva sul disco, nessuna immagine esce dalla macchina, e il netbook non ha nessun account cloud collegato.
+Poiché la cosa mi sta a cuore, vale la pena dirlo chiaramente: questo sistema non registra nulla, perché anche se `motion` sa salvare immagini e video, qui ogni opzione di output è disattivata, per cui i fotogrammi vengono confrontati in memoria e poi buttati, nessuna immagine arriva sul disco, nessuna immagine esce dalla macchina, e il netbook non ha nessun account cloud collegato.
 
-Una cosa sola attraversa il confine tra `motion` e il resto del sistema: una singola parola in un file di testo, `active` oppure `idle`. Non voglio consegnare a terzi una telecamera puntata sulla stanza in cui lavoro. Qui non c'è nessun terzo a cui consegnarla.
+Una sola cosa attraversa il confine tra `motion` e il resto del sistema, ed è una singola parola in un file di testo, `active` oppure `idle`, dato che non voglio consegnare a terzi una telecamera puntata sulla stanza in cui lavoro, e qui non c'è nessun terzo a cui consegnarla.
+
+`movie_output` si può comunque riaccendere per un momento, per esempio mentre punto la webcam o mentre cerco un problema di rilevamento, dato che un filmato salvato è il modo più veloce per vedere cosa vede davvero `motion`; lo rispengo non appena la telecamera è allineata e il demone si comporta come previsto.
 
 ---
 
 ## 🔌 Configurare `motion` per rilevare la presenza
 
-`motion` mette a disposizione degli hook sugli eventi. Io ne uso due:
+`motion` mette a disposizione degli hook sugli eventi, e io ne uso due:
 
 *   `on_event_start`: parte al primo movimento rilevato, cioè quando qualcuno si è appena seduto alla scrivania.
 *   `on_event_end`: parte dopo `event_gap` secondi senza movimento.
@@ -63,11 +65,11 @@ In `/home/andrea/webcam-capture/config/motion.conf`:
 
 {{< code_import "static/files/motion.conf" "ini" >}}
 
-Nota che non ci sono virgolette attorno ai comandi di shell. La mia prima versione le aveva, perché sembrava più ordinato, ed era sbagliata. `motion` passa l'intera riga a `/bin/sh -c` così com'è. Con un paio di virgolette esterne il `>` smette di essere una redirezione e diventa testo letterale. Il comando fallisce quindi con "not found" tutte le volte. Me ne sono accorto solo perché il file di stato non cambiava mai. Avevo collegato il rilevamento della presenza a un comando che non poteva funzionare.
+Non ci sono virgolette attorno ai comandi di shell, perché `motion` passa l'intera riga a `/bin/sh -c` esattamente come è scritta, per cui racchiuderla tra virgolette trasformerebbe il `>` di redirezione in testo letterale e farebbe fallire il comando in silenzio invece di aggiornare il file di stato.
 
-`event_gap 60` significa che `motion` tollera un minuto pieno di immobilità prima di decidere che te ne sei andato. È utile, perché non vuoi che lo stato passi a `idle` ogni volta che ti fermi a pensare. Il demone in Nim qui sotto ha una seconda soglia, indipendente, di 5 minuti. È quella a decidere se un'assenza conta come pausa vera e azzera il conteggio del lavoro. Le pause brevi sopravvivono a entrambe le soglie.
+Dato che `event_gap 60` fa sì che `motion` tolleri un minuto pieno di immobilità prima di decidere che te ne sei andato, lo stato non passa a `idle` ogni volta che ti fermi a pensare. Il demone in Nim qui sotto tiene una seconda soglia, indipendente, di 5 minuti, che decide se un'assenza conta come pausa vera e azzera il conteggio del lavoro, così che le pause brevi sopravvivono a entrambe le soglie.
 
-Void Linux monta `/tmp/` come **`tmpfs`**, un filesystem in memoria, quindi leggere e scrivere `/tmp/presence_state` non tocca mai il disco.
+Poiché Void Linux monta `/tmp/` come **`tmpfs`**, un filesystem in memoria, leggere e scrivere `/tmp/presence_state` non tocca mai il disco.
 
 `motion` gira come servizio supervisionato a sé, puntato a quella configurazione.
 
@@ -82,9 +84,9 @@ exec motion -n -c /home/andrea/webcam-capture/config/motion.conf
 
 ## 👑 Il monitor di stato in Nim, il timer e il conto alla rovescia
 
-`motion` si occupa in C della cattura video e dell'analisi dei fotogrammi, quindi il demone deve solo leggere `/tmp/presence_state` ogni pochi secondi e tenere un timer.
+Dato che `motion` si occupa già in C della cattura video e dell'analisi dei fotogrammi, il demone deve solo leggere `/tmp/presence_state` ogni pochi secondi e tenere un timer.
 
-L'ho scritto in [**Nim**](https://nim-lang.org/), che compila in codice nativo con un runtime piccolo. Su un Atom a singolo core da 1.6GHz è una cosa che conta.
+L'ho scritto in [**Nim**](https://nim-lang.org/), che compila in codice nativo con un runtime piccolo, il che conta su un Atom a singolo core da 1.6GHz.
 
 Il programma accetta tre argomenti opzionali da riga di comando:
 
@@ -94,13 +96,13 @@ Il programma accetta tre argomenti opzionali da riga di comando:
 
 ### Visualizzazione dal vivo e conto alla rovescia condiviso
 
-Invece di stampare una riga nuova ogni 10 secondi, la riga di stato si riscrive sul posto con `\r`. Una piccola barra di avanzamento mostra quanta parte del limite di lavoro è andata:
+Invece di stampare una riga nuova ogni 10 secondi, la riga di stato si riscrive sul posto con `\r`, mentre una piccola barra di avanzamento mostra quanta parte del limite di lavoro è già andata:
 
 ```text
 [##########----------] Active 0m 30s | Remaining 0m 30s
 ```
 
-Il tempo rimanente finisce anche in `/tmp/break_countdown` a ogni tick. Anche quel file sta su `tmpfs`, quindi resta economico. Puoi portarlo in una status bar di tmux, in un prompt della shell o in una finestra di terminale piccola:
+Poiché il tempo rimanente finisce anche in `/tmp/break_countdown` a ogni tick, e anche quel file sta su `tmpfs`, resta abbastanza economico da poterlo portare in una status bar di tmux, in un prompt della shell o in una piccola finestra di terminale:
 ```bash
 watch -n 10 cat /tmp/break_countdown
 ```
@@ -115,15 +117,15 @@ sudo xbps-install -S espeak-ng
 
 {{< code_import "static/files/break_reminder.nim" "nim" >}}
 
-Questo listato è la parte del progetto che mi piace di più. Nim usa l'indentazione significativa, niente parentesi graffe e niente punti e virgola. L'inferenza di tipo tiene corte le dichiarazioni `let` e `var`. Se sai leggere Python, il ciclo qui sopra lo leggi senza dover imparare prima qualcosa di nuovo.
+Questo listato è la parte del progetto che mi piace di più, dato che Nim usa l'indentazione significativa, niente parentesi graffe e niente punti e virgola, mentre l'inferenza di tipo tiene corte le dichiarazioni `let` e `var`, per cui se sai leggere Python, riesci a leggere il ciclo qui sopra senza dover imparare prima qualcosa di nuovo.
 
-Sotto la superficie la somiglianza finisce. Nim è tipizzato staticamente e compila in anticipo passando per un backend C. Il risultato è un normale binario ELF, circa 70KB una volta rimossi i simboli. Sul netbook non c'è nessun interprete da installare, nessun virtual environment e nessun albero di pacchetti da tenere allineato. Copio un file solo con `scp` e `runit` lo avvia.
+Sotto la superficie, però, la somiglianza finisce, perché Nim è tipizzato staticamente e compila in anticipo passando per un backend C, per cui il risultato è un normale binario ELF, circa 70KB una volta rimossi i simboli: sul netbook non c'è nessun interprete da installare, nessun virtual environment e nessun albero di pacchetti da tenere allineato, dato che copio un file solo con `scp` e `runit` lo avvia.
 
-Lo stesso demone in Python funzionerebbe altrettanto bene. Si porterebbe però dietro il runtime di CPython e occuperebbe decine di megabyte di RAM invece di due. Su una macchina che ne ha 975 MB, la differenza è concreta.
+Anche se lo stesso demone funzionerebbe altrettanto bene in Python, si porterebbe dietro il runtime di CPython e occuperebbe decine di megabyte di RAM invece di due, il che fa una differenza concreta su una macchina che ne ha 975 MB.
 
 ### Come si presenta mentre gira
 
-Ecco il demone che gira davvero, dall'inizio alla fine, sul netbook, con il limite impostato a 1 minuto per la dimostrazione (`break_reminder 1 en`). In un terminale vero ogni riga tra parentesi quadre sovrascrive la precedente tramite `\r`. Qui sotto sono divise una per riga solo per poterle leggere:
+Ecco il demone che gira davvero, dall'inizio alla fine, sul netbook, con il limite impostato a 1 minuto per la dimostrazione (`break_reminder 1 en`); poiché in un terminale vero ogni riga tra parentesi quadre sovrascrive la precedente tramite `\r`, qui sotto sono divise una per riga solo per poterle leggere:
 
 ```text
 Presence-Aware Break Reminder started (Void Linux, motion-integrated).
@@ -142,19 +144,15 @@ Ecco come suona l'allarme a sintesi vocale:
 
 ### Una nota sull'argomento del messaggio personalizzato
 
-`triggerAlarm` costruisce le chiamate a `espeak-ng` e `wall` con `execProcess(..., args = [...])`, non con una stringa di shell concatenata. Non è una questione di stile. Una versione precedente costruiva il comando come `"espeak-ng -v " & lang & " \"" & text & "\""` e lo passava a una shell, cioè una injection bella e buona. Un messaggio personalizzato come `foo"; rm -rf ~ #` esce dalle virgolette ed esegue comandi arbitrari. Passare gli argomenti come array salta del tutto la shell, quindi non resta nulla da fare escaping.
+Poiché `triggerAlarm` costruisce le chiamate a `espeak-ng` e `wall` con `execProcess(..., args = [...], options = {poUsePath})` invece che con una stringa di shell concatenata, nessun messaggio personalizzato può mai uscire per eseguire un secondo comando: passare gli argomenti come array salta del tutto la shell, per cui un messaggio come `foo"; rm -rf ~ #` non trova nulla da cui evadere.
 
-L'ho verificato dando al demone un messaggio che conteneva proprio un payload del genere. Non è comparso nessun file. Al suo posto `espeak-ng` ha letto ad alta voce l'intero tentativo di exploit, parola per parola, virgolette e punti e virgola compresi. È esattamente la prova che volevo.
-
-Il primo tentativo di correzione ha fatto emergere un secondo bug. Per impostazione predefinita `execProcess` valuta il comando tramite una shell, quindi un array `args` con le opzioni predefinite fallisce un'asserzione a runtime. La soluzione è passare `options = {poUsePath}`, che elimina la shell.
-
-Due bug più piccoli sono saltati fuori solo dopo che il servizio è rimasto in funzione per un po'. Il conto alla rovescia perdeva l'allineamento delle colonne ogni volta che i secondi tornavano a zero, quindi `12m 0s` finiva accanto a `12m 30s`. Inoltre un argomento lingua vuoto passato dallo script del servizio svuotava la lingua configurata invece di ricadere sul valore predefinito. Entrambi si risolvono in una riga: zero padding dei secondi con `{seconds mod 60:02}`, e argomenti vuoti ignorati in `paramOrDefault`.
+L'ho verificato dando al demone un messaggio che conteneva proprio quel tipo di payload; non è comparso nessun file, e `espeak-ng` ha invece letto ad alta voce l'intero tentativo di exploit, parola per parola, virgolette e punti e virgola compresi, il che è esattamente la prova che volevo.
 
 ---
 
 ## 🐧 Sotto il cofano: il modello di supervisione `runit` di Void Linux
 
-Void Linux usa **`runit`** come init e come supervisore dei servizi, al posto di systemd. È veloce, prevedibile e piccolo.
+Al posto di systemd, Void Linux usa **`runit`** come init e come supervisore dei servizi, perché è veloce, prevedibile e piccolo.
 
 Il ciclo di vita di un servizio usa tre directory:
 
@@ -162,7 +160,7 @@ Il ciclo di vita di un servizio usa tre directory:
 2.  **Il registro attivo (`/var/service/`):** symlink alle cartelle in `/etc/sv/`. Un symlink qui significa che il servizio è abilitato. Rimuovilo e il servizio è disabilitato.
 3.  **Il supervisore:** `runsvdir` sorveglia `/var/service/`. Quando vede un nuovo symlink, fa il fork di un processo `runsv` dedicato a quel servizio.
 
-Una volta che `runsv` esegue il servizio `break-reminder`, ha un solo compito: tenere vivo il demone. Se il demone va in crash o viene ucciso, `runsv` lo riavvia subito.
+Una volta che `runsv` esegue il servizio `break-reminder`, ha un solo compito, che è tenere vivo il demone, per cui se il demone va in crash o viene ucciso, `runsv` lo riavvia subito.
 
 ---
 
@@ -178,7 +176,7 @@ ls -l break_reminder
 -rwxrwxr-x 1 andrea andrea 71712 Sep  5 18:14 break_reminder
 ```
 
-Circa 70KB, abbastanza pochi da potersene dimenticare.
+Circa 70KB, abbastanza pochi da poterselo dimenticare senza pensieri.
 
 ### Passo 1: creare la cartella nel registro
 ```bash
@@ -187,7 +185,7 @@ sudo mkdir -p /etc/sv/break-reminder
 
 ### Passo 2: scrivere gli script `conf` e `run`
 
-Gli script di servizio di Void, incluso quello di `sshd`, tengono la configurazione in un file `conf` separato. Lo script `run` lo carica per primo.
+Poiché gli script di servizio di Void, incluso quello di `sshd`, tengono la configurazione in un file `conf` separato, lo script `run` lo carica per primo.
 
 `/etc/sv/break-reminder/conf`:
 ```bash
@@ -204,10 +202,7 @@ exec 2>&1
 exec chpst -u andrea /home/andrea/bin/break_reminder "${LIMIT_MINUTES:-60}" "${LANGUAGE:-it}" "${CUSTOM_MESSAGE:-}"
 ```
 
-Due dettagli meritano attenzione:
-
-1.  **`chpst -u andrea`:** `runsv` avvia i servizi come root per impostazione predefinita. Questo demone legge e scrive solo file sotto `/tmp` e chiama `espeak-ng` e `wall`. Entrambi funzionano bene come utente normale, perché il mio account è nel gruppo `audio`. Non c'è motivo di eseguirlo come root, quindi `chpst` lascia cadere i privilegi prima di `exec`.
-2.  **`exec`:** sostituisce il processo shell con il binario compilato invece di eseguirlo come figlio. In questo modo `runsv` supervisiona direttamente il demone, non una shell che gli fa da involucro.
+Due dettagli meritano attenzione, dato che `runsv` avvia i servizi come root per impostazione predefinita, mentre questo demone legge e scrive solo file sotto `/tmp` e chiama `espeak-ng` e `wall`, entrambi funzionanti bene come utente normale perché il mio account è nel gruppo `audio`, per cui `chpst -u andrea` lascia cadere i privilegi prima di `exec`, che a sua volta sostituisce il processo shell con il binario compilato invece di eseguirlo come figlio, cosicché `runsv` finisce per supervisionare direttamente il demone e non una shell che gli fa da involucro.
 
 ### Passo 3: rendere eseguibile lo script
 ```bash
@@ -235,31 +230,44 @@ sudo sv start break-reminder
 
 ## 📏 Misure reali di consumo
 
-In un post come questo i numeri di solito sono tirati a indovinare. Io ho invece campionato i processi in esecuzione sul netbook. Il tempo di CPU viene dai campi `utime` e `stime` di `/proc/PID/stat`, a 100 tick al secondo. La memoria residente viene da `VmRSS`.
+Poiché in un post come questo i numeri di solito sono tirati a indovinare, ho campionato invece i processi in esecuzione sul netbook: il tempo di CPU viene dai campi `utime` e `stime` di `/proc/PID/stat`, a 100 tick al secondo, mentre la memoria residente viene da `VmRSS`.
 
 | Processo | RSS | CPU |
 |---|---|---|
 | `break_reminder` | 2,0 MB | 0,01% di un core |
-| `motion` | 40,4 MB | 13,6% di un core |
+| `motion` | 24,3 MB | ~4,4% di un core |
 
-Il demone in Nim ha bruciato 3 tick in una finestra di 300 secondi. Sono 30 millisecondi di CPU in cinque minuti, cioè lo 0,01% di un core. È poco, ma non è zero, quindi riporto il valore reale invece di arrotondarlo via.
+Dato che il demone in Nim ha bruciato solo 3 tick in una finestra di 300 secondi, cioè 30 millisecondi di CPU in cinque minuti, il che equivale allo 0,01% di un core: è poco, ma non è zero, per cui riporto il valore reale invece di arrotondarlo via.
 
-`motion` è il costo vero. Ha bruciato 1632 tick in una finestra di 120 secondi, cioè 16,3 secondi di CPU in due minuti. Decodificare un flusso 640x480 a 10fps su un singolo core Atom non è gratis.
+### Impostazioni della telecamera
+
+L'istinto sarebbe puntare `motion` alla piena risoluzione 640x480 della telecamera, dato che è quella predefinita, ma un sorvegliante di presenza non deve riconoscere volti o testo, deve solo avere pixel a sufficienza per capire se qualcosa nell'inquadratura si è mosso. Dato che il confronto tra fotogrammi scala con il numero di pixel, tagliare la cattura a 320x240, un quarto dei pixel, taglia il costo di CPU all'incirca dello stesso fattore:
+
+| Risoluzione | RSS | CPU |
+|---|---|---|
+| 640x480 | 40,4 MB | ~12,7% di un core |
+| 320x240 | 24,3 MB | ~4,4% di un core |
+
+Il parametro `framerate` di `motion` scarta solo i fotogrammi dopo che sono già stati catturati, per cui non ha senso chiedere una frequenza sotto quella nativa della telecamera: `v4l2-ctl --list-formats-ext` mostra che questa webcam offre solo due frequenze di cattura discrete, 15fps oppure 30fps, per cui `framerate` è impostato a 15.
+
+`threshold`, il numero di pixel cambiati necessario per registrare un movimento, è un valore assoluto di pixel e non una percentuale del fotogramma, per cui deve scalare con la risoluzione: qui è impostato a `375`, calibrato sul numero totale di pixel di un fotogramma a 320x240.
+
+Ho verificato quel valore con un movimento reale invece di fidarmi solo del calcolo: con il log di debug al massimo, seduto normalmente a digitare, senza nessun gesto plateale, è comunque comparsa una riga `motion_detected: Motion detected - starting event 1` entro 14 secondi. La risoluzione più bassa non fa perdere nulla di ciò che serve a questo progetto.
 
 ### Quanto consuma tutto il sistema
 
-Il numero più interessante non è il demone. È quanto poco serve a tutto il resto della macchina:
+Il numero più interessante non è quello del demone, ma quanto poco serve a tutto il resto della macchina:
 
 ```text
                total        used        free      shared  buff/cache   available
-Mem:             975         110          22           0         866         864
+Mem:             975         104         723           0         175         871
 ```
 
-975 MB è ciò che il firmware lascia a Linux del gigabyte nominale. Con tutto in funzione, cioè `motion`, il promemoria delle pause, `sshd` e circa 130 processi, la macchina usa 110 MB. Togli i 40 MB che tiene `motion` e il sistema di base sta attorno ai 70 MB.
+Poiché 975 MB è ciò che il firmware lascia a Linux del gigabyte nominale, e la macchina usa solo 104 MB con tutto in funzione, incluso il più leggero `motion` a 320x240, il promemoria delle pause, `sshd` e circa 130 processi, resta poco da spiegare una volta tolti i circa 24 MB che tiene `motion` adesso.
 
-Restano 864 MB disponibili, quasi l'89% della RAM installata, su hardware venduto nel 2009. Qui non c'è nessun ambiente desktop, nessun display manager e nessun systemd. Void Linux con `runit` e una console testuale è il motivo per cui una macchina da 1GB sembra ancora spaziosa.
+Restano quindi 871 MB disponibili, quasi l'89% della RAM installata, su hardware venduto nel 2009, dove non c'è nessun ambiente desktop, nessun display manager e nessun systemd, il che spiega perché Void Linux con `runit` e una console testuale faccia ancora sembrare spaziosa una macchina da 1GB.
 
-Ecco la schermata del setup del BIOS del netbook—un bel salto nel passato alle sue origini con l'Intel Atom single-core da 1.6GHz e ai limiti hardware che stiamo spremendo:
+Ecco la schermata del setup del BIOS del netbook, che ricorda le sue origini con l'Intel Atom single-core da 1.6GHz e i limiti hardware contro cui questo progetto continua a lottare:
 
 ![Samsung N130 BIOS Setup](/img/n130_2026-09-06_17-49-10.jpg)
 
@@ -267,6 +275,6 @@ Ecco la schermata del setup del BIOS del netbook—un bel salto nel passato alle
 
 ## 📊 Conclusione
 
-Questo è un progetto di qualità della vita e di salute prima ancora che di smanettamento. Quando sono immerso in un problema, il bruciore agli occhi e le ore perse mi arrivano addosso senza preavviso. Ora c'è qualcosa che tiene il conto al posto del mio giudizio. A differenza dello smartwatch al polso, non lo inganno agitandomi sulla sedia.
+Dato che questo è un progetto di qualità della vita e di salute prima ancora che di smanettamento, e il bruciore agli occhi insieme alle ore perse mi arrivano addosso senza preavviso ogni volta che sono immerso in un problema, ora c'è qualcosa che tiene il conto al posto del mio giudizio, e a differenza dello smartwatch al polso, non lo inganno agitandomi sulla sedia.
 
-I pezzi sono tutti componenti standard di Void Linux: `espeak-ng`, `runit`, `tmpfs` e gli hook sugli eventi che `motion` già offre. Sopra ci sta un binario Nim da 70KB, con i simboli rimossi. `motion` è l'inquilino pesante, e il netbook ora fa questo lavoro invece di fare da router WiFi per la taverna. Per una macchina data per obsoleta più di dieci anni fa, è una seconda carriera dignitosa.
+I pezzi sono tutti componenti standard di Void Linux, `espeak-ng`, `runit`, `tmpfs` e gli hook sugli eventi che `motion` già offre, mentre sopra ci sta un binario Nim da 70KB con i simboli rimossi. Poiché `motion` è l'inquilino pesante, il netbook ora fa questo lavoro invece di fare da router WiFi per la taverna, il che è una seconda carriera dignitosa per una macchina data per obsoleta più di dieci anni fa.

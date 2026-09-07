@@ -10,7 +10,7 @@ date: 2026-09-06
 
 La maggior parte dei promemoria per le pause si basa su un semplice orologio, per cui l'allarme scatta comunque nell'istante in cui un timer da 50 minuti arriva a zero, anche se hai passato 30 di quei minuti lontano dalla scrivania a prendere un caffè, perché il timer non ha modo di sapere che ti sei già riseduto.
 
-Ho già uno smartwatch che mi dà un colpetto al polso ogni volta che sto seduto troppo a lungo, il che aiuta, anche se misura la cosa sbagliata, dato che guarda il mio polso e non la mia scrivania, così che bastano un paio di movimenti del braccio per convincerlo che mi sono alzato, mentre io sono ancora sulla stessa sedia, davanti allo stesso schermo.
+Ho già uno smartwatch che mi vibra al polso ogni volta che sto seduto troppo a lungo, il che aiuta, anche se misura la cosa sbagliata, dato che guarda il mio polso e non la mia scrivania, così che bastano un paio di movimenti del braccio per convincerlo che mi sono alzato, mentre io sono ancora sulla stessa sedia, davanti allo stesso schermo.
 
 Sono anche il tipo di persona che si concentra al punto da perdere completamente la cognizione del tempo, per cui di solito il primo segnale che ho esagerato è il bruciore agli occhi.
 

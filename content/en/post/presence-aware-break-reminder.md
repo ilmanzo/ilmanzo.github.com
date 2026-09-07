@@ -10,7 +10,7 @@ date: 2026-09-06
 
 Most break reminders rely on a plain clock, so the alarm still fires the instant a fifty minute timer runs out, even if you spent thirty of those minutes away from the desk getting a coffee, because the timer has no way of knowing that you already sat back down.
 
-I already wear a smartwatch that taps my wrist whenever I have been sitting too long, which helps, although it tracks the wrong thing, since it watches my wrist rather than my desk, so that a handful of arm movements is enough to convince it that I got up while I am still in the same chair, in front of the same screen.
+I already wear a smartwatch that vibrates on my wrist whenever I have been sitting too long, which helps, although it tracks the wrong thing, since it watches my wrist rather than my desk, so that a handful of arm movements is enough to convince it that I got up while I am still in the same chair, in front of the same screen.
 
 I am also the kind of person who concentrates hard enough to lose track of time entirely, so that eyestrain is usually the first sign I get that I went too far.
 

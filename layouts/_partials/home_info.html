@@ -1,0 +1,28 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content md-content">
+        {{ $opts := dict "display" "block" }}
+        {{ .Content | $.Page.RenderString $opts }}
+    </div>
+    <footer class="entry-footer">
+        <div style="display: flex; align-items: center; gap: 16px; margin-top: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <!-- GitHub Sponsors -->
+            <iframe src="https://github.com/sponsors/ilmanzo/button" title="Sponsor ilmanzo" height="32" width="114" style="border: 0; border-radius: 6px; display: block;"></iframe>
+
+            <!-- Ko-fi -->
+            <a href='https://ko-fi.com/G6M226LFQH' target='_blank' style="display: block; height: 36px;">
+                <img height='36' style='border:0px;height:36px;display:block;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+            </a>
+
+            <!-- Buy Me a Coffee -->
+            <a href="https://www.buymeacoffee.com/ilmanzo" target="_blank" style="display: block; height: 36px;">
+                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 36px; display: block; border: 0;" />
+            </a>
+        </div>
+        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+    </footer>
+</article>
+{{- end -}}

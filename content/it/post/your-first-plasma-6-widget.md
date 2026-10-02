@@ -31,7 +31,7 @@ Un widget (il nome formale è *plasmoide* oppure *applet*) è un piccolo program
 
 Un widget può avere fino a due facce: la rappresentazione compatta è la piccola icona nel pannello, mentre la rappresentazione completa è la finestra a comparsa che si apre quando ci clicchi sopra, e se non ne scrivi una compatta Plasma mostra semplicemente l'icona del tuo widget.
 
-Un widget scritto soltanto in QML può essere pubblicato sul KDE Store, mentre uno che contiene codice C++ no, perché include una libreria compilata e quindi arriva agli utenti attraverso i pacchetti della distribuzione. In cambio, tutto ciò che non è banale (accesso alla rete, analisi di testi, grandi quantità di dati) può stare nel C++, e QML resta un sottile strato di presentazione.
+Un widget scritto soltanto in QML può essere pubblicato sul KDE Store, mentre uno che contiene codice C++ no, perché include una libreria compilata e quindi arriva agli utenti attraverso i pacchetti della distribuzione. In sostanza, tutto ciò che non è banale (accesso alla rete, analisi di testi, grandi quantità di dati) può stare nel C++, e QML resta solo un sottile strato di presentazione.
 
 Il codice C++ gira dentro `plasmashell`, quindi un crash nel tuo codice si porta dietro l'intera shell del desktop: conviene tenerlo piccolo e testarlo con cura.
 
@@ -41,7 +41,7 @@ Nel codice Qt ricorrono ovunque quattro termini, perciò li definiamo prima di s
 
 ### Segnale
 
-Un segnale annuncia che è successo qualcosa: un pulsante emette `clicked`, un timer emette `timeout` e il nostro contatore emetterà `countChanged`. Funziona come un campanello, che suona senza sapere chi sia in casa a sentirlo.
+Un segnale annuncia che è successo qualcosa: un pulsante emette `clicked`, un timer emette `timeout` e il nostro contatore emetterà `countChanged`. Funziona come un campanello, che emette un avviso ma non gli serve sapere chi sia in casa a sentirlo.
 
 ### Slot
 
@@ -265,7 +265,7 @@ PlasmoidItem {
 
 La radice di un widget per Plasma 6 deve essere un `PlasmoidItem`, e il file deve chiamarsi `contents/ui/main.qml`. `import org.opensuse.hellocounter` è il modo in cui QML trova la nostra classe C++, e `Counter { id: counter }` crea un oggetto modello, proprio come in C++. `i18n()` e `i18np()` (la "n" sta per plurale) marcano le stringhe visibili come traducibili, per cui `i18np("%1 click", "%1 clicks", n)` produce "1 click" oppure "2 clicks". I colori, le spaziature e le icone provengono dal tema, senza colori scritti a mano, così il widget segue la combinazione di colori e il carattere scelti dall'utente.
 
-Prova a cercare il codice che aggiorna l'etichetta dopo un clic: non ce n'è. Il `text` dell'intestazione è un binding, quindi QML vede che dipende da `counter.count`, si iscrive a `countChanged` e lo valuta di nuovo ogni volta che il segnale scatta. L'intestazione, il suggerimento a comparsa e lo stato abilitato del pulsante Reset sono tre osservatori dello stesso modello, e nessuno di loro richiede codice di aggiornamento, il che spiega anche perché il modello può restare così piccolo.
+Prova a cercare il codice che aggiorna l'etichetta dopo un clic: non c'è. Il `text` dell'intestazione è un binding, quindi QML vede che dipende da `counter.count`, si iscrive a `countChanged` e lo valuta di nuovo ogni volta che il segnale scatta. L'intestazione, il suggerimento a comparsa e lo stato abilitato del pulsante Reset sono tre *osservatori* dello stesso modello, e nessuno di loro richiede codice di aggiornamento, il che spiega anche perché il modello può restare così piccolo: non ha bisogno di sapere chi notificare quando viene cambiato.
 
 ## 🧰 Terzo passo: la compilazione con CMake
 
@@ -344,7 +344,7 @@ ctest --test-dir build --output-on-failure
 cmake --install build
 ```
 
-L'installazione avviene in `~/.local`, quindi non servono i privilegi di root, ed è proprio lì che compare il primo problema.
+L'installazione avviene in `~/.local`, quindi non servono i privilegi di root, ed è proprio lì che abbiamo il primo problema.
 
 ### 🗺️ La variabile d'ambiente che dimenticherai
 
@@ -371,7 +371,7 @@ env QML_IMPORT_PATH=$HOME/.local/lib64/qml plasmawindowed org.opensuse.hellocoun
 
 `env VARIABILE=valore comando` funziona allo stesso modo in bash e in fish. Aggiungi `QT_FORCE_STDERR_LOGGING=1` per vedere gli errori di QML nel terminale, perché Qt manda i propri messaggi al journal quando lo standard error non è un terminale. Tieni presente anche che `plasmawindowed` ammette una sola istanza per widget: se esiste già una finestra aperta, un secondo comando passa la mano a quella finestra ed esce, e la cosa sembra un successo.
 
-Per usare il widget in un pannello o sul desktop la variabile deve raggiungere `plasmashell`, ma a lanciarlo è la tua sessione di login e non la shell, quindi una variabile esportata in un terminale non gli arriva. Mettila dove la legge la sessione:
+Per usare il widget in un pannello o sul desktop la variabile deve raggiungere `plasmashell`, ma a lanciarlo è la tua sessione di login e non la shell, quindi una variabile esportata in un terminale non gli arriva. Mettila dove la cerca la sessione:
 
 ```bash
 mkdir -p ~/.config/plasma-workspace/env
@@ -380,7 +380,7 @@ echo 'export QML_IMPORT_PATH=$HOME/.local/lib64/qml' > ~/.config/plasma-workspac
 
 Poi esci dalla sessione e accedi di nuovo, fai clic con il tasto destro sul desktop o su un pannello, scegli *Aggiungi o gestisci oggetti…* (Plasma in italiano chiama "oggetti" i widget), cerca "Hello counter" e aggiungilo. Fai clic sull'icona, poi sul pulsante e infine passa il puntatore sull'icona: anche il suggerimento a comparsa conta i clic.
 
-Un'installazione di sistema (`-DCMAKE_INSTALL_PREFIX=/usr` oppure un pacchetto della distribuzione) non richiede nulla di tutto ciò, perché Qt cerca già in quei percorsi. Chi usa il tuo widget non incontrerà mai questa variabile, mentre tu ci sbatterai contro ogni volta che proverai una compilazione locale.
+Un'installazione di sistema (`-DCMAKE_INSTALL_PREFIX=/usr` oppure un pacchetto della distribuzione) non richiede nulla di tutto ciò, perché Qt cerca già in quei percorsi. A chi usa il tuo widget non servirà mai questa variabile, mentre a te servirà impostarla ogni volta che proverai una compilazione locale.
 
 ## 🕵️ Mettere alla prova il segnale
 
@@ -456,7 +456,7 @@ Il widget manca dall'elenco dei widget: controlla che `metadata.json` contenga `
 
 Ora hai un modello in C++, una vista con il suo controller in QML, un test e una compilazione che installa il tutto, e da qui si può proseguire in molte direzioni.
 
-Plasma sa conservare le impostazioni, quindi il conteggio può sopravvivere a un riavvio: descrivile in `contents/config/main.xml` e leggile con `Plasmoid.configuration`. Il modello può anche lavorare da solo: un timer nel costruttore di `Counter` è il `connect()` C++ visto prima e trasforma il widget in un cronometro senza toccare il QML:
+Plasma può memorizzare le impostazioni, quindi il conteggio può sopravvivere a un riavvio: descrivile in `contents/config/main.xml` e leggile con `Plasmoid.configuration`. Il modello può anche lavorare da solo: un timer nel costruttore di `Counter` è il `connect()` C++ visto prima e trasforma il widget in un cronometro senza toccare il QML:
 
 ```cpp
 auto *timer = new QTimer(this);
@@ -468,4 +468,4 @@ I tre osservatori continuano ad aggiornarsi e le viste restano le stesse. Se inv
 
 Il [tutorial ufficiale sui widget di Plasma](https://develop.kde.org/docs/plasma/widget/) e la [guida al porting a Plasma 6](https://develop.kde.org/docs/plasma/widget/porting_kf6/) trattano il resto.
 
-Buon trentesimo compleanno, KDE, e grazie per tre decenni di software libero. Buon hacking!
+Buon trentesimo compleanno, KDE, e grazie per tre decenni di software libero. Happy hacking!

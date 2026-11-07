@@ -64,12 +64,6 @@ author = "Andrea Manzini"
 - [package_last_update](https://github.com/ilmanzo/package_last_update), strumento CLI per verificare la freschezza dei pacchetti confrontando openSUSE OBS, Repology e release upstream
 - [DlangKoans](https://github.com/ilmanzo/DLangKoans) e [crystal-koans](https://github.com/ilmanzo/crystal-koans), suite didattiche interattive di test per l'apprendimento pratico dei linguaggi
 
-## Challenge di Programmazione & Hackathon
-
-- **Advent of Code**: Traguardo di 500 Stelle raggiunto completando il 100% dei problemi su 10 edizioni (2015–2024); partecipante attivo nel 2025
-- **SUSE Hackweek**: Vincitore del premio Hackweek (2025) per il progetto AI Changelog Insight Engine; sviluppo di un gioco endless runner per NES (2026)
-- **Gare Algoritmiche**: Partecipazione alle competizioni Everybody Codes e FlipFlop Codes (2026)
-
 ## Formazione e Corsi
 
 - 2026: Workshop AI Norimberga (LLM locali, quantizzazione GGUF/EXL2, pipeline RAG, database vettoriali)
@@ -135,3 +129,9 @@ author = "Andrea Manzini"
 ## Varie
 
 - Presentazioni (professionali): https://ilmanzo.github.io/suse_presentations
+
+### Challenge di Programmazione & Hackathon
+
+- **Advent of Code**: Traguardo di 500 Stelle raggiunto completando il 100% dei problemi su 10 edizioni (2015–2024); partecipante attivo nel 2025
+- **SUSE Hackweek**: Vincitore del premio Hackweek (2025) per il progetto AI Changelog Insight Engine; sviluppo di un gioco endless runner per NES (2026)
+- **Gare Algoritmiche**: Partecipazione alle competizioni Everybody Codes e FlipFlop Codes (2026)

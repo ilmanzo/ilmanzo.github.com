@@ -65,12 +65,6 @@ author = "Andrea Manzini"
 - [package_last_update](https://github.com/ilmanzo/package_last_update), CLI to track package freshness by cross-checking openSUSE OBS, Repology, and upstream releases
 - [DlangKoans](https://github.com/ilmanzo/DLangKoans) & [crystal-koans](https://github.com/ilmanzo/crystal-koans), educational interactive test suites for language learning
 
-## Coding Challenges & Hackathons
-
-- **Advent of Code**: Reached the 500-Star milestone by solving 100% of puzzles across 10 editions (2015–2024); continued in 2025
-- **SUSE Hackweek**: Won Hackweek award (2025) for AI Changelog Insight Engine; built retro NES runner game (2026)
-- **Algorithmic Challenges**: Participant in Everybody Codes and FlipFlop Code challenges (2026)
-
 ## Training
 
 - 2026: Nuremberg AI Workshop (Local LLMs, quantization GGUF/EXL2, RAG pipelines, vector DBs)
@@ -136,3 +130,9 @@ author = "Andrea Manzini"
 ## Misc
 
 - Presentations (work related:) https://ilmanzo.github.io/suse_presentations
+
+### Coding Challenges & Hackathons
+
+- **Advent of Code**: Reached the 500-Star milestone by solving 100% of puzzles across 10 editions (2015–2024); continued in 2025
+- **SUSE Hackweek**: Won Hackweek award (2025) for AI Changelog Insight Engine; built retro NES runner game (2026)
+- **Algorithmic Challenges**: Participant in Everybody Codes and FlipFlop Code challenges (2026)

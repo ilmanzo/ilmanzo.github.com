@@ -1,7 +1,7 @@
 +++
 title = "my resume"
 description = "curriculum vitae"
-date = "2025-07-07"
+date = "2026-11-07"
 aliases = ["cv", "resume", "curriculum"]
 author = "Andrea Manzini"
 +++
@@ -9,7 +9,7 @@ author = "Andrea Manzini"
 ## Work Experience
 
 - 2022-now: **QE Automation Engineer**, [SUSE](https://www.suse.com/)  
-  Automated test development and quality assurance for SUSE product release. Became maintainer of some RPM package. Opensource contributor
+  Automated test development and quality assurance across multiple squads (Security, Kernel/LTP, Core OS, SAP HA, Multi-Linux Manager/Uyuni, Cloud Containers). Author of internal and open-source tooling including `BinaryCoverage` (Go + eBPF runtime coverage) and `q2boot`. Maintainer of 20+ packages on openSUSE OBS, with 35+ upstream PRs merged into `os-autoinst-distri-opensuse` and `uyuni-project`. Active mentor ("Coffee with Andrea" technical 1:1s, new hires) and contributor (~1,200 GitHub contributions in 2026).
 
 - 2017-2022: **cloud & automation senior sw engineer**, [Value Transformation Services](https://www.v-tservices.com/)   
   Worked on a fully automated hybrid cloud implementation. Deliver and manage, with DevOps best practices, a custom platform that customer uses to request IaaS and PaaS solutions
@@ -59,13 +59,23 @@ author = "Andrea Manzini"
 
 ## Personal Projects
 
-- [BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage), an innovative method to measure coverage of integration tests
-- [Q2Boot](https://github.com/ilmanzo/q2boot), a multi-arch automatic VM launcher
-- [DlangKoans](https://github.com/ilmanzo/DLangKoans) and [crystal-koans](https://github.com/ilmanzo/crystal-koans) educational testsuite to learn the language in an easy way
+- [BinaryCoverage](https://github.com/ilmanzo/BinaryCoverage) (`funkoverage`), dynamic function coverage on native ELF binaries using Go and eBPF (`uprobe_multi`) without recompilation (< 2% overhead, runtime `dlopen()` support)
+- [Q2Boot](https://github.com/ilmanzo/q2boot), automatic multi-architecture VM launcher for raw disk images
+- [termpv](https://github.com/ilmanzo/termpv), terminal audio player and radio daemon over `mpv` with BubbleTea TUI and HTTP API
+- [package_last_update](https://github.com/ilmanzo/package_last_update), CLI to track package freshness by cross-checking openSUSE OBS, Repology, and upstream releases
+- [DlangKoans](https://github.com/ilmanzo/DLangKoans) & [crystal-koans](https://github.com/ilmanzo/crystal-koans), educational interactive test suites for language learning
 
+## Coding Challenges & Hackathons
+
+- **Advent of Code**: Reached the 500-Star milestone by solving 100% of puzzles across 10 editions (2015–2024); continued in 2025
+- **SUSE Hackweek**: Won Hackweek award (2025) for AI Changelog Insight Engine; built retro NES runner game (2026)
+- **Algorithmic Challenges**: Participant in Everybody Codes and FlipFlop Code challenges (2026)
 
 ## Training
 
+- 2026: Nuremberg AI Workshop (Local LLMs, quantization GGUF/EXL2, RAG pipelines, vector DBs)
+- 2026: Zig Day Milan crash course & hack session
+- 2024: QE Kernel Workshop & Linux Test Project (LTP) testing
 - 2023: Schrödinger Session: Learning Rust, one step at the time from [Schrödinger Hat community](https://www.schrodinger-hat.it/)
 - 2022: Ultimate Rust Crash Course, udemy
 - 2021: Learn Rust by Building Real Application, udemy
@@ -95,11 +105,20 @@ author = "Andrea Manzini"
 
 ## Other experiences
 
+- 2026: speaker at [Linux Day Milano](https://linuxdaymilano.org/) (*A scatola chiusa: Test Coverage di binari nativi con eBPF*)
+- 2026: speaker at [Mantova Dev](https://linktr.ee/mantovadev) (*Green Computing in pratica: misurare il consumo energetico con Linux*)
+- 2026: speaker at [GDG DevFest Vicenza](https://devfest.gdgvicenza.it/) (*5+1 systemd features you should know*)
+- 2026: speaker at [Linux Day Spring Edition @ Mantova](https://www.lugman.org/Linux_day_2026_SE) (*Flatpak & Distrobox*)
+- 2026: speaker at [openSUSE Developer Summit (ODS 2026)](https://events.opensuse.org/conferences/ODS26) / SUSECON Prague (*Green Computing from the CLI*)
+- 2026: radio broadcast interview about Linux, career, and SUSE
+- 2025: speaker at Linux Day Reloaded Brescia (Linux Kernel & Kubernetes sessions for high school students)
 - 2025: speaker at [Linux Day Brescia](https://lugotto.it/2025/06/22/linux-day-2025-brescia/)
 - 2025: speaker at [GdG DevFest Venezia](https://devfest25.gdgvenezia.it/speakers/andrea-manzini/)
 - 2025: speaker at [Tech Community Day](https://www.techcommunityday.it/) by [Coding Bunker](https://codingbunker.it/) & [GrUSP](https://grusp.org/)
 - 2024: speaker at [Linux Day Brescia](https://lugotto.it/2024/09/12/linux-day-2024-brescia/)
 - 2024: speaker at [Linux Day Spring Edition](https://lugman.org/Linux_day_2024_SE) @Mantova 
+- 2024: guest at [Pointer Podcast](https://pointerpodcast.it/) and [Gitbar podcast](https://www.gitbar.it/)
+- 2024: ranked #241 in Italy on GitHub by public contributions
 - 2023: speaker at Google Developer Group Trento [DevFest](https://gdg.community.dev/events/details/google-gdg-trento-presents-devfest-trento-2023/)
 - 2023: became [Ambassador](https://forum.crystal-lang.org/t/ambassador-introductions/5734) for the [Crystal Programming Language](https://crystal-lang.org/)
 - 2022: became maintainer of openSUSE rpm packages on [Open Build Service](https://build.opensuse.org)

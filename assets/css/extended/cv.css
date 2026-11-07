@@ -1,0 +1,262 @@
+/* ==========================================================================
+   CV / Resume Styling (PaperMod Compatible & ATS-Friendly)
+   Executive Cards Design
+   ========================================================================== */
+
+/* Metric / Impact Highlights */
+.cv-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem 0;
+}
+.cv-metric-box {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.cv-metric-box:hover {
+  border-color: var(--primary);
+}
+.cv-metric-num {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+}
+.cv-metric-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.35rem;
+}
+
+/* Technical Competencies Grid */
+.cv-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+}
+.cv-skill-group {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.15rem;
+}
+.cv-skill-group h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--primary);
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 0.4rem;
+}
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.cv-tag {
+  font-size: 0.78rem;
+  background: var(--tertiary);
+  color: var(--primary);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-family: var(--code-font);
+}
+
+/* Executive Experience Cards */
+.cv-cards-view .cv-job-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--theme);
+  border-radius: 6px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.35rem;
+  transition: border-color 0.15s ease;
+}
+.cv-cards-view .cv-job-card:hover {
+  border-color: var(--primary);
+}
+.cv-cards-view .cv-job-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+.cv-cards-view .cv-job-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary);
+}
+.cv-timeline-date {
+  font-family: var(--code-font);
+  font-size: 0.82rem;
+  background: var(--tertiary);
+  color: var(--primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.cv-cards-view .cv-job-company {
+  font-size: 0.98rem;
+  color: var(--secondary);
+  margin-bottom: 0.85rem;
+}
+.cv-cards-view .cv-job-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--border);
+}
+
+/* 2-Column Responsive Card Grids (Certifications, Projects, Speaking) */
+.cv-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.1rem;
+  margin: 1.25rem 0 2rem 0;
+}
+.cv-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.15rem 1.3rem;
+  transition: border-color 0.15s ease;
+}
+.cv-card:hover {
+  border-color: var(--primary);
+}
+.cv-card h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.1rem;
+}
+.cv-card p {
+  margin: 0 0 0.6rem 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--secondary);
+}
+.cv-card ul {
+  margin: 0.3rem 0 0.5rem 1.2rem;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.cv-card li {
+  margin-bottom: 0.35rem;
+}
+
+/* Collapsible Historical Drawers */
+details.cv-drawer {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1.15rem;
+  margin: 1.25rem 0;
+}
+details.cv-drawer summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+}
+details.cv-drawer[open] summary {
+  margin-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 0.5rem;
+}
+details.cv-drawer ul {
+  margin: 0.5rem 0 0.5rem 1.2rem;
+  padding: 0;
+  font-size: 0.92rem;
+}
+details.cv-drawer li {
+  margin-bottom: 0.4rem;
+}
+
+/* ==========================================================================
+   ATS & Print Optimization (@media print)
+   ========================================================================== */
+@media print {
+  /* Hide non-resume chrome */
+  header.header,
+  footer.footer,
+  .breadcrumbs,
+  .post-meta,
+  #theme-toggle,
+  .top-link,
+  .logo-switches {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .post-single {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .cv-card,
+  .cv-skill-group,
+  .cv-job-card,
+  .cv-metric-box {
+    border: 1px solid #ccc !important;
+    background: transparent !important;
+    color: #000 !important;
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .cv-metric-num,
+  .cv-job-title {
+    color: #000 !important;
+  }
+
+  .cv-tag,
+  .cv-timeline-date {
+    background: #f0f0f0 !important;
+    color: #111 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  details.cv-drawer {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  details.cv-drawer summary {
+    display: none !important;
+  }
+
+  details.cv-drawer[open],
+  details.cv-drawer {
+    display: block !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+}

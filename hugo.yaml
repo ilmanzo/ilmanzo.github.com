@@ -67,6 +67,9 @@ taxonomies:
   tag: tags
   series: series
 markup:
+  goldmark:
+    renderer:
+      unsafe: true
   highlight:
     anchorLineNos: false
     codeFences: true

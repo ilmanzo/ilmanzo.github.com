@@ -11,13 +11,13 @@ pagination:
 DefaultContentLanguage: en
 enableInlineShortcodes: true
 enableEmoji: true
-googleAnalytics: G-6PN4FTRLNL
 sectionPagesMenu: main
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 params:
+  goatcounter: "ilmanzo"  # your GoatCounter site code (CODE.goatcounter.com)
   author: Andrea Manzini
   profileMode:
     enabled: false
